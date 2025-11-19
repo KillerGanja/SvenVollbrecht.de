@@ -1,8 +1,33 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// alle deutschen Works laden
+const worksEntries = await Astro.glob("../../../content/works/de/*.md");
+
+// einfache Sortierung: neueste zuerst (Jahr absteigend)
+const works = worksEntries
+  .map((entry) => ({
+    ...entry.frontmatter,
+    url: `/works/${entry.frontmatter.slug}/`,
+  }))
+  .sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
 ---
 
 <BaseLayout title="Works – Übersicht">
   <h1>Works</h1>
-  <p>Hier wird später automatisch die Liste aller Werke aus content/works erscheinen.</p>
+
+  {works.length === 0 ? (
+    <p>Noch keine Werke angelegt.</p>
+  ) : (
+    <ul>
+      {works.map((work) => (
+        <li>
+          <strong>{work.title}</strong>
+          {work.year ? ` (${work.year})` : ""}
+          <br />
+          <small>{work.materials}</small>
+        </li>
+      ))}
+    </ul>
+  )}
 </BaseLayout>
