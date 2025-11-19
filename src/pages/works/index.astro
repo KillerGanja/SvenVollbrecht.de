@@ -22,10 +22,8 @@ const works = worksEntries
     <ul>
       {works.map((work) => (
         <li>
-          <strong>{work.title}</strong>
-          {work.year ? ` (${work.year})` : ""}
-          <br />
-          <small>{work.materials}</small>
+        <a href={work.url}><strong>{work.title}</strong></a>
+        {work.year ? ` (${work.year})` : ""}
         </li>
       ))}
     </ul>
