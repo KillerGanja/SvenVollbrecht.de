@@ -1,0 +1,41 @@
+---
+const { title = "Sven Vollbrecht", lang = "de" } = Astro.props;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        padding: 2rem;
+      }
+      nav {
+        margin-bottom: 2rem;
+      }
+      nav a {
+        margin-right: 1.5rem;
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/works">Works</a>
+      <a href="/exhibitions">Exhibitions</a>
+      <a href="/press">Press</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <slot />
+  </body>
+</html>
