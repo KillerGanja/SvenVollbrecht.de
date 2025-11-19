@@ -6,4 +6,7 @@ dimensions: "40 × 50 cm"
 series: "Testserie"
 slug: "testwerk-1"
 lang: "de"
+images:
+    - "/works/testwerk-1/01.jpg"
+    - "/works/testwerk-1/02.jpg"
 ---

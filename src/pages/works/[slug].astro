@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// 1) Astro anweisen, welche Seiten erzeugt werden sollen
+export async function getStaticPaths() {
+  const entries = await Astro.glob("../../../content/works/de/*.md");
+
+  return entries.map((entry) => {
+    return {
+      params: { slug: entry.frontmatter.slug },
+      props: { entry }
+    };
+  });
+}
+
+// 2) Props entgegennehmen (das einzelne Werk)
+const { entry } = Astro.props;
+const { frontmatter, Content } = entry;
+---
+
+<BaseLayout title={frontmatter.title}>
+  <h1>{frontmatter.title}</h1>
+
+  <p><strong>Jahr:</strong> {frontmatter.year}</p>
+  <p><strong>Material:</strong> {frontmatter.materials}</p>
+  <p><strong>Maße:</strong> {frontmatter.dimensions}</p>
+
+  <hr />
+
+  {frontmatter.images && frontmatter.images.length > 0 && (
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+      {frontmatter.images.map((src) => (
+        <img src={src} alt={frontmatter.title} style="width: 300px; height: auto;" />
+      ))}
+    </div>
+  )}
+
+  <Content />
+</BaseLayout>
