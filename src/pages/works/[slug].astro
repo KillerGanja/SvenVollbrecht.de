@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import ImageGallery from "../../components/ImageGallery.astro";
+
 
 // 1) Astro anweisen, welche Seiten erzeugt werden sollen
 export async function getStaticPaths() {
@@ -25,14 +27,8 @@ const { frontmatter, Content } = entry;
   <p><strong>Material:</strong> {frontmatter.materials}</p>
   <p><strong>Maße:</strong> {frontmatter.dimensions}</p>
 
-  <hr />
-
   {frontmatter.images && frontmatter.images.length > 0 && (
-    <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
-      {frontmatter.images.map((src) => (
-        <img src={src} alt={frontmatter.title} style="width: 300px; height: auto;" />
-      ))}
-    </div>
+    <ImageGallery images={frontmatter.images} title={frontmatter.title} />
   )}
 
   <Content />
