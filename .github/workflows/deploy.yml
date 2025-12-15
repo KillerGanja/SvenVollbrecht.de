@@ -52,7 +52,7 @@ jobs:
         username: ${{ secrets.SFTP_USERNAME_STRATO }}
         server: ${{ secrets.SFTP_SERVER_STRATO }}
         port: ${{ secrets.SFTP_SERVER_PORT_STRATO }}
-        ssh_password: ${{ secrets.SFTP_PASSWORD_STRATO }}
+        password: ${{ secrets.SFTP_PASSWORD_STRATO }}
         local_path: './dist/*'
         remote_path: '/'
         sftp_only: true
