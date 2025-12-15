@@ -2,7 +2,7 @@ name: Deploy to Strato
 
 on:
   push:
-    branches: [ main ]
+    branches: [ feature/cms-setup ]
 
 jobs:
   build-and-deploy:
