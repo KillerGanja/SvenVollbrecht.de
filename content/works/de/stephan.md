@@ -1,6 +1,6 @@
 ---
-title: Stephan
-slug: Stephan
+title: Stephan1
+slug: Stephan1
 year: 1976
 materials: Haut
 dimensions: zu viel
