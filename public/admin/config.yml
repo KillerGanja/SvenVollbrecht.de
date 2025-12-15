@@ -1,11 +1,13 @@
 backend:
-  name: git-gateway
-  branch: feature/cms-setup  # oder der Branch, auf dem du gerade arbeitest
-
-local_backend: true
+  name: github
+  repo: KillerGanja/SvenVollbrecht.de
+  branch: feature/cms-setup # Using current feature branch
+  base_url: https://ideenfetzen.de
+  auth_endpoint: oauth/auth.php
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
+
 
 collections:
   # WORKS (Deutsch)
