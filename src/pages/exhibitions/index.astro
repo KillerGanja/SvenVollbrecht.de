@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// alle deutschen Exhibitions laden
+const entries = await Astro.glob("../../../content/exhibitions/de/*.md");
+
+// Sortierung: neueste zuerst (Jahr absteigend)
+// Falls das Datum wichtiger ist, könnte man auch nach frontmatter.date sortieren (falls vorhanden)
+const exhibitions = entries
+    .map((entry) => ({
+        ...entry.frontmatter,
+        url: `/exhibitions/${entry.frontmatter.slug}/`,
+    }))
+    .sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
+---
+
+<BaseLayout title="Exhibitions">
+    <h1>Exhibitions</h1>
+
+    {
+        exhibitions.length === 0 ? (
+            <p>Noch keine Ausstellungen angelegt.</p>
+        ) : (
+            <ul>
+                {exhibitions.map((exhib) => (
+                    <li>
+                        <a href={exhib.url}>
+                            <strong>{exhib.title}</strong>
+                        </a>
+                        {exhib.venue && ` – ${exhib.venue}`}
+                        {exhib.city && `, ${exhib.city}`}
+                        {exhib.year && ` (${exhib.year})`}
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+</BaseLayout>

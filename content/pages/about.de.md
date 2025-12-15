@@ -1,5 +1,6 @@
 ---
-title: "Über Sven"
-slug: "about"
-lang: "de"
+title: Über Sven
+slug: about
+lang: de
 ---
+Über den Künstler...
