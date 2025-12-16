@@ -1,0 +1,113 @@
+backend:
+  name: github
+  repo: KillerGanja/SvenVollbrecht.de
+  branch: feature/cms-setup # Using current feature branch
+  base_url: https://ideenfetzen.de
+  auth_endpoint: oauth/auth.php
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+
+collections:
+  # WORKS (Deutsch)
+  - name: "works_de"
+    label: "Works (DE)"
+    folder: "content/works/de"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Jahr", name: "year", widget: "number", required: false }
+      - { label: "Materialien", name: "materials", widget: "string", required: false }
+      - { label: "Maße", name: "dimensions", widget: "string", required: false }
+      - { label: "Serie", name: "series", widget: "string", required: false }
+      - label: "Bilder"
+        name: "images"
+        widget: "list"
+        field:
+          label: "Bild"
+          name: "image"
+          widget: "image"
+      - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
+      - { label: "Text", name: "body", widget: "markdown", required: false }
+
+  # EXHIBITIONS (Deutsch)
+  - name: "exhibitions_de"
+    label: "Exhibitions (DE)"
+    folder: "content/exhibitions/de"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Jahr", name: "year", widget: "number", required: false }
+      - { label: "Ort / Venue", name: "venue", widget: "string", required: false }
+      - { label: "Stadt", name: "city", widget: "string", required: false }
+      - { label: "Zeitraum", name: "period", widget: "string", required: false }
+      - { label: "Typ", name: "type", widget: "select", options: ["solo", "group"], required: false }
+      - label: "Bilder"
+        name: "images"
+        widget: "list"
+        field:
+          label: "Bild"
+          name: "image"
+          widget: "image"
+      - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
+      - { label: "Text", name: "body", widget: "markdown", required: false }
+
+  # PRESS (Deutsch)
+  - name: "press_de"
+    label: "Press (DE)"
+    folder: "content/press/de"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Medium", name: "medium", widget: "string", required: false }
+      - { label: "Datum", name: "date", widget: "datetime", format: "YYYY-MM-DD", required: false }
+      - { label: "Link / Datei", name: "url", widget: "string", required: false }
+      - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
+      - { label: "Text", name: "body", widget: "markdown", required: false }
+
+  # STATIC PAGES (About, Contact, Impressum, Datenschutz)
+  - name: "pages"
+    label: "Seiten"
+    files:
+      - label: "About (DE)"
+        name: "about_de"
+        file: "content/pages/about.de.md"
+        fields:
+          - { label: "Titel", name: "title", widget: "string", default: "Über Sven" }
+          - { label: "Slug", name: "slug", widget: "string", default: "about" }
+          - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
+          - { label: "Inhalt", name: "body", widget: "markdown" }
+
+      - label: "Contact (DE)"
+        name: "contact_de"
+        file: "content/pages/contact.de.md"
+        fields:
+          - { label: "Titel", name: "title", widget: "string", default: "Kontakt" }
+          - { label: "Slug", name: "slug", widget: "string", default: "contact" }
+          - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
+          - { label: "Inhalt", name: "body", widget: "markdown" }
+
+      - label: "Impressum (DE)"
+        name: "impressum_de"
+        file: "content/pages/impressum.de.md"
+        fields:
+          - { label: "Titel", name: "title", widget: "string", default: "Impressum" }
+          - { label: "Slug", name: "slug", widget: "string", default: "impressum" }
+          - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
+          - { label: "Inhalt", name: "body", widget: "markdown" }
+
+      - label: "Datenschutz (DE)"
+        name: "privacy_de"
+        file: "content/pages/privacy.de.md"
+        fields:
+          - { label: "Titel", name: "title", widget: "string", default: "Datenschutz" }
+          - { label: "Slug", name: "slug", widget: "string", default: "privacy" }
+          - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
+          - { label: "Inhalt", name: "body", widget: "markdown" }

@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ImageGallery from "../../components/ImageGallery.astro";
+
+export async function getStaticPaths() {
+    const entries = await Astro.glob("../../../content/exhibitions/de/*.md");
+
+    return entries.map((entry) => {
+        return {
+            params: { slug: entry.frontmatter.slug },
+            props: { entry },
+        };
+    });
+}
+
+const { entry } = Astro.props;
+const { frontmatter, Content } = entry;
+---
+
+<BaseLayout title={frontmatter.title}>
+    <h1>{frontmatter.title}</h1>
+
+    <p>
+        <strong>Ort:</strong>
+        {frontmatter.venue ? frontmatter.venue : ""}
+        {frontmatter.city && `, ${frontmatter.city}`}
+        {frontmatter.year && ` (${frontmatter.year})`}
+    </p>
+
+    {
+        frontmatter.period && (
+            <p>
+                <strong>Zeitraum:</strong> {frontmatter.period}
+            </p>
+        )
+    }
+    {
+        frontmatter.type && (
+            <p>
+                <strong>Typ:</strong> {frontmatter.type}
+            </p>
+        )
+    }
+
+    {
+        frontmatter.images && frontmatter.images.length > 0 && (
+            <ImageGallery
+                images={frontmatter.images}
+                title={frontmatter.title}
+            />
+        )
+    }
+
+    <Content />
+</BaseLayout>

@@ -1,0 +1,58 @@
+name: Deploy to Strato
+
+on:
+  push:
+    branches: [ feature/cms-setup ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build Astro project
+      run: npm run build
+
+    - name: Inject OAuth Secrets
+      run: |
+        # Overwrite the config.php in the build output (dist/) with the secrets
+        cat <<EOF > dist/oauth/config.php
+        <?php
+        
+        // GitHub OAuth Configuration
+        class Config {
+            // Client ID from GitHub OAuth App
+            public static \$clientId = '${{ secrets.OAUTH_CLIENT_ID_STRATO }}';
+            
+            // Client Secret from GitHub OAuth App
+            public static \$clientSecret = '${{ secrets.OAUTH_CLIENT_SECRET_STRATO }}';
+            
+            // Redirect URI (must match the one in GitHub settings)
+            public static \$redirectUri = '${{ secrets.OAUTH_REDIRECT_URI_STRATO }}';
+        
+            // Authorized user (optional, simple protection)
+            // public static \$allowedUsers = ['github_username'];
+        }
+        EOF
+      shell: bash
+
+    - name: Deploy to SFTP
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      with:
+        username: ${{ secrets.SFTP_USERNAME_STRATO }}
+        server: ${{ secrets.SFTP_SERVER_STRATO }}
+        port: ${{ secrets.SFTP_SERVER_PORT_STRATO }}
+        password: ${{ secrets.SFTP_PASSWORD_STRATO }}
+        local_path: './dist/*'
+        remote_path: '/'
+        sftp_only: true

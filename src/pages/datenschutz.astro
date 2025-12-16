@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import * as entry from "../../content/pages/privacy.de.md";
+
+const { frontmatter, Content } = entry;
+---
+
+<BaseLayout title={frontmatter.title}>
+    <h1>{frontmatter.title}</h1>
+    <Content />
+</BaseLayout>

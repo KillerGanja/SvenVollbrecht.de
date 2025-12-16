@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// alle deutschen Press-Artikel laden
+const entries = await Astro.glob("../../../content/press/de/*.md");
+
+// Sortierung: neueste zuerst (nach Datum)
+const pressItems = entries
+    .map((entry) => ({
+        ...entry.frontmatter,
+        // URL kommt aus dem Frontmatter (Link zur Datei oder Webseite)
+        // Falls keine URL, nutzen wir vielleicht einen Fallback oder zeigen keinen Link
+    }))
+    .sort((a, b) => {
+        const dateA = new Date(a.date).getTime();
+        const dateB = new Date(b.date).getTime();
+        return dateB - dateA;
+    });
+---
+
+<BaseLayout title="Press">
+    <h1>Press</h1>
+
+    {
+        pressItems.length === 0 ? (
+            <p>Noch keine Presse-Artikel vorhanden.</p>
+        ) : (
+            <ul>
+                {pressItems.map((item) => (
+                    <li>
+                        {item.url ? (
+                            <a
+                                href={item.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <strong>{item.title}</strong>
+                            </a>
+                        ) : (
+                            <strong>{item.title}</strong>
+                        )}
+                        {item.medium && ` – ${item.medium}`}
+                        {item.date && ` (${new Date(item.date).getFullYear()})`}
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+</BaseLayout>
