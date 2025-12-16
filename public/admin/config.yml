@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: KillerGanja/SvenVollbrecht.de
-  branch: feature/cms-setup # Using current feature branch
+  branch: main # Using main branch for production
   base_url: https://ideenfetzen.de
   auth_endpoint: oauth/auth.php
 
