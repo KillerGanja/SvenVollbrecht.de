@@ -2,7 +2,7 @@ name: Deploy to Strato
 
 on:
   push:
-    branches: [ feature/cms-setup ]
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
@@ -26,6 +26,7 @@ jobs:
     - name: Inject OAuth Secrets
       run: |
         # Overwrite the config.php in the build output (dist/) with the secrets
+        mkdir -p dist/oauth
         cat <<EOF > dist/oauth/config.php
         <?php
         
