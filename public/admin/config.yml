@@ -23,15 +23,28 @@ collections:
       - { label: "Materialien", name: "materials", widget: "string", required: false }
       - { label: "Maße", name: "dimensions", widget: "string", required: false }
       - { label: "Serie", name: "series", widget: "string", required: false }
-      - label: "Bilder"
-        name: "images"
+
+# 1. Das Einzelbild für die Übersicht (Grid)
+      - label: "Cover Bild"
+        name: "cover_image"
+        widget: "image"
+        required: true 
+        hint: "Dieses Bild wird in der Übersichtskachel angezeigt."
+
+# 2. Die Liste für die Detailseite
+      - label: "Galerie Bilder"
+        name: "gallery_images"
         widget: "list"
-        field:
+        required: false
+        summary: "{{fields.image}}"
+        field: 
           label: "Bild"
           name: "image"
           widget: "image"
+
       - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
       - { label: "Text", name: "body", widget: "markdown", required: false }
+
 
   # EXHIBITIONS (Deutsch)
   - name: "exhibitions_de"
@@ -47,15 +60,28 @@ collections:
       - { label: "Stadt", name: "city", widget: "string", required: false }
       - { label: "Zeitraum", name: "period", widget: "string", required: false }
       - { label: "Typ", name: "type", widget: "select", options: ["solo", "group"], required: false }
-      - label: "Bilder"
-        name: "images"
+
+# 1. Das Hauptbild (Flyer oder Key-Visual)
+      - label: "Cover Bild"
+        name: "cover_image"
+        widget: "image"
+        required: true
+        hint: "Wird in der Liste der Ausstellungen angezeigt."
+
+# 2. Die Installationsansichten
+      - label: "Installationsansichten"
+        name: "gallery_images"
         widget: "list"
+        required: false
+        summary: "{{fields.image}}"
         field:
           label: "Bild"
           name: "image"
           widget: "image"
+
       - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
       - { label: "Text", name: "body", widget: "markdown", required: false }
+
 
   # PRESS (Deutsch)
   - name: "press_de"
