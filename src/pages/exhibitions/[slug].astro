@@ -43,12 +43,13 @@ const { frontmatter, Content } = entry;
     }
 
     {
-        frontmatter.images && frontmatter.images.length > 0 && (
-            <ImageGallery
-                images={frontmatter.images}
-                title={frontmatter.title}
-            />
-        )
+        (frontmatter.gallery_images || frontmatter.images) &&
+            (frontmatter.gallery_images || frontmatter.images).length > 0 && (
+                <ImageGallery
+                    images={frontmatter.gallery_images || frontmatter.images}
+                    title={frontmatter.title}
+                />
+            )
     }
 
     <Content />

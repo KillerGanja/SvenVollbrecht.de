@@ -2,7 +2,6 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ImageGallery from "../../components/ImageGallery.astro";
 
-
 // 1) Astro anweisen, welche Seiten erzeugt werden sollen
 export async function getStaticPaths() {
   const entries = await Astro.glob("../../../content/works/de/*.md");
@@ -10,7 +9,7 @@ export async function getStaticPaths() {
   return entries.map((entry) => {
     return {
       params: { slug: entry.frontmatter.slug },
-      props: { entry }
+      props: { entry },
     };
   });
 }
@@ -27,9 +26,15 @@ const { frontmatter, Content } = entry;
   <p><strong>Material:</strong> {frontmatter.materials}</p>
   <p><strong>Maße:</strong> {frontmatter.dimensions}</p>
 
-  {frontmatter.images && frontmatter.images.length > 0 && (
-    <ImageGallery images={frontmatter.images} title={frontmatter.title} />
-  )}
+  {
+    (frontmatter.gallery_images || frontmatter.images) &&
+      (frontmatter.gallery_images || frontmatter.images).length > 0 && (
+        <ImageGallery
+          images={frontmatter.gallery_images || frontmatter.images}
+          title={frontmatter.title}
+        />
+      )
+  }
 
   <Content />
 </BaseLayout>
