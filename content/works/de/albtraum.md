@@ -5,8 +5,8 @@ year: 2025
 materials: Mixed Materials
 cover_image: /uploads/6b9xrgwn-scaled.jpeg
 gallery_images:
-  - /uploads/webseite-sven-vollbrecht.13.jpg
   - /uploads/img_3131-scaled.jpg
+  - /uploads/img_7757-scaled.jpeg
 lang: de
 images:
   - /uploads/works-01.jpg
