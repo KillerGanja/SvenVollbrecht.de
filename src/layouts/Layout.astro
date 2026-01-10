@@ -1,22 +1,37 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import ScreenSizeIndicator from "../components/ScreenSizeIndicator.astro";
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title?: string;
+  lang?: string;
+}
+
+const { title = "Sven Vollbrecht", lang = "de" } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="flex min-h-screen flex-col bg-white text-gray-900 antialiased">
+    <ScreenSizeIndicator />
+    <Header />
+
+    <main
+      class="mx-auto w-full max-w-screen-2xl flex-grow px-4 py-10 sm:px-8 lg:px-16"
+    >
+      <slot />
+    </main>
+
+    <footer class="py-8 text-center text-sm text-gray-500">
+      &copy; {new Date().getFullYear()} Sven Vollbrecht
+    </footer>
+  </body>
+</html>

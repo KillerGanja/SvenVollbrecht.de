@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import Layout from "../../layouts/Layout.astro";
 
 // alle deutschen Works laden
 const worksEntries = await Astro.glob("../../../content/works/de/*.md");
@@ -13,19 +13,37 @@ const works = worksEntries
   .sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
 ---
 
-<BaseLayout title="Works – Übersicht">
-  <h1>Works</h1>
+<Layout title="Works – Übersicht">
+  <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">Works</h1>
 
-  {works.length === 0 ? (
-    <p>Noch keine Werke angelegt.</p>
-  ) : (
-    <ul>
-      {works.map((work) => (
-        <li>
-        <a href={work.url}><strong>{work.title}</strong></a>
-        {work.year ? ` (${work.year})` : ""}
-        </li>
-      ))}
-    </ul>
-  )}
-</BaseLayout>
+  {
+    works.length === 0 ? (
+      <p class="text-gray-500">Noch keine Werke angelegt.</p>
+    ) : (
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {works.map((work) => (
+          <a href={work.url} class="group block">
+            <div class="aspect-[4/5] overflow-hidden bg-gray-100 mb-4">
+              {/* Fallback image if cover_image is missing */}
+              {work.cover_image ? (
+                <img
+                  src={work.cover_image}
+                  alt={work.title}
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              ) : (
+                <div class="flex h-full w-full items-center justify-center text-gray-400">
+                  No Image
+                </div>
+              )}
+            </div>
+            <h2 class="text-lg font-medium text-gray-900 group-hover:text-black">
+              {work.title}
+            </h2>
+            {work.year && <p class="text-sm text-gray-500">{work.year}</p>}
+          </a>
+        ))}
+      </div>
+    )
+  }
+</Layout>

@@ -1,4 +1,6 @@
 ---
+import "../styles/global.css";
+import ScreenSizeIndicator from "../components/ScreenSizeIndicator.astro";
 const { title = "Sven Vollbrecht", lang = "de" } = Astro.props;
 ---
 
@@ -27,6 +29,7 @@ const { title = "Sven Vollbrecht", lang = "de" } = Astro.props;
   </head>
 
   <body>
+    <ScreenSizeIndicator />
     <nav>
       <a href="/">Home</a>
       <a href="/works">Works</a>
