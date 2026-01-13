@@ -11,7 +11,12 @@ interface Props {
 const { title = "Sven Vollbrecht", lang = "de" } = Astro.props;
 ---
 
-<!doctype html>
+<style>
+  html {
+    scrollbar-gutter: stable;
+  }
+</style>
+
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
