@@ -7,6 +7,15 @@ interface Props {
 const { images, title } = Astro.props;
 ---
 
+<style>
+    .custom-cursor-left {
+        cursor: url("/assets/cursors/arrow-left.png"), w-resize;
+    }
+    .custom-cursor-right {
+        cursor: url("/assets/cursors/arrow-right.png"), e-resize;
+    }
+</style>
+
 <div class="slideshow relative mx-auto max-w-full">
     <!-- Image Container -->
     <div
@@ -22,13 +31,13 @@ const { images, title } = Astro.props;
         <!-- Navigation Overlays -->
         <div
             id="prev-area"
-            class="absolute left-0 top-0 z-10 h-full w-1/2 cursor-w-resize"
+            class="custom-cursor-left absolute left-0 top-0 z-10 h-full w-1/2"
             title="Previous"
         >
         </div>
         <div
             id="next-area"
-            class="absolute right-0 top-0 z-10 h-full w-1/2 cursor-e-resize"
+            class="custom-cursor-right absolute right-0 top-0 z-10 h-full w-1/2"
             title="Next"
         >
         </div>
