@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import ImageGallery from "../../components/ImageGallery.astro";
+import WorkSlideshow from "../../components/WorkSlideshow.astro";
 
 // 1) Astro anweisen, welche Seiten erzeugt werden sollen
 export async function getStaticPaths() {
@@ -17,24 +17,42 @@ export async function getStaticPaths() {
 // 2) Props entgegennehmen (das einzelne Werk)
 const { entry } = Astro.props;
 const { frontmatter, Content } = entry;
+
+// Combine cover_image and gallery_images into a single array
+const galleryImages = frontmatter.gallery_images || frontmatter.images || [];
+const allImages = frontmatter.cover_image
+  ? [
+      frontmatter.cover_image,
+      ...galleryImages.filter((img: string) => img !== frontmatter.cover_image),
+    ]
+  : galleryImages;
 ---
 
 <Layout title={frontmatter.title}>
-  <h1>{frontmatter.title}</h1>
-
-  <p><strong>Jahr:</strong> {frontmatter.year}</p>
-  <p><strong>Material:</strong> {frontmatter.materials}</p>
-  <p><strong>Maße:</strong> {frontmatter.dimensions}</p>
-
-  {
-    (frontmatter.gallery_images || frontmatter.images) &&
-      (frontmatter.gallery_images || frontmatter.images).length > 0 && (
-        <ImageGallery
-          images={frontmatter.gallery_images || frontmatter.images}
-          title={frontmatter.title}
-        />
+  <div class="mx-auto max-w-4xl">
+    {
+      allImages && allImages.length > 0 ? (
+        <WorkSlideshow images={allImages} title={frontmatter.title} />
+      ) : (
+        <div class="aspect-[4/5] w-full bg-gray-100 flex items-center justify-center text-gray-400">
+          No Images
+        </div>
       )
-  }
+    }
 
-  <Content />
+    <div class="mt-8 mb-8 text-center">
+      <h1 class="text-2xl font-medium text-gray-900 mb-2">
+        {frontmatter.title}
+      </h1>
+      <div class="text-gray-500 space-y-1">
+        {frontmatter.year && <p>{frontmatter.year}</p>}
+        {frontmatter.materials && <p>{frontmatter.materials}</p>}
+        {frontmatter.dimensions && <p>{frontmatter.dimensions}</p>}
+      </div>
+    </div>
+
+    <div class="prose prose-gray mx-auto">
+      <Content />
+    </div>
+  </div>
 </Layout>

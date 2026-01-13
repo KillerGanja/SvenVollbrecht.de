@@ -1,0 +1,62 @@
+---
+interface Props {
+    images: string[];
+    title: string;
+}
+
+const { images, title } = Astro.props;
+---
+
+<div class="slideshow relative mx-auto max-w-full">
+    <!-- Image Container -->
+    <div
+        class="relative aspect-[4/5] w-full overflow-hidden bg-gray-50 flex items-center justify-center"
+    >
+        <img
+            id="current-image"
+            src={images[0]}
+            alt={title}
+            class="max-h-full max-w-full object-contain"
+        />
+
+        <!-- Navigation Overlays -->
+        <div
+            id="prev-area"
+            class="absolute left-0 top-0 z-10 h-full w-1/2 cursor-w-resize"
+            title="Previous"
+        >
+        </div>
+        <div
+            id="next-area"
+            class="absolute right-0 top-0 z-10 h-full w-1/2 cursor-e-resize"
+            title="Next"
+        >
+        </div>
+    </div>
+</div>
+
+<script define:vars={{ images }}>
+    let currentIndex = 0;
+    const imageElement = document.getElementById("current-image");
+    const prevArea = document.getElementById("prev-area");
+    const nextArea = document.getElementById("next-area");
+
+    function updateImage() {
+        if (imageElement) {
+            // Simple fade effect could be added here
+            imageElement.src = images[currentIndex];
+        }
+    }
+
+    if (prevArea && nextArea) {
+        prevArea.addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImage();
+        });
+
+        nextArea.addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImage();
+        });
+    }
+</script>
