@@ -35,8 +35,30 @@ const { title = "Sven Vollbrecht", lang = "de" } = Astro.props;
       <slot />
     </main>
 
-    <footer class="py-8 text-center text-sm text-gray-500">
-      &copy; {new Date().getFullYear()} Sven Vollbrecht
+    <footer
+      class="sticky bottom-0 z-40 border-t border-gray-100 bg-white/90 py-6 text-sm text-gray-500 backdrop-blur-md"
+    >
+      <div
+        class="mx-auto grid max-w-screen-2xl grid-cols-1 gap-4 px-4 sm:grid-cols-3 sm:px-8 lg:px-16"
+      >
+        <!-- Linker Bereich (leer für Zentrierung der Mitte) -->
+        <div class="hidden sm:block"></div>
+
+        <!-- Mitte: Copyright -->
+        <div class="text-center">
+          &copy; {new Date().getFullYear()} Sven Vollbrecht
+        </div>
+
+        <!-- Rechts: Links -->
+        <div class="flex justify-center gap-6 sm:justify-end">
+          <a href="/impressum" class="transition-colors hover:text-gray-900"
+            >Impressum</a
+          >
+          <a href="/datenschutz" class="transition-colors hover:text-gray-900"
+            >Datenschutz</a
+          >
+        </div>
+      </div>
     </footer>
   </body>
 </html>
