@@ -1,11 +1,11 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Layout from "../layouts/Layout.astro";
 import * as entry from "../../content/pages/contact.de.md";
 
 const { frontmatter, Content } = entry;
 ---
 
-<BaseLayout title={frontmatter.title}>
+<Layout title={frontmatter.title}>
     <h1>{frontmatter.title}</h1>
     <Content />
-</BaseLayout>
+</Layout>

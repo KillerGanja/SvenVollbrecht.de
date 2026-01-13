@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import Layout from "../../layouts/Layout.astro";
 import ImageGallery from "../../components/ImageGallery.astro";
 
 export async function getStaticPaths() {
@@ -17,7 +17,7 @@ const { entry } = Astro.props;
 const { frontmatter, Content } = entry;
 ---
 
-<BaseLayout title={frontmatter.title}>
+<Layout title={frontmatter.title}>
     <h1>{frontmatter.title}</h1>
 
     <p>
@@ -53,4 +53,4 @@ const { frontmatter, Content } = entry;
     }
 
     <Content />
-</BaseLayout>
+</Layout>

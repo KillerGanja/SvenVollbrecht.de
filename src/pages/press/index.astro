@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import Layout from "../../layouts/Layout.astro";
 
 // alle deutschen Press-Artikel laden
 const entries = await Astro.glob("../../../content/press/de/*.md");
@@ -18,7 +18,7 @@ const pressItems = entries
     });
 ---
 
-<BaseLayout title="Press">
+<Layout title="Press">
     <h1>Press</h1>
 
     {
@@ -46,4 +46,4 @@ const pressItems = entries
             </ul>
         )
     }
-</BaseLayout>
+</Layout>
