@@ -5,7 +5,7 @@ year: 2023
 materials: "Krankenhausbett, Urinflasche mit Beleuchtung, rotierender
   Triangelgriff, Spieluhr: Frédéric Chopin – Trauermarsch (Dauerschleife)"
 dimensions: 190 x 220 x 90 cm
-cover_image: /uploads/lullaby.jpg
+cover_image: /uploads/lullaby01.jpg
 gallery_images:
   - /uploads/lullaby.jpg
   - /uploads/lullaby01.jpg
