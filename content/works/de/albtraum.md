@@ -4,7 +4,7 @@ slug: albtraum
 year: 2025
 materials: Kellerlampe, Spieluhr, diverse Spielzeuge
 dimensions: 70 x 27 x 18 cm
-series: "8"
+series: ""
 cover_image: /uploads/albtraum01.jpg
 gallery_images:
   - /uploads/albtraum01.jpg
