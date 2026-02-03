@@ -10,7 +10,7 @@ gallery_images:
   - /uploads/albtraum01.jpg
   - /uploads/insta01.jpg
   - /uploads/albtraum_werk3.jpg
-  - /uploads/gleitplatte_adac_20240623.mp4
+  - /uploads/werk-zwei-02.mov
   - /uploads/insta00.jpg
   - /uploads/11.jpg
   - /uploads/01.ajpg.jpg
