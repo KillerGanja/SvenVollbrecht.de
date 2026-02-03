@@ -38,9 +38,9 @@ collections:
         required: false
         summary: "{{fields.image}}"
         field: 
-          label: "Bild"
+          label: "Bild / Video"
           name: "image"
-          widget: "image"
+          widget: "file"
 
       - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
       - { label: "Text", name: "body", widget: "markdown", required: false }
