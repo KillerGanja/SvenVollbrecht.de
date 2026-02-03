@@ -1,10 +1,15 @@
 ---
 interface Props {
-    images: string[];
+    images: string[]; // Keep prop name 'images' for compatibility, but it contains paths to media
     title: string;
 }
 
 const { images, title } = Astro.props;
+
+function isVideo(path: string) {
+    const videoExtensions = [".mp4", ".webm", ".ogg", ".mov"];
+    return videoExtensions.some((ext) => path.toLowerCase().endsWith(ext));
+}
 ---
 
 <style>
@@ -17,16 +22,37 @@ const { images, title } = Astro.props;
 </style>
 
 <div class="slideshow relative mx-auto max-w-full">
-    <!-- Image Container -->
+    <!-- Media Container -->
     <div
         class="relative aspect-[4/5] w-full overflow-hidden bg-gray-50 flex items-center justify-center"
     >
-        <img
-            id="current-image"
-            src={images[0]}
-            alt={title}
-            class="max-h-full max-w-full object-contain"
-        />
+        <div id="media-container" class="contents">
+            {
+                images.map((src, index) =>
+                    isVideo(src) ? (
+                        <video
+                            id={index === 0 ? "current-media" : undefined}
+                            src={src}
+                            class={`max-h-full max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
+                            data-index={index}
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                            controls
+                        />
+                    ) : (
+                        <img
+                            id={index === 0 ? "current-media" : undefined}
+                            src={src}
+                            alt={title}
+                            class={`max-h-full max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
+                            data-index={index}
+                        />
+                    ),
+                )
+            }
+        </div>
 
         <!-- Navigation Overlays -->
         <div
@@ -46,26 +72,49 @@ const { images, title } = Astro.props;
 
 <script define:vars={{ images }}>
     let currentIndex = 0;
-    const imageElement = document.getElementById("current-image");
+    const mediaContainer = document.getElementById("media-container");
     const prevArea = document.getElementById("prev-area");
     const nextArea = document.getElementById("next-area");
 
-    function updateImage() {
-        if (imageElement) {
-            // Simple fade effect could be added here
-            imageElement.src = images[currentIndex];
-        }
+    function updateMedia() {
+        if (!mediaContainer) return;
+
+        const mediaElements = mediaContainer.querySelectorAll("[data-index]");
+
+        mediaElements.forEach((el) => {
+            if (parseInt(el.dataset.index) === currentIndex) {
+                el.classList.remove("hidden");
+                el.classList.add("block");
+                el.id = "current-media";
+
+                if (el.tagName === "VIDEO") {
+                    // Ensure video plays when it becomes visible
+                    el.play().catch((e) =>
+                        console.log("Autoplay prevented:", e),
+                    );
+                }
+            } else {
+                el.classList.add("hidden");
+                el.classList.remove("block");
+                el.removeAttribute("id");
+
+                if (el.tagName === "VIDEO") {
+                    // Pause hidden videos
+                    el.pause();
+                }
+            }
+        });
     }
 
     if (prevArea && nextArea) {
         prevArea.addEventListener("click", () => {
             currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateImage();
+            updateMedia();
         });
 
         nextArea.addEventListener("click", () => {
             currentIndex = (currentIndex + 1) % images.length;
-            updateImage();
+            updateMedia();
         });
     }
 </script>
