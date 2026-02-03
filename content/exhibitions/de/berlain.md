@@ -4,6 +4,8 @@ slug: berlain
 year: 2023
 venue: RÄUME.ART
 city: Berlin
-cover_image: /uploads/dsc04468.jpg
+cover_image: /uploads/signs012.jpg
+gallery_images:
+  - /uploads/signs-01.jpg
 lang: de
 ---
