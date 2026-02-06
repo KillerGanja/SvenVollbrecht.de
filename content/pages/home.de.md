@@ -1,6 +1,6 @@
 ---
 title: Startseite
-image: /uploads/signs01-2-1024x576.jpg
+image: /uploads/img_3131-scaled.jpg
 slug: home
 lang: de
 ---
