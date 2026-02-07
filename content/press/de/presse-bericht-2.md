@@ -1,5 +1,9 @@
 ---
-title: Presse Bericht 2
-slug: Presse Bericht 2
+title: "Art Is Not An Idea, It Is A Process: A Conversation with Sven Vollbrecht
+  (EN) von Sissi Marino"
+slug: presse-bericht2
+medium: MAE
+date: 2024-11-01
+url: https://www.mae.community/magazine/art-is-not-an-idea-is-a-process-a-conversation-with-sven-vollbrecht
 lang: de
 ---
