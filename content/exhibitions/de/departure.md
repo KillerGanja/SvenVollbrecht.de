@@ -7,7 +7,6 @@ city: Berlin
 cover_image: /uploads/digitalvois001-2.jpg
 gallery_images:
   - /uploads/digitalvois001-2.jpg
-  - /uploads/bildschirmfoto-2023-10-09-um-15.19.36.png
-  - /uploads/bildschirmfoto-2023-10-09-um-15.20.16.png
+  - /uploads/digital-void05.jpg
 lang: de
 ---
