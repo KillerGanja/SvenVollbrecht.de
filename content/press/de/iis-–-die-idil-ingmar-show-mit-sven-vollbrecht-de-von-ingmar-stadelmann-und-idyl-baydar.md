@@ -1,6 +1,5 @@
 ---
-title: IIS – Die Idil & Ingmar Show mit Sven Vollbrecht (DE) von Ingmar
-  Stadelmann und Idyl Baydar
+title: IIS – Show mit Sven Vollbrecht (DE) von Ingmar Stadelmann und Idyl Baydar
 slug: presse-bericht4
 medium: PLUTO TV
 date: 2023-09-01
