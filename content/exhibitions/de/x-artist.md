@@ -7,6 +7,6 @@ city: Berlin
 cover_image: /uploads/trust11.jpg
 gallery_images:
   - /uploads/trust11.jpg
-  - /uploads/trust20.jpg
+  - /uploads/trust12.jpg
 lang: de
 ---
