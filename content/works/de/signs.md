@@ -7,7 +7,6 @@ dimensions: 150 x 200 x 5 cm
 series: ""
 cover_image: /uploads/signs-011.jpg
 gallery_images:
-  - /uploads/signs.jpg
   - /uploads/signs04.jpg
   - /uploads/signs03.jpg
   - /uploads/signs02.jpg
