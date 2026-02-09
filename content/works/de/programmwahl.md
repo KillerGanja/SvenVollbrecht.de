@@ -9,7 +9,6 @@ gallery_images:
   - /uploads/pw02.jpg
   - /uploads/pw01.jpg
   - /uploads/pw09.jpg
-  - /uploads/pw03.jpg
   - /uploads/pw_chatgpt.jpg
 lang: de
 ---
