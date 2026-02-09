@@ -13,12 +13,6 @@ gallery_images:
   - /uploads/20.jpg
 lang: de
 ---
+In meiner Arbeit versuche ich, die rastlose Suche nach digitalen Reizen, jenes flüchtige Verlangen nach dem nächsten Klick, in eine physische Form zu übersetzen. Ich habe dafür einen 30-Liter-Aluminiumbehälter zweckentfremdet, ihn umetikettiert und symbolisch mit Dopamin gefüllt. Damit wird das Immaterielle plötzlich bleiern schwer.
 
-
-Die vorliegende Arbeit exploriert eine unterkühlte Ästhetik der Warnung, indem sie ein profanes Objekt durch die strategische Applikation industriell konnotierter Signifikanten in einen komplexen Bedeutungskontext überführt. Die bewusste Orthografie-Divergenz des Terminus „DOPAMIN“ unterläuft dabei gezielt die klinische Erwartungshaltung des Rezipienten und fungiert als visuelle Metapher für die Deformation kognitiver Prozesse unter den Bedingungen einer technologisch induzierten permanenten Verfügbarkeit.
-
-In dieser Auseinandersetzung thematisiert das Werk die stoffliche Dimension digitaler Ökonomien und deren infrastrukturelle Voraussetzungen. Während die Integration des WLAN-Symbols auf dem Gefahrenlabel die unsichtbaren Netzstrukturen räumlich verortet, indiziert die Bezeichnung „Easily addictive“ die Konstitution einer prekären Identität innerhalb algorithmischer Belohnungssysteme. Das Digitale wird hierbei nicht länger als bloßes Instrumentarium begriffen, sondern als pharmakologische Substanz definiert, deren Wirkungsweise unmittelbar in die neurobiologische Architektur des menschlichen Körpers interveniert.
-
-
-
-In diesem theoretischen Rahmen reflektiert die Arbeit schließlich die radikale Transformation zeitgenössischer Aufmerksamkeitsökonomien. Die Subsumtion affektiver Beteiligung unter industrielle Abhängigkeitsverhältnisse wird als chemisch-technische Kausalität visualisiert, wobei die Verwendung des Containers als bildnerisches Medium signifikant auf die toxischen Derivate dieser Entwicklung verweist. Letztlich wirft die Arbeit die drängende Frage nach der Konservierung oder einer möglichen Endlagerung des erschöpften digitalen Subjekts auf.
+Das Objekt fungiert als industrielles Depot für unsere Sehnsüchte. Während das Etikett das Internet als Inhaltsstoff dekonstruiert, markiert ein Gefahrenaufkleber den digitalen Raum als toxische Zone. Es geht mir um die Materialisierung einer Abhängigkeit: Was als flüchtiger Impuls im Hirn beginnt, manifestiert sich hier als potenziell gefährliches Gut in einem kühlen, metallischen Körper. Ich lade dazu ein, die chemische Architektur unseres Online-Verhaltens nicht nur zu verstehen, sondern ihr als Objekt gegenüberzutreten.
