@@ -6,8 +6,8 @@ materials: Röhrenfernseher, Abfluss-Pömpel
 dimensions: 44 x 35 x 80 cm
 cover_image: /uploads/01-shitstorm.jpg
 gallery_images:
-  - /uploads/03shitstorm.jpg
-  - /uploads/shitstorm04.jpg
+  - /uploads/01-shitstorm.jpg
+  - /uploads/02-shitstorm.jpg
 lang: de
 ---
 Die künstlerische Arbeit Shitstorm unternimmt eine Translation destruktiver Dynamiken digital vermittelter Kommunikation in eine physisch manifestierte Bildsprache. Durch die Überführung virtueller Überforderungsphänomene in einen analogen Kontext wird die psychische Prekarität des Digitalen einer somatischen Rezeption zugänglich gemacht. Es vollzieht sich hierbei eine systematische Transformation informationeller Datenströme in materielle Gravitas.
