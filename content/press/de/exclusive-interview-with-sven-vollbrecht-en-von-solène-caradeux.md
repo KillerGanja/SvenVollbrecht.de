@@ -6,3 +6,4 @@ date: 2024-11-01
 url: https://notagallery.de/blogs/news/exclusive-interview-with-sven-vollbrecht?srsltid=AfmBOopOwlHmDW6ZeCyw9USEPwJI0cQ768kAMd87PokVK0F9Nu9avA_J
 lang: de
 ---
+I prefer not to explicitly share what’s behind my art, where they come from, and how they were created.
