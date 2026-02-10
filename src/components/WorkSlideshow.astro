@@ -21,14 +21,18 @@ function isVideo(path: string) {
     }
 
     /* Force video controls to stay visible */
-    video::-webkit-media-controls {
+    video::-webkit-media-controls,
+    video::-webkit-media-controls-enclosure {
         display: flex !important;
         opacity: 1 !important;
         visibility: visible !important;
     }
+
     video::-webkit-media-controls-panel {
         display: flex !important;
         opacity: 1 !important;
+        visibility: visible !important;
+        transition: none !important; /* Prevent fade-out */
     }
 </style>
 
