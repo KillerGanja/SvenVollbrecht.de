@@ -5,12 +5,12 @@ year: 2025
 materials: Kellerlampe, Spieluhr, diverse Spielzeuge
 dimensions: 70 x 27 x 18 cm
 series: ""
-cover_image: /uploads/insta01.jpg
+cover_image: /uploads/albtraum_werk3.jpg
 gallery_images:
   - /uploads/albtraum01.jpg
   - /uploads/insta01.jpg
   - /uploads/albtraum_werk3.jpg
-  - /uploads/gleitplatte_adac_20240623.mp4
+  - /uploads/werk-zwei-02.mov
   - /uploads/insta00.jpg
   - /uploads/11.jpg
   - /uploads/01.ajpg.jpg
@@ -18,10 +18,8 @@ gallery_images:
   - /uploads/insta0a1.jpg
 lang: de
 ---
-In der Werkserie „Albtraum“ manifestiert sich das Unheimliche an der Schnittstelle von industrieller Funktionalität und infantiler Narration. Jedes Objekt konstituiert sich aus der symbiotischen, fast gewaltsamen Verbindung einer reduzierten Materialität, der skelettierten Kellerlampe ohne Glaseinsatz, mit den Readymades einer vermeintlich geschützten Kindheit: Spielzeugfiguren und mechanischen Spieluhren.
+In meiner achtteiligen Werkserie *Albtraum* untersuche ich die Bruchstellen zwischen kindlicher Geborgenheit und technischer Nüchternheit. Jede Arbeit folgt einer strengen, fast klinischen Versuchsanordnung: Eine handelsübliche Gitterleuchte bildet das Skelett, jedoch ohne schützendes Glas, ohne Leuchtmittel, ihrer eigentlichen Funktion beraubt. Diese bewusste Deplatzierung des Alltagsgegenstands transformiert die Lampe von einem bloßen Gebrauchsartikel in eine skulpturale Hülle, die von einer abwesenden Aufklärung zeugt.
 
-Der bewusste Verzicht auf das schützende Glas entzieht der Leuchte ihre ursprüngliche Bestimmung und legt ihr Inneres schonungslos frei. Was bleibt, ist ein metallener Käfig, der das Spielzeug nicht mehr beleuchtet, sondern isoliert. In diesem Prozess transformiert sich das Objekt vom utilitaristischen Gegenstand des Untergeschosses zum Dispositiv des Verdrängten. Die Materialität des kalten Spritzgusses und des harten Drahtgitters tritt dabei in einen haptischen wie symbolischen Konflikt mit den narrativen Fragmenten der Kindheitswelt.
+An die Stelle des versprochenen Lichts tritt das Fragmentierte. Ich verbaue anonyme Fundstücke aus der Spielzeugwelt, entkoppelt von ihrer ursprünglichen Geschichte, direkt in die Fassungen und kombiniere sie mit dem Mechanismus einer Spieluhr. Diese materiellen Hybride machen die physische Distanz zur eigenen Kindheit spürbar und betonen die Brüche innerhalb kollektiver Erinnerungskonstruktionen. Während die Serie einem kohärenten formalen Aufbau folgt, widmet sich jedes der neun Werke einer individuellen thematischen Setzung, die durch die Wahl der spezifischen Spielzeugfragmente definiert wird.
 
-Durch das manuelle Aufziehen der Spieluhren wird eine auditive Ebene eingezogen, die den statischen Objekten eine performative Zeitlichkeit verleiht. Die vertrauten Kindermelodien fungieren hierbei nicht als Remedur; sie wirken vielmehr als Verstärker einer latenten Bedrohung. Es entsteht eine scharfe Dissonanz zwischen der mechanischen Lieblichkeit des Klangs und der klaustrophobischen Enge des Gehäuses.
-
-Die Serie reflektiert so die Fragilität von Identität und die Formbarkeit des Körpers innerhalb gesellschaftlicher Strukturen. „Albtraum“ verhandelt die Kindheit nicht als nostalgischen Rückzugsort, sondern als Raum einer frühen Konditionierung, eingefasst in ein Raster aus Schutz und Gefangenschaft.
+Erst durch die physische Interaktion des Publikums, ein gezielter Zug am unteren Ende der Skulptur, wird die vertraute Melodie eines Schlaflieds in den Raum entlassen. Dieser Akt des Auslösens ist ambivalent: Er löst eine unmittelbare emotionale Reaktion aus, fordert aber gleichzeitig eine Konfrontation mit der kargen, beinahe gewaltvollen Ästhetik des Trägerobjekts. Es entsteht ein Spannungsfeld zwischen dieser harten, funktionalen Logik und der fragilen Aufladung der Fundstücke. Das Werk wird so zum Resonanzraum für eine Form der Erinnerung, die ins Unheimliche kippt, ein Ort, an dem die Grenze zwischen dem Schützenden und dem Bedrohlichen im Nachhall der Spieluhr verschwimmt.

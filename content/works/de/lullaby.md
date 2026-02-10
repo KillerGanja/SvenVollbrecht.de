@@ -7,9 +7,7 @@ materials: "Krankenhausbett, Urinflasche mit Beleuchtung, rotierender
 dimensions: 190 x 220 x 90 cm
 cover_image: /uploads/lullaby01.jpg
 gallery_images:
-  - /uploads/lullaby.jpg
   - /uploads/lullaby01.jpg
-  - /uploads/lullaby03.jpg
   - /uploads/lullaby03b.jpg
 lang: de
 ---

@@ -4,23 +4,11 @@ slug: digitalvoid
 year: 2022
 materials: Leinwand, Videoprojektion
 dimensions: 200 x 100 x 5 cm
-cover_image: /uploads/digitaslvoid.jpg
+cover_image: /uploads/digitalvois001-2.jpg
 gallery_images:
-  - /uploads/digitaslvoid.jpg
-  - /uploads/digital-void05.jpg
+  - /uploads/digitalvois001-2.jpg
 lang: de
 ---
+In meiner ortsspezifischen Installation arbeite ich bewusst gegen die Architektur: Anstatt den Raum zu bespielen, versperre ich ihn. Eine großformatige, eigens konstruierte Leinwand fungiert hier als physische Barriere, die den Zugang verwehrt und den Blick kanalisiert. Diese Geste spiegelt die Logik digitaler Profile wieder, wie bei einem Social-Media-Account sehen wir eine Person in ihrem Tun, bleiben aber von der Realität hinter der Fassade isoliert. Es entsteht eine Diskrepanz zwischen dem, was wir zu wissen glauben, und dem, was tatsächlich geschieht. Wer vor dem projizierten Auge steht, bleibt im Ungewissen darüber, was sich zeitgleich im realen Raum dahinter abspielt. Es ist jener Zustand der Entkoppelung, den wir erleben, wenn wir auf unsere Endgeräte starren: Die unmittelbare Umgebung verschwindet hinter der medialen Oberfläche.
 
-
-
-
-In der Arbeit Digital Void wird die physische Schwere einer Stahltür durch die fragile Spannung einer Leinwand ersetzt. Als Membran und Projektionsfläche zugleich verschließt sie den dahinterliegenden Raum vollständig und transformiert den einstigen Durchgang in eine reine Oberfläche der Sichtbarkeit. In extremer Vergrößerung erscheint darauf das Auge des Künstlers, ein frontaler, hyperpräsenter Blick, der Nähe suggeriert, während er den physischen Zugang radikal verwehrt.
-
-Die Leinwand operiert hier als Analogie zum digitalen Interface: eine visuelle Repräsentanz, die Transparenz behauptet, faktisch jedoch als unüberwindbare Grenze fungiert. Was sich jenseits dieser Bildfläche befindet, entzieht sich der Wahrnehmung. Der Raum dahinter bleibt eine Leerstelle, ein spekulativer Ort, der allein durch die Projektion des Betrachters besetzt wird.
-
-Ergänzt wird die Installation durch eine Klingel. Ihre Betätigung löst hinter der Leinwand einen menschlichen Schrei aus, dessen Lautstärke die kühle Distanz der Oberfläche jäh durchbricht. Dieses akustische Ereignis verweist unmittelbar auf eine Realität, die sich der visuellen Kontrolle entzieht. Die Interaktion des Publikums evoziert eine affektive Reaktion, deren Ursprung physisch spürbar, aber ungreifbar bleibt.
-
-
-
-
-Digital Void verschränkt Sehen, Handeln und Ungewissheit in einem instabilen Verhältnis. Durch die Substitution der massiven Stahltür durch das Medium der Leinwand werden Konzepte von Schutz, Grenze und Zugänglichkeit neu verhandelt. Die Arbeit macht die Diskrepanz zwischen der Glätte digitaler Oberflächen und der Unmittelbarkeit menschlicher Affekte physisch erfahrbar – sie thematisiert einen Zustand permanenter Sichtbarkeit bei gleichzeitigem Entzug des Eigentlichen.
+Das projizierte Auge verkörpert dabei die Intimität der Beobachtung; es fixiert die Betrachtenden und erzeugt eine Nähe, die fast unangenehm wirkt. Den entscheidenden Bruch markiert jedoch eine von mir installierte Türklingel. Wer sie betätigt, wird nicht empfangen, sondern löst einen gellenden Schrei über Lautsprecher aus. Dieser akustische Überfall ist mein Kommentar zur permanenten Aufmerksamkeitsökonomie. Liken, Teilen, Kommentieren, der Schrei ist die radikale Antwort auf eine Überforderung, die im Digitalen oft lautlos bleibt, hier aber den physischen Raum und den eigenen Körper unmittelbar erschüttert. Es ist der Moment, in dem das ständige Rauschen einfach zu viel wird.
