@@ -20,13 +20,23 @@ function isVideo(path: string) {
         cursor: url("/assets/cursors/arrow-right.png"), e-resize;
     }
 
-    /* Hide default video controls completely */
-    video::-webkit-media-controls {
-        display: none !important;
+    /* Force video controls to stay visible */
+    video::-webkit-media-controls,
+    video::-webkit-media-controls-enclosure {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    video::-webkit-media-controls-panel {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transition: none !important; /* Prevent fade-out */
     }
 </style>
 
-<div class="slideshow relative mx-auto max-w-full group">
+<div class="slideshow relative mx-auto max-w-full">
     <!-- Media Container -->
     <div
         class="relative w-full overflow-hidden bg-white flex items-center justify-center"
@@ -35,68 +45,17 @@ function isVideo(path: string) {
             {
                 images.map((src, index) =>
                     isVideo(src) ? (
-                        <div
-                            class={`relative w-full flex justify-center ${index === 0 ? "block" : "hidden"}`}
+                        <video
+                            id={index === 0 ? "current-media" : undefined}
+                            src={src}
+                            class={`max-h-[80vh] max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
                             data-index={index}
-                        >
-                            <video
-                                id={index === 0 ? "current-media" : undefined}
-                                src={src}
-                                class="max-h-[80vh] max-w-full object-contain"
-                                autoplay
-                                loop
-                                muted
-                                playsinline
-                            />
-                            {/* Custom Controls Overlay */}
-                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 flex gap-4 bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button
-                                    class="text-white hover:text-gray-300 focus:outline-none"
-                                    data-action="play-pause"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-6 w-6"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                                        />
-                                    </svg>
-                                </button>
-                                <button
-                                    class="text-white hover:text-gray-300 focus:outline-none"
-                                    data-action="mute"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-6 w-6"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
-                                            stroke-miterlimit="10"
-                                        />
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
-                                        />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                            controls
+                        />
                     ) : (
                         <img
                             id={index === 0 ? "current-media" : undefined}
@@ -111,16 +70,15 @@ function isVideo(path: string) {
         </div>
 
         <!-- Navigation Overlays -->
-        <!-- Only cover outer 20% to allow center interaction -->
         <div
             id="prev-area"
-            class="custom-cursor-left absolute left-0 top-0 z-40 h-full w-[20%]"
+            class="custom-cursor-left absolute left-0 top-0 z-10 h-[calc(100%-60px)] w-1/2"
             title="Previous"
         >
         </div>
         <div
             id="next-area"
-            class="custom-cursor-right absolute right-0 top-0 z-40 h-full w-[20%]"
+            class="custom-cursor-right absolute right-0 top-0 z-10 h-[calc(100%-60px)] w-1/2"
             title="Next"
         >
         </div>
@@ -133,101 +91,34 @@ function isVideo(path: string) {
     const prevArea = document.getElementById("prev-area");
     const nextArea = document.getElementById("next-area");
 
-    // Icons
-    const playIcon =
-        '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />';
-    const pauseIcon =
-        '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />';
-    const muteIcon =
-        '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" stroke-miterlimit="10" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />';
-    const unmuteIcon =
-        '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />';
-
     function updateMedia() {
         if (!mediaContainer) return;
 
-        const mediaContainers = mediaContainer.querySelectorAll("[data-index]");
+        const mediaElements = mediaContainer.querySelectorAll("[data-index]");
 
-        mediaContainers.forEach((el) => {
-            const index = parseInt(el.dataset.index);
-            const isVideo = el.tagName === "DIV"; // Video wrapper is a DIV
-            const videoEl = isVideo ? el.querySelector("video") : null;
-            const imgEl = !isVideo ? el : null;
-
-            if (index === currentIndex) {
+        mediaElements.forEach((el) => {
+            if (parseInt(el.dataset.index) === currentIndex) {
                 el.classList.remove("hidden");
                 el.classList.add("block");
+                el.id = "current-media";
 
-                if (videoEl) {
-                    videoEl.id = "current-media";
-                    videoEl
-                        .play()
-                        .catch((e) => console.log("Autoplay prevented:", e));
-                    setupVideoControls(el, videoEl);
-                } else if (imgEl) {
-                    imgEl.id = "current-media";
+                if (el.tagName === "VIDEO") {
+                    // Ensure video plays when it becomes visible
+                    el.play().catch((e) =>
+                        console.log("Autoplay prevented:", e),
+                    );
                 }
             } else {
                 el.classList.add("hidden");
                 el.classList.remove("block");
+                el.removeAttribute("id");
 
-                if (videoEl) {
-                    videoEl.removeAttribute("id");
-                    videoEl.pause();
-                } else if (imgEl) {
-                    imgEl.removeAttribute("id");
+                if (el.tagName === "VIDEO") {
+                    // Pause hidden videos
+                    el.pause();
                 }
             }
         });
-    }
-
-    function setupVideoControls(wrapper, video) {
-        const playBtn = wrapper.querySelector('[data-action="play-pause"]');
-        const muteBtn = wrapper.querySelector('[data-action="mute"]');
-        const playIconSvg = playBtn.querySelector("svg");
-        const muteIconSvg = muteBtn.querySelector("svg");
-
-        // Force controls visible on mobile/touch logic could be added here if needed,
-        // but CSS group-hover handles desktop. For mobile, we might want them always visible?
-        // Let's make them always visible on touch devices using media query or JS check?
-        // For now, rely on opacity transition.
-
-        // Update Play/Pause Icon
-        const updatePlayIcon = () => {
-            playIconSvg.innerHTML = video.paused ? playIcon : pauseIcon;
-        };
-
-        // Update Mute Icon
-        const updateMuteIcon = () => {
-            muteIconSvg.innerHTML = video.muted ? muteIcon : unmuteIcon;
-        };
-
-        playBtn.onclick = (e) => {
-            e.stopPropagation();
-            if (video.paused) video.play();
-            else video.pause();
-            updatePlayIcon();
-        };
-
-        muteBtn.onclick = (e) => {
-            e.stopPropagation();
-            video.muted = !video.muted;
-            updateMuteIcon();
-        };
-
-        video.onplay = updatePlayIcon;
-        video.onpause = updatePlayIcon;
-
-        // Initialize
-        updatePlayIcon();
-        updateMuteIcon();
-
-        // Ensure center click toggles play/pause (optional, user asked for center 60% free)
-        wrapper.onclick = (e) => {
-            // If checking for center click
-            if (video.paused) video.play();
-            else video.pause();
-        };
     }
 
     if (prevArea && nextArea) {
@@ -241,7 +132,4 @@ function isVideo(path: string) {
             updateMedia();
         });
     }
-
-    // Initial setup for first load
-    updateMedia();
 </script>
