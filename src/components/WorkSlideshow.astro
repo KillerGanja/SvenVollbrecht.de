@@ -19,6 +19,17 @@ function isVideo(path: string) {
     .custom-cursor-right {
         cursor: url("/assets/cursors/arrow-right.png"), e-resize;
     }
+
+    /* Force video controls to stay visible */
+    video::-webkit-media-controls {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    video::-webkit-media-controls-panel {
+        display: flex !important;
+        opacity: 1 !important;
+    }
 </style>
 
 <div class="slideshow relative mx-auto max-w-full">
@@ -57,13 +68,13 @@ function isVideo(path: string) {
         <!-- Navigation Overlays -->
         <div
             id="prev-area"
-            class="custom-cursor-left absolute left-0 top-0 z-10 h-full w-1/2"
+            class="custom-cursor-left absolute left-0 top-0 z-10 h-[calc(100%-60px)] w-1/2"
             title="Previous"
         >
         </div>
         <div
             id="next-area"
-            class="custom-cursor-right absolute right-0 top-0 z-10 h-full w-1/2"
+            class="custom-cursor-right absolute right-0 top-0 z-10 h-[calc(100%-60px)] w-1/2"
             title="Next"
         >
         </div>
