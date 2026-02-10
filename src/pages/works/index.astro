@@ -1,8 +1,12 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
+import type { WorkFrontmatter } from "../../types";
+
 // alle deutschen Works laden
-const worksEntries = await Astro.glob("../../../content/works/de/*.md");
+const worksEntries = await Astro.glob<WorkFrontmatter>(
+  "../../../content/works/de/*.md",
+);
 
 // einfache Sortierung: neueste zuerst (Jahr absteigend)
 const works = worksEntries
@@ -10,7 +14,7 @@ const works = worksEntries
     ...entry.frontmatter,
     url: `/works/${entry.frontmatter.slug}/`,
   }))
-  .sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
+  .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0));
 ---
 
 <Layout title="Works – Übersicht">
