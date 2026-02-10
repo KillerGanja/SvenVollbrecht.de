@@ -24,7 +24,7 @@ function isVideo(path: string) {
 <div class="slideshow relative mx-auto max-w-full">
     <!-- Media Container -->
     <div
-        class="relative aspect-[4/5] w-full overflow-hidden bg-white flex items-center justify-center"
+        class="relative w-full overflow-hidden bg-white flex items-center justify-center"
     >
         <div id="media-container" class="contents">
             {
@@ -33,7 +33,7 @@ function isVideo(path: string) {
                         <video
                             id={index === 0 ? "current-media" : undefined}
                             src={src}
-                            class={`max-h-full max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
+                            class={`max-h-[80vh] max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
                             data-index={index}
                             autoplay
                             loop
@@ -46,7 +46,7 @@ function isVideo(path: string) {
                             id={index === 0 ? "current-media" : undefined}
                             src={src}
                             alt={title}
-                            class={`max-h-full max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
+                            class={`max-h-[80vh] max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
                             data-index={index}
                         />
                     ),
