@@ -9,6 +9,7 @@ cover_image: /uploads/lullaby01.jpg
 gallery_images:
   - /uploads/lullaby01.jpg
   - /uploads/lullaby03b.jpg
+  - /uploads/lullaby_reel2.mp4
 lang: de
 ---
 In der Installation Lullaby manifestiert sich eine tiefgreifende Verschränkung der Sujets von Natalität und Finalität innerhalb einer zyklisch konzipierten Gesamtstruktur. Das zentrale Handlungsmoment der Arbeit konstituiert sich durch ein klinisches Krankenlager – ein heterotopischer Raum physischer Transition, welcher die menschliche Existenz in der Polarität zwischen initialer Versorgung und letaler Konsequenz situiert.
