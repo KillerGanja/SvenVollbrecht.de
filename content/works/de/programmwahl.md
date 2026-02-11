@@ -1,6 +1,7 @@
 ---
 title: PROGRAMMWAHL
 slug: Programmwahl
+order: 3
 year: 2025
 materials: Wandobjekt, Satellitenschüssel, Holzkreuze, Kleiderhaken
 dimensions: 95 x 59 x 54 cm
