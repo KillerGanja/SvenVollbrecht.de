@@ -19,7 +19,7 @@ collections:
     fields:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Reihenfolge", name: "order", widget: "number", required: false, default: 9999, hint: "10, 20, 30... Niedrige Zahlen zuerst." }
+      - { label: "Reihenfolge", name: "order", widget: "number", required: false, default: 9999, hint: "10, 20, 30... Niedrige Zahlen zuerst. Default / Ohne Eintrag = 9999" }
       - { label: "Jahr", name: "year", widget: "number", required: false }
       - { label: "Materialien", name: "materials", widget: "string", required: false }
       - { label: "Maße", name: "dimensions", widget: "string", required: false }
@@ -56,7 +56,7 @@ collections:
     fields:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Reihenfolge", name: "order", widget: "number", required: false, default: 9999, hint: "10, 20, 30... Niedrige Zahlen zuerst." }
+      - { label: "Reihenfolge", name: "order", widget: "number", required: false, default: 9999, hint: "10, 20, 30... Niedrige Zahlen zuerst. Default / Ohne Eintrag = 9999" }
       - { label: "Jahr", name: "year", widget: "number", required: false }
       - { label: "Ort / Venue", name: "venue", widget: "string", required: false }
       - { label: "Stadt", name: "city", widget: "string", required: false }
@@ -94,7 +94,7 @@ collections:
     fields:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Reihenfolge", name: "order", widget: "number", required: false, default: 9999, hint: "10, 20, 30... Niedrige Zahlen zuerst." }
+      - { label: "Reihenfolge", name: "order", widget: "number", required: false, default: 9999, hint: "10, 20, 30... Niedrige Zahlen zuerst. Default / Ohne Eintrag = 9999" }
       - { label: "Medium", name: "medium", widget: "string", required: false }
       - { label: "Datum", name: "date", widget: "datetime", format: "YYYY-MM-DD", required: false }
       - { label: "Link / Datei", name: "url", widget: "string", required: false }
