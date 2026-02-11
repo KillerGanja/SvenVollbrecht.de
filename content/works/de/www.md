@@ -2,7 +2,7 @@
 title: WWW
 slug: www
 year: 2024
-materials: Aluminiumbehälter, Aufkleber
+materials: Skulptur, luminium-Behälter, modifizierte Industriegrafik
 dimensions: 54 x 30 x 30 cm
 cover_image: /uploads/27.jpg
 gallery_images:
