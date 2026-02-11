@@ -2,7 +2,7 @@
 title: SIGNS
 slug: signs
 year: 2024
-materials: Metallzaun, Mixed Media
+materials: Wandinstallation, Metallzaun, Mixed Media
 dimensions: 150 x 200 x 5 cm
 series: ""
 cover_image: /uploads/signs-011.jpg
