@@ -2,8 +2,9 @@
 title: LULLABY
 slug: lullaby
 year: 2023
-materials: "Krankenhausbett, Urinflasche mit Beleuchtung, rotierender
-  Triangelgriff, Spieluhr: Frédéric Chopin – Trauermarsch (Dauerschleife)"
+materials: "Rauminstallation, Krankenhausbett, Urinflasche mit Beleuchtung,
+  rotierender Triangelgriff, Spieluhr: Frédéric Chopin – Trauermarsch
+  (Dauerschleife)"
 dimensions: 190 x 220 x 90 cm
 cover_image: /uploads/lullaby01.jpg
 gallery_images:
