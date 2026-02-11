@@ -2,30 +2,62 @@
 const { images, title } = Astro.props;
 ---
 
-<link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css" />
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/photoswipe@5/dist/photoswipe.css"
+/>
 
 <div class="gallery" id="work-gallery">
-  {images.map((src) => (
-    <a
-      href={src}
-      data-pswp-width="1600"
-      data-pswp-height="1200"
-    >
-      <img src={src} alt={title} loading="lazy" />
-    </a>
-  ))}
+  {
+    images.map((src) => (
+      <a href={src} data-pswp-width="1600" data-pswp-height="1200">
+        <img src={src} alt={title} loading="lazy" />
+      </a>
+    ))
+  }
 </div>
 
 <script type="module">
-  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js';
-  import PhotoSwipe from 'https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js';
+  import PhotoSwipe from "https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js";
 
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: '#work-gallery',
-    children: 'a',
-    pswpModule: PhotoSwipe
-  });
-  lightbox.init();
+  const gallery = document.getElementById("work-gallery");
+  if (gallery) {
+    const links = gallery.querySelectorAll("a");
+
+    links.forEach((link) => {
+      const img = new Image();
+      img.onload = () => {
+        link.setAttribute("data-pswp-width", img.naturalWidth);
+        link.setAttribute("data-pswp-height", img.naturalHeight);
+      };
+      img.src = link.href;
+
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const width = link.getAttribute("data-pswp-width");
+        const height = link.getAttribute("data-pswp-height");
+
+        if (!width || !height) return;
+
+        const options = {
+          dataSource: [
+            {
+              src: link.href,
+              w: parseInt(width),
+              h: parseInt(height),
+              alt: link.querySelector("img")?.alt || "",
+            },
+          ],
+          index: 0, // Always start at index 0 since we only have one image
+          closeOnVerticalDrag: true,
+        };
+
+        const pswp = new PhotoSwipe(options);
+        pswp.init();
+      });
+    });
+  }
 </script>
 
 <style>
