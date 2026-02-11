@@ -1,6 +1,7 @@
 ---
 title: SHITSTORM
 slug: shitstorm
+order: 8
 year: 2024
 materials: Skulptur, Röhrenfernseher, Abfluss-Pömpel
 dimensions: 44 x 35 x 80 cm
