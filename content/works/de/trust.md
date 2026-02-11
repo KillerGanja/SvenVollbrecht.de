@@ -3,7 +3,7 @@ title: TRUST
 slug: trust
 order: 11
 year: 2023
-materials: Wandobjekt, Einkaufskorb, Rattenfalle, Gurke
+materials: Wandobjekt, Einkaufskorb, Rattenfalle, Plastikgurke
 dimensions: 41 x 44 x 27 cm
 cover_image: /uploads/trust_vollbrecht01.jpg
 gallery_images:
