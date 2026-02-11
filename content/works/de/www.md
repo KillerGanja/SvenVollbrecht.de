@@ -1,6 +1,7 @@
 ---
 title: WWW
 slug: www
+order: 6
 year: 2024
 materials: Skulptur, Aluminium-Behälter, modifizierte Industriegrafik
 dimensions: 54 x 30 x 30 cm
