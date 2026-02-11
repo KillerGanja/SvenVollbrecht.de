@@ -2,7 +2,7 @@
 title: SHITSTORM
 slug: shitstorm
 year: 2024
-materials: Röhrenfernseher, Abfluss-Pömpel
+materials: Skulptur, Röhrenfernseher, Abfluss-Pömpel
 dimensions: 44 x 35 x 80 cm
 cover_image: /uploads/01-shitstorm.jpg
 gallery_images:
