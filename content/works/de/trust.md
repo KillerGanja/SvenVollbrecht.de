@@ -1,6 +1,7 @@
 ---
 title: TRUST
 slug: trust
+order: 1
 year: 2023
 materials: Einkaufskorb, Rattenfalle, Gurke
 dimensions: 41 x 44 x 27 cm
