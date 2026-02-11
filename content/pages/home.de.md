@@ -1,8 +1,7 @@
 ---
 title: Startseite
-image: /uploads/img_3131-scaled.jpg
+image: ""
 slug: home
 lang: de
 ---
-
-Dies ist die neue Website von Sven. Inhalte folgen …
+Ich überarbeite derzeit meine Webseite, am **1. März** **2026** ist sie aktualisiert.
