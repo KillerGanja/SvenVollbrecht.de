@@ -1,6 +1,7 @@
 ---
 title: Mensch
 slug: mensch
+order: 1
 year: 2026
 materials: Skulptur, Holz-Gliederpuppe
 dimensions: 22 x 5 x 5 cm
