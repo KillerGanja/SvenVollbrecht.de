@@ -1,6 +1,7 @@
 ---
 title: CIRCLE
 slug: circle
+order: 13
 year: 2023
 materials: Rauminstallation, Einkaufswagen, Plastiksäcke, Sicherheitskameras
 dimensions: 62 x 20 x 20 cm
