@@ -2,7 +2,7 @@
 title: KLAU-CLAUS
 slug: klau-claus
 year: 2024
-materials: Stoffmaske,Tischrahmen, Nothammer
+materials: Wandobjekt, Stoffmaske,Tischrahmen, Nothammer
 dimensions: 115 x 43 x 17 cm
 cover_image: /uploads/04.jpg
 gallery_images:
