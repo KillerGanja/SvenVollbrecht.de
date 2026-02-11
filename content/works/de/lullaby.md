@@ -1,6 +1,7 @@
 ---
 title: LULLABY
 slug: lullaby
+order: 10
 year: 2023
 materials: "Rauminstallation, Krankenhausbett, Urinflasche mit Beleuchtung,
   rotierender Triangelgriff, Spieluhr: Frédéric Chopin – Trauermarsch
