@@ -2,7 +2,7 @@
 title: PRESENT
 slug: present
 year: 2024
-materials: Kuchenkerzen
+materials: Wandobjekt, Kuchenkerzen
 dimensions: 30 x 30 x 3,5 cm
 cover_image: /uploads/present03.jpg
 gallery_images:
