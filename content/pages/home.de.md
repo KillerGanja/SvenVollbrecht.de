@@ -1,6 +1,6 @@
 ---
 title: Startseite
-image: /uploads/08.jpg
+image: ""
 slug: home
 lang: de
 ---
