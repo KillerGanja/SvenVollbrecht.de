@@ -14,7 +14,19 @@ const works = worksEntries
     ...entry.frontmatter,
     url: `/works/${entry.frontmatter.slug}/`,
   }))
-  .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0));
+  .sort((a, b) => {
+    // 1. Sort by order (ascending)
+    // Default to 9999 if no order is set
+    const orderA = a.order ?? 9999;
+    const orderB = b.order ?? 9999;
+
+    if (orderA !== orderB) {
+      return orderA - orderB;
+    }
+
+    // 2. Secondary sort: Year (descending)
+    return (Number(b.year) || 0) - (Number(a.year) || 0);
+  });
 ---
 
 <Layout title="Works – Übersicht">

@@ -8,5 +8,6 @@ export interface WorkFrontmatter {
   materials?: string;
   dimensions?: string;
   description?: string;
+  order?: number;
   // Add other frontmatter fields as they originate from your markdown files
 }
