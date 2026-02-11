@@ -2,7 +2,7 @@
 title: Mensch
 slug: mensch
 year: 2026
-materials: Holz-Gliederpuppe
+materials: Skulptur, Holz-Gliederpuppe
 dimensions: 22 x 5 x 5 cm
 cover_image: /uploads/mensch_web_03.jpg
 gallery_images:
@@ -14,7 +14,7 @@ gallery_images:
   - /uploads/mensch_web_07.jpg
 lang: de
 ---
-Werkserie „Mensch“. 5 Werke.
+Werkserie „Mensch“ bestehend aus fünf Skulpturen.
 
 In meiner Werkserie *Mensch* arbeite ich mit Gliederpuppen aus Holz, wie sie üblicherweise als neutrale Hilfsmittel zum Zeichnen des menschlichen Körpers verwendet werden. 
 
