@@ -1,6 +1,7 @@
 ---
 title: SIGNS
 slug: signs
+order: 9
 year: 2024
 materials: Wandinstallation, Metallzaun, Mixed Media
 dimensions: 150 x 200 x 5 cm
