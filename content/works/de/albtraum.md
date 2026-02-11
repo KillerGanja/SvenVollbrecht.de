@@ -1,6 +1,7 @@
 ---
 title: ALBTRAUM
 slug: albtraum
+order: 2
 year: 2025
 materials: Wandobjekt, Kellerlampe, Spieluhr, diverse Spielzeuge
 dimensions: 70 x 27 x 18 cm
