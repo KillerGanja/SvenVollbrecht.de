@@ -2,7 +2,7 @@
 title: DIGITAL VOID
 slug: digitalvoid
 year: 2022
-materials: Leinwand, Videoprojektion
+materials: Ortspezifische Videoinstallation, Leinwand
 dimensions: 200 x 100 x 5 cm
 cover_image: /uploads/digitalvois001-2.jpg
 gallery_images:
