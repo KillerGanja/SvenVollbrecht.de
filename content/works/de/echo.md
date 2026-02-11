@@ -2,7 +2,7 @@
 title: ECHO
 slug: echo
 year: 2024
-materials: Leopard 1 Panzerhülse, Signalhorn
+materials: Skulptur, Leopard 1 Panzerhülse, Signalhorn
 dimensions: 96 x 15 x 15 cm
 cover_image: /uploads/01.jpg
 gallery_images:
