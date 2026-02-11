@@ -4,7 +4,7 @@ slug: circle
 order: 13
 year: 2023
 materials: Rauminstallation, Einkaufswagen, Plastiksäcke, Sicherheitskameras
-dimensions: 62 x 20 x 20 cm
+dimensions: 260 x 70 x 130 cm
 cover_image: /uploads/vollbrecht__circle.jpg
 gallery_images:
   - /uploads/vollbrecht__circle.jpg
