@@ -52,7 +52,7 @@ function isVideo(path: string) {
                             data-index={index}
                             autoplay
                             loop
-                            muted
+                            muted={false}
                             playsinline
                             controls
                         />
@@ -90,6 +90,14 @@ function isVideo(path: string) {
     const mediaContainer = document.getElementById("media-container");
     const prevArea = document.getElementById("prev-area");
     const nextArea = document.getElementById("next-area");
+
+    // Set default volume for all videos
+    if (mediaContainer) {
+        const videos = mediaContainer.querySelectorAll("video");
+        videos.forEach((video) => {
+            video.volume = 0.3;
+        });
+    }
 
     function updateMedia() {
         if (!mediaContainer) return;
