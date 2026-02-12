@@ -61,9 +61,15 @@ const allImages = frontmatter.cover_image
         </div>
       </div>
 
-      <div class="prose prose-gray mx-auto prose-p:mb-[1.5em]">
+      <div class="prose prose-gray mx-auto work-content">
         <Content />
       </div>
     </div>
   </div>
 </Layout>
+
+<style>
+  .work-content :global(p) {
+    margin-bottom: 1.5em !important;
+  }
+</style>
