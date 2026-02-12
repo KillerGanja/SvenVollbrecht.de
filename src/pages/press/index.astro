@@ -5,54 +5,68 @@ import Layout from "../../layouts/Layout.astro";
 const entries = await Astro.glob("../../../content/press/de/*.md");
 
 // Sortierung: neueste zuerst (nach Datum)
-const pressItems = entries
+const sortedEntries = entries
     .map((entry) => ({
         ...entry.frontmatter,
-        // URL kommt aus dem Frontmatter (Link zur Datei oder Webseite)
-        // Falls keine URL, nutzen wir vielleicht einen Fallback oder zeigen keinen Link
     }))
     .sort((a, b) => {
-        // 1. Sort by order (ascending)
-        const orderA = a.order ?? 9999;
-        const orderB = b.order ?? 9999;
-
-        if (orderA !== orderB) {
-            return orderA - orderB;
-        }
-
-        // 2. Secondary sort: Date (descending)
         const dateA = new Date(a.date).getTime();
         const dateB = new Date(b.date).getTime();
         return dateB - dateA;
     });
+
+// Gruppierung nach Jahr
+const pressByYear = sortedEntries.reduce(
+    (acc, item) => {
+        const year = new Date(item.date).getFullYear();
+        if (!acc[year]) {
+            acc[year] = [];
+        }
+        acc[year].push(item);
+        return acc;
+    },
+    {} as Record<number, typeof sortedEntries>,
+);
 ---
 
 <Layout title="Press">
     <h1>Press</h1>
 
     {
-        pressItems.length === 0 ? (
-            <p>Noch keine Presse-Artikel vorhanden.</p>
-        ) : (
-            <ul>
-                {pressItems.map((item) => (
-                    <li>
-                        {item.url ? (
-                            <a
-                                href={item.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <strong>{item.title}</strong>
-                            </a>
-                        ) : (
-                            <strong>{item.title}</strong>
-                        )}
-                        {item.medium && ` – ${item.medium}`}
-                        {item.date && ` (${new Date(item.date).getFullYear()})`}
-                    </li>
-                ))}
-            </ul>
-        )
+        Object.entries(pressByYear)
+            .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
+            .map(([year, items]) => (
+                <div class="mb-12">
+                    <h2 class="mb-6 text-xl font-light text-gray-900">
+                        {year}
+                    </h2>
+                    <ul class="space-y-3">
+                        {items.map((item) => (
+                            <li class="text-base">
+                                {item.url ? (
+                                    <a
+                                        href={item.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="hover:text-gray-600 transition-colors"
+                                    >
+                                        {item.title}
+                                    </a>
+                                ) : (
+                                    <span>{item.title}</span>
+                                )}
+                                {item.medium && (
+                                    <span class="text-gray-500">
+                                        {" "}
+                                        – by {item.medium}
+                                        {item.date &&
+                                            `, ${new Date(item.date).toLocaleDateString("de-DE", { month: "2-digit", year: "numeric" })}`}
+                                    </span>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))
     }
 </Layout>
