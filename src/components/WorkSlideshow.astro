@@ -121,8 +121,9 @@ function isVideo(path: string) {
                 el.removeAttribute("id");
 
                 if (el.tagName === "VIDEO") {
-                    // Pause hidden videos
+                    // Pause hidden videos and reset time
                     el.pause();
+                    el.currentTime = 0;
                 }
             }
         });
