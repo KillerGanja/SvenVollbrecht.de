@@ -2,7 +2,7 @@ backend:
   name: github
   repo: KillerGanja/SvenVollbrecht.de
   branch: main # Using main branch for production
-  base_url: https://ideenfetzen.de
+  base_url: https://svenvollbrecht.de
   auth_endpoint: oauth/auth.php
 
 media_folder: "public/uploads"
