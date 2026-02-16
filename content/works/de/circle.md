@@ -10,7 +10,7 @@ gallery_images:
   - /uploads/vollbrecht__circle.jpg
 lang: de
 ---
-In meiner Installation steht ein gewöhnlicher Einkaufswagen im Zentrum, ein Objekt, das wir als Vehikel des Konsums und der Versorgung kennen, das hier jedoch zur Lastenbahre wird. Er ist bis zum Rand mit weißen Säcken gefüllt, die sich hochstapeln und in ihrer anonymen Formlosigkeit sowohl an Baumaterial als auch an Körperlichkeit erinnern. Es ist eine fragile Architektur des Provisorischen.
+In meiner Rauminstallation steht ein gewöhnlicher Einkaufswagen im Zentrum, ein Objekt, das wir als Vehikel des Konsums und der Versorgung kennen, das hier jedoch zur Lastenbahre wird. Er ist bis zum Rand mit weißen Säcken gefüllt, die sich hochstapeln und in ihrer anonymen Formlosigkeit sowohl an Baumaterial als auch an Körperlichkeit erinnern. Es ist eine fragile Architektur des Provisorischen.
 
 Um dieses Objekt herum habe ich ein System aus Sicherheitskameras installiert. Sie bilden eine technologische Peripherie, die jedoch nicht passiv bleibt. Sobald man sich der Installation nähert, reagieren sie. Sie folgen den Bewegungen der Betrachter:innen, drehen sich, fixieren den Blick.
 
