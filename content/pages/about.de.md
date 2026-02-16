@@ -1,5 +1,5 @@
 ---
-title: Über Sven Vollbrecht
+title: Sven Vollbrecht
 slug: about
 lang: de
 ---
