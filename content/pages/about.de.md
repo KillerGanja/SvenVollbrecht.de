@@ -1,5 +1,5 @@
 ---
-title: Sven
+title: ABOUT
 slug: about
 lang: de
 ---
