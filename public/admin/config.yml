@@ -12,7 +12,7 @@ public_folder: "/uploads"
 collections:
   # WORKS (Deutsch)
   - name: "works_de"
-    label: "Works (DE)"
+    label: "Arbeiten"
     folder: "content/works/de"
     create: true
     slug: "{{slug}}"
@@ -49,7 +49,7 @@ collections:
 
   # EXHIBITIONS (Deutsch)
   - name: "exhibitions_de"
-    label: "Exhibitions (DE)"
+    label: "Ausstellungen"
     folder: "content/exhibitions/de"
     create: true
     slug: "{{slug}}"
@@ -87,7 +87,7 @@ collections:
 
   # PRESS (Deutsch)
   - name: "press_de"
-    label: "Press (DE)"
+    label: "Presse"
     folder: "content/press/de"
     create: true
     slug: "{{slug}}"
