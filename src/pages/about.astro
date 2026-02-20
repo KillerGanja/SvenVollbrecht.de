@@ -6,14 +6,16 @@ const { frontmatter, Content } = entry;
 ---
 
 <Layout title={frontmatter.title}>
-    <div class="text-justify about-content max-w-4xl mx-auto">
-        <h1 class="font-bold mb-5 text-2xl">{frontmatter.title}</h1>
+    <div class="about-content">
+        <h1 class="text-[1.25rem] font-bold text-gray-900 mb-4 lg:mb-6">
+            {frontmatter.title}
+        </h1>
         <Content />
     </div>
 </Layout>
 
 <style>
     .about-content :global(p) {
-        margin-bottom: 1.5em !important;
+        margin-bottom: 0.75rem;
     }
 </style>

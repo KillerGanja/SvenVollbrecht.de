@@ -6,6 +6,16 @@ const { frontmatter, Content } = entry;
 ---
 
 <Layout title={frontmatter.title}>
-    <h1>{frontmatter.title}</h1>
-    <Content />
+    <div class="impressum-content">
+        <h1 class="text-[1.25rem] font-bold text-gray-900 mb-4 lg:mb-6">
+            {frontmatter.title}
+        </h1>
+        <Content />
+    </div>
 </Layout>
+
+<style>
+    .impressum-content :global(p) {
+        margin-bottom: 0.75rem;
+    }
+</style>
