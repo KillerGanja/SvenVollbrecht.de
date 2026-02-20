@@ -1,5 +1,5 @@
 ---
-title: ABOUT
+title: Über
 slug: about
 lang: de
 ---
