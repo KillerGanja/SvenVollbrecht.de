@@ -58,7 +58,7 @@ const pressByYear = sortedEntries.reduce(
                                 {item.medium && (
                                     <span class="text-gray-500">
                                         {" "}
-                                        – by {item.medium}
+                                        – {item.medium}
                                         {item.date &&
                                             `, ${new Date(item.date).toLocaleDateString("de-DE", { month: "2-digit", year: "numeric" })}`}
                                     </span>
