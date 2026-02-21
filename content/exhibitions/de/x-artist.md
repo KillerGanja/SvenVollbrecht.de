@@ -10,5 +10,7 @@ gallery_images:
   - /uploads/trust09.jpg
   - /uploads/01-trust.jpg
   - /uploads/trust09.jpg
+  - /uploads/trust11.jpg
+  - /uploads/trust12.jpg
 lang: de
 ---
