@@ -8,5 +8,6 @@ cover_image: /uploads/trust11.jpg
 gallery_images:
   - /uploads/trust12.jpg
   - /uploads/trust10.jpg
+  - /uploads/trusrex02.jpg
 lang: de
 ---
