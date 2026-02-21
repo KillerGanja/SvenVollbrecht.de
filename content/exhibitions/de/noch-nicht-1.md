@@ -7,7 +7,7 @@ city: Berlin
 cover_image: /uploads/02.jpg
 gallery_images:
   - /uploads/02.jpg
-  - /uploads/dopa08.jpg
   - /uploads/www05.jpg
+  - /uploads/dopa08.jpg
 lang: de
 ---
