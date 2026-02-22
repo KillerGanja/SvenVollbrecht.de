@@ -5,8 +5,13 @@ import type { MarkdownInstance } from "astro";
 import type { WorkFrontmatter } from "../../../types";
 
 export async function getStaticPaths() {
-    const entries = await Astro.glob<WorkFrontmatter>(
-        "../../../../content/works/de/*.md",
+    const entries = Object.values(
+        import.meta.glob<MarkdownInstance<WorkFrontmatter>>(
+            "../../../content/works/de/*.md",
+            {
+                eager: true,
+            },
+        ),
     );
 
     const paths = [];

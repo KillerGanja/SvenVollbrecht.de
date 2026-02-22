@@ -1,5 +1,6 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
+import type { MarkdownInstance } from "astro";
 
 export function getStaticPaths() {
     return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
@@ -8,7 +9,12 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 
 // Load entries
-const entries = await Astro.glob("../../../../content/exhibitions/de/*.md");
+const entries = Object.values(
+    import.meta.glob<MarkdownInstance<any>>(
+        "../../../content/exhibitions/de/*.md",
+        { eager: true },
+    ),
+);
 
 // Sort and map
 const exhibitions = entries

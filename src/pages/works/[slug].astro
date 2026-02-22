@@ -7,8 +7,11 @@ import type { WorkFrontmatter } from "../../types";
 
 // 1) Astro anweisen, welche Seiten erzeugt werden sollen
 export async function getStaticPaths() {
-  const entries = await Astro.glob<WorkFrontmatter>(
-    "../../../content/works/de/*.md",
+  const entries = Object.values(
+    import.meta.glob<MarkdownInstance<WorkFrontmatter>>(
+      "../../../content/works/de/*.md",
+      { eager: true },
+    ),
   );
 
   return entries.map((entry) => {

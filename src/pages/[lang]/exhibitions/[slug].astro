@@ -1,9 +1,17 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
+import type { MarkdownInstance } from "astro";
 import ImageGallery from "../../../components/ImageGallery.astro";
 
 export async function getStaticPaths() {
-    const entries = await Astro.glob("../../../../content/exhibitions/de/*.md");
+    const entries = Object.values(
+        import.meta.glob<MarkdownInstance<any>>(
+            "../../../content/exhibitions/de/*.md",
+            {
+                eager: true,
+            },
+        ),
+    );
 
     const paths = [];
     for (const entry of entries) {

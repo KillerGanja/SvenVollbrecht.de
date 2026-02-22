@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import type { MarkdownInstance } from "astro";
 
 export function getStaticPaths() {
     return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
@@ -8,8 +9,12 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 
 // Load entries
-const entries = await Astro.glob("../../../../content/pages/home.de.md");
-const { frontmatter, Content } = entries[0];
+const entries = import.meta.glob<MarkdownInstance<any>>(
+    "../../../content/pages/home.de.md",
+    { eager: true },
+);
+const entry = Object.values(entries)[0];
+const { frontmatter, Content } = entry;
 
 const title =
     lang === "en" ? "Sven Vollbrecht – Home" : "Sven Vollbrecht – Startseite";

@@ -1,5 +1,6 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
+import type { MarkdownInstance } from "astro";
 import type { WorkFrontmatter } from "../../../types";
 
 export function getStaticPaths() {
@@ -9,8 +10,13 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 
 // Load entries
-const worksEntries = await Astro.glob<WorkFrontmatter>(
-    "../../../../content/works/de/*.md",
+const worksEntries = Object.values(
+    import.meta.glob<MarkdownInstance<WorkFrontmatter>>(
+        "../../../content/works/de/*.md",
+        {
+            eager: true,
+        },
+    ),
 );
 
 // Filter and map

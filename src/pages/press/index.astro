@@ -1,8 +1,23 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import type { MarkdownInstance } from "astro";
+
+interface PressFrontmatter {
+    title: string;
+    url?: string;
+    medium?: string;
+    date: string;
+}
 
 // alle deutschen Press-Artikel laden
-const entries = await Astro.glob("../../../content/press/de/*.md");
+const entries = Object.values(
+    import.meta.glob<MarkdownInstance<PressFrontmatter>>(
+        "../../../content/press/de/*.md",
+        {
+            eager: true,
+        },
+    ),
+);
 
 // Sortierung: neueste zuerst (nach Datum)
 const sortedEntries = entries
