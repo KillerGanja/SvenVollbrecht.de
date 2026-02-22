@@ -7,10 +7,22 @@ const pathname = Astro.url.pathname;
 let targetUrl;
 if (currentLang === "de") {
     // Current is de, target is en
-    targetUrl = `/en${pathname === "/" ? "" : pathname}`;
+    // If we are at /de, go to /en
+    if (pathname === "/" || pathname === "/de") {
+        targetUrl = "/en";
+    } else {
+        targetUrl = pathname.replace(/^\/de/, "/en");
+        if (!targetUrl.startsWith("/en")) {
+            targetUrl = `/en${targetUrl}`;
+        }
+    }
 } else {
     // Current is en, target is de
-    targetUrl = pathname.replace(/^\/en/, "") || "/";
+    if (pathname === "/en") {
+        targetUrl = "/de";
+    } else {
+        targetUrl = pathname.replace(/^\/en/, "/de");
+    }
 }
 ---
 

@@ -52,10 +52,10 @@ const { title = "Sven Vollbrecht", lang = "de" } = Astro.props;
         <!-- Rechts: Links -->
         <div class="flex justify-center gap-6 sm:justify-end">
           <a href="/impressum" class="transition-colors hover:text-gray-900"
-            >Impressum</a
+            >{lang === "en" ? "Legal Notice" : "Impressum"}</a
           >
           <a href="/datenschutz" class="transition-colors hover:text-gray-900"
-            >Datenschutz</a
+            >{lang === "en" ? "Privacy Policy" : "Datenschutz"}</a
           >
         </div>
       </div>
