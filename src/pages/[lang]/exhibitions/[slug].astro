@@ -1,0 +1,73 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import ImageGallery from "../../../components/ImageGallery.astro";
+
+export async function getStaticPaths() {
+    const entries = await Astro.glob("../../../../content/exhibitions/de/*.md");
+
+    const paths = [];
+    for (const entry of entries) {
+        paths.push({
+            params: { lang: "de", slug: entry.frontmatter.slug },
+            props: { entry },
+        });
+        paths.push({
+            params: { lang: "en", slug: entry.frontmatter.slug },
+            props: { entry },
+        });
+    }
+    return paths;
+}
+
+const { lang } = Astro.params;
+const { entry } = Astro.props;
+const { frontmatter, Content } = entry;
+---
+
+<Layout title={frontmatter.title}>
+    <h1>{frontmatter.title}</h1>
+
+    <p>
+        <strong>{lang === "en" ? "Place:" : "Ort:"}</strong>
+        {frontmatter.venue ? frontmatter.venue : ""}
+        {frontmatter.city && `, ${frontmatter.city}`}
+        {frontmatter.year && ` (${frontmatter.year})`}
+    </p>
+
+    {
+        frontmatter.period && (
+            <p>
+                <strong>{lang === "en" ? "Period:" : "Zeitraum:"}</strong>{" "}
+                {frontmatter.period}
+            </p>
+        )
+    }
+    {
+        frontmatter.type && (
+            <p>
+                <strong>{lang === "en" ? "Type:" : "Typ:"}</strong>{" "}
+                {frontmatter.type}
+            </p>
+        )
+    }
+
+    {
+        (frontmatter.gallery_images || frontmatter.images) &&
+            (frontmatter.gallery_images || frontmatter.images).length > 0 && (
+                <ImageGallery
+                    images={frontmatter.gallery_images || frontmatter.images}
+                    title={frontmatter.title}
+                />
+            )
+    }
+
+    <div class="prose prose-gray max-w-none">
+        {
+            lang === "en" && frontmatter.body_en ? (
+                <div set:html={frontmatter.body_en} />
+            ) : (
+                <Content />
+            )
+        }
+    </div>
+</Layout>

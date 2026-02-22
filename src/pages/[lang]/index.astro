@@ -1,0 +1,39 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+    return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+
+// Load entries
+const entries = await Astro.glob("../../../../content/pages/home.de.md");
+const { frontmatter, Content } = entries[0];
+
+const title =
+    lang === "en" ? "Sven Vollbrecht – Home" : "Sven Vollbrecht – Startseite";
+---
+
+<Layout title={title}>
+    <div class="mt-16 text-center">
+        {
+            frontmatter.image && (
+                <img
+                    src={frontmatter.image}
+                    alt={frontmatter.title}
+                    class="mx-auto mb-8 max-h-[70vh] w-auto max-w-full object-contain"
+                />
+            )
+        }
+        <div class="prose prose-gray mx-auto">
+            {
+                lang === "en" && frontmatter.body_en ? (
+                    <div set:html={frontmatter.body_en} />
+                ) : (
+                    <Content />
+                )
+            }
+        </div>
+    </div>
+</Layout>

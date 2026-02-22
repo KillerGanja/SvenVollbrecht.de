@@ -44,7 +44,10 @@ collections:
           widget: "file"
 
       - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
-      - { label: "Text", name: "body", widget: "markdown", required: false }
+      - { label: "Text (DE)", name: "body", widget: "markdown", required: false }
+      - { label: "Materialien (EN)", name: "materials_en", widget: "string", required: false }
+      - { label: "Maße (EN)", name: "dimensions_en", widget: "string", required: false }
+      - { label: "Text (EN)", name: "body_en", widget: "markdown", required: false }
 
 
   # EXHIBITIONS (Deutsch)
@@ -82,7 +85,8 @@ collections:
           widget: "image"
 
       - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
-      - { label: "Text", name: "body", widget: "markdown", required: false }
+      - { label: "Text (DE)", name: "body", widget: "markdown", required: false }
+      - { label: "Text (EN)", name: "body_en", widget: "markdown", required: false }
 
 
   # PRESS (Deutsch)
@@ -120,7 +124,8 @@ collections:
           - { label: "Titel", name: "title", widget: "string", default: "Über Sven" }
           - { label: "Slug", name: "slug", widget: "string", default: "about" }
           - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
-          - { label: "Inhalt", name: "body", widget: "markdown" }
+          - { label: "Inhalt (DE)", name: "body", widget: "markdown" }
+          - { label: "Inhalt (EN)", name: "body_en", widget: "markdown", required: false }
 
       - label: "Contact (DE)"
         name: "contact_de"

@@ -1,0 +1,41 @@
+---
+const { lang } = Astro.params;
+const currentLang = lang || "de";
+const pathname = Astro.url.pathname;
+
+// Generate target URL
+let targetUrl;
+if (currentLang === "de") {
+    // Current is de, target is en
+    targetUrl = `/en${pathname === "/" ? "" : pathname}`;
+} else {
+    // Current is en, target is de
+    targetUrl = pathname.replace(/^\/en/, "") || "/";
+}
+---
+
+<div
+    class="flex items-center gap-2 text-xs font-light tracking-widest uppercase"
+>
+    <a
+        href={currentLang === "de" ? "#" : targetUrl}
+        class={`transition-colors hover:text-gray-900 ${currentLang === "de" ? "text-gray-900 font-medium" : "text-gray-400"}`}
+        aria-current={currentLang === "de" ? "page" : undefined}
+    >
+        de
+    </a>
+    <span class="text-gray-200">/</span>
+    <a
+        href={currentLang === "en" ? "#" : targetUrl}
+        class={`transition-colors hover:text-gray-900 ${currentLang === "en" ? "text-gray-900 font-medium" : "text-gray-400"}`}
+        aria-current={currentLang === "en" ? "page" : undefined}
+    >
+        en
+    </a>
+</div>
+
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>

@@ -1,0 +1,36 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import * as entry from "../../../content/pages/about.de.md";
+
+export function getStaticPaths() {
+    return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+const { frontmatter, Content } = entry;
+
+const displayTitle = lang === "en" ? "About" : "Über";
+---
+
+<Layout title={displayTitle}>
+    <div class="about-content md:w-1/2">
+        <h1 class="text-[1.25rem] font-bold text-gray-900 mb-4 lg:mb-6">
+            {displayTitle}
+        </h1>
+        <div class="prose prose-gray max-w-none">
+            {
+                lang === "en" && frontmatter.body_en ? (
+                    <div set:html={frontmatter.body_en} />
+                ) : (
+                    <Content />
+                )
+            }
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .about-content :global(p) {
+        margin-bottom: 0.75rem;
+    }
+</style>

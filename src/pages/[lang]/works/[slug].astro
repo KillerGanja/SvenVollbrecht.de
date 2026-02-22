@@ -1,0 +1,98 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import WorkSlideshow from "../../../components/WorkSlideshow.astro";
+import type { MarkdownInstance } from "astro";
+import type { WorkFrontmatter } from "../../../types";
+
+export async function getStaticPaths() {
+    const entries = await Astro.glob<WorkFrontmatter>(
+        "../../../../content/works/de/*.md",
+    );
+
+    const paths = [];
+    for (const entry of entries) {
+        paths.push({
+            params: { lang: "de", slug: entry.frontmatter.slug },
+            props: { entry },
+        });
+        paths.push({
+            params: { lang: "en", slug: entry.frontmatter.slug },
+            props: { entry },
+        });
+    }
+    return paths;
+}
+
+interface Props {
+    entry: MarkdownInstance<WorkFrontmatter>;
+}
+
+const { lang } = Astro.params;
+const { entry } = Astro.props;
+const { frontmatter, Content } = entry;
+
+// Content localization
+const title = frontmatter.title;
+const materials =
+    lang === "en"
+        ? frontmatter.materials_en || frontmatter.materials
+        : frontmatter.materials;
+const dimensions =
+    lang === "en"
+        ? frontmatter.dimensions_en || frontmatter.dimensions
+        : frontmatter.dimensions;
+
+// Images
+const galleryImages = frontmatter.gallery_images || frontmatter.images || [];
+const allImages = frontmatter.cover_image
+    ? [
+          frontmatter.cover_image,
+          ...galleryImages.filter(
+              (img: string) => img !== frontmatter.cover_image,
+          ),
+      ]
+    : galleryImages;
+---
+
+<Layout title={title}>
+    <div class="mx-auto max-w-4xl">
+        {
+            allImages && allImages.length > 0 ? (
+                <WorkSlideshow images={allImages} title={title} />
+            ) : (
+                <div class="aspect-[4/5] w-full bg-gray-100 flex items-center justify-center text-gray-400">
+                    {lang === "en" ? "No Images" : "Keine Bilder"}
+                </div>
+            )
+        }
+
+        <div class="mx-auto w-full text-left md:w-[70%]">
+            <div class="mt-8 mb-8 text-center">
+                <h1 class="text-2xl font-medium text-gray-900 mb-2">
+                    {title}
+                </h1>
+                <div class="text-gray-500 space-y-1">
+                    {frontmatter.year && <p>{frontmatter.year}</p>}
+                    {materials && <p>{materials}</p>}
+                    {dimensions && <p>{dimensions}</p>}
+                </div>
+            </div>
+
+            <div class="prose prose-gray mx-auto work-content">
+                {
+                    lang === "en" && frontmatter.body_en ? (
+                        <div set:html={frontmatter.body_en} />
+                    ) : (
+                        <Content />
+                    )
+                }
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .work-content :global(p) {
+        margin-bottom: 1.5em !important;
+    }
+</style>

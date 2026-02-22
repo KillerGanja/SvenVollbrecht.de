@@ -1,44 +1,51 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from "../../../layouts/Layout.astro";
 
-// alle deutschen Exhibitions laden
-const entries = await Astro.glob("../../../content/exhibitions/de/*.md");
+export function getStaticPaths() {
+    return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
+}
 
-// Sortierung: neueste zuerst (Jahr absteigend)
-// Falls das Datum wichtiger ist, könnte man auch nach frontmatter.date sortieren (falls vorhanden)
+const { lang } = Astro.params;
+
+// Load entries
+const entries = await Astro.glob("../../../../content/exhibitions/de/*.md");
+
+// Sort and map
 const exhibitions = entries
     .map((entry) => ({
         ...entry.frontmatter,
-        url: `/exhibitions/${entry.frontmatter.slug}/`,
+        url:
+            lang === "en"
+                ? `/en/exhibitions/${entry.frontmatter.slug}/`
+                : `/exhibitions/${entry.frontmatter.slug}/`,
     }))
     .sort((a, b) => {
-        // 1. Sort by order (ascending)
-        const orderA = a.order ?? 9999;
-        const orderB = b.order ?? 9999;
-
-        if (orderA !== orderB) {
-            return orderA - orderB;
-        }
-
-        // 2. Secondary sort: Year (descending)
-        return (b.year ?? 0) - (a.year ?? 0);
+        const orderA = (a as any).order ?? 9999;
+        const orderB = (b as any).order ?? 9999;
+        if (orderA !== orderB) return orderA - orderB;
+        return ((b as any).year ?? 0) - ((a as any).year ?? 0);
     });
+
+const title = lang === "en" ? "Exhibitions" : "Ausstellungen";
 ---
 
-<Layout title="Ausstellungen">
+<Layout title={title}>
     <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">
-        Ausstellungen
+        {title}
     </h1>
 
     {
         exhibitions.length === 0 ? (
-            <p class="text-gray-500">Noch keine Ausstellungen angelegt.</p>
+            <p class="text-gray-500">
+                {lang === "en"
+                    ? "No exhibitions found."
+                    : "Noch keine Ausstellungen angelegt."}
+            </p>
         ) : (
             <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {exhibitions.map((exhib) => (
                     <a href={exhib.url} class="group block">
                         <div class="aspect-[4/5] overflow-hidden bg-gray-100 mb-4">
-                            {/* Fallback image if cover_image is missing */}
                             {exhib.cover_image ? (
                                 <img
                                     src={exhib.cover_image}
@@ -47,7 +54,7 @@ const exhibitions = entries
                                 />
                             ) : (
                                 <div class="flex h-full w-full items-center justify-center text-gray-400">
-                                    No Image
+                                    {lang === "en" ? "No Image" : "Kein Bild"}
                                 </div>
                             )}
                         </div>
