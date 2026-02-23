@@ -11,7 +11,7 @@ const { lang } = Astro.params;
 // Load entries
 const entries = Object.values(
     import.meta.glob<MarkdownInstance<any>>(
-        "../../../content/exhibitions/de/*.md",
+        "../../../../content/exhibitions/de/*.md",
         { eager: true },
     ),
 );
