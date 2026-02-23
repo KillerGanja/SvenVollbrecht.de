@@ -1,27 +1,30 @@
 ---
-const { lang } = Astro.params;
-const currentLang = lang || "de";
+interface Props {
+    lang?: string;
+}
+
+const { lang: propLang } = Astro.props;
+const { lang: paramsLang } = Astro.params;
+const currentLang = propLang || paramsLang || "de";
 const pathname = Astro.url.pathname;
 
 // Generate target URL
 let targetUrl;
 if (currentLang === "de") {
     // Current is de, target is en
-    // If we are at /de, go to /en
     if (pathname === "/" || pathname === "/de") {
         targetUrl = "/en";
     } else {
-        targetUrl = pathname.replace(/^\/de/, "/en");
-        if (!targetUrl.startsWith("/en")) {
-            targetUrl = `/en${targetUrl}`;
-        }
+        // Just prefix with /en if it doesn't have it
+        targetUrl = pathname.startsWith("/en") ? pathname : `/en${pathname}`;
     }
 } else {
     // Current is en, target is de
     if (pathname === "/en") {
-        targetUrl = "/de";
+        targetUrl = "/";
     } else {
-        targetUrl = pathname.replace(/^\/en/, "/de");
+        // Remove /en prefix
+        targetUrl = pathname.replace(/^\/en/, "") || "/";
     }
 }
 ---

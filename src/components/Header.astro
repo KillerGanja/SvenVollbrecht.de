@@ -1,8 +1,13 @@
 ---
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 
-const { lang } = Astro.params;
-const currentLang = lang || "de";
+interface Props {
+    lang?: string;
+}
+
+const { lang: propLang } = Astro.props;
+const { lang: paramsLang } = Astro.params;
+const currentLang = propLang || paramsLang || "de";
 
 const baseLinks = [
     { href: "/works", label: "Arbeiten", enLabel: "Works" },
@@ -49,12 +54,12 @@ const homeHref = currentLang === "en" ? "/en" : "/de";
                     ))
                 }
             </nav>
-            <LanguageSwitcher />
+            <LanguageSwitcher lang={currentLang} />
         </div>
 
         <!-- Mobile Menu Button & Switcher -->
         <div class="flex items-center gap-4 md:hidden">
-            <LanguageSwitcher />
+            <LanguageSwitcher lang={currentLang} />
             <button
                 id="menu-toggle"
                 class="flex h-10 w-10 items-center justify-center rounded-md p-2 text-gray-600 hover:bg-gray-100"
