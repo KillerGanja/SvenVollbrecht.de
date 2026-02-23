@@ -32,8 +32,11 @@ collections:
   - name: "works"
     label: "Arbeiten"
     folder: "content/works"
+    extension: "md"
+    format: "yaml-frontmatter"
     create: true
     slug: "{{slug}}"
+    summary: "{{title}} ({{year}})"
     fields:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
@@ -58,8 +61,11 @@ collections:
   - name: "exhibitions"
     label: "Ausstellungen"
     folder: "content/exhibitions"
+    extension: "md"
+    format: "yaml-frontmatter"
     create: true
     slug: "{{slug}}"
+    summary: "{{title}} ({{year}} — {{city_de}})"
     fields:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
@@ -75,6 +81,21 @@ collections:
       - { label: "Beschreibung (EN)", name: "description_en", widget: "markdown", required: false }
       - { label: "Cover Bild", name: "cover_image", widget: "image", required: true }
 
+  # PRESSE (Press)
+  - name: "press"
+    label: "Presse"
+    folder: "content/press"
+    extension: "md"
+    format: "yaml-frontmatter"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Medium", name: "medium", widget: "string", required: false }
+      - { label: "Datum", name: "date", widget: "date" }
+      - { label: "Link", name: "url", widget: "string", required: false }
+      - { label: "Slug", name: "slug", widget: "string" }
+
   # SEITEN (Static Pages)
   - name: "pages"
     label: "Seiten"
@@ -82,6 +103,7 @@ collections:
       - label: "Über mich"
         name: "about"
         file: "content/pages/about.md"
+        format: "yaml-frontmatter"
         fields:
           - { label: "Titel", name: "title", widget: "string", default: "Über mich" }
           - { label: "Inhalt (DE)", name: "body_de", widget: "markdown" }
@@ -90,6 +112,7 @@ collections:
       - label: "Kontakt"
         name: "contact"
         file: "content/pages/contact.md"
+        format: "yaml-frontmatter"
         fields:
           - { label: "Titel", name: "title", widget: "string", default: "Kontakt" }
           - { label: "Inhalt (DE)", name: "body_de", widget: "markdown" }
@@ -98,6 +121,7 @@ collections:
       - label: "Impressum"
         name: "impressum"
         file: "content/pages/impressum.md"
+        format: "yaml-frontmatter"
         fields:
           - { label: "Titel", name: "title", widget: "string", default: "Impressum" }
           - { label: "Inhalt (DE)", name: "body_de", widget: "markdown" }
@@ -106,6 +130,7 @@ collections:
       - label: "Datenschutz"
         name: "privacy"
         file: "content/pages/privacy.md"
+        format: "yaml-frontmatter"
         fields:
           - { label: "Titel", name: "title", widget: "string", default: "Datenschutz" }
           - { label: "Inhalt (DE)", name: "body_de", widget: "markdown" }
