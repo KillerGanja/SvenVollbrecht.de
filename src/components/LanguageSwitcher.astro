@@ -46,11 +46,13 @@ if (currentLang === "de") {
         aria-current={currentLang === "en" ? "page" : undefined}
     >
         en
+        <span class="sr-only">Language Switcher</span>
+        <span>DEBUG_SWITCHER</span>
     </a>
-</div>
 
-<style>
-    a {
-        text-decoration: none;
-    }
-</style>
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+</div>

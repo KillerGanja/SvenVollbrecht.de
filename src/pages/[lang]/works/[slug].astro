@@ -7,7 +7,7 @@ import type { WorkFrontmatter } from "../../../types";
 export async function getStaticPaths() {
     const entries = Object.values(
         import.meta.glob<MarkdownInstance<WorkFrontmatter>>(
-            "../../../content/works/de/*.md",
+            "../../../../content/works/de/*.md",
             {
                 eager: true,
             },
