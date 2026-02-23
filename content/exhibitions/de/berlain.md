@@ -10,4 +10,7 @@ gallery_images:
   - /uploads/webseite-sven-vollbrecht.13.jpg
   - /uploads/signs012.jpg
 lang: de
+
+translation_key_title: exhibition_berlain_title
+translation_key_body: exhibition_berlain_body
 ---

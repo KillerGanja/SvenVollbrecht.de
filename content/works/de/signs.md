@@ -12,6 +12,9 @@ gallery_images:
   - /uploads/signs03.jpg
   - /uploads/signs02.jpg
 lang: de
+
+translation_key_title: work_signs_title
+translation_key_body: work_signs_body
 ---
 Als ich die Einladung zur Gruppenausstellung Berlainshow von raeume.art zum Thema Künstliche Intelligenz erhielt, war mir schnell klar: Ich will KI nicht einfach nur als neues, schickes Werkzeug benutzen, um damit Bilder zu machen. Während viele die Technologie nutzen, um neue Welten zu generieren, treibt mich eine grundlegendere Frage um: Was macht diese Intelligenz eigentlich mit uns? Wie verändert sie unser Menschsein, unsere Körper und unser Zusammenleben?
 

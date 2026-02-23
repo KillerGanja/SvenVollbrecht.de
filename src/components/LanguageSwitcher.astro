@@ -1,65 +1,18 @@
 ---
-interface Props {
-    lang?: string;
-}
+import { getRelativeLocaleUrl } from "../utils/i18n";
 
-const { lang: propLang } = Astro.props;
-const { lang: paramsLang } = Astro.params;
-const currentLang = propLang || paramsLang || "de";
-const pathname = Astro.url.pathname;
+const { lang } = Astro.params as { lang: string };
+const currentPath = Astro.url.pathname.replace(/^\/(de|en)/, "");
 
-// Generate target URL
-let targetUrl = "/";
-if (currentLang === "de") {
-    // Current is de, target is en
-    if (pathname === "/" || pathname === "/de") {
-        targetUrl = "/en";
-    } else {
-        targetUrl = pathname.startsWith("/en") ? pathname : `/en${pathname}`;
-    }
-} else {
-    // Current is en, target is de
-    if (pathname === "/en") {
-        targetUrl = "/";
-    } else {
-        targetUrl = pathname.replace(/^\/en/, "") || "/";
-    }
-}
+const otherLang = lang === "en" ? "de" : "en";
+const targetUrl = getRelativeLocaleUrl(otherLang, currentPath || "/");
 ---
 
-<div
-    class="flex items-center gap-2 text-xs font-light tracking-widest uppercase"
->
-    {
-        currentLang === "de" ? (
-            <span class="text-gray-900 font-medium cursor-default">de</span>
-        ) : (
-            <a
-                href={targetUrl}
-                class="text-gray-400 hover:text-gray-900 transition-colors"
-            >
-                de
-            </a>
-        )
-    }
-    <span class="text-gray-200">/</span>
-    {
-        currentLang === "en" ? (
-            <span class="text-gray-900 font-medium cursor-default">en</span>
-        ) : (
-            <a
-                href={targetUrl}
-                class="text-gray-400 hover:text-gray-900 transition-colors"
-            >
-                en
-            </a>
-        )
-    }
+<div class="flex items-center gap-4 text-sm font-medium">
+    <a
+        href={targetUrl}
+        class="text-gray-400 hover:text-gray-900 transition-colors"
+    >
+        {lang === "en" ? "DE" : "EN"}
+    </a>
 </div>
-
-<style>
-    a,
-    span {
-        text-decoration: none;
-    }
-</style>

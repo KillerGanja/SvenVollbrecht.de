@@ -1,0 +1,37 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { t } from "../../utils/i18n";
+import { marked } from "marked";
+
+export function getStaticPaths() {
+    return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+
+// Load static data from skeleton file (for image)
+const entries = import.meta.glob<any>("../../../content/pages/home.de.md", {
+    eager: true,
+});
+const entry = Object.values(entries)[0];
+const { frontmatter } = entry;
+
+const title = `Sven Vollbrecht – ${t("nav_home", lang) || "Startseite"}`;
+const body = t("page_home_body", lang);
+const htmlContent = marked.parse(body);
+---
+
+<Layout title={title}>
+    <div class="mt-16 text-center">
+        {
+            frontmatter.image && (
+                <img
+                    src={frontmatter.image}
+                    alt="Sven Vollbrecht"
+                    class="mx-auto mb-8 max-h-[70vh] w-auto max-w-full object-contain"
+                />
+            )
+        }
+        <div class="prose prose-gray mx-auto" set:html={htmlContent} />
+    </div>
+</Layout>

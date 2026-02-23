@@ -12,6 +12,9 @@ gallery_images:
   - /uploads/dsc05839aaaa.jpg
   - /uploads/05.jpg
 lang: de
+
+translation_key_title: work_klau-claus_title
+translation_key_body: work_klau-claus_body
 ---
 In meiner Auseinandersetzung mit dieser Arbeit fasziniert mich vor allem die verstörende Ambivalenz der Maskierung. Auf den ersten Blick begegnen wir einer roten Stoffmaske mit weißem Bommel, ein visuelles Signal, das unmittelbar die behagliche Semantik des Weihnachtsfestes aufruft. Doch diese Gemütlichkeit kippt innerhalb von Sekunden: Durch ihre zugespitzte Form evoziert die Maske eine religiöse, fast fanatische Strenge. Sie erinnert an die Kapuzen der Bußprozessionen oder an die Uniformen des Terrors und transformiert das Fest-Requisit in ein Werkzeug ritualisierten Wahnsinns.
 

@@ -9,4 +9,7 @@ gallery_images:
   - /uploads/digitalvois001-2.jpg
   - /uploads/digital-void05.jpg
 lang: de
+
+translation_key_title: exhibition_departure_title
+translation_key_body: exhibition_departure_body
 ---

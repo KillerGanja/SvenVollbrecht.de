@@ -10,6 +10,9 @@ gallery_images:
   - /uploads/trust_vollbrecht01.jpg
   - /uploads/trust_.jpg
 lang: de
+
+translation_key_title: work_trust_title
+translation_key_body: work_trust_body
 ---
 Meine Arbeit zeigt eine Plastikgurke in einer Rattenfalle, die an einem Einkaufskorb befestigt ist. Ich nutze diese radikale Zusammenführung, um die Mechanismen der Lebensmittelindustrie zu befragen: Wo wird die Grenze zwischen Ernährung und Verführung gezogen? Wo schnappt die Falle der industriellen Optimierung zu? Mir geht es um die bewusste Täuschung der Konsument:innen, um Inhaltsstoffe, die hinter kryptischen Bezeichnungen verschwiegen, und Oberflächen, die durch genetische oder chemische Eingriffe künstlich geschönt werden. Die Plastikgurke fungiert hier als Platzhalter für eine entfremdete Natur, die nur noch als makelloses Produkt existieren darf.
 

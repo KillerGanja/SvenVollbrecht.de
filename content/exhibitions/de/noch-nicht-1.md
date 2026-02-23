@@ -10,4 +10,7 @@ gallery_images:
   - /uploads/www05.jpg
   - /uploads/dopa08.jpg
 lang: de
+
+translation_key_title: exhibition_noch-nicht-1_title
+translation_key_body: exhibition_noch-nicht-1_body
 ---

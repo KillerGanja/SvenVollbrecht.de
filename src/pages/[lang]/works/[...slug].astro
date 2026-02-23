@@ -1,0 +1,65 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { t } from "../../../utils/i18n";
+import { marked } from "marked";
+import WorkSlideshow from "../../../components/WorkSlideshow.astro";
+
+export async function getStaticPaths() {
+    const entries = Object.values(
+        import.meta.glob<any>("../../../content/works/de/*.md", {
+            eager: true,
+        }),
+    );
+
+    const languages = ["de", "en"];
+
+    return languages.flatMap((lang) => {
+        return entries.map((entry) => ({
+            params: {
+                lang,
+                slug: entry.frontmatter.slug,
+            },
+            props: { entry },
+        }));
+    });
+}
+
+const { lang, slug } = Astro.params;
+const { entry } = Astro.props;
+const { frontmatter } = entry;
+
+const title = t(frontmatter.translation_key_title, lang);
+const body = t(frontmatter.translation_key_body, lang);
+const htmlContent = marked.parse(body);
+---
+
+<Layout title={title}>
+    <div class="mx-auto max-w-screen-xl">
+        <WorkSlideshow images={frontmatter.gallery_images} title={title} />
+
+        <div class="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-3">
+            <div class="lg:col-span-2">
+                <div
+                    class="prose prose-gray max-w-none"
+                    set:html={htmlContent}
+                />
+            </div>
+
+            <div
+                class="space-y-6 text-sm text-gray-600 border-l border-gray-100 pl-8"
+            >
+                {
+                    frontmatter.year && (
+                        <div>
+                            <span class="block font-medium text-gray-900">
+                                {t("field_year", lang) || "Jahr"}
+                            </span>
+                            <span>{frontmatter.year}</span>
+                        </div>
+                    )
+                }
+                <!-- Add other fields as needed -->
+            </div>
+        </div>
+    </div>
+</Layout>

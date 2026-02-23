@@ -1,23 +1,23 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import type { MarkdownInstance } from "astro";
-import type { WorkFrontmatter } from "../../types";
+import Layout from "../../../layouts/Layout.astro";
+import { t } from "../../../utils/i18n";
 
-// Load entries
+export function getStaticPaths() {
+    return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+
+// Load entries (skeletons)
 const worksEntries = Object.values(
-    import.meta.glob<MarkdownInstance<WorkFrontmatter>>(
-        "../../../content/works/de/*.md",
-        {
-            eager: true,
-        },
-    ),
+    import.meta.glob<any>("../../../content/works/de/*.md", { eager: true }),
 );
 
-// Filter and map
 const works = worksEntries
     .map((entry) => ({
         ...entry.frontmatter,
-        url: `/works/${entry.frontmatter.slug}/`,
+        title: t(entry.frontmatter.translation_key_title, lang),
+        url: `/${lang}/works/${entry.frontmatter.slug}/`,
     }))
     .sort((a, b) => {
         const orderA = a.order ?? 9999;
@@ -26,12 +26,12 @@ const works = worksEntries
         return (Number(b.year) || 0) - (Number(a.year) || 0);
     });
 
-const title = "Arbeiten – Übersicht";
+const title = t("nav_works", lang);
 ---
 
 <Layout title={title}>
     <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">
-        Arbeiten
+        {title}
     </h1>
 
     {

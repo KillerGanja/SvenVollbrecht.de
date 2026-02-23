@@ -1,0 +1,77 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { t } from "../../utils/i18n";
+import { marked } from "marked";
+
+export function getStaticPaths() {
+    return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+
+const entries = Object.values(
+    import.meta.glob<any>("../../../content/press/de/*.md", { eager: true }),
+);
+
+const pressItems = entries
+    .map((entry) => ({
+        ...entry.frontmatter,
+        title: t(
+            entry.frontmatter.translation_key_title ||
+                `press_${entry.frontmatter.slug}_title`,
+            lang,
+        ),
+        url: entry.frontmatter.url, // Press often links elsewhere
+        slug: entry.frontmatter.slug,
+    }))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+const title = t("nav_press", lang);
+---
+
+<Layout title={title}>
+    <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">
+        {title}
+    </h1>
+
+    <div class="space-y-12 max-w-3xl">
+        {
+            pressItems.map((item) => (
+                <article class="border-b border-gray-100 pb-12 last:border-0">
+                    <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb-4">
+                        <time class="text-sm font-medium text-gray-400 tabular-nums">
+                            {item.date
+                                ? new Date(item.date).toLocaleDateString(
+                                      lang === "de" ? "de-DE" : "en-US",
+                                      {
+                                          year: "numeric",
+                                          month: "2-digit",
+                                          day: "2-digit",
+                                      },
+                                  )
+                                : ""}
+                        </time>
+                        <h2 class="text-xl font-medium text-gray-900">
+                            {item.url ? (
+                                <a
+                                    href={item.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="hover:text-blue-600 transition-colors"
+                                >
+                                    {item.title}
+                                </a>
+                            ) : (
+                                item.title
+                            )}
+                        </h2>
+                    </div>
+                    {item.medium && (
+                        <p class="text-sm text-gray-500 mb-4">{item.medium}</p>
+                    )}
+                    {/* Optional: Add body if needed */}
+                </article>
+            ))
+        }
+    </div>
+</Layout>

@@ -10,4 +10,7 @@ gallery_images:
   - /uploads/75c8d596-f0f4-49e7-acd1-631eab4eeb83_1_105_c.jpeg
   - /uploads/96591d07-b6c1-4a04-ab4c-d26633ba52bd_1_105_c.jpeg
 lang: de
+
+translation_key_title: exhibition_time-is-running-out_title
+translation_key_body: exhibition_time-is-running-out_body
 ---

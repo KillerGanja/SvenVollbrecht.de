@@ -1,0 +1,51 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { t } from "../../../utils/i18n";
+import { marked } from "marked";
+import ImageGallery from "../../../components/ImageGallery.astro";
+
+export async function getStaticPaths() {
+    const entries = Object.values(
+        import.meta.glob<any>("../../../content/exhibitions/de/*.md", {
+            eager: true,
+        }),
+    );
+
+    const languages = ["de", "en"];
+
+    return languages.flatMap((lang) => {
+        return entries.map((entry) => ({
+            params: {
+                lang,
+                slug: entry.frontmatter.slug,
+            },
+            props: { entry },
+        }));
+    });
+}
+
+const { lang, slug } = Astro.params;
+const { entry } = Astro.props;
+const { frontmatter } = entry;
+
+const title = t(frontmatter.translation_key_title, lang);
+const body = t(frontmatter.translation_key_body, lang);
+const htmlContent = marked.parse(body);
+---
+
+<Layout title={title}>
+    <div class="mx-auto max-w-screen-xl">
+        <h1 class="mb-4 text-3xl font-light tracking-wide text-gray-900">
+            {title}
+        </h1>
+        <p class="mb-12 text-gray-500">{frontmatter.period}</p>
+
+        <div class="prose prose-gray max-w-3xl mb-16" set:html={htmlContent} />
+
+        {
+            frontmatter.gallery_images && (
+                <ImageGallery images={frontmatter.gallery_images} />
+            )
+        }
+    </div>
+</Layout>

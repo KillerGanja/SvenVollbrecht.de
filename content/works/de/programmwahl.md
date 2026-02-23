@@ -12,6 +12,9 @@ gallery_images:
   - /uploads/pw09.jpg
   - /uploads/pw_chatgpt.jpg
 lang: de
+
+translation_key_title: work_programmwahl_title
+translation_key_body: work_programmwahl_body
 ---
 In der Entstehungsphase meines Wandobjekts, unmittelbar vor der Bundestagswahl 2025, wurde die Satellitenschüssel für mich zu einem fast schon prähistorischen, aber dennoch hochgradig aufgeladenen Symbol: Sie steht für den Empfang, für das Filtern von Informationen und die neuronale Vernetzung einer Gesellschaft. Doch was passiert, wenn die Signale umschlagen?
 

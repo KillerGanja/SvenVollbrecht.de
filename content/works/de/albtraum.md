@@ -18,6 +18,9 @@ gallery_images:
   - /uploads/01a.jpg
   - /uploads/insta0a1.jpg
 lang: de
+
+translation_key_title: work_albtraum_title
+translation_key_body: work_albtraum_body
 ---
 In meiner achtteiligen Werkserie Albtraum untersuche ich die Bruchstellen zwischen kindlicher Geborgenheit und technischer Nüchternheit. Jede Arbeit folgt einer strengen, fast klinischen Versuchsanordnung: Eine handelsübliche Kellerleuchte bildet das Skelett, jedoch ohne schützendes Glas, ohne Leuchtmittel, ihrer eigentlichen Funktion beraubt. Diese bewusste Deplatzierung des Alltagsgegenstands transformiert die Lampe von einem bloßen Gebrauchsartikel in eine skulpturale Hülle, die von einer abwesenden Aufklärung zeugt.
 

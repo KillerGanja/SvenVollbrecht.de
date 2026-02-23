@@ -10,4 +10,7 @@ gallery_images:
   - /uploads/032.jpg
   - /uploads/013.jpg
 lang: de
+
+translation_key_title: exhibition_schöneberger-art_title
+translation_key_body: exhibition_schöneberger-art_body
 ---

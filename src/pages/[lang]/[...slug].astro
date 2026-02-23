@@ -1,0 +1,32 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { t } from "../../utils/i18n";
+import { marked } from "marked";
+
+export async function getStaticPaths() {
+    const pages = ["about", "contact", "impressum", "privacy"];
+    const languages = ["de", "en"];
+
+    return languages.flatMap((lang) => {
+        return pages.map((slug) => ({
+            params: { lang, slug },
+        }));
+    });
+}
+
+const { lang, slug } = Astro.params;
+
+const title = t(`nav_${slug}`, lang);
+const body = t(`page_${slug}_body`, lang);
+const htmlContent = marked.parse(body);
+---
+
+<Layout title={title}>
+    <div class="mx-auto max-w-prose">
+        <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">
+            {title}
+        </h1>
+
+        <div class="prose prose-gray max-w-none" set:html={htmlContent} />
+    </div>
+</Layout>

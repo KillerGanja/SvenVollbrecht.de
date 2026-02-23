@@ -14,6 +14,9 @@ gallery_images:
   - /uploads/mensch_web_05.jpg
   - /uploads/mensch_web_07.jpg
 lang: de
+
+translation_key_title: work_mensch_title
+translation_key_body: work_mensch_body
 ---
 Werkserie „Mensch“ bestehend aus fünf Skulpturen.
 

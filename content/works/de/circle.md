@@ -9,6 +9,9 @@ cover_image: /uploads/vollbrecht__circle.jpg
 gallery_images:
   - /uploads/vollbrecht__circle.jpg
 lang: de
+
+translation_key_title: work_circle_title
+translation_key_body: work_circle_body
 ---
 In meiner Rauminstallation steht ein gewöhnlicher Einkaufswagen im Zentrum, ein Objekt, das wir als Vehikel des Konsums und der Versorgung kennen, das hier jedoch zur Lastenbahre wird. Er ist bis zum Rand mit weißen Säcken gefüllt, die sich hochstapeln und in ihrer anonymen Formlosigkeit sowohl an Baumaterial als auch an Körperlichkeit erinnern. Es ist eine fragile Architektur des Provisorischen.
 

@@ -11,6 +11,9 @@ gallery_images:
   - /uploads/present02.jpg
   - /uploads/present01.jpg
 lang: de
+
+translation_key_title: work_present_title
+translation_key_body: work_present_body
 ---
 In meiner Arbeit untersuche ich die Schnittstelle von ritueller Feierlichkeit und industrieller Überproduktion. Drei Ziffernkerzen, originalverpackt und zur Zahl 666 formiert, werden hier zum Ausgangspunkt einer Untersuchung über die Mechanismen des zeitgenössischen Konsums. Es geht mir darum, die subtile, fast spielerische Verführung durch globale Konzerne zu veranschaulichen, die unsere privaten Feste zunehmend in Materialschlachten verwandeln und uns suggerieren, dass Freude über die Akkumulation von unnötigem Zubehör definierbar sei.
 

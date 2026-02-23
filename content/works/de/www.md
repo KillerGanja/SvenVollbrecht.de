@@ -13,6 +13,9 @@ gallery_images:
   - /uploads/21.jpg
   - /uploads/20.jpg
 lang: de
+
+translation_key_title: work_www_title
+translation_key_body: work_www_body
 ---
 In dieser Arbeit geht es um die rastlose Suche nach digitalen Reizen, jenes flüchtige Verlangen nach dem nächsten Klick, in eine physische Form zu übersetzen. Ich habe dafür einen 
 

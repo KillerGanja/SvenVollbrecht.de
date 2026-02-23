@@ -13,6 +13,9 @@ gallery_images:
   - /uploads/033.jpg
   - /uploads/022.jpg
 lang: de
+
+translation_key_title: work_echo_title
+translation_key_body: work_echo_body
 ---
 Ich habe eine Leopard-1-Hülse mit einem Jagdhorn verbunden. Ein Hybrid aus militärischer Entladung und ritueller Signalgebung. Jetzt steht das Objekt im Raum und fordert eine neue Lesart ein: Der Ruf zur Jagd wird zur potenziellen Selbstgefährdung.
 
