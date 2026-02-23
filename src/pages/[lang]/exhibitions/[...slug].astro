@@ -6,7 +6,7 @@ import ImageGallery from "../../../components/ImageGallery.astro";
 
 export async function getStaticPaths() {
     const entries = Object.values(
-        import.meta.glob<any>("../../../content/exhibitions/de/*.md", {
+        import.meta.glob<any>("../../../content/exhibitions/*.md", {
             eager: true,
         }),
     );
@@ -28,9 +28,14 @@ const { lang, slug } = Astro.params;
 const { entry } = Astro.props;
 const { frontmatter } = entry;
 
-const title = t(frontmatter.translation_key_title, lang);
-const body = t(frontmatter.translation_key_body, lang);
-const htmlContent = marked.parse(body);
+const title = frontmatter.title || "";
+const venue = frontmatter[`venue_${lang}`] || frontmatter.venue_de || "";
+const city = frontmatter[`city_${lang}`] || frontmatter.city_de || "";
+const period = frontmatter[`period_${lang}`] || frontmatter.period_de || "";
+const description =
+    frontmatter[`description_${lang}`] || frontmatter.description_de || "";
+
+const htmlContent = marked.parse(description);
 ---
 
 <Layout title={title}>
@@ -38,7 +43,15 @@ const htmlContent = marked.parse(body);
         <h1 class="mb-4 text-3xl font-light tracking-wide text-gray-900">
             {title}
         </h1>
-        <p class="mb-12 text-gray-500">{frontmatter.period}</p>
+
+        <div class="mb-12 space-y-1 text-sm text-gray-600">
+            {venue && <p class="font-medium text-gray-900">{venue}</p>}
+            {
+                (city || period) && (
+                    <p>{[city, period].filter(Boolean).join(", ")}</p>
+                )
+            }
+        </div>
 
         <div class="prose prose-gray max-w-3xl mb-16" set:html={htmlContent} />
 

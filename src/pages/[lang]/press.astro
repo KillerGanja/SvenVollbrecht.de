@@ -10,18 +10,14 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 
 const entries = Object.values(
-    import.meta.glob<any>("../../../content/press/de/*.md", { eager: true }),
+    import.meta.glob<any>("../../content/press/*.md", { eager: true }),
 );
 
 const pressItems = entries
     .map((entry) => ({
         ...entry.frontmatter,
-        title: t(
-            entry.frontmatter.translation_key_title ||
-                `press_${entry.frontmatter.slug}_title`,
-            lang,
-        ),
-        url: entry.frontmatter.url, // Press often links elsewhere
+        title: entry.frontmatter.title,
+        url: entry.frontmatter.url,
         slug: entry.frontmatter.slug,
     }))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());

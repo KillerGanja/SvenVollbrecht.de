@@ -6,7 +6,7 @@ import WorkSlideshow from "../../../components/WorkSlideshow.astro";
 
 export async function getStaticPaths() {
     const entries = Object.values(
-        import.meta.glob<any>("../../../content/works/de/*.md", {
+        import.meta.glob<any>("../../../content/works/*.md", {
             eager: true,
         }),
     );
@@ -28,9 +28,16 @@ const { lang, slug } = Astro.params;
 const { entry } = Astro.props;
 const { frontmatter } = entry;
 
-const title = t(frontmatter.translation_key_title, lang);
-const body = t(frontmatter.translation_key_body, lang);
-const htmlContent = marked.parse(body);
+// Determine localized content
+const title = frontmatter.title || ""; // Title is shared
+const materials =
+    frontmatter[`materials_${lang}`] || frontmatter.materials_de || "";
+const dimensions =
+    frontmatter[`dimensions_${lang}`] || frontmatter.dimensions_de || "";
+const description =
+    frontmatter[`description_${lang}`] || frontmatter.description_de || "";
+
+const htmlContent = marked.parse(description);
 ---
 
 <Layout title={title}>
@@ -58,7 +65,36 @@ const htmlContent = marked.parse(body);
                         </div>
                     )
                 }
-                <!-- Add other fields as needed -->
+                {
+                    materials && (
+                        <div>
+                            <span class="block font-medium text-gray-900">
+                                {t("field_materials", lang) || "Material"}
+                            </span>
+                            <span>{materials}</span>
+                        </div>
+                    )
+                }
+                {
+                    dimensions && (
+                        <div>
+                            <span class="block font-medium text-gray-900">
+                                {t("field_dimensions", lang) || "Maße"}
+                            </span>
+                            <span>{dimensions}</span>
+                        </div>
+                    )
+                }
+                {
+                    frontmatter.series && (
+                        <div>
+                            <span class="block font-medium text-gray-900">
+                                {t("field_series", lang) || "Serie"}
+                            </span>
+                            <span>{frontmatter.series}</span>
+                        </div>
+                    )
+                }
             </div>
         </div>
     </div>

@@ -16,8 +16,21 @@ export async function getStaticPaths() {
 
 const { lang, slug } = Astro.params;
 
-const title = t(`nav_${slug}`, lang);
-const body = t(`page_${slug}_body`, lang);
+// Load all pages
+const pageEntries = import.meta.glob<any>("../../content/pages/*.md", {
+    eager: true,
+});
+const pageEntry = Object.values(pageEntries).find(
+    (p) => p.frontmatter.slug === slug,
+);
+
+if (!pageEntry) {
+    return Astro.redirect(`/${lang}/`);
+}
+
+const { frontmatter } = pageEntry;
+const title = frontmatter.title || t(`nav_${slug}`, lang);
+const body = frontmatter[`body_${lang}`] || frontmatter.body_de || "";
 const htmlContent = marked.parse(body);
 ---
 

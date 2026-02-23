@@ -9,7 +9,7 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 
 const entries = Object.values(
-    import.meta.glob<any>("../../../content/exhibitions/de/*.md", {
+    import.meta.glob<any>("../../../content/exhibitions/*.md", {
         eager: true,
     }),
 );
@@ -17,7 +17,11 @@ const entries = Object.values(
 const exhibitions = entries
     .map((entry) => ({
         ...entry.frontmatter,
-        title: t(entry.frontmatter.translation_key_title, lang),
+        title: entry.frontmatter.title,
+        city:
+            entry.frontmatter[`city_${lang}`] ||
+            entry.frontmatter.city_de ||
+            "",
         url: `/${lang}/exhibitions/${entry.frontmatter.slug}/`,
     }))
     .sort((a, b) => {
