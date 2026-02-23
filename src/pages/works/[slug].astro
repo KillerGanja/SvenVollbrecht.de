@@ -1,51 +1,36 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import WorkSlideshow from "../../../components/WorkSlideshow.astro";
+import Layout from "../../layouts/Layout.astro";
+import WorkSlideshow from "../../components/WorkSlideshow.astro";
 import type { MarkdownInstance } from "astro";
-import type { WorkFrontmatter } from "../../../types";
+import type { WorkFrontmatter } from "../../types";
 
 export async function getStaticPaths() {
     const entries = Object.values(
         import.meta.glob<MarkdownInstance<WorkFrontmatter>>(
-            "../../../../content/works/de/*.md",
+            "../../content/works/de/*.md",
             {
                 eager: true,
             },
         ),
     );
 
-    const paths = [];
-    for (const entry of entries) {
-        paths.push({
-            params: { lang: "de", slug: entry.frontmatter.slug },
-            props: { entry },
-        });
-        paths.push({
-            params: { lang: "en", slug: entry.frontmatter.slug },
-            props: { entry },
-        });
-    }
-    return paths;
+    return entries.map((entry) => ({
+        params: { slug: entry.frontmatter.slug },
+        props: { entry },
+    }));
 }
 
 interface Props {
     entry: MarkdownInstance<WorkFrontmatter>;
 }
 
-const { lang } = Astro.params;
 const { entry } = Astro.props;
 const { frontmatter, Content } = entry;
 
 // Content localization
 const title = frontmatter.title;
-const materials =
-    lang === "en"
-        ? frontmatter.materials_en || frontmatter.materials
-        : frontmatter.materials;
-const dimensions =
-    lang === "en"
-        ? frontmatter.dimensions_en || frontmatter.dimensions
-        : frontmatter.dimensions;
+const materials = frontmatter.materials;
+const dimensions = frontmatter.dimensions;
 
 // Images
 const galleryImages = frontmatter.gallery_images || frontmatter.images || [];
@@ -66,7 +51,7 @@ const allImages = frontmatter.cover_image
                 <WorkSlideshow images={allImages} title={title} />
             ) : (
                 <div class="aspect-[4/5] w-full bg-gray-100 flex items-center justify-center text-gray-400">
-                    {lang === "en" ? "No Images" : "Keine Bilder"}
+                    Keine Bilder
                 </div>
             )
         }
@@ -84,13 +69,7 @@ const allImages = frontmatter.cover_image
             </div>
 
             <div class="prose prose-gray mx-auto work-content">
-                {
-                    lang === "en" && frontmatter.body_en ? (
-                        <div set:html={frontmatter.body_en} />
-                    ) : (
-                        <Content />
-                    )
-                }
+                <Content />
             </div>
         </div>
     </div>

@@ -1,10 +1,6 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from "../layouts/Layout.astro";
 import type { MarkdownInstance } from "astro";
-
-export function getStaticPaths() {
-    return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
-}
 
 interface PressFrontmatter {
     title: string;
@@ -13,12 +9,10 @@ interface PressFrontmatter {
     date: string;
 }
 
-const { lang } = Astro.params;
-
 // alle deutschen Press-Artikel laden
 const entries = Object.values(
     import.meta.glob<MarkdownInstance<PressFrontmatter>>(
-        "../../../content/press/de/*.md",
+        "../../content/press/de/*.md",
         {
             eager: true,
         },
@@ -49,10 +43,10 @@ const pressByYear = sortedEntries.reduce(
     {} as Record<number, typeof sortedEntries>,
 );
 
-const displayTitle = lang === "en" ? "Press" : "Presse";
+const displayTitle = "Presse";
 ---
 
-<Layout title={displayTitle} lang={lang}>
+<Layout title={displayTitle}>
     <h1 class="text-[1.25rem] font-bold text-gray-900 mb-4 lg:mb-6">
         {displayTitle}
     </h1>
@@ -85,7 +79,7 @@ const displayTitle = lang === "en" ? "Press" : "Presse";
                                         {" "}
                                         – {item.medium}
                                         {item.date &&
-                                            `, ${new Date(item.date).toLocaleDateString(lang === "en" ? "en-US" : "de-DE", { month: "2-digit", year: "numeric" })}`}
+                                            `, ${new Date(item.date).toLocaleDateString("de-DE", { month: "2-digit", year: "numeric" })}`}
                                     </span>
                                 )}
                             </li>

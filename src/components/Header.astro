@@ -1,29 +1,13 @@
 ---
-import LanguageSwitcher from "./LanguageSwitcher.astro";
-
-interface Props {
-    lang?: string;
-}
-
-const { lang: propLang } = Astro.props;
-const { lang: paramsLang } = Astro.params;
-const currentLang = propLang || paramsLang || "de";
-
-const baseLinks = [
-    { href: "/works", label: "Arbeiten", enLabel: "Works" },
-    { href: "/exhibitions", label: "Ausstellungen", enLabel: "Exhibitions" },
-    { href: "/press", label: "Presse", enLabel: "Press" },
-    { href: "/about", label: "Über", enLabel: "About" },
-    { href: "/contact", label: "Kontakt", enLabel: "Contact" },
+const links = [
+    { href: "/works", label: "Arbeiten" },
+    { href: "/exhibitions", label: "Ausstellungen" },
+    { href: "/press", label: "Presse" },
+    { href: "/about", label: "Über" },
+    { href: "/contact", label: "Kontakt" },
 ];
 
-const links = baseLinks.map((link) => {
-    const localizedHref = currentLang === "en" ? `/en${link.href}` : link.href;
-    const localizedLabel = currentLang === "en" ? link.enLabel : link.label;
-    return { href: localizedHref, label: localizedLabel };
-});
-
-const homeHref = currentLang === "en" ? "/en" : "/de";
+const homeHref = "/";
 ---
 
 <header
@@ -40,7 +24,7 @@ const homeHref = currentLang === "en" ? "/en" : "/de";
             Sven Vollbrecht
         </a>
 
-        <!-- Desktop Navigation & Switcher -->
+        <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center gap-12">
             <nav class="flex items-center gap-8">
                 {
@@ -54,12 +38,10 @@ const homeHref = currentLang === "en" ? "/en" : "/de";
                     ))
                 }
             </nav>
-            <LanguageSwitcher lang={currentLang} />
         </div>
 
-        <!-- Mobile Menu Button & Switcher -->
+        <!-- Mobile Menu Button -->
         <div class="flex items-center gap-4 md:hidden">
-            <LanguageSwitcher lang={currentLang} />
             <button
                 id="menu-toggle"
                 class="flex h-10 w-10 items-center justify-center rounded-md p-2 text-gray-600 hover:bg-gray-100"

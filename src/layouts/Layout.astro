@@ -8,7 +8,7 @@ interface Props {
   lang?: string;
 }
 
-const { title = "Sven Vollbrecht", lang = "de" } = Astro.props;
+const { title = "Sven Vollbrecht" } = Astro.props;
 ---
 
 <style>
@@ -17,7 +17,7 @@ const { title = "Sven Vollbrecht", lang = "de" } = Astro.props;
   }
 </style>
 
-<html lang={lang}>
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -27,7 +27,7 @@ const { title = "Sven Vollbrecht", lang = "de" } = Astro.props;
   </head>
   <body class="flex min-h-screen flex-col bg-white text-gray-900 antialiased">
     <ScreenSizeIndicator />
-    <Header lang={lang} />
+    <Header />
 
     <main
       class="mx-auto w-full max-w-screen-2xl flex-grow px-4 py-10 sm:px-8 lg:px-16"
@@ -52,10 +52,10 @@ const { title = "Sven Vollbrecht", lang = "de" } = Astro.props;
         <!-- Rechts: Links -->
         <div class="flex justify-center gap-6 sm:justify-end">
           <a href="/impressum" class="transition-colors hover:text-gray-900"
-            >{lang === "en" ? "Legal Notice" : "Impressum"}</a
+            >Impressum</a
           >
           <a href="/datenschutz" class="transition-colors hover:text-gray-900"
-            >{lang === "en" ? "Privacy Policy" : "Datenschutz"}</a
+            >Datenschutz</a
           >
         </div>
       </div>

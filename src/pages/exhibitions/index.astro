@@ -1,17 +1,11 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import type { MarkdownInstance } from "astro";
-
-export function getStaticPaths() {
-    return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
-}
-
-const { lang } = Astro.params;
 
 // Load entries
 const entries = Object.values(
     import.meta.glob<MarkdownInstance<any>>(
-        "../../../../content/exhibitions/de/*.md",
+        "../../content/exhibitions/de/*.md",
         { eager: true },
     ),
 );
@@ -20,10 +14,7 @@ const entries = Object.values(
 const exhibitions = entries
     .map((entry) => ({
         ...entry.frontmatter,
-        url:
-            lang === "en"
-                ? `/en/exhibitions/${entry.frontmatter.slug}/`
-                : `/exhibitions/${entry.frontmatter.slug}/`,
+        url: `/exhibitions/${entry.frontmatter.slug}/`,
     }))
     .sort((a, b) => {
         const orderA = (a as any).order ?? 9999;
@@ -32,21 +23,17 @@ const exhibitions = entries
         return ((b as any).year ?? 0) - ((a as any).year ?? 0);
     });
 
-const title = lang === "en" ? "Exhibitions" : "Ausstellungen";
+const title = "Ausstellungen";
 ---
 
-<Layout title={title} lang={lang}>
+<Layout title={title}>
     <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">
         {title}
     </h1>
 
     {
         exhibitions.length === 0 ? (
-            <p class="text-gray-500">
-                {lang === "en"
-                    ? "No exhibitions found."
-                    : "Noch keine Ausstellungen angelegt."}
-            </p>
+            <p class="text-gray-500">Noch keine Ausstellungen angelegt.</p>
         ) : (
             <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {exhibitions.map((exhib) => (
@@ -60,7 +47,7 @@ const title = lang === "en" ? "Exhibitions" : "Ausstellungen";
                                 />
                             ) : (
                                 <div class="flex h-full w-full items-center justify-center text-gray-400">
-                                    {lang === "en" ? "No Image" : "Kein Bild"}
+                                    Kein Bild
                                 </div>
                             )}
                         </div>

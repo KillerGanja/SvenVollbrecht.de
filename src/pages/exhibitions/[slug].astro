@@ -1,33 +1,24 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import type { MarkdownInstance } from "astro";
-import ImageGallery from "../../../components/ImageGallery.astro";
+import ImageGallery from "../../components/ImageGallery.astro";
 
 export async function getStaticPaths() {
     const entries = Object.values(
         import.meta.glob<MarkdownInstance<any>>(
-            "../../../../content/exhibitions/de/*.md",
+            "../../content/exhibitions/de/*.md",
             {
                 eager: true,
             },
         ),
     );
 
-    const paths = [];
-    for (const entry of entries) {
-        paths.push({
-            params: { lang: "de", slug: entry.frontmatter.slug },
-            props: { entry },
-        });
-        paths.push({
-            params: { lang: "en", slug: entry.frontmatter.slug },
-            props: { entry },
-        });
-    }
-    return paths;
+    return entries.map((entry) => ({
+        params: { slug: entry.frontmatter.slug },
+        props: { entry },
+    }));
 }
 
-const { lang } = Astro.params;
 const { entry } = Astro.props;
 const { frontmatter, Content } = entry;
 ---
@@ -36,7 +27,7 @@ const { frontmatter, Content } = entry;
     <h1>{frontmatter.title}</h1>
 
     <p>
-        <strong>{lang === "en" ? "Place:" : "Ort:"}</strong>
+        <strong>Ort:</strong>
         {frontmatter.venue ? frontmatter.venue : ""}
         {frontmatter.city && `, ${frontmatter.city}`}
         {frontmatter.year && ` (${frontmatter.year})`}
@@ -45,16 +36,14 @@ const { frontmatter, Content } = entry;
     {
         frontmatter.period && (
             <p>
-                <strong>{lang === "en" ? "Period:" : "Zeitraum:"}</strong>{" "}
-                {frontmatter.period}
+                <strong>Zeitraum:</strong> {frontmatter.period}
             </p>
         )
     }
     {
         frontmatter.type && (
             <p>
-                <strong>{lang === "en" ? "Type:" : "Typ:"}</strong>{" "}
-                {frontmatter.type}
+                <strong>Typ:</strong> {frontmatter.type}
             </p>
         )
     }
@@ -70,12 +59,6 @@ const { frontmatter, Content } = entry;
     }
 
     <div class="prose prose-gray max-w-none">
-        {
-            lang === "en" && frontmatter.body_en ? (
-                <div set:html={frontmatter.body_en} />
-            ) : (
-                <Content />
-            )
-        }
+        <Content />
     </div>
 </Layout>

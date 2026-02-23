@@ -1,18 +1,12 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import type { MarkdownInstance } from "astro";
-import type { WorkFrontmatter } from "../../../types";
-
-export function getStaticPaths() {
-    return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
-}
-
-const { lang } = Astro.params;
+import type { WorkFrontmatter } from "../../types";
 
 // Load entries
 const worksEntries = Object.values(
     import.meta.glob<MarkdownInstance<WorkFrontmatter>>(
-        "../../../../content/works/de/*.md",
+        "../../content/works/de/*.md",
         {
             eager: true,
         },
@@ -23,12 +17,7 @@ const worksEntries = Object.values(
 const works = worksEntries
     .map((entry) => ({
         ...entry.frontmatter,
-        url:
-            lang === "en"
-                ? `/en/works/${entry.frontmatter.slug}/`
-                : `/works/${entry.frontmatter.slug}/`,
-        displayTitle:
-            lang === "en" ? entry.frontmatter.title : entry.frontmatter.title,
+        url: `/works/${entry.frontmatter.slug}/`,
     }))
     .sort((a, b) => {
         const orderA = a.order ?? 9999;
@@ -37,21 +26,17 @@ const works = worksEntries
         return (Number(b.year) || 0) - (Number(a.year) || 0);
     });
 
-const title = lang === "en" ? "Works – Overview" : "Arbeiten – Übersicht";
+const title = "Arbeiten – Übersicht";
 ---
 
-<Layout title={title} lang={lang}>
+<Layout title={title}>
     <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">
-        {lang === "en" ? "Works" : "Arbeiten"}
+        Arbeiten
     </h1>
 
     {
         works.length === 0 ? (
-            <p class="text-gray-500">
-                {lang === "en"
-                    ? "No works found."
-                    : "Noch keine Werke angelegt."}
-            </p>
+            <p class="text-gray-500">Noch keine Werke angelegt.</p>
         ) : (
             <div class="grid grid-cols-2 gap-4 md:gap-8 md:grid-cols-3 xl:grid-cols-4">
                 {works.map((work) => (
@@ -65,7 +50,7 @@ const title = lang === "en" ? "Works – Overview" : "Arbeiten – Übersicht";
                                 />
                             ) : (
                                 <div class="flex h-full w-full items-center justify-center text-gray-400">
-                                    {lang === "en" ? "No Image" : "Kein Bild"}
+                                    Kein Bild
                                 </div>
                             )}
                         </div>
