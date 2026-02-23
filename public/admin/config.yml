@@ -13,17 +13,20 @@ collections:
   # TRANSLATION TABLE (Backend)
   - name: "translations"
     label: "Übersetzungen (Tabelle)"
-    file: "src/content/ui/table.json"
-    fields:
-      - label: "Einträge"
-        name: "translations"
-        widget: "list"
-        summary: "{{fields.key}}: {{fields.de}}"
+    files:
+      - label: "Text-Tabelle"
+        name: "table"
+        file: "src/content/ui/table.json"
         fields:
-          - { label: "Variable (NICHT ÄNDERN)", name: "key", widget: "string", hint: "Technischer Schlüssel für die Programmierung" }
-          - { label: "Ort (Dokumentation)", name: "location", widget: "string", hint: "Wo diese Variable auf der Website erscheint" }
-          - { label: "Deutsch", name: "de", widget: "markdown" }
-          - { label: "English", name: "en", widget: "markdown" }
+          - label: "Einträge"
+            name: "translations"
+            widget: "list"
+            summary: "{{fields.key}}: {{fields.de}}"
+            fields:
+              - { label: "Variable (NICHT ÄNDERN)", name: "key", widget: "string", hint: "Technischer Schlüssel für die Programmierung" }
+              - { label: "Ort (Dokumentation)", name: "location", widget: "string", hint: "Wo diese Variable auf der Website erscheint" }
+              - { label: "Deutsch", name: "de", widget: "markdown" }
+              - { label: "English", name: "en", widget: "markdown" }
 
   # WORKS
   - name: "works"
