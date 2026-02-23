@@ -6,7 +6,7 @@ import type { WorkFrontmatter } from "../../types";
 // Load entries
 const worksEntries = Object.values(
     import.meta.glob<MarkdownInstance<WorkFrontmatter>>(
-        "../../content/works/de/*.md",
+        "../../../content/works/de/*.md",
         {
             eager: true,
         },

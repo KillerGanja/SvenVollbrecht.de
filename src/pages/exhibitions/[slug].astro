@@ -6,7 +6,7 @@ import ImageGallery from "../../components/ImageGallery.astro";
 export async function getStaticPaths() {
     const entries = Object.values(
         import.meta.glob<MarkdownInstance<any>>(
-            "../../content/exhibitions/de/*.md",
+            "../../../content/exhibitions/de/*.md",
             {
                 eager: true,
             },
