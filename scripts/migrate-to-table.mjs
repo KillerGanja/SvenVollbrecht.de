@@ -8,7 +8,8 @@ const ROOT = path.join(__dirname, '..');
 const CONTENT_DIR = path.join(ROOT, 'content');
 const TABLE_PATH = path.join(ROOT, 'src/content/ui/table.json');
 
-const table = JSON.parse(fs.readFileSync(TABLE_PATH, 'utf-8'));
+const tableData = JSON.parse(fs.readFileSync(TABLE_PATH, 'utf-8'));
+const table = tableData.translations || [];
 
 function slugify(text) {
     return text.toString().toLowerCase()
@@ -74,5 +75,5 @@ processDirectory(path.join(CONTENT_DIR, 'exhibitions/de'), 'exhibition');
 processDirectory(path.join(CONTENT_DIR, 'press/de'), 'press');
 processDirectory(path.join(CONTENT_DIR, 'pages'), 'page');
 
-fs.writeFileSync(TABLE_PATH, JSON.stringify(table, null, 2));
+fs.writeFileSync(TABLE_PATH, JSON.stringify({ translations: table }, null, 2));
 console.log("Migration complete. Table saved to src/content/ui/table.json");
