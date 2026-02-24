@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 const { lang, slug } = Astro.params;
 
 // Load all pages
-const pageEntries = import.meta.glob<any>("../../../content/pages/*.md", {
+const pageEntries = import.meta.glob<any>("../../../../content/pages/*.md", {
     eager: true,
 });
 const pageEntry = Object.values(pageEntries).find(
@@ -25,7 +25,10 @@ const pageEntry = Object.values(pageEntries).find(
 );
 
 if (!pageEntry) {
-    return new Response(`Page not found: ${slug}`, { status: 404 });
+    return new Response(
+        `Page not found: ${slug} at ../../../../content/pages/`,
+        { status: 404 },
+    );
 }
 
 const { frontmatter } = pageEntry;
