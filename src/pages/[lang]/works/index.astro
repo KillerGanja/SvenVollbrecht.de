@@ -10,7 +10,7 @@ const { lang } = Astro.params;
 
 // Load entries (skeletons)
 const worksEntries = Object.values(
-    import.meta.glob<any>("../../../../content/works/*.md", {
+    import.meta.glob<any>("../../../content/works/*.md", {
         eager: true,
     }),
 );

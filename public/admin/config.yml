@@ -31,7 +31,7 @@ collections:
   # ARBEITEN (Works)
   - name: "works"
     label: "Arbeiten"
-    folder: "content/works"
+    folder: "src/content/works"
     extension: "md"
     format: "yaml-frontmatter"
     create: true
@@ -60,7 +60,7 @@ collections:
   # AUSSTELLUNGEN (Exhibitions)
   - name: "exhibitions"
     label: "Ausstellungen"
-    folder: "content/exhibitions"
+    folder: "src/content/exhibitions"
     extension: "md"
     format: "yaml-frontmatter"
     create: true
@@ -84,7 +84,7 @@ collections:
   # PRESSE (Press)
   - name: "press"
     label: "Presse"
-    folder: "content/press"
+    folder: "src/content/press"
     extension: "md"
     format: "yaml-frontmatter"
     create: true
@@ -102,7 +102,7 @@ collections:
     files:
       - label: "Startseite"
         name: "home"
-        file: "content/pages/home.md"
+        file: "src/content/pages/home.md"
         format: "yaml-frontmatter"
         fields:
           - { label: "Titel (Variablen-Key)", name: "title", widget: "hidden", default: "home" }
@@ -112,7 +112,7 @@ collections:
           - { label: "Slug", name: "slug", widget: "hidden", default: "home" }
       - label: "Über mich"
         name: "about"
-        file: "content/pages/about.md"
+        file: "src/content/pages/about.md"
         format: "yaml-frontmatter"
         fields:
           - { label: "Titel", name: "title", widget: "string", default: "Über mich" }
@@ -121,7 +121,7 @@ collections:
           - { label: "Slug", name: "slug", widget: "hidden", default: "about" }
       - label: "Kontakt"
         name: "contact"
-        file: "content/pages/contact.md"
+        file: "src/content/pages/contact.md"
         format: "yaml-frontmatter"
         fields:
           - { label: "Titel", name: "title", widget: "string", default: "Kontakt" }
@@ -130,7 +130,7 @@ collections:
           - { label: "Slug", name: "slug", widget: "hidden", default: "contact" }
       - label: "Impressum"
         name: "impressum"
-        file: "content/pages/impressum.md"
+        file: "src/content/pages/impressum.md"
         format: "yaml-frontmatter"
         fields:
           - { label: "Titel", name: "title", widget: "string", default: "Impressum" }
@@ -139,7 +139,7 @@ collections:
           - { label: "Slug", name: "slug", widget: "hidden", default: "impressum" }
       - label: "Datenschutz"
         name: "privacy"
-        file: "content/pages/privacy.md"
+        file: "src/content/pages/privacy.md"
         format: "yaml-frontmatter"
         fields:
           - { label: "Titel", name: "title", widget: "string", default: "Datenschutz" }
