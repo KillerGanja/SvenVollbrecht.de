@@ -1,6 +1,6 @@
 ---
-import Layout from "../../../../layouts/Layout.astro";
-import { t } from "../../../../utils/i18n";
+import Layout from "../../../layouts/Layout.astro";
+import { t } from "../../../utils/i18n";
 
 export function getStaticPaths() {
     return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
@@ -9,7 +9,7 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 
 const entries = Object.values(
-    import.meta.glob<any>("../../../../../content/exhibitions/*.md", {
+    import.meta.glob<any>("../../../../content/exhibitions/*.md", {
         eager: true,
     }),
 );

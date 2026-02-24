@@ -1,6 +1,6 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import { t } from "../../../utils/i18n";
+import Layout from "../../layouts/Layout.astro";
+import { t } from "../../utils/i18n";
 import { marked } from "marked";
 
 export function getStaticPaths() {
@@ -10,7 +10,7 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 
 // Load static data
-const homeEntries = import.meta.glob<any>("../../../../content/pages/home.md", {
+const homeEntries = import.meta.glob<any>("../../../content/pages/home.md", {
     eager: true,
 });
 const homeEntry = Object.values(homeEntries)[0];

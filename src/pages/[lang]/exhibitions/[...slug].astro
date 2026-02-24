@@ -1,12 +1,12 @@
 ---
-import Layout from "../../../../layouts/Layout.astro";
-import { t } from "../../../../utils/i18n";
+import Layout from "../../../layouts/Layout.astro";
+import { t } from "../../../utils/i18n";
 import { marked } from "marked";
-import ImageGallery from "../../../../components/ImageGallery.astro";
+import ImageGallery from "../../../components/ImageGallery.astro";
 
 export async function getStaticPaths() {
     const entries = Object.values(
-        import.meta.glob<any>("../../../../../content/exhibitions/*.md", {
+        import.meta.glob<any>("../../../../content/exhibitions/*.md", {
             eager: true,
         }),
     );
