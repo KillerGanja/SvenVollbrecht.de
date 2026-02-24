@@ -6,7 +6,7 @@ import ImageGallery from "../../../components/ImageGallery.astro";
 
 export async function getStaticPaths() {
     const entries = Object.values(
-        import.meta.glob<any>("../../../content/exhibitions/*.md", {
+        import.meta.glob<any>("../../../../../content/exhibitions/*.md", {
             eager: true,
         }),
     );

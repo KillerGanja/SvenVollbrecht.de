@@ -10,7 +10,7 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 
 // Load static data
-const homeEntries = import.meta.glob<any>("../../../content/pages/home.md", {
+const homeEntries = import.meta.glob<any>("../../../../content/pages/home.md", {
     eager: true,
 });
 const homeEntry = Object.values(homeEntries)[0];

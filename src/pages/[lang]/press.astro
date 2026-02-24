@@ -10,7 +10,7 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 
 const entries = Object.values(
-    import.meta.glob<any>("../../content/press/*.md", { eager: true }),
+    import.meta.glob<any>("../../../content/press/*.md", { eager: true }),
 );
 
 const pressItems = entries

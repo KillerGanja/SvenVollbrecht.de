@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 const { lang, slug } = Astro.params;
 
 // Load all pages
-const pageEntries = import.meta.glob<any>("../../content/pages/*.md", {
+const pageEntries = import.meta.glob<any>("../../../../content/pages/*.md", {
     eager: true,
 });
 const pageEntry = Object.values(pageEntries).find(
