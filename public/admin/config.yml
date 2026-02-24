@@ -95,11 +95,6 @@ collections:
       - { label: "MEDIUM (OPTIONAL)", name: "medium", widget: "string", required: false }
       - { label: "DATUM (OPTIONAL)", name: "date", widget: "datetime", format: "YYYY-MM-DD", dateFormat: "DD.MM.YYYY", timeFormat: false, required: false }
       - { label: "LINK / DATEI (OPTIONAL)", name: "url", widget: "string", required: false }
-      - { label: "TITEL (DE)", name: "title_de", widget: "string", required: false }
-      - { label: "TITEL (EN)", name: "title_en", widget: "string", required: false }
-      - { label: "AUTOR (DE)", name: "author_de", widget: "string", required: false }
-      - { label: "AUTOR (EN)", name: "author_en", widget: "string", required: false }
-      - { label: "SPRACHE (z.B. DE)", name: "lang_label", widget: "string", required: false }
       - { label: "TEXT (DE)", name: "text_de", widget: "markdown", required: false }
       - { label: "TEXT (EN)", name: "text_en", widget: "markdown", required: false }
 

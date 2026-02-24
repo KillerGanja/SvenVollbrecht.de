@@ -19,9 +19,8 @@ const processedItems = await Promise.all(
         const fm = entry.frontmatter;
         const itemDate = fm.date ? new Date(fm.date) : new Date(0);
 
-        // Localized resolution
-        const displayTitle = fm[`title_${lang}`] || fm.title || "";
-        const displayAuthor = fm[`author_${lang}`] || fm.author_de || "";
+        // Localized resolution: Use the primary title and localized text
+        const displayTitle = fm.title || "";
         const bodyContent = fm[`text_${lang}`] || fm.text_de || "";
         const htmlContent = bodyContent ? await marked.parse(bodyContent) : "";
 
@@ -33,9 +32,7 @@ const processedItems = await Promise.all(
                 year: "numeric",
             }),
             displayTitle,
-            displayAuthor,
             displayMedium: fm.medium || "",
-            displayLang: fm.lang_label ? `(${fm.lang_label})` : "",
             htmlContent,
         };
     }),
@@ -61,11 +58,10 @@ const sortedYears = Object.keys(groupedPress)
     .sort((a, b) => b - a);
 
 const title = t("nav_press", lang);
-const labelBy = t("label_by", lang) || "von";
 ---
 
 <Layout title={title}>
-    <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">
+    <h1 class="mb-12 text-xl font-bold tracking-wide text-gray-900">
         {title}
     </h1>
 
@@ -73,13 +69,13 @@ const labelBy = t("label_by", lang) || "von";
         {
             sortedYears.map((year) => (
                 <section>
-                    <h2 class="text-2xl font-light text-gray-900 mb-8">
+                    <h2 class="text-lg font-light text-gray-900 mb-8">
                         {year}
                     </h2>
-                    <div class="space-y-6">
+                    <div class="space-y-8">
                         {groupedPress[year].map((item) => (
                             <article>
-                                <div class="text-lg text-gray-800 leading-relaxed font-light">
+                                <div class="text-base text-gray-800 leading-relaxed font-light">
                                     <span class="group">
                                         {item.url ? (
                                             <a
@@ -94,19 +90,6 @@ const labelBy = t("label_by", lang) || "von";
                                             item.displayTitle
                                         )}
                                     </span>
-
-                                    {item.displayLang && (
-                                        <span class="text-gray-500 ml-1">
-                                            {item.displayLang}
-                                        </span>
-                                    )}
-
-                                    {item.displayAuthor && (
-                                        <span class="text-gray-500">
-                                            {" "}
-                                            {labelBy} {item.displayAuthor}
-                                        </span>
-                                    )}
 
                                     {item.displayMedium && (
                                         <span class="text-gray-400">
