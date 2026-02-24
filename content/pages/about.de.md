@@ -16,5 +16,3 @@ Im Zentrum seiner Praxis steht die kritische Auseinandersetzung mit gesellschaft
 Interaktivität ist ein zentrales Element in Vollbrechts Arbeit. Durch partizipative Installationen werden Betrachter*innen aktiv in das Werk einbezogen und dazu angeregt, Bedeutung durch persönliche Erfahrung zu formen, statt Kunst nur passiv zu betrachten.
 
 Vollbrecht zeigte seine Arbeiten unter anderem bei der Berlin Art Week 2022, Schöneberger Art 2022, im Haus am Kleistpark 2023, sowie in der Notagallery 2024/25.
-
-public/uploads/portfolio_svenvollbrecht_feb2026.pdf
