@@ -77,6 +77,12 @@
       "location": "Exhibition Details",
       "de": "Veranstaltungsort",
       "en": "Venue"
+    },
+    {
+      "key": "label_by",
+      "location": "Press Items",
+      "de": "von",
+      "en": "by"
     }
   ]
 }

@@ -90,11 +90,16 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Medium", name: "medium", widget: "string", required: false }
-      - { label: "Datum", name: "date", widget: "date" }
-      - { label: "Link", name: "url", widget: "string", required: false }
+      - { label: "Titel (Variablen-Key / Anzeige)", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Medium / Publikation", name: "medium", widget: "string", required: false }
+      - { label: "Datum", name: "date", widget: "date", format: "YYYY-MM-DD", display_format: "DD.MM.YYYY" }
+      - { label: "Link", name: "url", widget: "string", required: false }
+      - { label: "Titel (DE)", name: "title_de", widget: "string", required: false }
+      - { label: "Titel (EN)", name: "title_en", widget: "string", required: false }
+      - { label: "Autor (DE)", name: "author_de", widget: "string", required: false }
+      - { label: "Autor (EN)", name: "author_en", widget: "string", required: false }
+      - { label: "Sprach-Hinweis (z.B. DE)", name: "lang_label", widget: "string", required: false }
 
   # SEITEN (Static Pages)
   - name: "pages"

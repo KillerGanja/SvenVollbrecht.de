@@ -13,16 +13,47 @@ const entries = Object.values(
     import.meta.glob<any>("../../content/press/*.md", { eager: true }),
 );
 
-const pressItems = entries
-    .map((entry) => ({
-        ...entry.frontmatter,
-        title: entry.frontmatter.title,
-        url: entry.frontmatter.url,
-        slug: entry.frontmatter.slug,
-    }))
+// Process and sort items by date
+const processedItems = entries
+    .map((entry) => {
+        const fm = entry.frontmatter;
+        const itemDate = fm.date ? new Date(fm.date) : new Date(0);
+
+        return {
+            ...fm,
+            year: itemDate.getFullYear(),
+            formattedDate: itemDate.toLocaleDateString("de-DE", {
+                month: "2-digit",
+                year: "numeric",
+            }),
+            // Localized resolution
+            displayTitle: fm[`title_${lang}`] || fm.title || "",
+            displayAuthor: fm[`author_${lang}`] || fm.author_de || "",
+            displayMedium: fm.medium || "",
+            displayLang: fm.lang_label ? `(${fm.lang_label})` : "",
+        };
+    })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
+// Group items by year
+const groupedPress = processedItems.reduce(
+    (acc, item) => {
+        const year = item.year;
+        if (!acc[year]) {
+            acc[year] = [];
+        }
+        acc[year].push(item);
+        return acc;
+    },
+    {} as Record<number, typeof processedItems>,
+);
+
+const sortedYears = Object.keys(groupedPress)
+    .map(Number)
+    .sort((a, b) => b - a);
+
 const title = t("nav_press", lang);
+const labelBy = t("label_by", lang) || "von";
 ---
 
 <Layout title={title}>
@@ -30,43 +61,58 @@ const title = t("nav_press", lang);
         {title}
     </h1>
 
-    <div class="space-y-12 max-w-3xl">
+    <div class="space-y-16 max-w-4xl">
         {
-            pressItems.map((item) => (
-                <article class="border-b border-gray-100 pb-12 last:border-0">
-                    <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb-4">
-                        <time class="text-sm font-medium text-gray-400 tabular-nums">
-                            {item.date
-                                ? new Date(item.date).toLocaleDateString(
-                                      lang === "de" ? "de-DE" : "en-US",
-                                      {
-                                          year: "numeric",
-                                          month: "2-digit",
-                                          day: "2-digit",
-                                      },
-                                  )
-                                : ""}
-                        </time>
-                        <h2 class="text-xl font-medium text-gray-900">
-                            {item.url ? (
-                                <a
-                                    href={item.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="hover:text-blue-600 transition-colors"
-                                >
-                                    {item.title}
-                                </a>
-                            ) : (
-                                item.title
-                            )}
-                        </h2>
+            sortedYears.map((year) => (
+                <section>
+                    <h2 class="text-2xl font-light text-gray-900 mb-8">
+                        {year}
+                    </h2>
+                    <div class="space-y-6">
+                        {groupedPress[year].map((item) => (
+                            <div class="text-lg text-gray-800 leading-relaxed font-light">
+                                <span class="group">
+                                    {item.url ? (
+                                        <a
+                                            href={item.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="hover:underline"
+                                        >
+                                            {item.displayTitle}
+                                        </a>
+                                    ) : (
+                                        item.displayTitle
+                                    )}
+                                </span>
+
+                                {item.displayLang && (
+                                    <span class="text-gray-500 ml-1">
+                                        {item.displayLang}
+                                    </span>
+                                )}
+
+                                {item.displayAuthor && (
+                                    <span class="text-gray-500">
+                                        {" "}
+                                        {labelBy} {item.displayAuthor}
+                                    </span>
+                                )}
+
+                                {item.displayMedium && (
+                                    <span class="text-gray-400">
+                                        {" "}
+                                        – {item.displayMedium}
+                                    </span>
+                                )}
+
+                                <span class="text-gray-400 ml-1">
+                                    , {item.formattedDate}
+                                </span>
+                            </div>
+                        ))}
                     </div>
-                    {item.medium && (
-                        <p class="text-sm text-gray-500 mb-4">{item.medium}</p>
-                    )}
-                    {/* Optional: Add body if needed */}
-                </article>
+                </section>
             ))
         }
     </div>
