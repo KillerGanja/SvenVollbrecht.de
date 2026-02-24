@@ -4,7 +4,7 @@ slug: mensch
 order: 1
 year: 2026
 materials_de: Skulptur, Holz-Gliederpuppe
-materials_en: Sculpture, ooden mannequin
+materials_en: Sculpture, woden mannequin
 dimensions_de: 22 x 5 x 5 cm
 dimensions_en: 8.6 x 1.9 x 1.9 Inch
 description_de: "Werkserie „Mensch“ bestehend aus fünf Skulpturen.\r
