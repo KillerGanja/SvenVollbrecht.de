@@ -44,58 +44,25 @@ const htmlContent = marked.parse(description);
     <div class="mx-auto max-w-screen-xl">
         <WorkSlideshow images={frontmatter.gallery_images} title={title} />
 
-        <div class="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-3">
-            <div class="lg:col-span-2">
-                <div
-                    class="prose prose-gray max-w-none"
-                    set:html={htmlContent}
-                />
+        <!-- Centered Metadata Stack -->
+        <div class="mt-12 mb-12 text-center">
+            <h1 class="text-3xl font-light tracking-wide text-gray-900 mb-4">
+                {title}
+            </h1>
+            <div class="space-y-1 text-gray-500 font-light">
+                {frontmatter.year && <p>{frontmatter.year}</p>}
+                {materials && <p>{materials}</p>}
+                {dimensions && <p>{dimensions}</p>}
+                {frontmatter.series && <p>{frontmatter.series}</p>}
             </div>
+        </div>
 
+        <!-- Centered Description -->
+        <div class="mx-auto max-w-2xl px-4">
             <div
-                class="space-y-6 text-sm text-gray-600 border-l border-gray-100 pl-8"
-            >
-                {
-                    frontmatter.year && (
-                        <div>
-                            <span class="block font-medium text-gray-900">
-                                {t("field_year", lang) || "Jahr"}
-                            </span>
-                            <span>{frontmatter.year}</span>
-                        </div>
-                    )
-                }
-                {
-                    materials && (
-                        <div>
-                            <span class="block font-medium text-gray-900">
-                                {t("field_materials", lang) || "Material"}
-                            </span>
-                            <span>{materials}</span>
-                        </div>
-                    )
-                }
-                {
-                    dimensions && (
-                        <div>
-                            <span class="block font-medium text-gray-900">
-                                {t("field_dimensions", lang) || "Maße"}
-                            </span>
-                            <span>{dimensions}</span>
-                        </div>
-                    )
-                }
-                {
-                    frontmatter.series && (
-                        <div>
-                            <span class="block font-medium text-gray-900">
-                                {t("field_series", lang) || "Serie"}
-                            </span>
-                            <span>{frontmatter.series}</span>
-                        </div>
-                    )
-                }
-            </div>
+                class="prose prose-gray max-w-none text-center"
+                set:html={htmlContent}
+            />
         </div>
     </div>
 </Layout>
