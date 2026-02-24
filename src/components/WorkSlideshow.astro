@@ -43,28 +43,29 @@ function isVideo(path: string) {
     >
         <div id="media-container" class="contents">
             {
-                images.map((src, index) =>
-                    isVideo(src) ? (
-                        <video
-                            id={index === 0 ? "current-media" : undefined}
-                            src={src}
-                            class={`max-h-[80vh] max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
-                            data-index={index}
-                            loop
-                            muted={false}
-                            playsinline
-                            controls
-                        />
-                    ) : (
-                        <img
-                            id={index === 0 ? "current-media" : undefined}
-                            src={src}
-                            alt={title}
-                            class={`max-h-[80vh] max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
-                            data-index={index}
-                        />
-                    ),
-                )
+                Array.isArray(images) &&
+                    images.map((src, index) =>
+                        isVideo(src) ? (
+                            <video
+                                id={index === 0 ? "current-media" : undefined}
+                                src={src}
+                                class={`max-h-[80vh] max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
+                                data-index={index}
+                                loop
+                                muted={false}
+                                playsinline
+                                controls
+                            />
+                        ) : (
+                            <img
+                                id={index === 0 ? "current-media" : undefined}
+                                src={src}
+                                alt={title}
+                                class={`max-h-[80vh] max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
+                                data-index={index}
+                            />
+                        ),
+                    )
             }
         </div>
 
@@ -129,7 +130,7 @@ function isVideo(path: string) {
         });
     }
 
-    if (prevArea && nextArea) {
+    if (prevArea && nextArea && Array.isArray(images) && images.length > 0) {
         prevArea.addEventListener("click", () => {
             currentIndex = (currentIndex - 1 + images.length) % images.length;
             updateMedia();
