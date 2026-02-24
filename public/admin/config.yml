@@ -100,6 +100,16 @@ collections:
   - name: "pages"
     label: "Seiten"
     files:
+      - label: "Startseite"
+        name: "home"
+        file: "content/pages/home.md"
+        format: "yaml-frontmatter"
+        fields:
+          - { label: "Titel (Variablen-Key)", name: "title", widget: "hidden", default: "home" }
+          - { label: "Hauptbild", name: "image", widget: "image" }
+          - { label: "Text (DE)", name: "body_de", widget: "markdown" }
+          - { label: "Text (EN)", name: "body_en", widget: "markdown", required: false }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "home" }
       - label: "Über mich"
         name: "about"
         file: "content/pages/about.md"

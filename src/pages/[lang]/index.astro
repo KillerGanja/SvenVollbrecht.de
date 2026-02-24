@@ -9,15 +9,19 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 
-// Load static data from skeleton file (for image)
-const entries = import.meta.glob<any>("../../../content/pages/home.de.md", {
+// Load static data
+const homeEntries = import.meta.glob<any>("../../../content/pages/home.md", {
     eager: true,
 });
-const entry = Object.values(entries)[0];
-const { frontmatter } = entry;
+const homeEntry = Object.values(homeEntries)[0];
 
+if (!homeEntry) {
+    return Astro.redirect(`/${lang}/`);
+}
+
+const { frontmatter } = homeEntry;
 const title = `Sven Vollbrecht – ${t("nav_home", lang) || "Startseite"}`;
-const body = t("page_home_body", lang);
+const body = frontmatter[`body_${lang}`] || frontmatter.body_de || "";
 const htmlContent = marked.parse(body);
 ---
 

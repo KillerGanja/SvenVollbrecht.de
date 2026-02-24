@@ -47,6 +47,36 @@
       "location": "Navigation Menu",
       "de": "Kontakt",
       "en": "Contact"
+    },
+    {
+      "key": "field_year",
+      "location": "Details Sidebar",
+      "de": "Jahr",
+      "en": "Year"
+    },
+    {
+      "key": "field_materials",
+      "location": "Details Sidebar",
+      "de": "Material",
+      "en": "Materials"
+    },
+    {
+      "key": "field_dimensions",
+      "location": "Details Sidebar",
+      "de": "Maße",
+      "en": "Dimensions"
+    },
+    {
+      "key": "field_series",
+      "location": "Details Sidebar",
+      "de": "Serie",
+      "en": "Series"
+    },
+    {
+      "key": "field_venue",
+      "location": "Exhibition Details",
+      "de": "Veranstaltungsort",
+      "en": "Venue"
     }
   ]
 }
