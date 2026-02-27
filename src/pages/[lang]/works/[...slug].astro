@@ -37,15 +37,22 @@ const dimensions =
 const description =
     frontmatter[`description_${lang}`] || frontmatter.description_de || "";
 
-const htmlContent = marked.parse(description);
+// Pre-process spacing:
+// We interpret 1.5 spacing as line-height 1.5 (global prose style)
+// and 2 line spacing as paragraph breaks with margin.
+const processedDescription = description
+    .replace(/\r\n/g, "\n\n") // Ensure CRLF creates paragraph breaks
+    .replace(/\n(?!\n)/g, "<br />"); // Ensure single LF creates a line break
+
+const htmlContent = marked.parse(processedDescription, { breaks: true });
 ---
 
 <Layout title={title}>
     <div class="mx-auto max-w-screen-xl">
         <WorkSlideshow images={frontmatter.gallery_images} title={title} />
 
-        <!-- Centered Metadata Stack -->
-        <div class="mt-12 mb-12 text-center">
+        <!-- Left-aligned Metadata Stack -->
+        <div class="mt-12 mb-12 text-left">
             <h1 class="text-3xl font-light tracking-wide text-gray-900 mb-4">
                 {title}
             </h1>
@@ -57,10 +64,10 @@ const htmlContent = marked.parse(description);
             </div>
         </div>
 
-        <!-- Centered Description -->
-        <div class="mx-auto max-w-2xl px-4">
+        <!-- Left-aligned Description -->
+        <div class="max-w-4xl">
             <div
-                class="prose prose-gray max-w-none text-center"
+                class="prose prose-gray max-w-none text-left"
                 set:html={htmlContent}
             />
         </div>

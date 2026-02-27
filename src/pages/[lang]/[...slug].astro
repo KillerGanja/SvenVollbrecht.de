@@ -33,7 +33,15 @@ if (!pageEntry) {
 const { frontmatter } = pageEntry;
 const title = t(`nav_${slug}`, lang) || frontmatter.title;
 const body = frontmatter[`body_${lang}`] || frontmatter.body_de || "";
-const htmlContent = marked.parse(body);
+
+// Pre-process spacing:
+// CRLF (\r\n) -> 2 line spacing (Paragraphs)
+// LF (\n) -> 1.5 line spacing (Line breaks)
+const processedBody = body
+    .replace(/\r\n/g, "\n\n")
+    .replace(/\n(?!\n)/g, "<br />");
+
+const htmlContent = marked.parse(processedBody, { breaks: true });
 ---
 
 <Layout title={title}>
