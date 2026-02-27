@@ -41,13 +41,18 @@ description_de: "In meiner achtteiligen Werkserie Albtraum untersuche ich die
   eine Form der Erinnerung, die ins Unheimliche kippt, einem Ort, an dem die
   Grenze zwischen dem Schützenden und dem Bedrohlichen im Nachhall der Spieluhr
   verschwimmt."
-description_en: "In my eight-part series Albtraum (Nightmare), I examine the
-  fractures between childhood security and technical sobriety. Each work follows
-  a rigorous, almost clinical experimental setup: a standard basement light
-  serves as the skeleton, yet it is stripped of its protective glass and
-  bulb—deprived of its actual function. This deliberate displacement of an
-  everyday object transforms the lamp from a mere commodity into a sculptural
-  shell that bears witness to an absent enlightenment."
+description_en: >-
+  In my eight-part series Albtraum (Nightmare), I examine the fractures between
+  childhood security and technical sobriety. Each work follows a rigorous,
+  almost clinical experimental setup: a standard basement light serves as the
+  skeleton, yet it is stripped of its protective glass and bulb—deprived of its
+  actual function. This deliberate displacement of an everyday object transforms
+  the lamp from a mere commodity into a sculptural shell that bears witness to
+  an absent enlightenment.
+
+
+
+  In place of the promised light, the fragmented emerges. I integrate anonymous found objects from the world of toys—decoupled from their original histories—directly into the sockets and combine them with the mechanism of a music box. These material hybrids make the physical distance from one's own childhood palpable, emphasizing the ruptures within collective constructions of memory. While the series follows a coherent formal structure, each of the eight works is dedicated to an individual thematic premise defined by the choice of specific toy fragments.
 cover_image: /uploads/albtraum_werk3.jpg
 gallery_images:
   - /uploads/albtraum01.jpg
