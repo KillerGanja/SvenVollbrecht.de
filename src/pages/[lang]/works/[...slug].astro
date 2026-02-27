@@ -51,9 +51,9 @@ const htmlContent = marked.parse(processedDescription, { breaks: true });
     <div class="mx-auto max-w-screen-xl">
         <WorkSlideshow images={frontmatter.gallery_images} title={title} />
 
-        <!-- Left-aligned Metadata Stack -->
-        <div class="mt-12 mb-12 text-left">
-            <h1 class="text-3xl font-light tracking-wide text-gray-900 mb-4">
+        <!-- Centered Metadata Stack -->
+        <div class="mt-12 mb-12 text-center">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900 mb-4">
                 {title}
             </h1>
             <div class="space-y-1 text-gray-500 font-light">
@@ -65,7 +65,7 @@ const htmlContent = marked.parse(processedDescription, { breaks: true });
         </div>
 
         <!-- Left-aligned Description -->
-        <div class="max-w-4xl">
+        <div class="mx-auto max-w-2xl px-4">
             <div
                 class="prose prose-gray max-w-none text-left"
                 set:html={htmlContent}
