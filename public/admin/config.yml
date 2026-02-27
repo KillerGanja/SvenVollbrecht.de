@@ -120,6 +120,8 @@ collections:
           - { label: "Titel", name: "title", widget: "string", default: "Über mich" }
           - { label: "Inhalt (DE)", name: "body_de", widget: "markdown" }
           - { label: "Inhalt (EN)", name: "body_en", widget: "markdown", required: false }
+          - { label: "Portfolio PDF (DE)", name: "portfolio_de", widget: "file", required: false }
+          - { label: "Portfolio PDF (EN)", name: "portfolio_en", widget: "file", required: false }
           - { label: "Slug", name: "slug", widget: "hidden", default: "about" }
       - label: "Kontakt"
         name: "contact"

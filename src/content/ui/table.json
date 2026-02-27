@@ -83,6 +83,12 @@
       "location": "Press Items",
       "de": "von",
       "en": "by"
+    },
+    {
+      "key": "label_download_portfolio",
+      "location": "About Page",
+      "de": "Hier können Sie das Portfolio von Sven Vollbrecht herunterladen",
+      "en": "Click here to download the portfolio of Sven Vollbrecht"
     }
   ]
 }

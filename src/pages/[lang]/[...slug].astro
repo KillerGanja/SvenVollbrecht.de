@@ -34,6 +34,9 @@ const { frontmatter } = pageEntry;
 const title = t(`nav_${slug}`, lang) || frontmatter.title;
 const body = frontmatter[`body_${lang}`] || frontmatter.body_de || "";
 
+const portfolioPdf = frontmatter[`portfolio_${lang}`] || null;
+const downloadText = t("label_download_portfolio", lang);
+
 // Pre-process spacing:
 // CRLF (\r\n) -> 2 line spacing (Paragraphs)
 // LF (\n) -> 1.5 line spacing (Line breaks)
@@ -51,5 +54,36 @@ const htmlContent = marked.parse(processedBody, { breaks: true });
         </h1>
 
         <div class="prose prose-gray max-w-none" set:html={htmlContent} />
+
+        {
+            slug === "about" && portfolioPdf && (
+                <div class="mt-12 pt-8 border-t border-gray-100">
+                    <a
+                        href={portfolioPdf}
+                        download
+                        class="group inline-flex items-center text-gray-900 hover:text-gray-600 transition-colors duration-200"
+                    >
+                        <div class="mr-3 flex h-8 w-8 items-center justify-center rounded-full bg-gray-50 transition-colors duration-200 group-hover:bg-gray-100">
+                            <svg
+                                class="h-4 w-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
+                                />
+                            </svg>
+                        </div>
+                        <span class="font-light tracking-wide">
+                            {downloadText}
+                        </span>
+                    </a>
+                </div>
+            )
+        }
     </div>
 </Layout>
