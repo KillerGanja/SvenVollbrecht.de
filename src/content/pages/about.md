@@ -24,4 +24,5 @@ body_de: >-
 body_en: Sven Vollbrecht was born in West Berlin. He lives and works in Berlin, Germany
 slug: about
 lang: de
+portfolio_de: /uploads/portfolio_svenvollbrecht_feb2026.pdf
 ---
