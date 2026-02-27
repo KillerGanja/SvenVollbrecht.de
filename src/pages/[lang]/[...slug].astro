@@ -31,7 +31,7 @@ if (!pageEntry) {
 }
 
 const { frontmatter } = pageEntry;
-const title = frontmatter.title || t(`nav_${slug}`, lang);
+const title = t(`nav_${slug}`, lang) || frontmatter.title;
 const body = frontmatter[`body_${lang}`] || frontmatter.body_de || "";
 const htmlContent = marked.parse(body);
 ---
