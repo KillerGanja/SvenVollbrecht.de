@@ -22,7 +22,8 @@ body_de: >-
 
   Vollbrecht zeigte seine Arbeiten unter anderem bei der Berlin Art Week 2022, Schöneberger Art 2022, im Haus am Kleistpark 2023, sowie in der Notagallery 2024/25.
 body_en: Sven Vollbrecht was born in West Berlin. He lives and works in Berlin, Germany
+portfolio_en: /uploads/portfolio_svenvollbrecht_feb2026_en.pdf
 slug: about
 lang: de
-portfolio_de: /uploads/portfolio_svenvollbrecht_feb2026.pdf
+portfolio_de: /uploads/portfolio_svenvollbrecht_feb2026_de.pdf
 ---
