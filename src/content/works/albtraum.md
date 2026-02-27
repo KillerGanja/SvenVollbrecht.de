@@ -3,7 +3,51 @@ title: ALBTRAUM
 slug: albtraum
 order: 2
 year: 2025
-series: ''
+series: ""
+materials_de: Wandobjekt, Kellerlampe, Spieluhr, diverse Spielzeuge
+materials_en: ""
+dimensions_de: 70 x 27 x 18 cm
+dimensions_en: ""
+description_de: "In meiner achtteiligen Werkserie Albtraum untersuche ich die
+  Bruchstellen zwischen kindlicher Geborgenheit und technischer Nüchternheit.
+  Jede Arbeit folgt einer strengen, fast klinischen Versuchsanordnung: Eine
+  handelsübliche Kellerleuchte bildet das Skelett, jedoch ohne schützendes Glas,
+  ohne Leuchtmittel, ihrer eigentlichen Funktion beraubt. Diese bewusste
+  Deplatzierung des Alltagsgegenstands transformiert die Lampe von einem bloßen
+  Gebrauchsartikel in eine skulpturale Hülle, die von einer abwesenden
+  Aufklärung zeugt.\r
+
+  \r
+
+  An die Stelle des versprochenen Lichts tritt das Fragmentierte. Ich verbaue
+  anonyme Fundstücke aus der Spielzeugwelt, entkoppelt von ihrer ursprünglichen
+  Geschichte, direkt in die Fassungen und kombiniere sie mit dem Mechanismus
+  einer Spieluhr. Diese materiellen Hybride machen die physische Distanz zur
+  eigenen Kindheit spürbar und betonen die Brüche innerhalb kollektiver
+  Erinnerungskonstruktionen. Während die Serie einem kohärenten formalen Aufbau
+  folgt, widmet sich jedes der acht Werke einer individuellen thematischen
+  Setzung, die durch die Wahl der spezifischen Spielzeugfragmente definiert
+  wird.\r
+
+  \r
+
+  Erst durch die physische Interaktion des Publikums: Ein gezielter Zug am
+  unteren Ende der Skulptur, wird die vertraute Melodie eines Schlaflieds in den
+  Raum entlassen. Dieser Akt des Auslösens ist ambivalent: Er löst eine
+  unmittelbare emotionale Reaktion aus, fordert aber gleichzeitig eine
+  Konfrontation mit der kargen, beinahe gewaltvollen Ästhetik des Trägerobjekts.
+  Es entsteht ein Spannungsfeld zwischen dieser harten, funktionalen Logik und
+  der fragilen Aufladung der Fundstücke. Das Werk wird so zum Resonanzraum für
+  eine Form der Erinnerung, die ins Unheimliche kippt, einem Ort, an dem die
+  Grenze zwischen dem Schützenden und dem Bedrohlichen im Nachhall der Spieluhr
+  verschwimmt."
+description_en: "In my eight-part series Albtraum (Nightmare), I examine the
+  fractures between childhood security and technical sobriety. Each work follows
+  a rigorous, almost clinical experimental setup: a standard basement light
+  serves as the skeleton, yet it is stripped of its protective glass and
+  bulb—deprived of its actual function. This deliberate displacement of an
+  everyday object transforms the lamp from a mere commodity into a sculptural
+  shell that bears witness to an absent enlightenment."
 cover_image: /uploads/albtraum_werk3.jpg
 gallery_images:
   - /uploads/albtraum01.jpg
@@ -16,11 +60,4 @@ gallery_images:
   - /uploads/01a.jpg
   - /uploads/insta0a1.jpg
 lang: de
-materials_de: 'Wandobjekt, Kellerlampe, Spieluhr, diverse Spielzeuge'
-materials_en: ''
-dimensions_de: 70 x 27 x 18 cm
-dimensions_en: ''
-description_de: "In meiner achtteiligen Werkserie\_Albtraum\_untersuche ich die Bruchstellen zwischen kindlicher Geborgenheit und technischer Nüchternheit. Jede Arbeit folgt einer strengen, fast klinischen Versuchsanordnung: Eine handelsübliche Kellerleuchte bildet das Skelett, jedoch ohne schützendes Glas, ohne Leuchtmittel, ihrer eigentlichen Funktion beraubt. Diese bewusste Deplatzierung des Alltagsgegenstands transformiert die Lampe von einem bloßen Gebrauchsartikel in eine skulpturale Hülle, die von einer abwesenden Aufklärung zeugt.\r\n\r\nAn die Stelle des versprochenen Lichts tritt das Fragmentierte. Ich verbaue anonyme Fundstücke aus der Spielzeugwelt, entkoppelt von ihrer ursprünglichen Geschichte, direkt in die Fassungen und kombiniere sie mit dem Mechanismus einer Spieluhr. Diese materiellen Hybride machen die physische Distanz zur eigenen Kindheit spürbar und betonen die Brüche innerhalb kollektiver Erinnerungskonstruktionen. Während die Serie einem kohärenten formalen Aufbau folgt, widmet sich jedes der acht Werke einer individuellen thematischen Setzung, die durch die Wahl der spezifischen Spielzeugfragmente definiert wird.\r\n\r\nErst durch die physische Interaktion des Publikums: Ein gezielter Zug am unteren Ende der Skulptur, wird die vertraute Melodie eines Schlaflieds in den Raum entlassen. Dieser Akt des Auslösens ist ambivalent: Er löst eine unmittelbare emotionale Reaktion aus, fordert aber gleichzeitig eine Konfrontation mit der kargen, beinahe gewaltvollen Ästhetik des Trägerobjekts. Es entsteht ein Spannungsfeld zwischen dieser harten, funktionalen Logik und der fragilen Aufladung der Fundstücke. Das Werk wird so zum Resonanzraum für eine Form der Erinnerung, die ins Unheimliche kippt, einem Ort, an dem die Grenze zwischen dem Schützenden und dem Bedrohlichen im Nachhall der Spieluhr verschwimmt."
-description_en: ''
 ---
-
