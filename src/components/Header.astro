@@ -1,13 +1,24 @@
 ---
+import { t, getRelativeLocaleUrl } from "../utils/i18n";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+
+const { lang } = Astro.params as { lang: string };
+
 const links = [
-    { href: "/works", label: "Arbeiten" },
-    { href: "/exhibitions", label: "Ausstellungen" },
-    { href: "/press", label: "Presse" },
-    { href: "/about", label: "Über" },
-    { href: "/contact", label: "Kontakt" },
+    { href: getRelativeLocaleUrl(lang, "/works"), label: t("nav_works", lang) },
+    {
+        href: getRelativeLocaleUrl(lang, "/exhibitions"),
+        label: t("nav_exhibitions", lang),
+    },
+    { href: getRelativeLocaleUrl(lang, "/press"), label: t("nav_press", lang) },
+    { href: getRelativeLocaleUrl(lang, "/about"), label: t("nav_about", lang) },
+    {
+        href: getRelativeLocaleUrl(lang, "/contact"),
+        label: t("nav_contact", lang),
+    },
 ];
 
-const homeHref = "/";
+const homeHref = getRelativeLocaleUrl(lang, "/");
 ---
 
 <header
@@ -38,10 +49,13 @@ const homeHref = "/";
                     ))
                 }
             </nav>
+            <div class="h-4 w-[1px] bg-gray-200"></div>
+            <LanguageSwitcher />
         </div>
 
         <!-- Mobile Menu Button -->
         <div class="flex items-center gap-4 md:hidden">
+            <LanguageSwitcher />
             <button
                 id="menu-toggle"
                 class="flex h-10 w-10 items-center justify-center rounded-md p-2 text-gray-600 hover:bg-gray-100"

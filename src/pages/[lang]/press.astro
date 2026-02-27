@@ -1,0 +1,116 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { t } from "../../utils/i18n";
+import { marked } from "marked";
+
+export function getStaticPaths() {
+    return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+
+const entries = Object.values(
+    import.meta.glob<any>("../../content/press/*.md", { eager: true }),
+);
+
+// Process and sort items by date
+const processedItems = await Promise.all(
+    entries.map(async (entry) => {
+        const fm = entry.frontmatter;
+        const itemDate = fm.date ? new Date(fm.date) : new Date(0);
+
+        // Localized resolution: Use the primary title and localized text
+        const displayTitle = fm.title || "";
+        const bodyContent = fm[`text_${lang}`] || fm.text_de || "";
+        const htmlContent = bodyContent ? await marked.parse(bodyContent) : "";
+
+        return {
+            ...fm,
+            year: itemDate.getFullYear(),
+            formattedDate: itemDate.toLocaleDateString("de-DE", {
+                month: "2-digit",
+                year: "numeric",
+            }),
+            displayTitle,
+            displayMedium: fm.medium || "",
+            htmlContent,
+        };
+    }),
+);
+
+// Group items by year
+const groupedPress = processedItems
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .reduce(
+        (acc, item) => {
+            const year = item.year;
+            if (!acc[year]) {
+                acc[year] = [];
+            }
+            acc[year].push(item);
+            return acc;
+        },
+        {} as Record<number, typeof processedItems>,
+    );
+
+const sortedYears = Object.keys(groupedPress)
+    .map(Number)
+    .sort((a, b) => b - a);
+
+const title = t("nav_press", lang);
+---
+
+<Layout title={title}>
+    <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">
+        {title}
+    </h1>
+
+    <div class="space-y-12 max-w-4xl">
+        {
+            sortedYears.map((year) => (
+                <section>
+                    <h2 class="text-lg font-bold text-gray-900 mb-6">{year}</h2>
+                    <div class="space-y-3">
+                        {groupedPress[year].map((item) => (
+                            <article>
+                                <div class="text-base text-gray-900 leading-relaxed">
+                                    <span class="group">
+                                        {item.url ? (
+                                            <a
+                                                href={item.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="hover:underline"
+                                            >
+                                                {item.displayTitle}
+                                            </a>
+                                        ) : (
+                                            item.displayTitle
+                                        )}
+                                    </span>
+
+                                    {item.displayMedium && (
+                                        <span class="text-gray-500">
+                                            {" "}
+                                            – {item.displayMedium}
+                                        </span>
+                                    )}
+
+                                    <span class="text-gray-500 ml-1">
+                                        , {item.formattedDate}
+                                    </span>
+                                </div>
+                                {item.htmlContent && (
+                                    <div
+                                        class="prose prose-gray prose-sm max-w-none mt-4 text-gray-600"
+                                        set:html={item.htmlContent}
+                                    />
+                                )}
+                            </article>
+                        ))}
+                    </div>
+                </section>
+            ))
+        }
+    </div>
+</Layout>

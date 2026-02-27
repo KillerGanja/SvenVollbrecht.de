@@ -1,0 +1,64 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { t } from "../../../utils/i18n";
+
+export function getStaticPaths() {
+    return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+
+// Load entries (skeletons)
+const worksEntries = Object.values(
+    import.meta.glob<any>("../../../content/works/*.md", {
+        eager: true,
+    }),
+);
+
+const works = worksEntries
+    .map((entry) => ({
+        ...entry.frontmatter,
+        title: entry.frontmatter.title,
+        url: `/${lang}/works/${entry.frontmatter.slug}/`,
+    }))
+    .sort((a, b) => {
+        const orderA = a.order ?? 9999;
+        const orderB = b.order ?? 9999;
+        if (orderA !== orderB) return orderA - orderB;
+        return (Number(b.year) || 0) - (Number(a.year) || 0);
+    });
+
+const title = t("nav_works", lang);
+---
+
+<Layout title={title}>
+    <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">
+        {title}
+    </h1>
+
+    {
+        works.length === 0 ? (
+            <p class="text-gray-500">Noch keine Werke angelegt.</p>
+        ) : (
+            <div class="grid grid-cols-2 gap-4 md:gap-8 md:grid-cols-3 xl:grid-cols-4">
+                {works.map((work) => (
+                    <a href={work.url} class="group block">
+                        <div class="aspect-[4/5] overflow-hidden bg-gray-100">
+                            {work.cover_image ? (
+                                <img
+                                    src={work.cover_image}
+                                    alt={work.title}
+                                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                            ) : (
+                                <div class="flex h-full w-full items-center justify-center text-gray-400">
+                                    Kein Bild
+                                </div>
+                            )}
+                        </div>
+                    </a>
+                ))}
+            </div>
+        )
+    }
+</Layout>

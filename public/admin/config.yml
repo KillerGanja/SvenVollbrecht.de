@@ -1,8 +1,8 @@
 backend:
   name: github
   repo: KillerGanja/SvenVollbrecht.de
-  branch: main # Using main branch for production
-  base_url: https://svenvollbrecht.de
+  branch: Page_Switch_de-en
+  base_url: https://ideenfetzen.de
   auth_endpoint: oauth/auth.php
 
 media_folder: "public/uploads"
@@ -10,146 +10,144 @@ public_folder: "/uploads"
 
 
 collections:
-  # WORKS (Deutsch)
-  - name: "works_de"
+  # TRANSLATION TABLE (Backend)
+  - name: "translations"
+    label: "Übersetzungen (Tabelle)"
+    files:
+      - label: "Text-Tabelle"
+        name: "table"
+        file: "src/content/ui/table.json"
+        fields:
+          - label: "Einträge"
+            name: "translations"
+            widget: "list"
+            summary: "{{fields.key}}: {{fields.de}}"
+            fields:
+              - { label: "Variable (NICHT ÄNDERN)", name: "key", widget: "string", hint: "Technischer Schlüssel für die Programmierung" }
+              - { label: "Ort (Dokumentation)", name: "location", widget: "string", hint: "Wo diese Variable auf der Website erscheint" }
+              - { label: "Deutsch", name: "de", widget: "markdown" }
+              - { label: "English", name: "en", widget: "markdown" }
+
+  # ARBEITEN (Works)
+  - name: "works"
     label: "Arbeiten"
-    folder: "content/works/de"
+    folder: "src/content/works"
+    extension: "md"
+    format: "yaml-frontmatter"
     create: true
     slug: "{{slug}}"
+    summary: "{{title}} ({{year}})"
     fields:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Reihenfolge", name: "order", widget: "number", required: false, default: 9999, hint: "10, 20, 30... Niedrige Zahlen zuerst. Default / Ohne Eintrag = 9999" }
+      - { label: "Reihenfolge", name: "order", widget: "number", required: false, default: 9999 }
       - { label: "Jahr", name: "year", widget: "number", required: false }
-      - { label: "Materialien", name: "materials", widget: "string", required: false }
-      - { label: "Maße", name: "dimensions", widget: "string", required: false }
       - { label: "Serie", name: "series", widget: "string", required: false }
-
-# 1. Das Einzelbild für die Übersicht (Grid)
-      - label: "Cover Bild"
-        name: "cover_image"
-        widget: "image"
-        required: true 
-        hint: "Dieses Bild wird in der Übersichtskachel angezeigt."
-
-# 2. Die Liste für die Detailseite
+      - { label: "Material (DE)", name: "materials_de", widget: "string" }
+      - { label: "Material (EN)", name: "materials_en", widget: "string", required: false }
+      - { label: "Maße (DE)", name: "dimensions_de", widget: "string" }
+      - { label: "Maße (EN)", name: "dimensions_en", widget: "string", required: false }
+      - { label: "Beschreibung (DE)", name: "description_de", widget: "markdown" }
+      - { label: "Beschreibung (EN)", name: "description_en", widget: "markdown", required: false }
+      - { label: "Cover Bild", name: "cover_image", widget: "image", required: true }
       - label: "Galerie Bilder"
         name: "gallery_images"
         widget: "list"
         required: false
         summary: "{{fields.image}}"
-        field: 
-          label: "Bild / Video"
-          name: "image"
-          widget: "file"
+        field: { label: "Bild / Video", name: "image", widget: "file" }
 
-      - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
-      - { label: "Text (DE)", name: "body", widget: "markdown", required: false }
-      - { label: "Materialien (EN)", name: "materials_en", widget: "string", required: false }
-      - { label: "Maße (EN)", name: "dimensions_en", widget: "string", required: false }
-      - { label: "Text (EN)", name: "body_en", widget: "markdown", required: false }
-
-
-  # EXHIBITIONS (Deutsch)
-  - name: "exhibitions_de"
+  # AUSSTELLUNGEN (Exhibitions)
+  - name: "exhibitions"
     label: "Ausstellungen"
-    folder: "content/exhibitions/de"
+    folder: "src/content/exhibitions"
+    extension: "md"
+    format: "yaml-frontmatter"
     create: true
     slug: "{{slug}}"
+    summary: "{{title}} ({{year}} — {{city_de}})"
     fields:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Reihenfolge", name: "order", widget: "number", required: false, default: 9999, hint: "10, 20, 30... Niedrige Zahlen zuerst. Default / Ohne Eintrag = 9999" }
+      - { label: "Reihenfolge", name: "order", widget: "number", required: false, default: 9999 }
       - { label: "Jahr", name: "year", widget: "number", required: false }
-      - { label: "Ort / Venue", name: "venue", widget: "string", required: false }
-      - { label: "Stadt", name: "city", widget: "string", required: false }
-      - { label: "Zeitraum", name: "period", widget: "string", required: false }
-      - { label: "Typ", name: "type", widget: "select", options: ["solo", "group"], required: false }
+      - { label: "Veranstaltungsort (DE)", name: "venue_de", widget: "string" }
+      - { label: "Veranstaltungsort (EN)", name: "venue_en", widget: "string", required: false }
+      - { label: "Stadt (DE)", name: "city_de", widget: "string", required: false }
+      - { label: "Stadt (EN)", name: "city_en", widget: "string", required: false }
+      - { label: "Zeitraum (DE)", name: "period_de", widget: "string", required: false }
+      - { label: "Zeitraum (EN)", name: "period_en", widget: "string", required: false }
+      - { label: "Beschreibung (DE)", name: "description_de", widget: "markdown", required: false }
+      - { label: "Beschreibung (EN)", name: "description_en", widget: "markdown", required: false }
+      - { label: "Cover Bild", name: "cover_image", widget: "image", required: true }
 
-# 1. Das Hauptbild (Flyer oder Key-Visual)
-      - label: "Cover Bild"
-        name: "cover_image"
-        widget: "image"
-        required: true
-        hint: "Wird in der Liste der Ausstellungen angezeigt."
-
-# 2. Die Installationsansichten
-      - label: "Installationsansichten"
-        name: "gallery_images"
-        widget: "list"
-        required: false
-        summary: "{{fields.image}}"
-        field:
-          label: "Bild"
-          name: "image"
-          widget: "image"
-
-      - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
-      - { label: "Text (DE)", name: "body", widget: "markdown", required: false }
-      - { label: "Text (EN)", name: "body_en", widget: "markdown", required: false }
-
-
-  # PRESS (Deutsch)
-  - name: "press_de"
+  # PRESSE (Press)
+  - name: "press"
     label: "Presse"
-    folder: "content/press/de"
+    folder: "src/content/press"
+    extension: "md"
+    format: "yaml-frontmatter"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Medium", name: "medium", widget: "string", required: false }
-      - { label: "Datum", name: "date", widget: "datetime", format: "YYYY-MM-DD", required: false }
-      - { label: "Link / Datei", name: "url", widget: "string", required: false }
-      - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
-      - { label: "Text", name: "body", widget: "markdown", required: false }
+      - { label: "TITEL", name: "title", widget: "string" }
+      - { label: "SLUG", name: "slug", widget: "string" }
+      - { label: "MEDIUM (OPTIONAL)", name: "medium", widget: "string", required: false }
+      - { label: "DATUM (OPTIONAL)", name: "date", widget: "datetime", format: "YYYY-MM-DD", dateFormat: "DD.MM.YYYY", timeFormat: false, required: false }
+      - { label: "LINK / DATEI (OPTIONAL)", name: "url", widget: "string", required: false }
+      - { label: "TEXT (DE)", name: "text_de", widget: "markdown", required: false }
+      - { label: "TEXT (EN)", name: "text_en", widget: "markdown", required: false }
 
-  # STATIC PAGES (About, Contact, Impressum, Datenschutz)
+  # SEITEN (Static Pages)
   - name: "pages"
     label: "Seiten"
     files:
-      - label: "Home (DE)"
-        name: "home_de"
-        file: "content/pages/home.de.md"
+      - label: "Startseite"
+        name: "home"
+        file: "src/content/pages/home.md"
+        format: "yaml-frontmatter"
         fields:
-          - { label: "Titel", name: "title", widget: "string", default: "Startseite" }
-          - { label: "Bild", name: "image", widget: "image", required: false }
-          - { label: "Slug", name: "slug", widget: "string", default: "home" }
-          - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
-          - { label: "Inhalt", name: "body", widget: "markdown", required: false }
-      - label: "About (DE)"
-        name: "about_de"
-        file: "content/pages/about.de.md"
+          - { label: "Titel (Variablen-Key)", name: "title", widget: "hidden", default: "home" }
+          - { label: "Hauptbild", name: "image", widget: "image" }
+          - { label: "Text (DE)", name: "body_de", widget: "markdown" }
+          - { label: "Text (EN)", name: "body_en", widget: "markdown", required: false }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "home" }
+      - label: "Über mich"
+        name: "about"
+        file: "src/content/pages/about.md"
+        format: "yaml-frontmatter"
         fields:
-          - { label: "Titel", name: "title", widget: "string", default: "Über Sven" }
-          - { label: "Slug", name: "slug", widget: "string", default: "about" }
-          - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
-          - { label: "Inhalt (DE)", name: "body", widget: "markdown" }
+          - { label: "Titel", name: "title", widget: "string", default: "Über mich" }
+          - { label: "Inhalt (DE)", name: "body_de", widget: "markdown" }
           - { label: "Inhalt (EN)", name: "body_en", widget: "markdown", required: false }
-
-      - label: "Contact (DE)"
-        name: "contact_de"
-        file: "content/pages/contact.de.md"
+          - { label: "Portfolio PDF (DE)", name: "portfolio_de", widget: "file", required: false }
+          - { label: "Portfolio PDF (EN)", name: "portfolio_en", widget: "file", required: false }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "about" }
+      - label: "Kontakt"
+        name: "contact"
+        file: "src/content/pages/contact.md"
+        format: "yaml-frontmatter"
         fields:
           - { label: "Titel", name: "title", widget: "string", default: "Kontakt" }
-          - { label: "Slug", name: "slug", widget: "string", default: "contact" }
-          - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
-          - { label: "Inhalt", name: "body", widget: "markdown" }
-
-      - label: "Impressum (DE)"
-        name: "impressum_de"
-        file: "content/pages/impressum.de.md"
+          - { label: "Inhalt (DE)", name: "body_de", widget: "markdown" }
+          - { label: "Inhalt (EN)", name: "body_en", widget: "markdown", required: false }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "contact" }
+      - label: "Impressum"
+        name: "impressum"
+        file: "src/content/pages/impressum.md"
+        format: "yaml-frontmatter"
         fields:
           - { label: "Titel", name: "title", widget: "string", default: "Impressum" }
-          - { label: "Slug", name: "slug", widget: "string", default: "impressum" }
-          - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
-          - { label: "Inhalt", name: "body", widget: "markdown" }
-
-      - label: "Datenschutz (DE)"
-        name: "privacy_de"
-        file: "content/pages/privacy.de.md"
+          - { label: "Inhalt (DE)", name: "body_de", widget: "markdown" }
+          - { label: "Inhalt (EN)", name: "body_en", widget: "markdown", required: false }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "impressum" }
+      - label: "Datenschutz"
+        name: "privacy"
+        file: "src/content/pages/privacy.md"
+        format: "yaml-frontmatter"
         fields:
           - { label: "Titel", name: "title", widget: "string", default: "Datenschutz" }
-          - { label: "Slug", name: "slug", widget: "string", default: "privacy" }
-          - { label: "Sprache", name: "lang", widget: "hidden", default: "de" }
-          - { label: "Inhalt", name: "body", widget: "markdown" }
+          - { label: "Inhalt (DE)", name: "body_de", widget: "markdown" }
+          - { label: "Inhalt (EN)", name: "body_en", widget: "markdown", required: false }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "privacy" }
+

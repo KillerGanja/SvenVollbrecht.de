@@ -1,31 +1,16 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import type { MarkdownInstance } from "astro";
-
-// Load entries
-const entries = import.meta.glob<MarkdownInstance<any>>(
-    "../../content/pages/home.de.md",
-    { eager: true },
-);
-const entry = Object.values(entries)[0];
-const { frontmatter, Content } = entry;
-
-const title = "Sven Vollbrecht – Startseite";
+// This page performs a silent redirect to the default locale
 ---
 
-<Layout title={title}>
-    <div class="mt-16 text-center">
-        {
-            frontmatter.image && (
-                <img
-                    src={frontmatter.image}
-                    alt={frontmatter.title}
-                    class="mx-auto mb-8 max-h-[70vh] w-auto max-w-full object-contain"
-                />
-            )
-        }
-        <div class="prose prose-gray mx-auto">
-            <Content />
-        </div>
-    </div>
-</Layout>
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="refresh" content="0;url=/de/" />
+        <script type="text/javascript">
+            window.location.href = "/de/";
+        </script>
+        <title>Sven Vollbrecht</title>
+    </head>
+    <body style="background: white;"> </body>
+</html>

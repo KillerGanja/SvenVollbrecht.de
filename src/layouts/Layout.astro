@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import ScreenSizeIndicator from "../components/ScreenSizeIndicator.astro";
+import { t, getRelativeLocaleUrl } from "../utils/i18n";
 
 interface Props {
   title?: string;
@@ -9,6 +10,8 @@ interface Props {
 }
 
 const { title = "Sven Vollbrecht" } = Astro.props;
+const { lang } = Astro.params as { lang: string };
+const locale = lang || "de";
 ---
 
 <style>
@@ -17,7 +20,7 @@ const { title = "Sven Vollbrecht" } = Astro.props;
   }
 </style>
 
-<html lang="de">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -27,7 +30,7 @@ const { title = "Sven Vollbrecht" } = Astro.props;
   </head>
   <body class="flex min-h-screen flex-col bg-white text-gray-900 antialiased">
     <ScreenSizeIndicator />
-    <Header />
+    <Header lang={locale} />
 
     <main
       class="mx-auto w-full max-w-screen-2xl flex-grow px-4 py-10 sm:px-8 lg:px-16"
@@ -51,11 +54,15 @@ const { title = "Sven Vollbrecht" } = Astro.props;
 
         <!-- Rechts: Links -->
         <div class="flex justify-center gap-6 sm:justify-end">
-          <a href="/impressum" class="transition-colors hover:text-gray-900"
-            >Impressum</a
+          <a
+            href={getRelativeLocaleUrl(locale, "/impressum")}
+            class="transition-colors hover:text-gray-900"
+            >{t("nav_impressum", locale)}</a
           >
-          <a href="/datenschutz" class="transition-colors hover:text-gray-900"
-            >Datenschutz</a
+          <a
+            href={getRelativeLocaleUrl(locale, "/privacy")}
+            class="transition-colors hover:text-gray-900"
+            >{t("nav_privacy", locale)}</a
           >
         </div>
       </div>

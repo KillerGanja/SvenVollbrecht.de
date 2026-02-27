@@ -2,10 +2,11 @@ name: Deploy to Strato
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, Page_Switch_de-en ]
 
 jobs:
   build-and-deploy:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -57,3 +58,47 @@ jobs:
         local_path: './dist/*'
         remote_path: '/'
         sftp_only: true
+
+  deploy-staging:
+    if: github.ref == 'refs/heads/Page_Switch_de-en'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build Astro project
+      run: npm run build
+
+    - name: Inject OAuth Secrets (DEV)
+      run: |
+        mkdir -p dist/oauth
+        cat <<EOF > dist/oauth/config.php
+        <?php
+        class Config {
+            public static \$clientId = '${{ secrets.OAUTH_CLIENT_ID_STRATO }}';
+            public static \$clientSecret = '${{ secrets.OAUTH_CLIENT_SECRET_STRATO }}';
+            public static \$redirectUri = '${{ secrets.OAUTH_REDIRECT_URI_STRATO_DEV }}';
+        }
+        EOF
+      shell: bash
+
+    - name: Deploy to SFTP (Staging)
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      with:
+        username: ${{ secrets.SFTP_USERNAME_STRATO_DEV }}
+        server: ${{ secrets.SFTP_SERVER_STRATO_DEV }}
+        port: 22
+        password: ${{ secrets.SFTP_PASSWORD_STRATO_DEV }}
+        local_path: './dist/*'
+        remote_path: '/'
+        sftp_only: true
+        ssh_private_key: ""

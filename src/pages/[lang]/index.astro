@@ -1,0 +1,43 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { t } from "../../utils/i18n";
+import { marked } from "marked";
+
+export function getStaticPaths() {
+    return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+
+// Load static data
+const homeEntries = import.meta.glob<any>("../../content/pages/home.md", {
+    eager: true,
+});
+const homeEntry = Object.values(homeEntries)[0];
+
+if (!homeEntry) {
+    return new Response("Home content missing at ../../content/pages/home.md", {
+        status: 404,
+    });
+}
+
+const { frontmatter } = homeEntry;
+const title = `Sven Vollbrecht – ${t("nav_home", lang) || "Startseite"}`;
+const body = frontmatter[`body_${lang}`] || frontmatter.body_de || "";
+const htmlContent = marked.parse(body);
+---
+
+<Layout title={title}>
+    <div class="mt-16 text-center">
+        {
+            frontmatter.image && (
+                <img
+                    src={frontmatter.image}
+                    alt="Sven Vollbrecht"
+                    class="mx-auto mb-8 max-h-[70vh] w-auto max-w-full object-contain"
+                />
+            )
+        }
+        <div class="prose prose-gray mx-auto" set:html={htmlContent} />
+    </div>
+</Layout>

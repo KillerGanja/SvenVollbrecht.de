@@ -1,0 +1,94 @@
+{
+  "translations": [
+    {
+      "key": "nav_home",
+      "location": "Navigation Menu",
+      "de": "Startseite",
+      "en": "Home"
+    },
+    {
+      "key": "nav_impressum",
+      "location": "Footer / Page Navigation",
+      "de": "Impressum",
+      "en": "Legal"
+    },
+    {
+      "key": "nav_privacy",
+      "location": "Footer / Page Navigation",
+      "de": "Datenschutz",
+      "en": "Privacy"
+    },
+    {
+      "key": "nav_works",
+      "location": "Navigation Menu",
+      "de": "Arbeiten",
+      "en": "Works"
+    },
+    {
+      "key": "nav_exhibitions",
+      "location": "Navigation Menu",
+      "de": "Ausstellungen",
+      "en": "Exhibitions"
+    },
+    {
+      "key": "nav_press",
+      "location": "Navigation Menu",
+      "de": "Presse",
+      "en": "Press"
+    },
+    {
+      "key": "nav_about",
+      "location": "Navigation Menu",
+      "de": "Über",
+      "en": "About"
+    },
+    {
+      "key": "nav_contact",
+      "location": "Navigation Menu",
+      "de": "Kontakt",
+      "en": "Contact"
+    },
+    {
+      "key": "field_year",
+      "location": "Details Sidebar",
+      "de": "Jahr",
+      "en": "Year"
+    },
+    {
+      "key": "field_materials",
+      "location": "Details Sidebar",
+      "de": "Material",
+      "en": "Materials"
+    },
+    {
+      "key": "field_dimensions",
+      "location": "Details Sidebar",
+      "de": "Maße",
+      "en": "Dimensions"
+    },
+    {
+      "key": "field_series",
+      "location": "Details Sidebar",
+      "de": "Serie",
+      "en": "Series"
+    },
+    {
+      "key": "field_venue",
+      "location": "Exhibition Details",
+      "de": "Veranstaltungsort",
+      "en": "Venue"
+    },
+    {
+      "key": "label_by",
+      "location": "Press Items",
+      "de": "von",
+      "en": "by"
+    },
+    {
+      "key": "label_download_portfolio",
+      "location": "About Page",
+      "de": "Hier können Sie das Portfolio von Sven Vollbrecht herunterladen",
+      "en": "Click here to download the portfolio of Sven Vollbrecht"
+    }
+  ]
+}

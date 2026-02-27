@@ -9,11 +9,12 @@ const { images, title } = Astro.props;
 
 <div class="gallery" id="work-gallery">
   {
-    images.map((src) => (
-      <a href={src} data-pswp-width="1600" data-pswp-height="1200">
-        <img src={src} alt={title} loading="lazy" />
-      </a>
-    ))
+    Array.isArray(images) &&
+      images.map((src) => (
+        <a href={src} data-pswp-width="1600" data-pswp-height="1200">
+          <img src={src} alt={title} loading="lazy" />
+        </a>
+      ))
   }
 </div>
 

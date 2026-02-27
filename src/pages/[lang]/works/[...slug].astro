@@ -1,0 +1,76 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { t } from "../../../utils/i18n";
+import { marked } from "marked";
+import WorkSlideshow from "../../../components/WorkSlideshow.astro";
+
+export async function getStaticPaths() {
+    const entries = Object.values(
+        import.meta.glob<any>("../../../content/works/*.md", {
+            eager: true,
+        }),
+    );
+
+    const languages = ["de", "en"];
+
+    return languages.flatMap((lang) => {
+        return entries.map((entry) => ({
+            params: {
+                lang,
+                slug: entry.frontmatter.slug,
+            },
+            props: { entry },
+        }));
+    });
+}
+
+const { lang, slug } = Astro.params;
+const { entry } = Astro.props;
+const { frontmatter } = entry;
+
+// Determine localized content
+const title = frontmatter.title || ""; // Title is shared
+const materials =
+    frontmatter[`materials_${lang}`] || frontmatter.materials_de || "";
+const dimensions =
+    frontmatter[`dimensions_${lang}`] || frontmatter.dimensions_de || "";
+const description =
+    frontmatter[`description_${lang}`] || frontmatter.description_de || "";
+
+// Pre-process spacing:
+// We interpret 1.5 spacing as line-height 1.5 (global prose style)
+// and 2 line spacing as paragraph breaks with margin.
+const processedDescription = description
+    .replace(/\r\n/g, "\n\n") // Ensure CRLF creates paragraph breaks
+    .replace(/\n(?!\n)/g, "<br />") // Ensure single LF creates a line break
+    .replace(/([a-zA-ZäöüÄÖÜß])\*([a-zA-ZäöüÄÖÜß])/g, "$1\\*$2"); // Escape Gender-Sternchen
+
+const htmlContent = marked.parse(processedDescription, { breaks: true });
+---
+
+<Layout title={title}>
+    <div class="mx-auto max-w-screen-xl">
+        <WorkSlideshow images={frontmatter.gallery_images} title={title} />
+
+        <!-- Centered Metadata Stack -->
+        <div class="mt-12 mb-12 text-center">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900 mb-4">
+                {title}
+            </h1>
+            <div class="space-y-1 text-gray-500 font-light">
+                {frontmatter.year && <p>{frontmatter.year}</p>}
+                {materials && <p>{materials}</p>}
+                {dimensions && <p>{dimensions}</p>}
+                {frontmatter.series && <p>{frontmatter.series}</p>}
+            </div>
+        </div>
+
+        <!-- Left-aligned Description -->
+        <div class="mx-auto max-w-2xl px-4">
+            <div
+                class="prose prose-gray max-w-none text-left"
+                set:html={htmlContent}
+            />
+        </div>
+    </div>
+</Layout>
