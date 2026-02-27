@@ -37,11 +37,7 @@ const htmlContent = marked.parse(body);
 ---
 
 <Layout title={title}>
-    <div
-        class={slug === "about" || slug === "contact"
-            ? "max-w-none w-full md:w-1/2 lg:w-1/2"
-            : "mx-auto max-w-prose"}
-    >
+    <div class="max-w-none w-full md:w-1/2 lg:w-1/2">
         <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">
             {title}
         </h1>
