@@ -61,21 +61,19 @@ const title = t("nav_press", lang);
 ---
 
 <Layout title={title}>
-    <h1 class="mb-12 text-xl font-bold tracking-wide text-gray-900">
+    <h1 class="mb-12 text-2xl font-bold tracking-tight text-gray-900">
         {title}
     </h1>
 
-    <div class="space-y-16 max-w-4xl">
+    <div class="space-y-12 max-w-4xl">
         {
             sortedYears.map((year) => (
                 <section>
-                    <h2 class="text-lg font-light text-gray-900 mb-8">
-                        {year}
-                    </h2>
-                    <div class="space-y-8">
+                    <h2 class="text-lg font-bold text-gray-900 mb-6">{year}</h2>
+                    <div class="space-y-3">
                         {groupedPress[year].map((item) => (
                             <article>
-                                <div class="text-base text-gray-800 leading-relaxed font-light">
+                                <div class="text-base text-gray-900 leading-relaxed">
                                     <span class="group">
                                         {item.url ? (
                                             <a
@@ -92,19 +90,19 @@ const title = t("nav_press", lang);
                                     </span>
 
                                     {item.displayMedium && (
-                                        <span class="text-gray-400">
+                                        <span class="text-gray-500">
                                             {" "}
                                             – {item.displayMedium}
                                         </span>
                                     )}
 
-                                    <span class="text-gray-400 ml-1">
+                                    <span class="text-gray-500 ml-1">
                                         , {item.formattedDate}
                                     </span>
                                 </div>
                                 {item.htmlContent && (
                                     <div
-                                        class="prose prose-gray prose-sm max-w-none mt-4 font-light text-gray-600"
+                                        class="prose prose-gray prose-sm max-w-none mt-4 text-gray-600"
                                         set:html={item.htmlContent}
                                     />
                                 )}
