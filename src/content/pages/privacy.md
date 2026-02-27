@@ -44,7 +44,10 @@ body_de: >-
   **4. Ihre Rechte**
 
   Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung, Sperrung oder Löschung dieser Daten zu verlangen.
-body_en: ""
+body_en: >-
+  **1. Data Protection at a Glance**\
+
+  The operator of these pages takes the protection of your personal data very seriously. We treat your personal data confidentially and in accordance with the statutory data protection regulations and this Privacy Policy.
 slug: privacy
 lang: de
 ---
