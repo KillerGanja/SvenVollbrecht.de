@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import ScreenSizeIndicator from "../components/ScreenSizeIndicator.astro";
 import { t, getRelativeLocaleUrl } from "../utils/i18n";
+import settings from "../content/ui/settings.json";
 
 interface Props {
   title?: string;
@@ -14,9 +15,19 @@ const { lang } = Astro.params as { lang: string };
 const locale = lang || "de";
 ---
 
-<style>
+<style
+  is:global
+  define:vars={{
+    proseLineHeight: settings.prose_line_height,
+    proseParagraphSpacing: settings.prose_paragraph_spacing,
+  }}
+>
   html {
     scrollbar-gutter: stable;
+  }
+  :root {
+    --prose-line-height: var(--proseLineHeight);
+    --prose-paragraph-spacing: var(--proseParagraphSpacing);
   }
 </style>
 

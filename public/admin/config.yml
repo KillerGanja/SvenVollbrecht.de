@@ -151,3 +151,14 @@ collections:
           - { label: "Inhalt (EN)", name: "body_en", widget: "markdown", required: false }
           - { label: "Slug", name: "slug", widget: "hidden", default: "privacy" }
 
+  # GLOBALE EINSTELLUNGEN
+  - name: "settings"
+    label: "Globale Einstellungen"
+    files:
+      - label: "Typografie & Abstände"
+        name: "general"
+        file: "src/content/ui/settings.json"
+        fields:
+          - { label: "Zeilenabstand (Normal)", name: "prose_line_height", widget: "string", default: "1.0", hint: "z.B. 1.0 oder 1.2" }
+          - { label: "Absatz-Abstand", name: "prose_paragraph_spacing", widget: "string", default: "0.5rem", hint: "z.B. 0.5rem oder 10px" }
+
