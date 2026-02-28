@@ -42,7 +42,6 @@ const description =
 // and 2 line spacing as paragraph breaks with margin.
 const processedDescription = description
     .replace(/\r\n/g, "\n\n") // Ensure CRLF creates paragraph breaks
-    .replace(/\n(?!\n)/g, "<br />") // Ensure single LF creates a line break
     .replace(/([a-zA-ZäöüÄÖÜß])\*([a-zA-ZäöüÄÖÜß])/g, "$1\\*$2"); // Escape Gender-Sternchen
 
 const htmlContent = marked.parse(processedDescription, { breaks: true });

@@ -42,7 +42,6 @@ const downloadText = t("label_download_portfolio", lang);
 // LF (\n) -> 1.5 line spacing (Line breaks)
 const processedBody = body
     .replace(/\r\n/g, "\n\n")
-    .replace(/\n(?!\n)/g, "<br />")
     .replace(/([a-zA-ZäöüÄÖÜß])\*([a-zA-ZäöüÄÖÜß])/g, "$1\\*$2");
 
 const htmlContent = marked.parse(processedBody, { breaks: true });
