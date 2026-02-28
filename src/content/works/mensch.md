@@ -3,7 +3,7 @@ title: Mensch
 slug: mensch
 order: 1
 year: 2026
-series: "5"
+series: ""
 materials_de: Skulptur, Holz-Gliederpuppe
 materials_en: Sculpture, woden mannequin
 dimensions_de: 22 x 5 x 5 cm
