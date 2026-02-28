@@ -3,11 +3,11 @@ title: ALBTRAUM
 slug: albtraum
 order: 2
 year: 2025
-series: ""
+series: "8"
 materials_de: Wandobjekt, Kellerlampe, Spieluhr, diverse Spielzeuge
-materials_en: ""
-dimensions_de: 70 x 27 x 18 cm
-dimensions_en: ""
+materials_en: Basement lamp, music box, various toys.
+dimensions_de: Die Höhe liegt zwischen 23 cm und 82 cm
+dimensions_en: "Height: ranges from 23 cm (9 in) to 82 cm (32 in)"
 description_de: "In meiner achtteiligen Werkserie Albtraum untersuche ich die
   Bruchstellen zwischen kindlicher Geborgenheit und technischer Nüchternheit.
   Jede Arbeit folgt einer strengen, fast klinischen Versuchsanordnung: Eine
