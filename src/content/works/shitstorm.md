@@ -29,5 +29,6 @@ cover_image: /uploads/01-shitstorm.jpg
 gallery_images:
   - /uploads/01-shitstorm.jpg
   - /uploads/02-shitstorm.jpg
+  - /uploads/shitstorm01.mov
 lang: de
 ---
