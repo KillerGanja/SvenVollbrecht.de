@@ -29,6 +29,5 @@ cover_image: /uploads/01-shitstorm.jpg
 gallery_images:
   - /uploads/01-shitstorm.jpg
   - /uploads/02-shitstorm.jpg
-  - /uploads/gleitplatte_adac_20240623.mp4
 lang: de
 ---
