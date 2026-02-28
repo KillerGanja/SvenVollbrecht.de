@@ -10,23 +10,6 @@ public_folder: "/uploads"
 
 
 collections:
-  # TRANSLATION TABLE (Backend)
-  - name: "translations"
-    label: "Übersetzungen (Tabelle)"
-    files:
-      - label: "Text-Tabelle"
-        name: "table"
-        file: "src/content/ui/table.json"
-        fields:
-          - label: "Einträge"
-            name: "translations"
-            widget: "list"
-            summary: "{{fields.key}}: {{fields.de}}"
-            fields:
-              - { label: "Variable (NICHT ÄNDERN)", name: "key", widget: "string", hint: "Technischer Schlüssel für die Programmierung" }
-              - { label: "Ort (Dokumentation)", name: "location", widget: "string", hint: "Wo diese Variable auf der Website erscheint" }
-              - { label: "Deutsch", name: "de", widget: "markdown" }
-              - { label: "English", name: "en", widget: "markdown" }
 
   # ARBEITEN (Works)
   - name: "works"
@@ -161,4 +144,22 @@ collections:
         fields:
           - { label: "Zeilenabstand (Normal)", name: "prose_line_height", widget: "string", default: "1.0", hint: "z.B. 1.0 oder 1.2" }
           - { label: "Absatz-Abstand", name: "prose_paragraph_spacing", widget: "string", default: "0.5rem", hint: "z.B. 0.5rem oder 10px" }
+
+  # TRANSLATION TABLE (Backend)
+  - name: "translations"
+    label: "Übersetzungen (Tabelle)"
+    files:
+      - label: "Text-Tabelle"
+        name: "table"
+        file: "src/content/ui/table.json"
+        fields:
+          - label: "Einträge"
+            name: "translations"
+            widget: "list"
+            summary: "{{fields.key}}: {{fields.de}}"
+            fields:
+              - { label: "Variable (NICHT ÄNDERN)", name: "key", widget: "string", hint: "Technischer Schlüssel für die Programmierung" }
+              - { label: "Ort (Dokumentation)", name: "location", widget: "string", hint: "Wo diese Variable auf der Website erscheint" }
+              - { label: "Deutsch", name: "de", widget: "markdown" }
+              - { label: "English", name: "en", widget: "markdown" }
 
