@@ -59,5 +59,6 @@ gallery_images:
   - /uploads/pw01.jpg
   - /uploads/pw09.jpg
   - /uploads/pw_chatgpt.jpg
+  - /uploads/px_chatgpt_eng.jpg
 lang: de
 ---
