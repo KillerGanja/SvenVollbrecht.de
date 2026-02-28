@@ -2,14 +2,14 @@
 
 @layer base {
   .prose {
-    line-height: var(--prose-line-height, 1.0);
+    line-height: var(--prose-line-height, 1.0) !important;
   }
 
   .prose p {
-    margin-bottom: var(--prose-paragraph-spacing, 0.5rem);
+    margin-bottom: var(--prose-paragraph-spacing, 0.5rem) !important;
   }
 
   .prose p:last-child {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
   }
 }

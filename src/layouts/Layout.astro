@@ -15,22 +15,6 @@ const { lang } = Astro.params as { lang: string };
 const locale = lang || "de";
 ---
 
-<style
-  is:global
-  define:vars={{
-    proseLineHeight: settings.prose_line_height,
-    proseParagraphSpacing: settings.prose_paragraph_spacing,
-  }}
->
-  html {
-    scrollbar-gutter: stable;
-  }
-  :root {
-    --prose-line-height: var(--proseLineHeight);
-    --prose-paragraph-spacing: var(--proseParagraphSpacing);
-  }
-</style>
-
 <html lang={locale}>
   <head>
     <meta charset="UTF-8" />
@@ -38,6 +22,15 @@ const locale = lang || "de";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <style
+      is:inline
+      set:html={`
+      :root {
+        --prose-line-height: ${settings.prose_line_height};
+        --prose-paragraph-spacing: ${settings.prose_paragraph_spacing};
+      }
+    `}
+    ></style>
   </head>
   <body class="flex min-h-screen flex-col bg-white text-gray-900 antialiased">
     <ScreenSizeIndicator />
