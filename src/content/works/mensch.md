@@ -8,7 +8,8 @@ materials_en: Sculpture, woden mannequin
 dimensions_de: 22 x 5 x 5 cm
 dimensions_en: 8.6 x 1.9 x 1.9 Inch
 description_de: >-
-  Werkserie „Mensch“ bestehend aus fünf Skulpturen.\
+  Werkserie „Mensch“ bestehend aus fünf Skulpturen.
+
 
   In meiner Werkserie *Mensch* arbeite ich mit Gliederpuppen aus Holz, wie sie üblicherweise als neutrale Hilfsmittel zum Zeichnen des menschlichen Körpers verwendet werden. 
 
