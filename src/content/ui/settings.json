@@ -1,4 +1,5 @@
 {
   "prose_line_height": "1.2",
-  "prose_paragraph_spacing": "1rem"
+  "prose_paragraph_spacing": "1rem",
+  "prose_font_size": "18px"
 }

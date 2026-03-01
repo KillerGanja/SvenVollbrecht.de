@@ -2,6 +2,7 @@
 
 @layer base {
   .prose {
+    font-size: var(--prose-font-size, 18px) !important;
     line-height: var(--prose-line-height, 1.0) !important;
   }
 
