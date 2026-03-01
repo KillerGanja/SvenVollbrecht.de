@@ -1,6 +1,6 @@
 ---
 title: Startseite
-image: /uploads/signs03.jpg
+image: ""
 body_de: ""
 slug: home
 lang: de
