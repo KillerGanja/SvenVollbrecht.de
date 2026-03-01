@@ -1,9 +1,8 @@
 ---
 title: Startseite
 image: /uploads/20.jpg
+body_de: Willkommen
 slug: home
 lang: de
-body_de: "Ich überarbeite derzeit meine Webseite, am\_**1. März**\_**2026** ist sie aktualisiert."
-body_en: ''
+body_en: Welcome
 ---
-
