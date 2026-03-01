@@ -1,6 +1,6 @@
 ---
 title: Startseite
-image: /uploads/werk-zwei-02.mov
+image: /uploads/signs03.jpg
 body_de: ""
 slug: home
 lang: de
