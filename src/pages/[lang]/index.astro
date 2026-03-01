@@ -28,9 +28,9 @@ const body = frontmatter[`body_${lang}`] || frontmatter.body_de || "";
 const htmlContent = body ? marked.parse(body) : "";
 
 // Detect if media is a video
-const isVideo = frontmatter.image?.match(
-    /\.(mp4|webm|ogv)$|youtube\.com|vimeo\.com/i,
-);
+const isVideo = frontmatter.image
+    ? frontmatter.image.match(/\.(mp4|webm|ogv)$|youtube\.com|vimeo\.com/i)
+    : false;
 ---
 
 <Layout title={title}>

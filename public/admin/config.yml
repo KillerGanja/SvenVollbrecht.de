@@ -91,7 +91,7 @@ collections:
         format: "yaml-frontmatter"
         fields:
           - { label: "Titel (Variablen-Key)", name: "title", widget: "hidden", default: "home" }
-          - { label: "Haupt-Medium (Bild oder Video)", name: "image", widget: "file" }
+          - { label: "Haupt-Medium (Bild oder Video)", name: "image", widget: "file", required: false }
           - { label: "Text (DE)", name: "body_de", widget: "markdown", required: false }
           - { label: "Text (EN)", name: "body_en", widget: "markdown", required: false }
           - { label: "Slug", name: "slug", widget: "hidden", default: "home" }
