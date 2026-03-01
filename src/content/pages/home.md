@@ -1,6 +1,6 @@
 ---
 title: Startseite
-image: /uploads/insta_video_beitrag_shitstorm.mp4
+image: /uploads/werk-zwei-02.mov
 body_de: ""
 slug: home
 lang: de
