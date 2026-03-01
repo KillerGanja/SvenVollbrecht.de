@@ -3,9 +3,9 @@ title: DIGITAL VOID
 slug: digitalvoid
 order: 14
 year: 2022
-materials_de: Ortsspezifische Videoinstallation, Monitor, Videoschleife (00:12),
-  Türklingel, Spieluhr, Klingelschild
-materials_en: Site specific video installation, screen, video loop
+materials_de: Ortsspezifische Videoinstallation, Leinwand, Videoschleife
+  (00:12), Türklingel, Spieluhr, Klingelschild
+materials_en: Site specific video installation, canvas, video loop
   (00:12),  doorbell, music box, doorbell sign
 dimensions_de: 200 x 100 x 5 cm
 dimensions_en: 78.7 x 39.4 in
