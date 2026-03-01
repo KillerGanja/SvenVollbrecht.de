@@ -56,7 +56,10 @@ const htmlContent = marked.parse(processedDescription, { breaks: true });
             <h1 class="text-3xl font-bold tracking-tight text-gray-900 mb-4">
                 {title}
             </h1>
-            <div class="space-y-1 text-gray-500 font-light">
+            <div
+                class="space-y-1 text-gray-500 font-light"
+                style="font-size: var(--metadata-font-size, 0.875rem);"
+            >
                 {frontmatter.year && <p>{frontmatter.year}</p>}
                 {materials && <p>{materials}</p>}
                 {dimensions && <p>{dimensions}</p>}
