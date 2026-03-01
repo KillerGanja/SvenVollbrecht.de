@@ -13,25 +13,9 @@ body_de: >-
 
   Kontakt:
 
-  E-Mail: studio@svenvollbrecht.de
+  E-Mail: studio@svenvollbrecht.de\
 
-
-
-
-  **Vertreten durch:**
-
-
-  NOTAGALLERY
-
-  Inhaber: Ivan Gette
-
-  Potsdamer Straße 124
-
-  10783 Berlin
-
-  Deutschland
-
-
+  Mobil: 015679 690957
 
 
   **Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:**
@@ -42,8 +26,6 @@ body_de: >-
   Brunhildstraße
 
   10829 Berlin
-
-
 
 
   **Urheberrecht:**
@@ -69,25 +51,9 @@ body_en: >-
 
   Contact:
 
-  Email: studio@svenvollbrecht.de
+  Email: studio@svenvollbrecht.de\
 
-
-
-
-  **Represented by:**
-
-
-  NOTAGALLERY
-
-  Owner: Ivan Gette
-
-  Potsdamer Straße 124
-
-  10783 Berlin
-
-  Germany
-
-
+  Mobile: 015679 690957
 
 
   **Responsible for content according to § 55 Abs. 2 RStV:**
@@ -98,8 +64,6 @@ body_en: >-
   Brunhildstraße
 
   10829 Berlin
-
-
 
 
   **Copyright**
