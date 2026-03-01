@@ -24,20 +24,42 @@ if (!homeEntry) {
 const { frontmatter } = homeEntry;
 const title = `Sven Vollbrecht – ${t("nav_home", lang) || "Startseite"}`;
 const body = frontmatter[`body_${lang}`] || frontmatter.body_de || "";
-const htmlContent = marked.parse(body);
+// Only parse if body is not empty to avoid errors
+const htmlContent = body ? marked.parse(body) : "";
+
+// Detect if media is a video
+const isVideo = frontmatter.image?.match(
+    /\.(mp4|webm|ogv)$|youtube\.com|vimeo\.com/i,
+);
 ---
 
 <Layout title={title}>
     <div class="mt-16 text-center">
         {
-            frontmatter.image && (
-                <img
-                    src={frontmatter.image}
-                    alt="Sven Vollbrecht"
-                    class="mx-auto mb-8 max-h-[70vh] w-auto max-w-full object-contain"
-                />
+            frontmatter.image &&
+                (isVideo ? (
+                    <div class="mx-auto mb-8 max-h-[70vh] w-full max-w-4xl">
+                        <video
+                            src={frontmatter.image}
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                            class="mx-auto max-h-[70vh] w-auto max-w-full object-contain"
+                        />
+                    </div>
+                ) : (
+                    <img
+                        src={frontmatter.image}
+                        alt="Sven Vollbrecht"
+                        class="mx-auto mb-8 max-h-[70vh] w-auto max-w-full object-contain"
+                    />
+                ))
+        }
+        {
+            htmlContent && (
+                <div class="prose prose-gray mx-auto" set:html={htmlContent} />
             )
         }
-        <div class="prose prose-gray mx-auto" set:html={htmlContent} />
     </div>
 </Layout>

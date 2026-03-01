@@ -91,8 +91,8 @@ collections:
         format: "yaml-frontmatter"
         fields:
           - { label: "Titel (Variablen-Key)", name: "title", widget: "hidden", default: "home" }
-          - { label: "Hauptbild", name: "image", widget: "image" }
-          - { label: "Text (DE)", name: "body_de", widget: "markdown" }
+          - { label: "Haupt-Medium (Bild oder Video)", name: "image", widget: "image" }
+          - { label: "Text (DE)", name: "body_de", widget: "markdown", required: false }
           - { label: "Text (EN)", name: "body_en", widget: "markdown", required: false }
           - { label: "Slug", name: "slug", widget: "hidden", default: "home" }
       - label: "Über mich"
