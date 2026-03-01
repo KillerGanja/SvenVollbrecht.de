@@ -53,7 +53,6 @@ cover_image: /uploads/digitalvois001-2.jpg
 gallery_images:
   - /uploads/digitalvois001-2.jpg
   - /uploads/twfq7524.mp4
-  - /uploads/twfq7524.mp4
   - /uploads/8794934480840364718.mp4
 lang: de
 ---
