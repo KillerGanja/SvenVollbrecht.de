@@ -1,6 +1,6 @@
 ---
 title: Startseite
-image: /uploads/8794934480840364718.mp4
+image: /uploads/insta_video_beitrag_shitstorm.mp4
 body_de: ""
 slug: home
 lang: de
