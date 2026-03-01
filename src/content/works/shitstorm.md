@@ -29,6 +29,6 @@ cover_image: /uploads/01-shitstorm.jpg
 gallery_images:
   - /uploads/01-shitstorm.jpg
   - /uploads/02-shitstorm.jpg
-  - /uploads/shitstorm01.mov
+  - /uploads/insta_video_beitrag_shitstorm.mp4
 lang: de
 ---
