@@ -56,8 +56,8 @@ description_en: >-
 cover_image: /uploads/pw02.jpg
 gallery_images:
   - /uploads/pw02.jpg
-  - /uploads/pw01.jpg
   - /uploads/pw09.jpg
+  - /uploads/pw01.jpg
   - /uploads/pw_chatgpt.jpg
   - /uploads/px_chatgpt_eng.jpg
 lang: de
