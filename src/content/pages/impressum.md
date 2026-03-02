@@ -6,7 +6,7 @@ body_de: >-
 
   Sven Vollbrecht
 
-  Brunhildstraße
+  Brunhildstraße 6
 
   10829 Berlin
 
@@ -23,7 +23,7 @@ body_de: >-
 
   Sven Vollbrecht
 
-  Brunhildstraße
+  Brunhildstraße 6
 
   10829 Berlin
 
@@ -42,7 +42,7 @@ body_en: >-
 
   Sven Vollbrecht
 
-  Brunhildstraße
+  Brunhildstraße 6
 
   10829 Berlin
 
@@ -61,7 +61,7 @@ body_en: >-
 
   Sven Vollbrecht
 
-  Brunhildstraße
+  Brunhildstraße 6
 
   10829 Berlin
 
