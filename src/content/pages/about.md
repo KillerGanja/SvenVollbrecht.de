@@ -41,7 +41,7 @@ body_en: >-
 
   Vollbrecht has shown his work at events and venues including Berlin Art Week 2022, Schöneberger Art 2022, Haus am Kleistpark 2023, and Notagallery 2024/25.
 portfolio_de: /uploads/portfolio_sven_vollbrecht_de.pdf
-portfolio_en: ""
+portfolio_en: /uploads/portfolio_sven_vollbrecht_en.pdf
 slug: about
 lang: de
 ---
