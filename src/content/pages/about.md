@@ -40,8 +40,8 @@ body_en: >-
    Interactivity is a central element in Vollbrecht’s work. Through participatory installations, viewers are actively involved in the piece and encouraged to shape meaning through personal experience rather than merely observing art passively. 
 
   Vollbrecht has shown his work at events and venues including Berlin Art Week 2022, Schöneberger Art 2022, Haus am Kleistpark 2023, and Notagallery 2024/25.
-portfolio_de: /uploads/portfolio_sven_vollbrecht_de.pdf
-portfolio_en: /uploads/portfolio_sven_vollbrecht_en.pdf
+portfolio_de: /uploads/portfolio_sven_vollbrecht.pdf
+portfolio_en: /uploads/portfolio_sven_vollbrecht_eng.pdf
 slug: about
 lang: de
 ---
