@@ -1,8 +1,8 @@
 ---
 title: Startseite
-image: /uploads/signs03.jpg
-body_de: ""
+image: /uploads/compliance.jpg
+body_de: "# [.COMpliance](https://www.gallery-weekend-berlin.com/)"
 slug: home
 lang: de
-body_en: ""
+body_en: "# [.COMpliance](https://www.gallery-weekend-berlin.com/)"
 ---
