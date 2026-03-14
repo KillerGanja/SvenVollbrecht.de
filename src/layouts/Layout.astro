@@ -2,17 +2,29 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import ScreenSizeIndicator from "../components/ScreenSizeIndicator.astro";
+import SEO from "../components/SEO.astro";
 import { t, getRelativeLocaleUrl } from "../utils/i18n";
 import settings from "../content/ui/settings.json";
 
 interface Props {
   title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article" | "profile";
   lang?: string;
 }
 
-const { title = "Sven Vollbrecht" } = Astro.props;
+const {
+  title = "Sven Vollbrecht",
+  description = "Sven Vollbrecht (geboren in West-Berlin) ist ein deutscher Konzeptkünstler. Er arbeitet mit Installationen, Videoarbeiten und partizipativen Formaten.",
+  image = "/favicon.svg",
+  type = "website",
+} = Astro.props;
 const { lang } = Astro.params as { lang: string };
 const locale = lang || "de";
+
+// Generate absolute URL for canonical link
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://svenvollbrecht.de');
 ---
 
 <html lang={locale}>
@@ -21,7 +33,13 @@ const locale = lang || "de";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <SEO
+      title={title}
+      description={description}
+      image={image}
+      canonicalUrl={canonicalURL.toString()}
+      type={type}
+    />
     <slot name="head" />
     <style
       is:inline
