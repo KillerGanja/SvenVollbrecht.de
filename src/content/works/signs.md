@@ -48,6 +48,6 @@ gallery_images:
   - /uploads/signs.jpg
   - /uploads/signs03.jpg
   - /uploads/signs04.jpg
-  - /uploads/signs02.jpg
+  - /uploads/sven-vollbrecht-signs-werkansicht-2.jpg
 lang: de
 ---

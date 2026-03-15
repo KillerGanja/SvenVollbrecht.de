@@ -52,8 +52,8 @@ description_en: >-
 
 
   I am interested here in the shift of power dynamics: the object in the cart, perhaps a private possession or perhaps a collective remnant, seems to be protected yet the cameras simultaneously create a barrier of surveillance. Who is observing whom? At the moment one attempts to grasp the material and its texture one becomes a data point in the system. I am concerned with this threshold between intimacy and control. The white bags remain silent almost ghostly in their neutrality while the mechanics of the cameras unfold an aggressive presence. I want to force visitors to confront their own position in the space: am I a witness to a precarious situation or am I already being marked as a potential disruption? The installation thus becomes a feedback loop of curiosity, distance, and the constant feedback of the technical gaze.
-cover_image: /uploads/vollbrecht__circle.jpg
+cover_image: /uploads/sven-vollbrecht-circle-werkansicht-1.jpg
 gallery_images:
-  - /uploads/vollbrecht__circle.jpg
+  - /uploads/sven-vollbrecht-circle-werkansicht-1.jpg
 lang: de
 ---

@@ -48,6 +48,24 @@ const htmlContent = marked.parse(processedDescription, { breaks: true });
 ---
 
 <Layout title={title}>
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "VisualArtwork",
+          "name": title,
+          "image": frontmatter.cover_image ? `https://svenvollbrecht.de${frontmatter.cover_image}` : undefined,
+          "description": description,
+          "artist": {
+            "@type": "Person",
+            "name": "Sven Vollbrecht",
+            "url": "https://svenvollbrecht.de"
+          },
+          "dateCreated": frontmatter.year,
+          "artMedium": materials,
+          "artform": "Installation",
+          "width": dimensions
+        })} />
+    </Fragment>
     <div class="mx-auto max-w-screen-xl">
         <WorkSlideshow images={frontmatter.gallery_images} title={title} />
 

@@ -49,9 +49,9 @@ description_en: >-
 
 
   The shopping basket is transformed from an everyday vehicle of consumption into a cage for a manipulated object. In the rigid materiality of the wire mesh and the brutal spring loaded mechanics of the trap a deep distrust of a global system manifests a system that simulates freshness while corrupting the actual substance of food. It is a sculptural warning against the passivity of the act of reaching. A memorial that shatters the supposed innocence of daily shopping and makes tangible the often invisible violence behind our highly engineered food chains. The work remains frozen in the moment of snapping shut forcing us to reevaluate the consequences of our own convenience and the hidden costs of industrial perfection.
-cover_image: /uploads/trust_vollbrecht01.jpg
+cover_image: /uploads/sven-vollbrecht-trust-werkansicht-1.jpg
 gallery_images:
-  - /uploads/trust_vollbrecht01.jpg
-  - /uploads/trust_.jpg
+  - /uploads/sven-vollbrecht-trust-werkansicht-1.jpg
+  - /uploads/sven-vollbrecht-trust-werkansicht-2.jpg
 lang: de
 ---

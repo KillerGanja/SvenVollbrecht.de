@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Redirect legacy work paths to localized works paths
+RewriteRule ^trust/?$ /de/works/trust/ [R=301,L]
+RewriteRule ^circle/?$ /de/works/circle/ [R=301,L]
+
+# English versions if they exist or just generalize
+RewriteRule ^en/trust/?$ /en/works/trust/ [R=301,L]
+RewriteRule ^en/circle/?$ /en/works/circle/ [R=301,L]

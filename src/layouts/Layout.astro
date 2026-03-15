@@ -25,6 +25,17 @@ const locale = lang || "de";
 
 // Generate absolute URL for canonical link
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://svenvollbrecht.de');
+
+// Generate hreflang URLs
+const pathname = Astro.url.pathname;
+const baseSlug = pathname.replace(/^\/(de|en)/, '') || '/';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://svenvollbrecht.de';
+
+const hreflang = [
+  { lang: 'de', href: `${siteUrl}/de${baseSlug}` },
+  { lang: 'en', href: `${siteUrl}/en${baseSlug}` },
+  { lang: 'x-default', href: `${siteUrl}/de${baseSlug}` },
+];
 ---
 
 <html lang={locale}>
@@ -39,6 +50,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://svenvoll
       image={image}
       canonicalUrl={canonicalURL.toString()}
       type={type}
+      hreflang={hreflang}
     />
     <slot name="head" />
     <style

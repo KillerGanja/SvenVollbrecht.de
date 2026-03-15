@@ -5,6 +5,7 @@ interface Props {
   image?: string;
   canonicalUrl: string;
   type?: "website" | "article" | "profile";
+  hreflang?: Array<{ lang: string; href: string }>;
 }
 
 const {
@@ -13,12 +14,14 @@ const {
   image = "https://svenvollbrecht.de/favicon.svg",
   canonicalUrl,
   type = "website",
+  hreflang = [],
 } = Astro.props;
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalUrl} />
+{hreflang.map(({ lang, href }) => <link rel="alternate" hreflang={lang} href={href} />)}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={type} />
