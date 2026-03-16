@@ -63,5 +63,6 @@ gallery_images:
   - /uploads/01.ajpg.jpg
   - /uploads/01a.jpg
   - /uploads/insta0a1.jpg
+  - /uploads/werk-1drei.mov
 lang: de
 ---
