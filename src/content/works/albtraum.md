@@ -67,5 +67,6 @@ gallery_images:
   - /uploads/werk-sieben.mov
   - /uploads/werk-zehn.mov
   - /uploads/werk-drei.mov
+  - /uploads/01.mov
 lang: de
 ---
