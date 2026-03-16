@@ -65,5 +65,6 @@ gallery_images:
   - /uploads/insta0a1.jpg
   - /uploads/werk-1drei.mov
   - /uploads/werk-sieben.mov
+  - /uploads/werk-zehn.mov
 lang: de
 ---
