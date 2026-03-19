@@ -12,7 +12,7 @@ body_de: >-
 
   Deutschland\
 
-  +491797139508\
+  +4915116329114\
 
   \
 
@@ -42,10 +42,9 @@ body_en: |-
   Friedrichstraße 210
   10969 Berlin
   Germany
-  +491797139508
+  +4915116329114
 
   [Email ](<>)| [Webseite](<>)
-
 
   **STUDIO**
 
