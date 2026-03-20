@@ -19,8 +19,6 @@ body_de: >-
   [Email ](mailto:iinfo@notagallery.de)| [Webseite](https://notagallery.de)
 
 
-  \
-
   **STUDIO**
 
 
@@ -35,6 +33,9 @@ body_de: >-
   \
 
   [Email ](mailto:studio@svenvollbrecht.de)| [Webseite](https://svenvollbrecht.de)
+
+
+  [Instagram](https://www.instagram.com/thevollbrecht/) | [Wikipedia](https://de.wikipedia.org/wiki/Sven_Vollbrecht) | [Artfacts](https://artfacts.net/artist/sven-vollbrecht-de)
 body_en: |-
   **GALLERY**
 
@@ -54,6 +55,8 @@ body_en: |-
   +491797139508
 
   [Email ](<>)| [Website](<>)
+
+  [Instagram](<>) | [Wikipedia](<>) | [Artfacts](<>)
 slug: contact
 lang: de
 ---
