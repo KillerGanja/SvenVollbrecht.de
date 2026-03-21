@@ -38,7 +38,6 @@ description_en: >-
 cover_image: /uploads/echo01.jpg
 gallery_images:
   - /uploads/01.jpg
-  - /uploads/01.jpg
   - /uploads/044.jpg
   - /uploads/033.jpg
   - /uploads/022.jpg
