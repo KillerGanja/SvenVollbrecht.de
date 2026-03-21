@@ -35,7 +35,7 @@ description_en: >-
   The analogy I draw here is that of toxic communication. Hate speech often functions like a shot into the unknown, yet in this work the warning becomes concrete: be careful what you proclaim. The force of a comment can turn back on itself. It is important to me to mark this space of resonance between the
 
   I and the we. The object calls for an ecological form of coexistence, a respect that is not merely moral but functions as a protective mechanism against one's own aggression returning as an echo.
-cover_image: /uploads/01.jpg
+cover_image: /uploads/echo01.jpg
 gallery_images:
   - /uploads/01.jpg
   - /uploads/01.jpg
