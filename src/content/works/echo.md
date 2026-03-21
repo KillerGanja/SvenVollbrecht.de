@@ -37,7 +37,6 @@ description_en: >-
   I and the we. The object calls for an ecological form of coexistence, a respect that is not merely moral but functions as a protective mechanism against one's own aggression returning as an echo.
 cover_image: /uploads/echo01.jpg
 gallery_images:
-  - /uploads/01.jpg
   - /uploads/044.jpg
   - /uploads/033.jpg
   - /uploads/022.jpg
