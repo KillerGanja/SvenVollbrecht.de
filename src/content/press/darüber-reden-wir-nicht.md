@@ -1,5 +1,5 @@
 ---
-title: '"Darüber reden wir nicht!"'
+title: '"Darüber reden wir nicht!" von Andreas Kurtz'
 slug: presse-bericht10
 medium: Berliner Morgenpost
 date: 2026-03-28
