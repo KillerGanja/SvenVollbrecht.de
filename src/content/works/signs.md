@@ -2,7 +2,7 @@
 title: SIGNS
 slug: signs
 order: 9
-year: 2024
+year: 2023
 series: ""
 materials_de: Wandinstallation, Metallzaun, Mixed Media
 materials_en: Wall installation, metal fence, posters, mixed media
