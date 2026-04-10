@@ -69,6 +69,6 @@ gallery_images:
   - /uploads/albtraum07.jpg
   - /uploads/albtraum07.mov
   - /uploads/albtraum08.jpg
-  - /uploads/albtraum08.jpg
+  - /uploads/albtraum08.mov
 lang: de
 ---
