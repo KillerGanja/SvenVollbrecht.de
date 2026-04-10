@@ -52,21 +52,23 @@ description_en: >-
 
 
   In place of the promised light, the fragmented emerges. I integrate anonymous found objects from the world of toys—decoupled from their original histories—directly into the sockets and combine them with the mechanism of a music box. These material hybrids make the physical distance from one's own childhood palpable, emphasizing the ruptures within collective constructions of memory. While the series follows a coherent formal structure, each of the eight works is dedicated to an individual thematic premise defined by the choice of specific toy fragments.
-cover_image: /uploads/works-01.jpg
+cover_image: /uploads/albtraum03.jpg
 gallery_images:
-  - /uploads/sven-vollbrecht-albtraum-werkansicht-1.jpg
-  - /uploads/insta01.jpg
-  - /uploads/sven-vollbrecht-albtraum-werkansicht-2.jpg
-  - /uploads/werk-zwei-02.mov
-  - /uploads/insta00.jpg
-  - /uploads/11.jpg
-  - /uploads/01.ajpg.jpg
-  - /uploads/01a.jpg
-  - /uploads/insta0a1.jpg
-  - /uploads/werk-1drei.mov
-  - /uploads/werk-sieben.mov
-  - /uploads/werk-zehn.mov
-  - /uploads/werk-drei.mov
-  - /uploads/01.mov
+  - /uploads/albtraum01.jpg
+  - /uploads/albtraum01.mov
+  - /uploads/albtraum02.jpg
+  - /uploads/albtraum02.mov
+  - /uploads/albtraum03.jpg
+  - /uploads/albtraum03.mov
+  - /uploads/albtraum04.jpg
+  - /uploads/albtraum04.mov
+  - /uploads/albtraum05.jpg
+  - /uploads/albtraum05.mov
+  - /uploads/albtraum06.jpg
+  - /uploads/albtraum06.mov
+  - /uploads/albtraum07.jpg
+  - /uploads/albtraum07.mov
+  - /uploads/albtraum08.jpg
+  - /uploads/albtraum08.jpg
 lang: de
 ---
