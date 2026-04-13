@@ -1,5 +1,5 @@
 ---
-description_de: Mit Jonathan Messe, Olaf Nikolai
+description_de: ""
 gallery_images:
   - /uploads/digitalvois001-2.jpg
   - /uploads/digital-void05.jpg
