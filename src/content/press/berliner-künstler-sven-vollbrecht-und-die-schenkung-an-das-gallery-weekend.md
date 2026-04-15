@@ -1,6 +1,6 @@
 ---
-title: Berliner Künstler Sven Vollbrecht und die Schenkung an das Gallery
-  Weekend! (DE) von Beatrice Kuhnert
+title: Sven Vollbrecht und die Schenkung an das Gallery Weekend! (DE) von
+  Beatrice Kuhnert
 slug: presse 10
 medium: ZEITBLATT
 date: 2026-04-15
