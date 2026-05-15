@@ -1,7 +1,7 @@
 ---
 title: Dauerzustand
 slug: dauerzustand-artwork
-order: 1
+order: 0
 year: 2026
 materials_de: Discokugel-Motor, Handschellen
 materials_en: Disco Ball Motor, Handcuffs
