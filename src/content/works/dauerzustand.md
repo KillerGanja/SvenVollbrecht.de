@@ -38,5 +38,4 @@ cover_image: /uploads/10.jpg
 gallery_images:
   - /uploads/08.jpg
   - /uploads/dauerzustand.mov
-  - /uploads/08.jpg
 ---
