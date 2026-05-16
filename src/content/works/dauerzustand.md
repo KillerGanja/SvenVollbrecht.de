@@ -1,6 +1,6 @@
 ---
-title: Dauerzustand
-slug: dauerzustand-artwork
+title: Zustand
+slug: zustand-artwork
 order: 0
 year: 2026
 materials_de: Discokugel-Motor, Handschellen
@@ -20,7 +20,7 @@ description_de: >-
   Es ist ein permanentes Werden, das nie zu einem Sein führt. Das Gehirn des Betrachters wartet instinktiv auf den einen Moment, in dem die Bügel endlich ineinandergreifen, auf das befreiende Geräusch des Einrastens, doch dieser Abschluss wird verweigert. Ein automatisierter Sisyphos: Die Hoffnung, dass sich der Kreis schließt, wird bei jeder Umdrehung neu genährt und im selben Atemzug enttäuscht.
 
 
-  In dieser extremen Langsamkeit verliert das Metall seine Härte und wird zu einer fließenden, scheiternden Geste. Das Werk verharrt in einer ewigen Warteschleife, in der das Scheitern nicht als Ende existiert, sondern als einzige konstante Form. Die Handschellen kreisen – und in ihrer Unfähigkeit, sich zu schließen, liegt eine seltsame, melancholische Schönheit.
+  In dieser extremen Langsamkeit verliert das Metall seine Härte und wird zu einer fließenden, scheiternden Geste. Das Werk verharrt in einer ewigen Warteschleife, in der das Scheitern nicht als Ende existiert, sondern als einzige konstante Form. Die Handschellen kreisen und in ihrer Unfähigkeit, sich zu schließen, liegt eine seltsame, melancholische Schönheit.
 description_en: >-
   I have created a wall object that draws its life from the relentless stillness
   of a slowly turning motor. Suspended from it are handcuffs. yet they have been
