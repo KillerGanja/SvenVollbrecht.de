@@ -36,9 +36,8 @@ description_en: >-
   Amidst this extreme slowness, the metal sheds its hardness, transforming into a fluid, failing gesture. The work remains suspended in an eternal holding pattern, where failure exists not as an end, but as the sole constant form. The handcuffs circle and within their inability to close lies a strange, melancholic beauty.
 cover_image: /uploads/zustand01.jpg
 gallery_images:
-  - /uploads/dauerzustand.mov
-  - /uploads/zustand_final2.mov
   - /uploads/zustand02.jpg
+  - /uploads/zustand_final2.mov
   - /uploads/zustand03.jpg
   - /uploads/zustand07.jpg
   - /uploads/zustand04.jpg
