@@ -8,7 +8,7 @@ materials_en: Disco Ball Motor, Handcuffs
 dimensions_de: 24 x 12 x 6 cm
 dimensions_en: '9,45" x 4,72" x 2,36" in '
 description_de: >-
-  Ein Paar Handschellen dreht sich endlos im Uhrzeigersinn, ohne sich je zu
+  Ein Paar Handschellen drehen sich endlos im Uhrzeigersinn, ohne sich je zu
   schließen. Dabei entstehen sekundäre Skulpturen, flüchtige Abdrücke der
   Bewegung, die nach wenigen Sekunden wieder vergehen, so wie die Drehung von
   vorne beginnt.
