@@ -27,8 +27,8 @@ description_en: >-
   In this constellation the static becomes a metaphor for those uncontrolled electronic discharges known as a shitstorm. The work makes the interface between the physical body and obsolete media technology as well as the toxic materiality of modern communication tangible.
 cover_image: /uploads/sven-vollbrecht-shitstorm-werkansicht-1.jpg
 gallery_images:
+  - /uploads/insta_video_beitrag_shitstorm.mp4
   - /uploads/sven-vollbrecht-shitstorm-werkansicht-1.jpg
   - /uploads/sven-vollbrecht-shitstorm-werkansicht-2.jpg
-  - /uploads/insta_video_beitrag_shitstorm.mp4
 lang: de
 ---
