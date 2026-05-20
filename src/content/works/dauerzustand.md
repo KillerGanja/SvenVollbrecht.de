@@ -30,8 +30,8 @@ description_en: >-
   To me, they serve as a symbol for those who wield power without ever being held accountable, those who remain in the background while others, intermediaries, front men, stand and fall in their stead. The powerful themselves remain untouched, invisible, free. Like handcuffs that spin, but never close.
 cover_image: /uploads/zustand01.jpg
 gallery_images:
-  - /uploads/zustand02.jpg
   - /uploads/zustand_final2.mov
+  - /uploads/zustand02.jpg
   - /uploads/zustand03.jpg
   - /uploads/zustand07.jpg
   - /uploads/zustand04.jpg
