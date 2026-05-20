@@ -51,8 +51,8 @@ description_en: >-
   The projected eye embodies the intimacy of observation; it fixes upon the viewers and creates a proximity that feels almost uncomfortable. However the decisive rupture is marked by a doorbell I installed. Whoever presses it is not welcomed but triggers a piercing scream through loudspeakers. This acoustic assault is my commentary on the permanent attention economy. Liking, sharing, commenting the scream is the radical response to an overwhelming demand that often remains silent in the digital realm but here immediately jolts the physical space and the body itself. It is the moment when the constant noise simply becomes too much.
 cover_image: /uploads/digitalvois001-2.jpg
 gallery_images:
+  - /uploads/8794934480840364718.mp4
   - /uploads/digitalvois001-2.jpg
   - /uploads/twfq7524.mp4
-  - /uploads/8794934480840364718.mp4
 lang: de
 ---
