@@ -54,21 +54,21 @@ description_en: >-
   In place of the promised light, the fragmented emerges. I integrate anonymous found objects from the world of toys—decoupled from their original histories—directly into the sockets and combine them with the mechanism of a music box. These material hybrids make the physical distance from one's own childhood palpable, emphasizing the ruptures within collective constructions of memory. While the series follows a coherent formal structure, each of the eight works is dedicated to an individual thematic premise defined by the choice of specific toy fragments.
 cover_image: /uploads/albtraum03.jpg
 gallery_images:
-  - /uploads/albtraum01.jpg
   - /uploads/albtraum01.mov
-  - /uploads/albtraum02.jpg
+  - /uploads/albtraum01.jpg
   - /uploads/albtraum02.mov
-  - /uploads/albtraum03.jpg
+  - /uploads/albtraum02.jpg
   - /uploads/albtraum03.mov
-  - /uploads/albtraum04.jpg
+  - /uploads/albtraum03.jpg
   - /uploads/albtraum04.mov
-  - /uploads/albtraum05.jpg
+  - /uploads/albtraum04.jpg
   - /uploads/albtraum05.mov
-  - /uploads/albtraum06.jpg
+  - /uploads/albtraum05.jpg
   - /uploads/albtraum06.mov
-  - /uploads/albtraum07.jpg
+  - /uploads/albtraum06.jpg
   - /uploads/albtraum07.mov
-  - /uploads/albtraum08.jpg
+  - /uploads/albtraum07.jpg
   - /uploads/albtraum08.mov
+  - /uploads/albtraum08.jpg
 lang: de
 ---
