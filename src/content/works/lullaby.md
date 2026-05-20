@@ -74,7 +74,7 @@ description_en: >-
 cover_image: /uploads/lullaby01.jpg
 gallery_images:
   - /uploads/lullaby01.jpg
-  - /uploads/lullaby03b.jpg
   - /uploads/lullaby_reel2.mp4
+  - /uploads/lullaby03b.jpg
 lang: de
 ---
