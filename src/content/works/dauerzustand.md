@@ -3,8 +3,8 @@ title: Zustand
 slug: zustand-artwork
 order: 1
 year: 2026
-materials_de: Discokugel-Motor, Handschellen
-materials_en: Disco Ball Motor, Handcuffs
+materials_de: Wandobject, Discokugel-Motor, Handschellen
+materials_en: Wall-based object, Disco Ball Motor, Handcuffs
 dimensions_de: 24 x 12 x 6 cm
 dimensions_en: "9,45 x 4,72 x 2,36 in "
 description_de: >-
