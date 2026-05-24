@@ -1,7 +1,7 @@
 ---
 title: Zustand
 slug: zustand-artwork
-order: 0
+order: 1
 year: 2026
 materials_de: Discokugel-Motor, Handschellen
 materials_en: Disco Ball Motor, Handcuffs
