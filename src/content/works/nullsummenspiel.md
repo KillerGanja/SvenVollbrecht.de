@@ -3,8 +3,8 @@ title: Nullsummenspiel
 slug: nullsummenspiel-werk
 order: 0
 year: 2026
-materials_de: Abakus
-materials_en: abacus
+materials_de: Readymade, Abakus
+materials_en: Readymade, abacus
 dimensions_de: 8 x 21 x 5 cm
 dimensions_en: 3,2 x 8,3 x 2,0 in
 description_de: >-
