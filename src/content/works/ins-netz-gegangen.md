@@ -1,7 +1,7 @@
 ---
 title: Ins Netz gegangen
 slug: ins-netz-gegangen
-order: 1
+order: 0
 year: 2026
 materials_de: Baumwoll-Einkaufsnetz, Replika des FIFA World Cup Pokals, Kunstobst
 materials_en: Cotton shopping net, replica of the FIFA World Cup trophy, artificial fruit
