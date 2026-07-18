@@ -1,7 +1,7 @@
 ---
 title: Ins Netz gegangen
 slug: ins-netz-gegangen
-order: 9999
+order: 1
 year: 2026
 materials_de: Baumwoll-Einkaufsnetz, Replika des FIFA World Cup Pokals, Kunstobst
 materials_en: Cotton shopping net, replica of the FIFA World Cup trophy, artificial fruit
@@ -35,10 +35,12 @@ description_en: >-
 
 
   The stadium stays distant, behind a paywall. The trophy has long been hanging in the net, half-hidden, a gleam among the fruit, packaged for those who can only watch. The real victory is elsewhere. It belongs only to those who can afford it.
-cover_image: /uploads/01.jpg
+cover_image: /uploads/netz01.jpg
 gallery_images:
-  - /uploads/01.jpg
+  - /uploads/netz01.jpg
+  - /uploads/netz02a.jpg
   - /uploads/netz08.jpg
-  - /uploads/02a.jpg
-  - /uploads/netz03.jpg
+  - /uploads/netz06.jpg
+  - /uploads/netz04.jpg
+  - /uploads/img_8146.mov
 ---
