@@ -3,8 +3,10 @@ title: Ins Netz gegangen
 slug: ins-netz-gegangen
 order: 0
 year: 2026
-materials_de: Baumwoll-Einkaufsnetz, Replika des FIFA World Cup Pokals, Kunstobst
-materials_en: Cotton shopping net, replica of the FIFA World Cup trophy, artificial fruit
+materials_de: Wandobjekt, Readymade-Assemblage, Baumwoll-Einkaufsnetz, Replika
+  des FIFA World Cup Pokals, Kunstobst
+materials_en: Wall object, readymade assemblage, Cotton shopping net, replica of
+  the FIFA World Cup trophy, artificial fruit
 dimensions_de: 58 x 22 x 22 cm
 dimensions_en: 23 x 9 x 9 inch
 description_de: >-
