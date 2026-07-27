@@ -1,7 +1,7 @@
 ---
 title: Nullsummenspiel
 slug: nullsummenspiel-werk
-order: 0
+order: 1
 year: 2026
 materials_de: Readymade, Abakus
 materials_en: Readymade, abacus
