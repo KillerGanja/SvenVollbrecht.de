@@ -1,7 +1,7 @@
 ---
 title: Über
 body_de: >-
-  <https://artfacts.net/artist/sven-vollbrecht-de>CV
+  CV
 
 
   Sven Vollbrecht (geboren in West-Berlin) lebt und arbeitet in Berlin.
