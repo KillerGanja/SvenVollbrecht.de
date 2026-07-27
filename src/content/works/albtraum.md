@@ -1,7 +1,7 @@
 ---
 title: ALBTRAUM
 slug: albtraum
-order: 5
+order: 4
 year: 2025
 series: ""
 materials_de: Wandobjekt, Kellerlampe, Spieluhr, diverse Spielzeuge
