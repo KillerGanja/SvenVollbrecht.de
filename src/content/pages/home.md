@@ -1,14 +1,8 @@
 ---
 title: Startseite
-image: /uploads/compliance.jpg
-body_de: |-
-  # Kunstprojekt
-
-  ## **[.COMPLIANCE](https://www.gallery-weekend-berlin.com/)**
+image: /uploads/02a.jpg
+body_de: ""
 slug: home
 lang: de
-body_en: |-
-  # Artproject
-
-  ## [.COMPLIANCE](https://www.gallery-weekend-berlin.com/)
+body_en: ""
 ---
