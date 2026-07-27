@@ -1,7 +1,7 @@
 ---
 title: .COMpliance
 slug: compliane
-order: 0
+order: 1
 year: 2026
 materials_de: Domain, goldfarbener Notizblock mit eingebettetem Zugriffschip,
   E-Mail-Korrespondenz, Performance
