@@ -1,45 +1,33 @@
 ---
 title: Über
 body_de: >-
-  Sven Vollbrecht wurde in West-Berlin geboren. Er lebt und arbeitet in Berlin,
-  Deutschland.
+  <https://artfacts.net/artist/sven-vollbrecht-de>CV
 
 
-  Seine Arbeit untersucht die Beziehungen zwischen Individuen, Gesellschaft und Konsumkultur und hinterfragt, wie zeitgenössische Systeme Wahrnehmung, Verhalten und persönliche Verantwortung prägen. Er versteht Kunst als einen offenen, sich ständig weiterentwickelnden Prozess, als fortlaufenden Dialog zwischen Werk, Künstler und Betrachter*in.
+  Sven Vollbrecht (geboren in West-Berlin) lebt und arbeitet in Berlin.
 
 
-  Nach mehreren Jahren als Fotograf und Regisseur in der kommerziellen Kunstproduktion verlagerte Vollbrecht im September 2022 seinen Fokus und widmete sich vollständig der freien Kunst. Dieser Schritt markierte den Beginn einer Praxis, die von Selbstreflexion und einem kontinuierlichen Hinterfragen von Authentizität geprägt ist.
+  Sven Vollbrecht ist bekannt für Skulptur, Rauminstallation, Video und partizipative Formate, die Alltagsobjekte gegen ihre gewohnte Funktion wenden, um die Mechanismen von Konsum, Kontrolle und Kommunikation sichtbar zu machen. Vollbrecht arbeitete zunächst als Fotograf und Regisseur, bevor er sich 2022 ausschließlich der bildenden Kunst widmete. Als Autodidakt ohne akademische Ausbildung entwickelte er seine Praxis eigenständig.
 
 
-  Vollbrechts künstlerischer Prozess ist fließend und erfahrungsbasiert. Seine Arbeiten entwickeln sich aus emotionalen Zuständen, materialbezogener Erkundung und konzeptioneller Offenheit, statt festen Ergebnissen zu folgen. Jedes Werk versteht er nicht als abschließende Aussage, sondern als Moment innerhalb einer fortlaufenden Auseinandersetzung, die sowohl sein künstlerisches Denken als auch einen bestimmten Zeitpunkt widerspiegelt.
+  Vollbrecht hat unter anderem im Rahmen der Berlin Art Week, in der Notagallery, im Haus am Kleistpark, im PRACHTSAAL und bei RÄUME.ART ausgestellt. 2022 wurde seine Videoinstallation Digital Void im Rahmen der Berlin Art Week im ehemaligen Flughafen Tegel gezeigt, 2024 seine Skulptur Echo im Haus am Kleistpark. Zunehmend arbeitet er auch im digitalen und öffentlichen Raum: Mit seinem Projekt .COMpliance (2026), der performativen Rückgabe der Domain gallery-weekend-berlin.com in Form eines goldenen Readymades, erhielt er internationale Aufmerksamkeit, unter anderem durch Berichterstattung von ZEITBLATT und dem Kunstmagazin bspoque.
 
 
-  Im Zentrum seiner Praxis steht die kritische Auseinandersetzung mit gesellschaftlichen Systemen, insbesondere mit jenen, die Konsum und Vertrauen betreffen. Seine Kunst lädt zur kritischen Reflexion ein, ohne eindeutige Antworten vorzugeben.
-
-
-  Interaktivität ist ein zentrales Element in Vollbrechts Arbeit. Durch partizipative Installationen werden Betrachter*innen aktiv in das Werk einbezogen und dazu angeregt, Bedeutung durch persönliche Erfahrung zu formen, statt Kunst nur passiv zu betrachten.
-
-
-  Vollbrecht zeigte seine Arbeiten unter anderem bei der Berlin Art Week 2022, Schöneberger Art 2022, im Haus am Kleistpark 2023, sowie in der Notagallery 2024/25.
+  Weitere Informationen: [Wikipedia](https://de.wikipedia.org/wiki/Sven_Vollbrecht), [Artfacts](https://artfacts.net/artist/sven-vollbrecht-de)
 body_en: >-
-  Sven Vollbrecht was born in West Berlin. He lives and works in Berlin,
-  Germany. 
+  CV
 
 
-  His work examines the relationships between individuals, society, and consumer culture, questioning how contemporary systems shape perception, behavior, and personal responsibility. He views art as an open, constantly evolving process, an ongoing dialogue between the work, the artist, and the viewer. 
+  Sven Vollbrecht (born in West-Berlin) lives and works in Berlin.
 
 
-  After several years as a photographer and director in commercial art production, Vollbrecht shifted his focus in September 2022 to dedicate himself entirely to fine art. This step marked the beginning of a practice characterized by self-reflection and a continuous questioning of authenticity. 
+  Sven Vollbrecht is known for sculpture, spatial installation, video and participatory formats that turn everyday objects against their usual function to reveal the mechanisms of consumption, control and communication. Vollbrecht initially worked as a photographer and director before devoting himself exclusively to fine art in 2022. As a self-taught artist without formal art education, he developed his practice independently.
 
 
-  Vollbrecht’s artistic process is fluid and experience-based. His works develop from emotional states, material exploration, and conceptual openness rather than following predetermined outcomes. He understands each piece not as a final statement, but as a moment within an ongoing engagement that reflects both his artistic thinking and a specific point in time. 
+  Vollbrecht has exhibited at institutions and venues including Berlin Art Week, Notagallery, Haus am Kleistpark, PRACHTSAAL and RÄUME.ART. In 2022, his video installation Digital Void was shown as part of Berlin Art Week at the former Tegel Airport, followed in 2024 by his sculpture Echo at Haus am Kleistpark. Vollbrecht has increasingly worked in the digital and public realm: his project .COMpliance (2026), the performative return of the domain gallery-weekend-berlin.com in the form of a gold readymade, drew international attention, including coverage by ZEITBLATT and the art magazine bspoque.
 
 
-  At the center of his practice is a critical examination of societal systems, particularly those concerning consumption and trust. His art invites critical reflection without providing definitive answers.
-
-   Interactivity is a central element in Vollbrecht’s work. Through participatory installations, viewers are actively involved in the piece and encouraged to shape meaning through personal experience rather than merely observing art passively. 
-
-  Vollbrecht has shown his work at events and venues including Berlin Art Week 2022, Schöneberger Art 2022, Haus am Kleistpark 2023, and Notagallery 2024/25.
+  Further information: [Wikipedia](https://de.wikipedia.org/wiki/Sven_Vollbrecht), Artfacts
 portfolio_de: /uploads/portfolio_sven_vollbrecht.pdf
 portfolio_en: /uploads/portfolio_sven_vollbrecht_eng.pdf
 slug: about
