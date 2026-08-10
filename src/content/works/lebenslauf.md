@@ -19,4 +19,6 @@ description_de: Stillstand mitten in der Bewegung. Zwei Räder, die sich drehen
   Verweilens, montiert an derselben Wand, verbunden durch nichts als die Distanz
   zwischen ihnen. Nah beieinander. Unendlich weit entfernt.
 cover_image: /uploads/lebenslauf01.jpg
+gallery_images:
+  - /uploads/lebenslauf01.jpg
 ---
