@@ -32,6 +32,6 @@ description_en: Stasis amidst motion. Two wheels spinning, yet achieving
   distance between them. Close together. Infinitely far apart.
 cover_image: /uploads/lebenslauf01.jpg
 gallery_images:
-  - /uploads/lebenslauf01.jpg
   - /uploads/lebenslauf.mov
+  - /uploads/lebenslauf01.jpg
 ---
