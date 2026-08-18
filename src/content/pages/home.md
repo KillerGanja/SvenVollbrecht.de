@@ -1,6 +1,6 @@
 ---
 title: Startseite
-image: ""
+image: /uploads/02a.jpg
 body_de: |-
   # Konzeptkünstler aus Berlin.
   Readymades. Aktionen.
