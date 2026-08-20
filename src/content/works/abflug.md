@@ -50,9 +50,10 @@ description_en: >-
   I call it takeoff because it looks like setting out but in truth it is a descent.
 
   Would you like to refine any specific phrasing further?
-cover_image: /uploads/01abflug.jpg
+cover_image: /uploads/01homepageabflug.jpg
 gallery_images:
   - /uploads/02abflug.jpg
   - /uploads/02aabflug.jpg
   - /uploads/04abflug.jpg
+  - /uploads/01homepageabflug.jpg
 ---
