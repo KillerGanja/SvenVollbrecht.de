@@ -52,8 +52,9 @@ description_en: >-
   Would you like to refine any specific phrasing further?
 cover_image: /uploads/01homepageabflug.jpg
 gallery_images:
-  - /uploads/02abflug.jpg
+  - /uploads/01homepageabflug.jpg
   - /uploads/02aabflug.jpg
+  - /uploads/02abflug.jpg
   - /uploads/04abflug.jpg
   - /uploads/01homepageabflug.jpg
 ---
