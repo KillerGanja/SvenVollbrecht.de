@@ -56,5 +56,4 @@ gallery_images:
   - /uploads/02aabflug.jpg
   - /uploads/02abflug.jpg
   - /uploads/04abflug.jpg
-  - /uploads/01homepageabflug.jpg
 ---
