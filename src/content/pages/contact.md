@@ -1,24 +1,6 @@
 ---
 title: Kontakt
 body_de: >-
-  **GALERIE**
-
-
-  Notagallery\
-
-  Friedrichstraße 210\
-
-  10969 Berlin\
-
-  Deutschland\
-
-  +4915116329114\
-
-  \
-
-  [Email ](mailto:iinfo@notagallery.de)| [Webseite](https://notagallery.de)
-
-
   **STUDIO**
 
 
