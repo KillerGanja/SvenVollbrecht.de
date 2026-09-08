@@ -6,7 +6,7 @@ year: 2024
 materials_de: Skulptur, Aluminium-Behälter, modifizierte Industriegrafik
 materials_en: Sculpture, aluminum container, modified industrial graphics
 dimensions_de: 54 x 30 x 30 cm
-dimensions_en: 11.8 x 21.3 x 11.8 in
+dimensions_en: 11.8 x 21.3 x 11.8 in.
 description_de: "In dieser Arbeit geht es um die rastlose Suche nach digitalen
   Reizen, jenes flüchtige Verlangen nach dem nächsten Klick, in eine physische
   Form zu übersetzen. Ich habe dafür einen \r
