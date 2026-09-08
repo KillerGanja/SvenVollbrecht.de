@@ -6,7 +6,7 @@ year: 2026
 materials_de: Spielzeug-Hamsterräder, Spielzeug-Hamster
 materials_en: Toy hamster wheels, toy hamsters
 dimensions_de: 18 x 36 x 9 cm
-dimensions_en: 7 x 14 x 4 inch
+dimensions_en: 7 x 14 x 4 in.
 description_de: Stillstand mitten in der Bewegung. Zwei Räder, die sich drehen
   und doch nichts erreichen. Ein leises Eingeständnis der Isolation, mitten in
   einer Gesellschaft, die Nähe predigt und Distanz belohnt. Zwei Subjekte, jedes
