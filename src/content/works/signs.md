@@ -7,7 +7,7 @@ series: ""
 materials_de: Wandinstallation, Metallzaun, Mixed Media
 materials_en: Wall installation, metal fence, posters, mixed media
 dimensions_de: 150 x 200 x 5 cm
-dimensions_en: 59.1 x 78.7 in
+dimensions_en: 59.1 x 78.7 in.
 description_de: >-
   Als ich die Einladung zur Gruppenausstellung Berlainshow von raeume.art zum
   Thema Künstliche Intelligenz erhielt, war mir schnell klar: Ich will KI nicht
