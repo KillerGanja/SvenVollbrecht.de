@@ -6,7 +6,7 @@ year: 2024
 materials_de: Skulptur, Röhrenfernseher, Abfluss-Pömpel
 materials_en: Sculpture, CRT television, sink plunger
 dimensions_de: 44 x 35 x 80 cm
-dimensions_en: 17.3 x 13.8 x 31.5 in
+dimensions_en: 17.3 x 13.8 x 31.5 in.
 description_de: >-
   Ich präsentiere hier einen Röhrenfernseher, der durch eine minimale, aber
   physisch eindringliche Geste umgedeutet wird: Ein modifizierter Saugnapf, ein
