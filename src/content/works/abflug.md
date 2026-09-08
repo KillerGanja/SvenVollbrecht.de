@@ -6,7 +6,7 @@ year: 2026
 materials_de: Readymade-Assemblage, Schwimmweste, Krawatten und die Lebensmittelattrappe
 materials_en: Readymade assemblage, life jacket, ties, and the food replica
 dimensions_de: 90 x 60 x 26 cm
-dimensions_en: 36 x 24 x 11 Inch
+dimensions_en: 36 x 24 x 11 in.
 description_de: >-
   Ich glaube nicht an die Schwimmweste. Sie hängt da, damit man sich sicher
   fühlt, während man längst tut, was einen umbringt.
