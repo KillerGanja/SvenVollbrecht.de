@@ -8,7 +8,7 @@ materials_de: Domain, goldfarbener Notizblock mit eingebettetem Zugriffschip,
 materials_en: Domain, gold-colored notepad with embedded access chip, email
   correspondence, performance
 dimensions_de: 11 x 6 x 3 cm
-dimensions_en: 4 x 2 x 1 Inch
+dimensions_en: 4 x 2 x 1 in.
 description_de: >-
   Ich besitze eine Domain, die niemand haben will.
   *[gallery-weekend-berlin.com](https://gallery-weekend-berlin.com)* liegt seit
