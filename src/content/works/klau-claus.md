@@ -6,7 +6,7 @@ year: 2024
 materials_de: Wandobjekt, Stoffmaske,Tischrahmen, Nothammer
 materials_en: Wall-based object, mask, table frame, emergency hammer
 dimensions_de: 115 x 43 x 17 cm
-dimensions_en: 45.3 x 16.9 x 6.7 in
+dimensions_en: 45.3 x 16.9 x 6.7 in.
 description_de: "In meiner Auseinandersetzung mit dieser Arbeit fasziniert mich
   vor allem die verstörende Ambivalenz der Maskierung. Auf den ersten Blick
   begegnen wir einer roten Stoffmaske mit weißem Bommel, ein visuelles Signal,
