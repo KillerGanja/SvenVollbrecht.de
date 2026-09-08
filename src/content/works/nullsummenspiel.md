@@ -6,7 +6,7 @@ year: 2026
 materials_de: Readymade, Abakus
 materials_en: Readymade, abacus
 dimensions_de: 8 x 21 x 5 cm
-dimensions_en: 3,2 x 8,3 x 2,0 in
+dimensions_en: 3,2 x 8,3 x 2,0 in.
 description_de: >-
   Mit meinem Readymade „Nullsummenspiel" nutze ich einen klassischen Abakus, um
   die starre Logik des Russland-Ukraine-Konflikts zu visualisieren. Ein
