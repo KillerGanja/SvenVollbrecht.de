@@ -7,7 +7,7 @@ series: ""
 materials_de: Wandobjekt, Kellerlampe, Spieluhr, diverse Spielzeuge
 materials_en: Basement lamp, music box, various toys.
 dimensions_de: Höhe von 23 - 82 cm, Breite von 12 - 27 cm
-dimensions_en: "Height: 23–82 cm (9.1–32.3 in), Width: 12–27 cm (4.7–10.6 in)"
+dimensions_en: "Height: 23–82 cm (9.1–32.3 in.), Width: 12–27 cm (4.7–10.6 in.)"
 description_de: "In meiner achtteiligen Werkserie Albtraum untersuche ich die
   Bruchstellen zwischen kindlicher Geborgenheit und technischer Nüchternheit.
   Jede Arbeit folgt einer strengen, fast klinischen Versuchsanordnung: Eine
