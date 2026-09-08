@@ -6,7 +6,7 @@ year: 2024
 materials_de: Skulptur, Leopard 1 Panzerhülse, Signalhorn
 materials_en: Sculpture, Leopard 1 tank shell casing, hunting horn
 dimensions_de: 96 x 15 x 15 cm
-dimensions_en: 37.8 x 5.9 x 5.9 in
+dimensions_en: 37.8 x 5.9 x 5.9 in.
 description_de: "Ich habe eine Leopard-1-Hülse mit einem Jagdhorn verbunden. Ein
   Hybrid aus militärischer Entladung und ritueller Signalgebung. Jetzt steht das
   Objekt im Raum und fordert eine neue Lesart ein: Der Ruf zur Jagd wird zur
