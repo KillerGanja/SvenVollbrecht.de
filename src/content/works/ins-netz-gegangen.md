@@ -8,7 +8,7 @@ materials_de: Wandobjekt, Readymade-Assemblage, Baumwoll-Einkaufsnetz, Replika
 materials_en: Wall object, readymade assemblage, Cotton shopping net, replica of
   the FIFA World Cup trophy, artificial fruit
 dimensions_de: 58 x 22 x 22 cm
-dimensions_en: 23 x 9 x 9 inch
+dimensions_en: 23 x 9 x 9 in.
 description_de: >-
   Ich habe einen Sieg gekauft, glänzend, kalt, ohne Schweiß.
 
