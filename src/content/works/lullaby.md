@@ -11,7 +11,7 @@ materials_en: Room installation, hospital bed, illuminated urinal, rotating
   triangle grab handle, music box playing Frédéric Chopin’s Funeral March on a
   continuous loop
 dimensions_de: 190 x 220 x 90 cm
-dimensions_en: 45.3 x 16.9 x 6.7 in
+dimensions_en: 45.3 x 16.9 x 6.7 in.
 description_de: "In der Installation Lullaby manifestiert sich eine
   tiefgreifende Verschränkung der Sujets von Natalität und Finalität innerhalb
   einer zyklisch konzipierten Gesamtstruktur. Das zentrale Handlungsmoment der
