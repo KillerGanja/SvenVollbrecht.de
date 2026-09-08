@@ -6,7 +6,7 @@ year: 2023
 materials_de: Wandobjekt, Einkaufskorb, Rattenfalle, Plastikgurke
 materials_en: Wall-based object, shopping basket, rat trap, plastic cucumber
 dimensions_de: 41 x 44 x 27 cm
-dimensions_en: 16.1 x 17.7 x 10.6 in
+dimensions_en: 16.1 x 17.7 x 10.6 in.
 description_de: "Meine Arbeit zeigt eine Plastikgurke in einer Rattenfalle, die
   an einem Einkaufskorb befestigt ist. Ich nutze diese radikale Zusammenführung,
   um die Mechanismen der Lebensmittelindustrie zu befragen: Wo wird die Grenze
