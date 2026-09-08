@@ -27,7 +27,7 @@ description_en: >-
 
 
   It's the same for me in the supermarket. As long as I follow the slogans, I feel guided, almost cared for. Only once I see through the game does it lose its power. Then I stop orienting myself by the packaging and start reading what's actually inside. Being sober-minded turns out, in the end, to be the healthier choice.
-cover_image: /uploads/inudstrie06.jpg
+cover_image: /uploads/inudstrie03.jpg
 gallery_images:
   - /uploads/inudstrie06.jpg
   - /uploads/inudstrie05.jpg
