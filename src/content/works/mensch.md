@@ -7,7 +7,7 @@ series: ""
 materials_de: Skulptur, Holz-Gliederpuppe
 materials_en: Sculpture, woden mannequin
 dimensions_de: 22 x 5 x 5 cm
-dimensions_en: 8.6 x 1.9 x 1.9 Inch
+dimensions_en: 8.6 x 1.9 x 1.9 in.
 description_de: >-
   Werkserie „Mensch“ bestehend aus fünf Skulpturen.
 
