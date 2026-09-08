@@ -6,7 +6,7 @@ year: 2023
 materials_de: Rauminstallation, Einkaufswagen, Plastiksäcke, Sicherheitskameras
 materials_en: Room installation, shopping cart, plastic bags, security cameras
 dimensions_de: 260 x 70 x 130 cm
-dimensions_en: 102.4 x 27.6 x 51.2 in
+dimensions_en: 102.4 x 27.6 x 51.2 in.
 description_de: "In meiner Rauminstallation steht ein gewöhnlicher Einkaufswagen
   im Zentrum, ein Objekt, das wir als Vehikel des Konsums und der Versorgung
   kennen, das hier jedoch zur Lastenbahre wird. Er ist bis zum Rand mit weißen
