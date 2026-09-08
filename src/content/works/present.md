@@ -6,7 +6,7 @@ year: 2024
 materials_de: Wandobjekt, Kuchenkerzen
 materials_en: Wall-based object, birthday candles
 dimensions_de: 30 x 30 x 3,5 cm
-dimensions_en: 11.8 x 11.8 in
+dimensions_en: 11.8 x 11.8 in.
 description_de: "In meiner Arbeit untersuche ich die Schnittstelle von ritueller
   Feierlichkeit und industrieller Überproduktion. Drei Ziffernkerzen,
   originalverpackt und zur Zahl 666 formiert, werden hier zum Ausgangspunkt
