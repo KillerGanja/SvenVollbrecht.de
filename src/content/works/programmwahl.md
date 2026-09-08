@@ -6,7 +6,7 @@ year: 2025
 materials_de: Wandobjekt, Satellitenschüssel, Holzkreuze, Kleiderhaken
 materials_en: Wall-based object, satellite dish, wooden crosses, clothes hooks
 dimensions_de: 95 x 59 x 54 cm
-dimensions_en: 37.4 x 23.2 x 21.3 in
+dimensions_en: 37.4 x 23.2 x 21.3 in.
 description_de: "In der Entstehungsphase meines Wandobjekts, unmittelbar vor der
   Bundestagswahl 2025, wurde die Satellitenschüssel für mich zu einem fast schon
   prähistorischen, aber dennoch hochgradig aufgeladenen Symbol: Sie steht für
