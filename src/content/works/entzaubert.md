@@ -6,7 +6,7 @@ year: 2026
 materials_de: Plastikbecher, getrocknete Rosen
 materials_en: Plastic cup, dried roses
 dimensions_de: 30 x 30 x 30 cm
-dimensions_en: 12 x12 x12 inch
+dimensions_en: 12 x12 x12 inches
 description_de: >-
   Die Industrie verkauft mir Nähe. Ein Logo, das ich kenne, seit ich lesen kann,
   soll mir ein Gefühl geben, keine Ware. Golden lackiert, glänzend wie ein
