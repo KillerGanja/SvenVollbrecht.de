@@ -3,8 +3,8 @@ title: AUF ENTZUG
 slug: entzaubert
 order: 0
 year: 2026
-materials_de: Plastikbecher, getrocknete Rosen
-materials_en: Plastic cup, dried roses
+materials_de: Assemblage, Plastikbecher, getrocknete Rosen
+materials_en: Assemblage, Plastic cup, dried roses
 dimensions_de: 30 x 30 x 30 cm
 dimensions_en: 12 x12 x12 in.
 description_de: >-
