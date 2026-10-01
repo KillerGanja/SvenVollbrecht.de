@@ -44,6 +44,8 @@ body_en: >-
   I do not go looking for objects; they find me in everyday life, becoming an impulse, an idea, or an arrangement that tells a story all on its own. What sustains me most in this process is the conviction that an object, a material, or a life itself can say enough, without detours or embellishment. I often combine several found objects because doing so allows me to express complex emotions and themes without being heavy-handed. In this way, I offer the viewer a subtle impulse, one that may only take effect later, rather than simply addressing a topic in a blatant manner. Some of these themes are of enduring importance to society, while others catch my eye spontaneously. I translate this into material myself: shaping and soldering metal, sewing fabric, dismantling and repairing mechanisms, sawing and joining wood. The discovery is merely the beginning. What hangs on the wall or stands on the pedestal embodies far more than just the act of finding. After discovering an object, I spend days searching for the right materials, researching, reflecting, and sorting through my own emotions; only at the very end do I devote hours of manual labor, effort that remains invisible in the finished piece. I have no answers, but I generate impulses.
 
 
+
+
   **CV**
 
 
