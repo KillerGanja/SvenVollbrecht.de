@@ -1,7 +1,7 @@
 ---
 title: Abflug
 slug: Abflug-werk
-order: 0
+order: 1
 year: 2026
 materials_de: Readymade-Assemblage, Schwimmweste, Krawatten und die Lebensmittelattrappe
 materials_en: Readymade assemblage, life jacket, ties, and the food replica
