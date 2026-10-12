@@ -45,7 +45,7 @@ description_en: >-
 
 
   The garland can be taken down. The decree cannot.
-cover_image: /uploads/bestimmung01.jpg
+cover_image: /uploads/bestimmung001.jpg
 gallery_images:
   - /uploads/bestimmung01.jpg
   - /uploads/bestimmung02.jpg
