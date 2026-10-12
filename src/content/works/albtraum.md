@@ -1,6 +1,6 @@
 ---
 title: ALBTRAUM
-slug: albtraum
+slug: Albtraum
 order: 3
 year: 2025
 series: ""
