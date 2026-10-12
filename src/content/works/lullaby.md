@@ -1,6 +1,6 @@
 ---
 title: LULLABY
-slug: lullaby
+slug: Lullaby
 order: 10
 year: 2023
 series: ""
