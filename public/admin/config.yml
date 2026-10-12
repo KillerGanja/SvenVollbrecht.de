@@ -23,7 +23,9 @@ collections:
     fields:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Reihenfolge", name: "order", widget: "number", required: false, default: 9999 }
+      # Die Reihenfolge wird jetzt unter "Reihenfolge der Arbeiten" per Drag & Drop festgelegt.
+      # Das Feld bleibt versteckt erhalten (Fallback für Werke, die nicht in der Liste stehen).
+      - { label: "Reihenfolge (alt)", name: "order", widget: "hidden", required: false, default: 9999 }
       - { label: "Jahr", name: "year", widget: "number", required: false }
       - { label: "Serie", name: "series", widget: "string", required: false }
       - { label: "Material (DE)", name: "materials_de", widget: "string" }
@@ -39,6 +41,27 @@ collections:
         required: false
         summary: "{{fields.image}}"
         field: { label: "Bild / Video", name: "image", widget: "file" }
+
+  # REIHENFOLGE DER ARBEITEN (eine einzige Datei, Einträge per Drag & Drop sortierbar)
+  - name: "works_order"
+    label: "Reihenfolge der Arbeiten"
+    files:
+      - label: "Reihenfolge der Arbeiten"
+        name: "order"
+        file: "src/content/ui/works-order.json"
+        fields:
+          - label: "Arbeiten (oberstes Werk erscheint zuerst – zum Sortieren am Griff ziehen)"
+            name: "works"
+            widget: "list"
+            summary: "{{fields.work}}"
+            field:
+              label: "Werk"
+              name: "work"
+              widget: "relation"
+              collection: "works"
+              search_fields: ["title"]
+              value_field: "slug"
+              display_fields: ["title"]
 
   # AUSSTELLUNGEN (Exhibitions)
   - name: "exhibitions"

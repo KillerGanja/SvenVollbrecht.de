@@ -1,6 +1,7 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import { t } from "../../../utils/i18n";
+import orderData from "../../../content/ui/works-order.json";
 
 export function getStaticPaths() {
     return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
@@ -15,6 +16,10 @@ const worksEntries = Object.values(
     }),
 );
 
+// Reihenfolge aus dem Admin ("Reihenfolge der Arbeiten"): Liste von Slugs
+const orderedSlugs: string[] = (orderData?.works ?? []).map(String);
+const position = new Map(orderedSlugs.map((slug, i) => [slug, i]));
+
 const works = worksEntries
     .map((entry) => ({
         ...entry.frontmatter,
@@ -22,6 +27,14 @@ const works = worksEntries
         url: `/${lang}/works/${entry.frontmatter.slug}/`,
     }))
     .sort((a, b) => {
+        const posA = position.get(String(a.slug));
+        const posB = position.get(String(b.slug));
+        // Beide in der Liste: Reihenfolge der Liste
+        if (posA !== undefined && posB !== undefined) return posA - posB;
+        // Neues Werk (nicht in der Liste) steht vor allen sortierten Werken
+        if (posA === undefined && posB !== undefined) return -1;
+        if (posA !== undefined && posB === undefined) return 1;
+        // Beide neu: Fallback wie bisher (order, dann Jahr absteigend)
         const orderA = a.order ?? 9999;
         const orderB = b.order ?? 9999;
         if (orderA !== orderB) return orderA - orderB;
