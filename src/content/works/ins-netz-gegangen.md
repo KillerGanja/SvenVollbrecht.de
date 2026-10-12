@@ -1,6 +1,6 @@
 ---
 title: Ins Netz gegangen
-slug: ins-netz-gegangen
+slug: Ins Netz gegangen
 order: 0
 year: 2026
 materials_de: Wandobjekt, Readymade-Assemblage, Baumwoll-Einkaufsnetz, Replika
