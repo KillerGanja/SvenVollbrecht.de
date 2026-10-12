@@ -1,6 +1,6 @@
 ---
 title: Mensch
-slug: mensch
+slug: Mensch
 order: 1
 year: 2026
 series: ""
