@@ -1,6 +1,6 @@
 ---
 title: ECHO
-slug: echo
+slug: Echo
 order: 7
 year: 2024
 materials_de: Skulptur, Leopard 1 Panzerhülse, Signalhorn
