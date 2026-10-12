@@ -1,6 +1,6 @@
 ---
 title: DIGITAL VOID
-slug: digitalvoid
+slug: Digital Void
 order: 14
 year: 2022
 materials_de: Ortsspezifische Videoinstallation, Leinwand, Rückprojektion,
