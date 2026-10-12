@@ -10,25 +10,43 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 
 // Load entries (skeletons)
-const worksEntries = Object.values(
+const worksEntries = Object.entries(
     import.meta.glob<any>("../../../content/works/*.md", {
         eager: true,
     }),
 );
 
-// Reihenfolge aus dem Admin ("Reihenfolge der Arbeiten"): Liste von Slugs
-const orderedSlugs: string[] = (orderData?.works ?? []).map(String);
-const position = new Map(orderedSlugs.map((slug, i) => [slug, i]));
+// Reihenfolge aus dem Admin ("Reihenfolge der Arbeiten"): Liste von Werk-Titeln.
+// Verglichen wird ohne Groß-/Kleinschreibung und ohne Leerzeichen am Rand.
+// Zur Sicherheit passen auch Slug und Dateiname, falls die Liste so befüllt wurde.
+const norm = (value: unknown) => String(value ?? "").trim().toLowerCase();
+const orderedKeys: string[] = (orderData?.works ?? []).map(norm);
+const position = new Map<string, number>();
+orderedKeys.forEach((key, i) => {
+    if (!position.has(key)) position.set(key, i);
+});
 
 const works = worksEntries
-    .map((entry) => ({
-        ...entry.frontmatter,
-        title: entry.frontmatter.title,
-        url: `/${lang}/works/${entry.frontmatter.slug}/`,
-    }))
+    .map(([path, entry]) => {
+        const fileId = path.split("/").pop()?.replace(/\.md$/, "");
+        const candidates = [
+            entry.frontmatter.title,
+            entry.frontmatter.slug,
+            fileId,
+        ].map(norm);
+        const pos = candidates
+            .map((key) => position.get(key))
+            .find((p) => p !== undefined);
+        return {
+            ...entry.frontmatter,
+            title: entry.frontmatter.title,
+            url: `/${lang}/works/${entry.frontmatter.slug}/`,
+            pos,
+        };
+    })
     .sort((a, b) => {
-        const posA = position.get(String(a.slug));
-        const posB = position.get(String(b.slug));
+        const posA = a.pos;
+        const posB = b.pos;
         // Beide in der Liste: Reihenfolge der Liste
         if (posA !== undefined && posB !== undefined) return posA - posB;
         // Neues Werk (nicht in der Liste) steht vor allen sortierten Werken

@@ -60,7 +60,7 @@ collections:
               widget: "relation"
               collection: "works"
               search_fields: ["title"]
-              value_field: "slug"
+              value_field: "title"
               display_fields: ["title"]
 
   # AUSSTELLUNGEN (Exhibitions)
