@@ -1,6 +1,6 @@
 ---
 title: SIGNS
-slug: signs
+slug: Signs
 order: 9
 year: 2023
 series: ""
