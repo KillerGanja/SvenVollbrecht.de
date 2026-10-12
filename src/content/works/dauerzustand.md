@@ -1,6 +1,6 @@
 ---
 title: Zustand
-slug: zustand-artwork
+slug: zustand
 order: 2
 year: 2026
 materials_de: Wandobject, Discokugel-Motor, Handschellen
