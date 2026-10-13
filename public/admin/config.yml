@@ -53,6 +53,7 @@ collections:
           - label: "Arbeiten (oberstes Werk erscheint zuerst – zum Sortieren am Griff ziehen)"
             name: "works"
             widget: "list"
+            add_to_top: true
             summary: "{{fields.work}}"
             field:
               label: "Werk"
@@ -60,7 +61,7 @@ collections:
               widget: "relation"
               collection: "works"
               search_fields: ["title"]
-              value_field: "title"
+              value_field: "slug"
               display_fields: ["title"]
 
   # AUSSTELLUNGEN (Exhibitions)
