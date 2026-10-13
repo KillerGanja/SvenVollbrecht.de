@@ -1,6 +1,6 @@
 ---
 title: .COMpliance
-slug: .Ccompliane
+slug: Compliane
 order: 3
 year: 2026
 materials_de: Domain, goldfarbener Notizblock mit eingebettetem Zugriffschip,
