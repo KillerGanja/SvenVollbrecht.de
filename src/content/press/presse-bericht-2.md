@@ -1,7 +1,7 @@
 ---
 title: "Art Is Not An Idea, It Is A Process: A Conversation with Sven Vollbrecht
   (EN) by Sissi Marino"
-slug: presse-bericht2
+slug: art-is-not-an-idea
 medium: MAE
 date: 2024-11-01T00:00:00.000Z
 url: https://www.mae.community/magazine/art-is-not-an-idea-is-a-process-a-conversation-with-sven-vollbrecht

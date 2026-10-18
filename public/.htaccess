@@ -64,3 +64,7 @@ RewriteRule ^de/works/Trust/?$ /de/works/trust/ [R=301,L]
 RewriteRule ^en/works/Trust/?$ /en/works/trust/ [R=301,L]
 RewriteRule ^de/works/WWW/?$ /de/works/www/ [R=301,L]
 RewriteRule ^en/works/WWW/?$ /en/works/www/ [R=301,L]
+
+# Ausstellungen: Slug-Tippfehler korrigiert (schoenebrger-art -> schoeneberger-art)
+RewriteRule ^de/exhibitions/schoenebrger-art/?$ /de/exhibitions/schoeneberger-art/ [R=301,L]
+RewriteRule ^en/exhibitions/schoenebrger-art/?$ /en/exhibitions/schoeneberger-art/ [R=301,L]

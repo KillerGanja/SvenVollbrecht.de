@@ -75,7 +75,7 @@ collections:
     summary: "{{title}} ({{year}} — {{city_de}})"
     fields:
       - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "Adresse der Seite. Nach dem Anlegen nicht mehr ändern. Nur Kleinbuchstaben, Ziffern und Bindestrich; Umlaute ausschreiben (ae, oe, ue, ss); keine Leerzeichen.", pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', "Nur Kleinbuchstaben, Ziffern und Bindestrich. Umlaute ausschreiben (ae, oe, ue, ss), keine Leerzeichen."] }
       - { label: "Reihenfolge", name: "order", widget: "number", required: false, default: 9999 }
       - { label: "Jahr", name: "year", widget: "number", required: false }
       - { label: "Veranstaltungsort (DE)", name: "venue_de", widget: "string" }
@@ -98,7 +98,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "TITEL", name: "title", widget: "string" }
-      - { label: "SLUG", name: "slug", widget: "string" }
+      - { label: "SLUG", name: "slug", widget: "string", hint: "Adresse der Seite. Nach dem Anlegen nicht mehr ändern. Nur Kleinbuchstaben, Ziffern und Bindestrich; Umlaute ausschreiben (ae, oe, ue, ss); keine Leerzeichen.", pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', "Nur Kleinbuchstaben, Ziffern und Bindestrich. Umlaute ausschreiben (ae, oe, ue, ss), keine Leerzeichen."] }
       - { label: "MEDIUM (OPTIONAL)", name: "medium", widget: "string", required: false }
       - { label: "DATUM (OPTIONAL)", name: "date", widget: "datetime", format: "YYYY-MM-DD", dateFormat: "DD.MM.YYYY", timeFormat: false, required: false }
       - { label: "LINK / DATEI (OPTIONAL)", name: "url", widget: "string", required: false }

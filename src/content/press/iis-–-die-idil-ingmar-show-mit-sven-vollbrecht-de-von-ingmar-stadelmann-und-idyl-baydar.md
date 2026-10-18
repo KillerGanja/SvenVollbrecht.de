@@ -1,6 +1,6 @@
 ---
 title: IIS – Show mit Sven Vollbrecht (DE) von Ingmar Stadelmann und Idyl Baydar
-slug: presse-bericht4
+slug: iis-show
 medium: PLUTO TV
 date: 2023-09-01T00:00:00.000Z
 url: >-

@@ -5,7 +5,7 @@ gallery_images:
   - /uploads/032.jpg
   - /uploads/013.jpg
 title: Schöneberger Art
-slug: schoenebrger-art
+slug: schoeneberger-art
 year: 2024
 venue_de: Haus am Kleistpark
 venue_en: ""
