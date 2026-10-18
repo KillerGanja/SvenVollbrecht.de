@@ -1,6 +1,6 @@
 ---
 title: TRUST
-slug: Trust
+slug: trust
 order: 11
 year: 2023
 materials_de: Wandobjekt, Einkaufskorb, Rattenfalle, Plastikgurke

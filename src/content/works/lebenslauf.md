@@ -1,6 +1,6 @@
 ---
 title: Lebenslauf
-slug: Lebenslauf
+slug: lebenslauf
 order: 2
 year: 2026
 materials_de: Spielzeug-Hamsterräder, Spielzeug-Hamster

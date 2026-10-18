@@ -22,7 +22,7 @@ collections:
     summary: "{{title}} ({{year}})"
     fields:
       - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "Adresse der Seite. Nach dem Anlegen nicht mehr ändern. Nur Kleinbuchstaben, Ziffern und Bindestrich; Umlaute ausschreiben (ae, oe, ue, ss); keine Leerzeichen.", pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', "Nur Kleinbuchstaben, Ziffern und Bindestrich. Umlaute ausschreiben (ae, oe, ue, ss), keine Leerzeichen."] }
       # Die Reihenfolge wird jetzt unter "Reihenfolge der Arbeiten" per Drag & Drop festgelegt.
       # Das Feld bleibt versteckt erhalten (Fallback für Werke, die nicht in der Liste stehen).
       - { label: "Reihenfolge (alt)", name: "order", widget: "hidden", required: false, default: 9999 }

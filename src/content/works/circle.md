@@ -1,6 +1,6 @@
 ---
 title: CIRCLE
-slug: Circle
+slug: circle
 order: 13
 year: 2023
 materials_de: Rauminstallation, Einkaufswagen, Plastiksäcke, Sicherheitskameras

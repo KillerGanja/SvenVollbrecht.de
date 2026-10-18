@@ -1,6 +1,6 @@
 ---
 title: PRESENT
-slug: Present
+slug: present
 order: 5
 year: 2024
 materials_de: Wandobjekt, Kuchenkerzen

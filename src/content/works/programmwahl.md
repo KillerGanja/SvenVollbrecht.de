@@ -1,6 +1,6 @@
 ---
 title: PROGRAMMWAHL
-slug: Programmwahl
+slug: programmwahl
 order: 3
 year: 2025
 materials_de: Wandobjekt, Satellitenschüssel, Holzkreuze, Kleiderhaken

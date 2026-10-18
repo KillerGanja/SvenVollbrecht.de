@@ -1,6 +1,6 @@
 ---
 title: WWW
-slug: WWW
+slug: www
 order: 6
 year: 2024
 materials_de: Skulptur, Aluminium-Behälter, modifizierte Industriegrafik

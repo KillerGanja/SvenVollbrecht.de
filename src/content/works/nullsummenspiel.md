@@ -1,6 +1,6 @@
 ---
 title: Nullsummenspiel
-slug: Nullsummenspiel
+slug: nullsummenspiel
 order: 1
 year: 2026
 materials_de: Readymade, Abakus

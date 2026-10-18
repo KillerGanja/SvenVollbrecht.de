@@ -1,6 +1,6 @@
 ---
 title: Bestimmung
-slug: Bestimmung
+slug: bestimmung
 order: 0
 year: 2026
 materials_de: Buchstabengirlande, Wandobjekt, Readymade

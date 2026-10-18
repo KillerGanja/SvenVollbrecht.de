@@ -1,6 +1,6 @@
 ---
 title: Abflug
-slug: Abflug
+slug: abflug
 order: 1
 year: 2026
 materials_de: Readymade-Assemblage, Schwimmweste, Krawatten und die Lebensmittelattrappe

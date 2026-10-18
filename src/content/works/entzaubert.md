@@ -1,6 +1,6 @@
 ---
 title: AUF ENTZUG
-slug: Auf Entzug
+slug: auf-entzug
 order: 0
 year: 2026
 materials_de: Assemblage, Plastikbecher, getrocknete Rosen

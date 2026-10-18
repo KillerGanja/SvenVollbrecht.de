@@ -1,6 +1,6 @@
 ---
 title: KLAU-CLAUS
-slug: Klau-Claus
+slug: klau-claus
 order: 4
 year: 2024
 materials_de: Wandobjekt, Stoffmaske,Tischrahmen, Nothammer

@@ -1,6 +1,6 @@
 ---
 title: SHITSTORM
-slug: Shitstorm
+slug: shitstorm
 order: 8
 year: 2024
 materials_de: Skulptur, Röhrenfernseher, Abfluss-Pömpel
