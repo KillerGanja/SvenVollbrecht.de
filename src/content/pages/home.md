@@ -8,5 +8,5 @@ slug: home
 lang: de
 body_en: |-
   # Conceptual artist based in Berlin.
-  Installationen, Video, Readymade, partizipativ
+  Installation, video, readymade, participatory
 ---
