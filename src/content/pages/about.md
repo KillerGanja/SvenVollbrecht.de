@@ -35,7 +35,7 @@ body_de: >-
   Die Werke „Trust" und „#1" aus der Serie *Albtraum* befinden sich in der Privatsammlung von Wilhelm Siebert, Berlin.
 
 
-  Weitere Informationen: [Wikipedia](https://de.wikipedia.org/wiki/Sven_Vollbrecht), [Artfacts](https://artfacts.net/artist/sven-vollbrecht-de)
+  Weitere Informationen: **[Wikipedia](https://de.wikipedia.org/wiki/Sven_Vollbrecht), [Artfacts](https://artfacts.net/artist/sven-vollbrecht-de)**
 body_en: >-
   I make art because I spent twenty years speaking for others and now it is my
   turn to speak for myself.
@@ -74,7 +74,7 @@ body_en: >-
   Two notes: Haus am Kleistpark now appears twice in the CV, in the venue list and again with *Echo*. I would drop it from the list. I also left *Albtraum* in German. For an English audience, "Nightmare" is an option, or you keep the German title and add the translation once in brackets.
 
 
-  Further information: [Wikipedia](https://de.wikipedia.org/wiki/Sven_Vollbrecht), [Artfacts](https://artfacts.net/artist/sven-vollbrecht-de)
+  Further information: **[Wikipedia](https://de.wikipedia.org/wiki/Sven_Vollbrecht), [Artfacts](https://artfacts.net/artist/sven-vollbrecht-de)**
 portfolio_de: /uploads/portfolio_sven_vollbrecht.pdf
 portfolio_en: /uploads/portfolio_sven_vollbrecht_eng.pdf
 slug: about
