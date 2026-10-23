@@ -1,10 +1,9 @@
 ---
 title: Kontakt
 body_de: >-
-  **STUDIO**
+  **STUDIO**\
 
-
-  Brunhildstraße 6\
+  \
 
   10829 Berlin\
 
@@ -16,10 +15,8 @@ body_de: >-
 
   [Email ](mailto:studio@svenvollbrecht.de)| [Webseite](https://svenvollbrecht.de) | [Instagram](https://www.instagram.com/thevollbrecht/)
 body_en: >-
-  **STUDIO**
+  **STUDIO**\
 
-
-  Brunhildstraße 6
 
   10829 Berlin
 
