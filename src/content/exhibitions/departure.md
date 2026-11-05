@@ -14,5 +14,5 @@ period_de: Gruppenausstellung
 period_en: Group Show
 description_en: ""
 lang: de
-cover_image: /uploads/digitalvois001-2.jpg
+cover_image: /uploads/476839065_1164595885668486_1642280200836958602_n.jpg
 ---
