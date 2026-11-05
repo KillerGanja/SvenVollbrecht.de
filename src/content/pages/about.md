@@ -26,6 +26,9 @@ body_de: >-
   Sven Vollbrecht (geboren in West-Berlin) lebt und arbeitet in Berlin.
 
 
+  Mitglied im Berufsverband bildender Künstler*innen Berlin e.V. (BBK Berlin).
+
+
   Er arbeitet mit Skulptur, Rauminstallation, Video und partizipativen Formaten. Dabei wendet er Alltagsobjekte gegen ihre gewohnte Funktion und macht so die Mechanismen von Konsum, Kontrolle und Kommunikation sichtbar. Zunächst war er als Fotograf und Regisseur tätig, seit 2022 widmet er sich ausschließlich der bildenden Kunst. Seine Praxis hat er autodidaktisch entwickelt.
 
 
@@ -60,6 +63,9 @@ body_en: >-
 
 
   Sven Vollbrecht (born in West Berlin) lives and works in Berlin.
+
+
+  Member of the Berufsverband bildender Künstler*innen Berlin e.V. (BBK Berlin), the Professional Association of Visual Artists Berlin.
 
 
   He works with sculpture, spatial installation, video and participatory formats. He turns everyday objects against their usual function and so makes the mechanisms of consumption, control and communication visible. He first worked as a photographer and director, and since 2022 he has devoted himself exclusively to fine art. He developed his practice as an autodidact.
