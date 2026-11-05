@@ -14,5 +14,5 @@ period_de: Gruppenausstellung
 period_en: Group Show
 description_en: ""
 lang: de
-cover_image: /uploads/trust11.jpg
+cover_image: /uploads/img_8636.jpg
 ---
