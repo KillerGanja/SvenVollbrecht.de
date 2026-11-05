@@ -15,5 +15,5 @@ period_de: Gruppenausstellung
 period_en: Group Show
 description_en: ""
 lang: de
-cover_image: /uploads/011.jpg
+cover_image: /uploads/bildschirmfoto-2026-11-05-um-01.49.08.png
 ---
