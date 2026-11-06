@@ -15,5 +15,5 @@ period_de: Gruppenausstellung
 period_en: Group Show
 description_en: ""
 lang: de
-cover_image: /uploads/1.jpeg
+cover_image: /uploads/nochnicht.jpg
 ---
