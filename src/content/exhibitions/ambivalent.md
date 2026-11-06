@@ -14,5 +14,5 @@ period_de: Gruppennausstellung
 period_en: Group Exhibition
 description_en: ""
 lang: de
-cover_image: /uploads/ambivalent_flyer01.jpg
+cover_image: /uploads/ambivalnet.jpg
 ---
