@@ -82,7 +82,7 @@ body_en: >-
 
   Further information: **[Wikipedia](https://de.wikipedia.org/wiki/Sven_Vollbrecht), [Artfacts](https://artfacts.net/artist/sven-vollbrecht-de)**
 portfolio_de: /uploads/portfolio_sven_vollbrecht.pdf
-portfolio_en: /uploads/portfolio_sven_vollbrecht_eng.pdf
+portfolio_en: /uploads/portfolio_sven_vollbrecht.pdf
 slug: about
 lang: de
 ---
