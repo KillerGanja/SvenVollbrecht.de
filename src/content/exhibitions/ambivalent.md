@@ -1,5 +1,8 @@
 ---
-description_de: ""
+description_de: |-
+  
+
+  ![](/uploads/001.jpg)
 gallery_images:
   - /uploads/002.jpg
   - /uploads/circle011.jpg
