@@ -38,7 +38,7 @@ body_de: >-
   Die Werke „Trust" und „#1" aus der Serie *Albtraum* befinden sich in der Privatsammlung von Wilhelm Siebert, Berlin.
 
 
-  Weitere Informationen: **[Wikipedia](https://de.wikipedia.org/wiki/Sven_Vollbrecht), [Artfacts](https://artfacts.net/artist/sven-vollbrecht-de)**
+  Weitere Informationen: ***[Wikipedia](https://de.wikipedia.org/wiki/Sven_Vollbrecht), [Artfacts](https://artfacts.net/artist/sven-vollbrecht-de)***
 body_en: >-
   I make art because I spent twenty years speaking for others and now it is my
   turn to speak for myself.
