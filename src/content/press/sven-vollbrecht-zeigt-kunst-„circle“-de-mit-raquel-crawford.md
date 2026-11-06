@@ -3,8 +3,6 @@ title: Sven Vollbrecht zeigt Kunst „Circle“ (DE) mit Raquel Crawford
 slug: circle-raquel-crawford
 medium: tv.berlin
 date: 2023-05-01T00:00:00.000Z
-url: >-
-  https://www.tvb.de/sendungen/130/5384/NOT_A_GALLERY_Sven_Vollbrecht_zeigt_Kunst_Circle.html
+url: https://youtu.be/a5WjQX0xUVI?si=yGdarzzwIo-lKBEN
 lang: de
 ---
-
