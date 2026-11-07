@@ -1,9 +1,4 @@
 ---
-description_de: ""
-gallery_images:
-  - /uploads/02.jpg
-  - /uploads/www05.jpg
-  - /uploads/dopa08.jpg
 title: Noch nicht
 slug: noch-nicht
 year: 2025
@@ -13,7 +8,13 @@ city_de: Berlin
 city_en: ""
 period_de: Gruppenausstellung
 period_en: Group Show
+description_de: ""
 description_en: ""
-lang: de
 cover_image: /uploads/nochnicht.jpg
+gallery_images:
+  - /uploads/1.jpeg
+  - /uploads/02.jpg
+  - /uploads/www05.jpg
+  - /uploads/dopa08.jpg
+lang: de
 ---
