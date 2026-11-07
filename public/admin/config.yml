@@ -87,6 +87,12 @@ collections:
       - { label: "Beschreibung (DE)", name: "description_de", widget: "markdown", required: false }
       - { label: "Beschreibung (EN)", name: "description_en", widget: "markdown", required: false }
       - { label: "Cover Bild", name: "cover_image", widget: "image", required: true }
+      - label: "Galerie Bilder"
+        name: "gallery_images"
+        widget: "list"
+        required: false
+        summary: "{{fields.image}}"
+        field: { label: "Bild", name: "image", widget: "image" }
 
   # PRESSE (Press)
   - name: "press"
