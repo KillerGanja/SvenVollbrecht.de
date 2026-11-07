@@ -1,11 +1,4 @@
 ---
-description_de: |-
-  
-
-  ![]()
-gallery_images:
-  - /uploads/002.jpg
-  - /uploads/circle011.jpg
 title: ambivalent
 slug: ambivalent
 year: 2023
@@ -15,7 +8,15 @@ city_de: Berlin
 city_en: ""
 period_de: Gruppennausstellung
 period_en: Group Exhibition
+description_de: |-
+  
+
+  ![]()
 description_en: ""
-lang: de
 cover_image: /uploads/ambivalnet.jpg
+gallery_images:
+  - /uploads/ambivalent_flyer01.jpg
+  - /uploads/002.jpg
+  - /uploads/circle011.jpg
+lang: de
 ---
