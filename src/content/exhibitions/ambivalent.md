@@ -18,5 +18,7 @@ gallery_images:
   - /uploads/ambivalent_flyer01.jpg
   - /uploads/002.jpg
   - /uploads/circle011.jpg
+  - /uploads/circle012.jpg
+  - /uploads/img_7757-scaled.jpeg
 lang: de
 ---
