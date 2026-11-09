@@ -16,5 +16,6 @@ gallery_images:
   - /uploads/signs012.jpg
   - /uploads/webseite-sven-vollbrecht.13.jpg
   - /uploads/signs-01.jpg
+  - /uploads/signs204.jpg
 lang: de
 ---
