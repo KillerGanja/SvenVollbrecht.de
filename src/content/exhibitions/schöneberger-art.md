@@ -16,5 +16,6 @@ gallery_images:
   - /uploads/011.jpg
   - /uploads/032.jpg
   - /uploads/013.jpg
+  - /uploads/cda7f28b-26ad-4abe-98ca-fea8b399ce82.jpg
 lang: de
 ---
