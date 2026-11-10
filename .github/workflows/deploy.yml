@@ -2,7 +2,7 @@ name: Deploy to Strato
 
 on:
   push:
-    branches: [ main, Page_Switch_de-en ]
+    branches: [ main, optimierung ]
 
 jobs:
   build-and-deploy:
@@ -30,18 +30,18 @@ jobs:
         mkdir -p dist/oauth
         cat <<EOF > dist/oauth/config.php
         <?php
-        
+
         // GitHub OAuth Configuration
         class Config {
             // Client ID from GitHub OAuth App
             public static \$clientId = '${{ secrets.OAUTH_CLIENT_ID_STRATO }}';
-            
+
             // Client Secret from GitHub OAuth App
             public static \$clientSecret = '${{ secrets.OAUTH_CLIENT_SECRET_STRATO }}';
-            
+
             // Redirect URI (must match the one in GitHub settings)
             public static \$redirectUri = '${{ secrets.OAUTH_REDIRECT_URI_STRATO }}';
-        
+
             // Authorized user (optional, simple protection)
             // public static \$allowedUsers = ['github_username'];
         }
@@ -70,8 +70,9 @@ jobs:
         remote_path: '/'
         sftp_only: true
 
+  # Testumgebung: https://test.svenvollbrecht.de (Branch "optimierung")
   deploy-staging:
-    if: github.ref == 'refs/heads/Page_Switch_de-en'
+    if: github.ref == 'refs/heads/optimierung'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -83,11 +84,37 @@ jobs:
         node-version: '20'
         cache: 'npm'
 
+    - name: Admin auf Testumgebung umstellen (schreibt NIE auf main)
+      run: |
+        sed -i 's|^  branch: main|  branch: optimierung|' public/admin/config.yml
+        sed -i 's|^  base_url: https://svenvollbrecht.de|  base_url: https://test.svenvollbrecht.de|' public/admin/config.yml
+        grep -n "branch:\|base_url:" public/admin/config.yml
+      shell: bash
+
     - name: Install dependencies
       run: npm install
 
     - name: Build Astro project
       run: npm run build
+
+    - name: Testumgebung vor Suchmaschinen und fremdem Zugriff schuetzen
+      run: |
+        # 1) Suchmaschinen komplett aussperren
+        printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
+        # 2) Auf der Hauptdomain (svenvollbrecht.de/test/) darf die Testversion nicht erreichbar sein
+        # 3) Zusaetzlich noindex-Header
+        {
+          echo 'RewriteEngine On'
+          echo 'RewriteCond %{HTTP_HOST} !^test\.svenvollbrecht\.de$ [NC]'
+          echo 'RewriteRule ^ - [F,L]'
+          echo '<IfModule mod_headers.c>'
+          echo '  Header always set X-Robots-Tag "noindex, nofollow, noarchive"'
+          echo '</IfModule>'
+          echo ''
+          cat dist/.htaccess
+        } > dist/.htaccess.staging
+        mv dist/.htaccess.staging dist/.htaccess
+      shell: bash
 
     - name: Inject OAuth Secrets (DEV)
       run: |
@@ -110,6 +137,18 @@ jobs:
         port: 22
         password: ${{ secrets.SFTP_PASSWORD_STRATO_DEV }}
         local_path: './dist/*'
+        remote_path: '/'
+        sftp_only: true
+        ssh_private_key: ""
+
+    - name: Deploy .htaccess (Staging)
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      with:
+        username: ${{ secrets.SFTP_USERNAME_STRATO_DEV }}
+        server: ${{ secrets.SFTP_SERVER_STRATO_DEV }}
+        port: 22
+        password: ${{ secrets.SFTP_PASSWORD_STRATO_DEV }}
+        local_path: './dist/.htaccess'
         remote_path: '/'
         sftp_only: true
         ssh_private_key: ""
