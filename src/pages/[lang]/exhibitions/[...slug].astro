@@ -64,7 +64,7 @@ const metaImage = pickImage(frontmatter.cover_image, frontmatter.gallery_images)
 
         {
             frontmatter.gallery_images && (
-                <ImageGallery images={frontmatter.gallery_images} />
+                <ImageGallery images={frontmatter.gallery_images} title={title} />
             )
         }
     </div>

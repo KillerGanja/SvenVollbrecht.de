@@ -2,6 +2,7 @@
 import Layout from "../../../layouts/Layout.astro";
 import { pageDescription } from "../../../utils/seo";
 import { t } from "../../../utils/i18n";
+import ResponsiveImage from "../../../components/ResponsiveImage.astro";
 import orderData from "../../../content/ui/works-order.json";
 
 export function getStaticPaths() {
@@ -73,14 +74,17 @@ const title = t("nav_works", lang);
             <p class="text-gray-500">Noch keine Werke angelegt.</p>
         ) : (
             <div class="grid grid-cols-2 gap-4 md:gap-8 md:grid-cols-3 xl:grid-cols-4">
-                {works.map((work) => (
+                {works.map((work, i) => (
                     <a href={work.url} class="group block">
                         <div class="aspect-[4/5] overflow-hidden bg-gray-100">
                             {work.cover_image ? (
-                                <img
+                                <ResponsiveImage
                                     src={work.cover_image}
                                     alt={work.title}
                                     class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 50vw"
+                                    loading={i < 4 ? "eager" : "lazy"}
+                                    fetchpriority={i < 2 ? "high" : undefined}
                                 />
                             ) : (
                                 <div class="flex h-full w-full items-center justify-center text-gray-400">

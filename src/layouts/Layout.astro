@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import ScreenSizeIndicator from "../components/ScreenSizeIndicator.astro";
 import SEO from "../components/SEO.astro";
+import { ogImageFor } from "../utils/image-variants.mjs";
 import { t, getRelativeLocaleUrl } from "../utils/i18n";
 import settings from "../content/ui/settings.json";
 import {
@@ -33,7 +34,7 @@ const {
 // Seitentitel: "Seite | Sven Vollbrecht" (der Name wird nicht doppelt angehängt)
 const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
 // Vorschaubild immer als absolute URL (Social-Media-Dienste lösen relative Pfade nicht auf)
-const ogImage = absoluteUrl(image);
+const ogImage = absoluteUrl(ogImageFor(image));
 
 // Generate absolute URL for canonical link
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://svenvollbrecht.de');

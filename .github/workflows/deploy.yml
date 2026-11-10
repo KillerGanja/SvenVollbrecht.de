@@ -18,6 +18,14 @@ jobs:
         node-version: '20'
         cache: 'npm'
 
+    - name: Cache optimierte Bilder
+      uses: actions/cache@v4
+      with:
+        path: node_modules/.cache/sv-images
+        key: sv-images-${{ github.run_id }}
+        restore-keys: |
+          sv-images-
+
     - name: Install dependencies
       run: npm install
 
@@ -90,6 +98,14 @@ jobs:
         sed -i 's|^  base_url: https://svenvollbrecht.de|  base_url: https://test.svenvollbrecht.de|' public/admin/config.yml
         grep -n "branch:\|base_url:" public/admin/config.yml
       shell: bash
+
+    - name: Cache optimierte Bilder
+      uses: actions/cache@v4
+      with:
+        path: node_modules/.cache/sv-images
+        key: sv-images-${{ github.run_id }}
+        restore-keys: |
+          sv-images-
 
     - name: Install dependencies
       run: npm install

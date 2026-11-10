@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { t } from "../../utils/i18n";
 import { marked } from "marked";
+import ResponsiveImage from "../../components/ResponsiveImage.astro";
 import { homeTitle, pickImage } from "../../utils/seo";
 
 export function getStaticPaths() {
@@ -68,10 +69,13 @@ const isVideo = frontmatter.image
                         />
                     </div>
                 ) : (
-                    <img
+                    <ResponsiveImage
                         src={frontmatter.image}
                         alt="Sven Vollbrecht"
                         class="mx-auto mb-8 max-h-[70vh] w-auto max-w-full object-contain"
+                        maxVh={70}
+                        loading="eager"
+                        fetchpriority="high"
                     />
                 ))
         }

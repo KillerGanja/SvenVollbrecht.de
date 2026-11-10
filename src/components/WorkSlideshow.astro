@@ -1,4 +1,6 @@
 ---
+import ResponsiveImage from "./ResponsiveImage.astro";
+
 interface Props {
     images: string[]; // Keep prop name 'images' for compatibility, but it contains paths to media
     title: string;
@@ -55,14 +57,19 @@ function isVideo(path: string) {
                                 muted={false}
                                 playsinline
                                 controls
+                                preload={index === 0 ? "metadata" : "none"}
                             />
                         ) : (
-                            <img
+                            <ResponsiveImage
                                 id={index === 0 ? "current-media" : undefined}
                                 src={src}
                                 alt={title}
                                 class={`max-h-[80vh] max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
                                 data-index={index}
+                                maxVh={80}
+                                maxPx={1280}
+                                loading={index === 0 ? "eager" : "lazy"}
+                                fetchpriority={index === 0 ? "high" : undefined}
                             />
                         ),
                     )
@@ -99,6 +106,17 @@ function isVideo(path: string) {
         });
     }
 
+    // Naechstes/vorheriges Bild schon laden, damit das Blaettern ohne Wartezeit klappt.
+    // (Nicht sichtbare Bilder sind "lazy" und werden sonst erst beim Anzeigen geladen.)
+    function preloadNeighbours() {
+        if (!mediaContainer || !Array.isArray(images) || images.length < 2) return;
+        [1, -1].forEach((d) => {
+            const i = (currentIndex + d + images.length) % images.length;
+            const el = mediaContainer.querySelector('[data-index="' + i + '"]');
+            if (el && el.tagName === "IMG") el.loading = "eager";
+        });
+    }
+
     function updateMedia() {
         if (!mediaContainer) return;
 
@@ -128,7 +146,10 @@ function isVideo(path: string) {
                 }
             }
         });
+        preloadNeighbours();
     }
+
+    preloadNeighbours();
 
     if (prevArea && nextArea && Array.isArray(images) && images.length > 0) {
         prevArea.addEventListener("click", () => {

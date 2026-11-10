@@ -1,0 +1,85 @@
+---
+// Gibt ein Bild aus /uploads/ mit automatisch erzeugten Varianten aus:
+// <picture> mit WebP-srcset (480/960/1600/2400 px) und JPEG/PNG-Fallback,
+// inkl. width/height (kein Springen beim Laden). Andere Quellen (GIF, SVG, externe URLs,
+// fehlende Dateien) und der Dev-Server geben ein ganz normales <img> aus.
+import {
+  getImageInfo,
+  isOptimizable,
+  variantUrl,
+  fallbackUrl,
+  widthsFor,
+} from "../utils/image-variants.mjs";
+
+interface Props {
+  src: string;
+  alt?: string;
+  /** Eigene sizes-Angabe; sonst wird sie aus maxVh/maxPx berechnet. */
+  sizes?: string;
+  /** Bild wird hoechstens so hoch wie dieser Anteil der Fensterhoehe dargestellt (z. B. 80). */
+  maxVh?: number;
+  /** Bild wird hoechstens so breit (in px) dargestellt. */
+  maxPx?: number;
+  loading?: "lazy" | "eager";
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  src,
+  alt = "",
+  sizes,
+  maxVh,
+  maxPx,
+  loading = "lazy",
+  class: className,
+  ...rest
+} = Astro.props;
+
+const info =
+  import.meta.env.DEV || !isOptimizable(src) ? null : await getImageInfo(src);
+
+let srcset = "";
+let fallback = src;
+let sizesAttr = sizes;
+if (info) {
+  const widths = widthsFor(info.width);
+  srcset = widths.map((w) => `${variantUrl(src, w)} ${w}w`).join(", ");
+  fallback = fallbackUrl(src);
+  if (!sizesAttr) {
+    const ratio = info.width / info.height;
+    const parts: string[] = [];
+    if (maxVh) parts.push(`${Math.round(maxVh * ratio)}vh`);
+    if (maxPx) parts.push(`${maxPx}px`);
+    parts.push("100vw");
+    sizesAttr = parts.length > 1 ? `min(${parts.join(", ")})` : "100vw";
+  }
+}
+---
+
+{
+  info ? (
+    <picture class="contents">
+      <source type="image/webp" srcset={srcset} sizes={sizesAttr} />
+      <img
+        src={fallback}
+        alt={alt}
+        width={info.width}
+        height={info.height}
+        loading={loading}
+        decoding="async"
+        class={className}
+        {...rest}
+      />
+    </picture>
+  ) : (
+    <img
+      src={src}
+      alt={alt}
+      loading={loading}
+      decoding="async"
+      class={className}
+      {...rest}
+    />
+  )
+}
