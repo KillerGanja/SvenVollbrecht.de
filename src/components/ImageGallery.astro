@@ -23,9 +23,12 @@ interface Props {
   lang?: string;
   /** Cover nicht in der Galerie zeigen (er steht schon in der Uebersicht). Nur wenn danach noch Bilder bleiben. */
   hideCover?: boolean;
+  /** Hoehe der Vorschaubilder in px: Handy (thumbSm) und PC (thumbMd). */
+  thumbSm?: number;
+  thumbMd?: number;
 }
 
-const { images, cover, title = "", lang = "de", hideCover = true } = Astro.props;
+const { images, cover, title = "", lang = "de", hideCover = true, thumbSm = 150, thumbMd = 200 } = Astro.props;
 
 const norm = (s: string) => {
   try {
@@ -108,9 +111,9 @@ const items = await Promise.all(
   }),
 );
 
-// Hoehe der Vorschaubilder (siehe CSS): Handy 150 px, PC 200 px
+// Hoehe der Vorschaubilder (Handy / PC) -> noetige Bildbreite fuer srcset
 const sizesFor = (ratio: number) =>
-  `(max-width: 767px) ${Math.round(ratio * 150)}px, ${Math.round(ratio * 200)}px`;
+  `(max-width: 767px) ${Math.round(ratio * thumbSm)}px, ${Math.round(ratio * thumbMd)}px`;
 ---
 
 {
@@ -118,6 +121,7 @@ const sizesFor = (ratio: number) =>
     <div
       class="svg-gallery"
       data-svg-gallery
+      style={`--svg-sm:${thumbSm}px;--svg-md:${thumbMd}px`}
       data-l-prev={labels.prev}
       data-l-next={labels.next}
       data-l-close={labels.close}
@@ -173,11 +177,11 @@ const sizesFor = (ratio: number) =>
 <style is:global>
   .svg-gallery {
     margin: 1.5rem 0;
-    --svg-h: 150px;
+    --svg-h: var(--svg-sm, 150px);
   }
   @media (min-width: 768px) {
     .svg-gallery {
-      --svg-h: 200px;
+      --svg-h: var(--svg-md, 200px);
     }
   }
 
