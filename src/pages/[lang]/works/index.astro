@@ -4,6 +4,7 @@ import { pageDescription } from "../../../utils/seo";
 import { t } from "../../../utils/i18n";
 import ResponsiveImage from "../../../components/ResponsiveImage.astro";
 import orderData from "../../../content/ui/works-order.json";
+import { isPart, slugSet } from "../../../utils/series";
 
 export function getStaticPaths() {
     return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
@@ -28,7 +29,12 @@ orderedKeys.forEach((key, i) => {
     if (!position.has(key)) position.set(key, i);
 });
 
+// Serienteile (z. B. die 8 Arbeiten von "Albtraum") erscheinen nicht einzeln in der Uebersicht,
+// sondern nur auf der Seite ihres Hauptwerks.
+const allSlugs = slugSet(worksEntries.map(([, entry]) => entry.frontmatter));
+
 const works = worksEntries
+    .filter(([, entry]) => !isPart(entry.frontmatter, allSlugs))
     .map(([path, entry]) => {
         const fileId = path.split("/").pop()?.replace(/\.md$/, "");
         const candidates = [

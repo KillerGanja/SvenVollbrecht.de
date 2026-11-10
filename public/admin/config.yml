@@ -27,14 +27,18 @@ collections:
       # Das Feld bleibt versteckt erhalten (Fallback für Werke, die nicht in der Liste stehen).
       - { label: "Reihenfolge (alt)", name: "order", widget: "hidden", required: false, default: 9999 }
       - { label: "Jahr", name: "year", widget: "number", required: false }
-      - { label: "Serie", name: "series", widget: "string", required: false }
-      - { label: "Material (DE)", name: "materials_de", widget: "string" }
+      # SERIEN: Besteht ein Werk aus mehreren Arbeiten (z. B. Albtraum), wird jede Arbeit als eigenes Werk angelegt
+      # und hier mit dem Hauptwerk verknüpft. Teile erscheinen nicht einzeln unter "Arbeiten", nur auf der Seite des Hauptwerks.
+      - { label: "Teil der Serie / gehört zu Werk", name: "series", widget: "relation", collection: "works", search_fields: ["title"], value_field: "slug", display_fields: ["title"], required: false, hint: "Nur bei Serienteilen: das Hauptwerk auswählen (z. B. Albtraum). Bei normalen Werken leer lassen." }
+      - { label: "Name des Serienteils (optional)", name: "part_title", widget: "string", required: false, hint: "Nur bei Serienteilen. Mit Name erscheint z. B. 'Albtraum – Name', ohne Name 'Albtraum 1', 'Albtraum 2' ... (nach Datum/Uhrzeit nummeriert)." }
+      - { label: "Datum/Uhrzeit (Reihenfolge innerhalb einer Serie)", name: "date", widget: "datetime", required: false, hint: "Nur bei Serienteilen: bestimmt die Reihenfolge (früher = zuerst) und die Nummerierung." }
+      - { label: "Material (DE)", name: "materials_de", widget: "string", required: false, hint: "Bei Serienteilen leer lassen, um das Material des Hauptwerks zu übernehmen." }
       - { label: "Material (EN)", name: "materials_en", widget: "string", required: false }
-      - { label: "Maße (DE)", name: "dimensions_de", widget: "string" }
+      - { label: "Maße (DE)", name: "dimensions_de", widget: "string", required: false }
       - { label: "Maße (EN)", name: "dimensions_en", widget: "string", required: false }
-      - { label: "Beschreibung (DE)", name: "description_de", widget: "markdown" }
+      - { label: "Beschreibung (DE)", name: "description_de", widget: "markdown", required: false }
       - { label: "Beschreibung (EN)", name: "description_en", widget: "markdown", required: false }
-      - { label: "Cover Bild", name: "cover_image", widget: "image", required: true }
+      - { label: "Cover Bild", name: "cover_image", widget: "image", required: true, hint: "Erscheint in der Übersicht. Auf der Werkseite wird das Cover nur gezeigt, wenn keine Galerie-Bilder vorhanden sind." }
       - label: "Galerie Bilder"
         name: "gallery_images"
         widget: "list"

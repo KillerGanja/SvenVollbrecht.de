@@ -1,0 +1,583 @@
+---
+// Galerie fuer Werke und Ausstellungen:
+//  - kleine Vorschaubilder, alle gleich hoch (PC: nebeneinander, ca. 4 pro Reihe; Handy: seitlich wischen)
+//  - Klick oeffnet die Grossansicht mit Pfeilen links/rechts (auch Pfeiltasten und Wischen)
+//  - Videos: Vorschau mit Play-Symbol; in der Grossansicht erst das Standbild mit grossem Play-Knopf.
+//    Kein Autostart, Wiedergabe im Loop, kein Vollbild. Beim Weiterblaettern stoppt das Video.
+// Ist die Liste leer, wird ersatzweise das Cover-Bild gezeigt.
+import ResponsiveImage from "./ResponsiveImage.astro";
+import {
+  getImageInfo,
+  isOptimizable,
+  variantUrl,
+  widthsFor,
+  isVideo as isUploadVideo,
+  videoUrl,
+  posterUrl,
+} from "../utils/image-variants.mjs";
+
+interface Props {
+  images?: string[];
+  cover?: string;
+  title?: string;
+  lang?: string;
+  /** Cover nicht in der Galerie zeigen (er steht schon in der Uebersicht). Nur wenn danach noch Bilder bleiben. */
+  hideCover?: boolean;
+}
+
+const { images, cover, title = "", lang = "de", hideCover = true } = Astro.props;
+
+const norm = (s: string) => {
+  try {
+    return decodeURIComponent(String(s)).trim();
+  } catch {
+    return String(s).trim();
+  }
+};
+
+let list: string[] = (Array.isArray(images) ? images : []).filter(
+  (s) => typeof s === "string" && s.trim() !== "",
+);
+// Das Cover-Bild gehoert in die Uebersicht; in der Galerie erscheinen nur die uebrigen Bilder.
+// Bleibt nichts uebrig (oder gibt es keine Galerie), wird ersatzweise das Cover gezeigt.
+if (hideCover && cover) {
+  const rest = list.filter((s) => norm(s) !== norm(cover));
+  if (rest.length > 0) list = rest;
+}
+if (list.length === 0 && cover) list = [cover];
+
+const DEV = import.meta.env.DEV;
+const VIDEO_EXT = /\.(mp4|webm|ogg|mov|m4v)$/i;
+const isVid = (s: string) => VIDEO_EXT.test(s.split("?")[0]);
+
+const labels =
+  lang === "en"
+    ? {
+        open: "Enlarge",
+        play: "Play video",
+        prev: "Previous",
+        next: "Next",
+        close: "Close",
+        video: "Video",
+      }
+    : {
+        open: "Vergrößern",
+        play: "Video abspielen",
+        prev: "Zurück",
+        next: "Weiter",
+        close: "Schließen",
+        video: "Video",
+      };
+
+const items = await Promise.all(
+  list.map(async (src) => {
+    if (isVid(src)) {
+      const optimized = !DEV && isUploadVideo(src);
+      return {
+        kind: "video" as const,
+        src,
+        ratio: 0,
+        video: optimized ? videoUrl(src) : src,
+        poster: optimized ? posterUrl(src) : "",
+        full: "",
+        srcset: "",
+      };
+    }
+    const info = DEV || !isOptimizable(src) ? null : await getImageInfo(src);
+    if (!info) {
+      return {
+        kind: "image" as const,
+        src,
+        ratio: 0,
+        video: "",
+        poster: "",
+        full: src,
+        srcset: "",
+      };
+    }
+    const widths = widthsFor(info.width);
+    return {
+      kind: "image" as const,
+      src,
+      ratio: info.width / info.height,
+      video: "",
+      poster: "",
+      full: variantUrl(src, widths[widths.length - 1]),
+      srcset: widths.map((w) => `${variantUrl(src, w)} ${w}w`).join(", "),
+    };
+  }),
+);
+
+// Hoehe der Vorschaubilder (siehe CSS): Handy 150 px, PC 200 px
+const sizesFor = (ratio: number) =>
+  `(max-width: 767px) ${Math.round(ratio * 150)}px, ${Math.round(ratio * 200)}px`;
+---
+
+{
+  items.length > 0 && (
+    <div
+      class="svg-gallery"
+      data-svg-gallery
+      data-l-prev={labels.prev}
+      data-l-next={labels.next}
+      data-l-close={labels.close}
+      data-l-play={labels.play}
+    >
+      <ul class="svg-strip">
+        {items.map((it, i) => (
+          <li style={it.ratio ? `aspect-ratio:${it.ratio}` : undefined}>
+            <button
+              type="button"
+              class="svg-thumb"
+              data-kind={it.kind}
+              data-full={it.full}
+              data-srcset={it.srcset}
+              data-video={it.video}
+              data-poster={it.poster}
+              data-alt={title}
+              aria-label={`${labels.open} ${i + 1} / ${items.length}${it.kind === "video" ? " (" + labels.video + ")" : ""}`}
+            >
+              {it.kind === "image" ? (
+                <ResponsiveImage
+                  src={it.src}
+                  alt={title}
+                  sizes={it.ratio ? sizesFor(it.ratio) : undefined}
+                  loading={i < 4 ? "eager" : "lazy"}
+                />
+              ) : it.poster ? (
+                <img
+                  src={it.poster}
+                  alt={title}
+                  loading={i < 4 ? "eager" : "lazy"}
+                  decoding="async"
+                  data-poster-thumb
+                />
+              ) : (
+                <video src={it.video} preload="metadata" muted playsinline />
+              )}
+              {it.kind === "video" && (
+                <span class="svg-thumb-play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22">
+                    <path d="M8 5v14l11-7z" fill="currentColor" />
+                  </svg>
+                </span>
+              )}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+<style is:global>
+  .svg-gallery {
+    margin: 1.5rem 0;
+    --svg-h: 150px;
+  }
+  @media (min-width: 768px) {
+    .svg-gallery {
+      --svg-h: 200px;
+    }
+  }
+
+  .svg-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  /* Handy: eine Reihe, seitlich wischen */
+  @media (max-width: 767px) {
+    .svg-strip {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.5rem;
+    }
+    .svg-strip > li {
+      scroll-snap-align: start;
+    }
+  }
+
+  .svg-strip > li {
+    flex: none;
+    height: var(--svg-h);
+    aspect-ratio: 4 / 3; /* Platzhalter fuer Videos; Bilder setzen ihr echtes Verhaeltnis */
+    max-width: calc(var(--svg-h) * 1.9); /* sehr breite Bilder werden seitlich beschnitten */
+  }
+
+  .svg-thumb {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f3f4f6;
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .svg-thumb:hover,
+  .svg-thumb:focus-visible {
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.15);
+  }
+  .svg-thumb img,
+  .svg-thumb video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .svg-thumb-play {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    background: rgb(0 0 0 / 0.6);
+    color: #fff;
+    pointer-events: none;
+  }
+
+  /* ---------- Grossansicht ---------- */
+  .svg-lb {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0 0 0 / 0.92);
+    touch-action: pan-y;
+  }
+  .svg-lb[hidden] {
+    display: none;
+  }
+  .svg-lb-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 3.5rem 3.75rem;
+  }
+  @media (min-width: 768px) {
+    .svg-lb-stage {
+      padding: 3.5rem 6rem;
+    }
+  }
+  .svg-lb-stage img,
+  .svg-lb-stage video {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    background: #000;
+  }
+  .svg-vwrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .svg-vwrap video {
+    max-height: calc(100vh - 7rem);
+    max-height: calc(100dvh - 7rem);
+  }
+  .svg-vplay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 5rem;
+    height: 5rem;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgb(255 255 255 / 0.9);
+    border-radius: 9999px;
+    background: rgb(0 0 0 / 0.55);
+    color: #fff;
+    cursor: pointer;
+  }
+  .svg-vplay:hover,
+  .svg-vplay:focus-visible {
+    background: rgb(0 0 0 / 0.8);
+  }
+  .svg-vplay[hidden] {
+    display: none;
+  }
+
+  .svg-lb button.svg-nav,
+  .svg-lb button.svg-close {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.85;
+  }
+  .svg-lb button.svg-nav:hover,
+  .svg-lb button.svg-close:hover,
+  .svg-lb button.svg-nav:focus-visible,
+  .svg-lb button.svg-close:focus-visible {
+    opacity: 1;
+    background: rgb(255 255 255 / 0.12);
+  }
+  .svg-lb button.svg-nav {
+    top: 50%;
+    width: 3.25rem;
+    height: 5rem;
+    margin-top: -2.5rem;
+    border-radius: 6px;
+  }
+  .svg-lb button.svg-prev {
+    left: 0.25rem;
+  }
+  .svg-lb button.svg-next {
+    right: 0.25rem;
+  }
+  .svg-lb button.svg-close {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+  }
+  .svg-lb-count {
+    position: absolute;
+    left: 50%;
+    bottom: 1rem;
+    transform: translateX(-50%);
+    color: rgb(255 255 255 / 0.8);
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+  }
+</style>
+
+<script>
+  function initGallery(gallery) {
+    const thumbs = Array.from(gallery.querySelectorAll(".svg-thumb"));
+    if (!thumbs.length) return;
+
+    const items = thumbs.map((b) => ({
+      kind: b.dataset.kind,
+      full: b.dataset.full || "",
+      srcset: b.dataset.srcset || "",
+      video: b.dataset.video || "",
+      poster: b.dataset.poster || "",
+      alt: b.dataset.alt || "",
+    }));
+    const L = {
+      prev: gallery.dataset.lPrev || "Zurück",
+      next: gallery.dataset.lNext || "Weiter",
+      close: gallery.dataset.lClose || "Schließen",
+      play: gallery.dataset.lPlay || "Video abspielen",
+    };
+
+    // Video-Vorschauen: echtes Seitenverhaeltnis des Standbilds uebernehmen, sobald es geladen ist
+    gallery.querySelectorAll("img[data-poster-thumb]").forEach((img) => {
+      const apply = () => {
+        if (img.naturalWidth && img.naturalHeight) {
+          const li = img.closest("li");
+          if (li) li.style.aspectRatio = img.naturalWidth + " / " + img.naturalHeight;
+        }
+      };
+      if (img.complete) apply();
+      else img.addEventListener("load", apply, { once: true });
+    });
+
+    let lb = null;
+    let stage = null;
+    let counter = null;
+    let index = 0;
+    let lastFocus = null;
+
+    const arrow = (dir) =>
+      '<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="' +
+      (dir === "left" ? "M15 4l-8 8 8 8" : "M9 4l8 8-8 8") +
+      '"/></svg>';
+
+    function build() {
+      lb = document.createElement("div");
+      lb.className = "svg-lb";
+      lb.hidden = true;
+      lb.setAttribute("role", "dialog");
+      lb.setAttribute("aria-modal", "true");
+      lb.innerHTML =
+        '<button type="button" class="svg-close" aria-label="' + L.close + '">' +
+        '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+        '<button type="button" class="svg-nav svg-prev" aria-label="' + L.prev + '">' + arrow("left") + "</button>" +
+        '<div class="svg-lb-stage"></div>' +
+        '<button type="button" class="svg-nav svg-next" aria-label="' + L.next + '">' + arrow("right") + "</button>" +
+        '<div class="svg-lb-count"></div>';
+      document.body.appendChild(lb);
+      stage = lb.querySelector(".svg-lb-stage");
+      counter = lb.querySelector(".svg-lb-count");
+
+      lb.querySelector(".svg-close").addEventListener("click", close);
+      lb.querySelector(".svg-prev").addEventListener("click", () => go(-1));
+      lb.querySelector(".svg-next").addEventListener("click", () => go(1));
+      // Klick neben das Medium schliesst
+      stage.addEventListener("click", (e) => {
+        if (e.target === stage) close();
+      });
+
+      // Wischen (nur bei Bildern, damit Video-Bedienelemente nicht stoeren)
+      let startX = 0;
+      let startY = 0;
+      let tracking = false;
+      lb.addEventListener(
+        "touchstart",
+        (e) => {
+          const t = e.target;
+          tracking = !(t && t.closest && t.closest("video, button"));
+          if (tracking) {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+          }
+        },
+        { passive: true },
+      );
+      lb.addEventListener(
+        "touchend",
+        (e) => {
+          if (!tracking) return;
+          tracking = false;
+          const dx = e.changedTouches[0].clientX - startX;
+          const dy = e.changedTouches[0].clientY - startY;
+          if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) go(dx < 0 ? 1 : -1);
+        },
+        { passive: true },
+      );
+    }
+
+    function preload(i) {
+      const it = items[(i + items.length) % items.length];
+      if (!it || it.kind !== "image") return;
+      const im = new Image();
+      if (it.srcset) {
+        im.sizes = "100vw";
+        im.srcset = it.srcset;
+      }
+      im.src = it.full;
+    }
+
+    function show(i) {
+      index = (i + items.length) % items.length;
+      const it = items[index];
+      const old = stage.querySelector("video");
+      if (old) old.pause();
+      stage.replaceChildren();
+
+      if (it.kind === "video") {
+        const wrap = document.createElement("div");
+        wrap.className = "svg-vwrap";
+        const v = document.createElement("video");
+        v.src = it.video;
+        if (it.poster) v.poster = it.poster;
+        v.preload = it.poster ? "none" : "metadata";
+        v.loop = true;
+        v.playsInline = true;
+        v.controls = false;
+        v.volume = 0.3;
+        v.setAttribute("controlsList", "nofullscreen nodownload noremoteplayback");
+        v.setAttribute("disablePictureInPicture", "");
+        v.addEventListener("dblclick", (e) => e.preventDefault());
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "svg-vplay";
+        btn.setAttribute("aria-label", L.play);
+        btn.innerHTML =
+          '<svg viewBox="0 0 24 24" width="40" height="40"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>';
+        btn.addEventListener("click", () => {
+          btn.hidden = true;
+          v.controls = true;
+          v.play().catch(() => {
+            // z. B. blockiert: Bedienleiste bleibt sichtbar, der Nutzer kann dort starten
+          });
+        });
+        wrap.append(v, btn);
+        stage.append(wrap);
+      } else {
+        const img = document.createElement("img");
+        if (it.srcset) {
+          img.sizes = "100vw";
+          img.srcset = it.srcset;
+        }
+        img.src = it.full;
+        img.alt = it.alt;
+        img.draggable = false;
+        stage.append(img);
+      }
+
+      counter.textContent = index + 1 + " / " + items.length;
+      preload(index + 1);
+      preload(index - 1);
+    }
+
+    function go(d) {
+      if (items.length > 1) show(index + d);
+    }
+
+    function onKey(e) {
+      if (e.key === "Escape") {
+        close();
+        return;
+      }
+      // In einem Video bedienen die Pfeiltasten die Zeitleiste, nicht die Galerie
+      if (e.target && e.target.tagName === "VIDEO") return;
+      if (e.key === "ArrowRight") go(1);
+      else if (e.key === "ArrowLeft") go(-1);
+    }
+
+    function open(i) {
+      if (!lb) build();
+      lastFocus = document.activeElement;
+      const single = items.length < 2;
+      lb.querySelector(".svg-prev").hidden = single;
+      lb.querySelector(".svg-next").hidden = single;
+      counter.hidden = single;
+      lb.hidden = false;
+      document.documentElement.style.overflow = "hidden";
+      document.addEventListener("keydown", onKey);
+      show(i);
+      lb.querySelector(".svg-close").focus();
+    }
+
+    function close() {
+      if (!lb || lb.hidden) return;
+      const v = stage.querySelector("video");
+      if (v) v.pause();
+      stage.replaceChildren();
+      lb.hidden = true;
+      document.documentElement.style.overflow = "";
+      document.removeEventListener("keydown", onKey);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    thumbs.forEach((b, i) => b.addEventListener("click", () => open(i)));
+  }
+
+  document.querySelectorAll("[data-svg-gallery]").forEach(initGallery);
+</script>

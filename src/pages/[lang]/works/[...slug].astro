@@ -2,8 +2,16 @@
 import Layout from "../../../layouts/Layout.astro";
 import { t } from "../../../utils/i18n";
 import { marked } from "marked";
-import WorkSlideshow from "../../../components/WorkSlideshow.astro";
+import ImageGallery from "../../../components/ImageGallery.astro";
+import ResponsiveImage from "../../../components/ResponsiveImage.astro";
 import { excerpt, pickImage } from "../../../utils/seo";
+import {
+    isPart,
+    partLabel,
+    parentSlugOf,
+    seriesParts,
+    slugSet,
+} from "../../../utils/series";
 
 export async function getStaticPaths() {
     const entries = Object.values(
@@ -20,23 +28,45 @@ export async function getStaticPaths() {
                 lang,
                 slug: entry.frontmatter.slug,
             },
-            props: { entry },
+            props: {
+                entry,
+                // Alle Werke (nur Frontmatter) fuer die Serien-Logik
+                all: entries.map((e) => e.frontmatter),
+            },
         }));
     });
 }
 
 const { lang, slug } = Astro.params;
-const { entry } = Astro.props;
+const { entry, all } = Astro.props;
 const { frontmatter } = entry;
 
+// ---- Serien ----------------------------------------------------------------
+const slugs = slugSet(all);
+const partOfSeries = isPart(frontmatter, slugs);
+const parent = partOfSeries
+    ? all.find((fm: any) => String(fm.slug).trim() === parentSlugOf(frontmatter))
+    : null;
+// Geschwister inkl. dieses Teils (in Reihenfolge)
+const siblings = parent ? seriesParts(all, parent.slug) : [];
+const myIndex = siblings.findIndex((fm: any) => fm.slug === frontmatter.slug);
+// Teile dieses Werks (falls es selbst ein Hauptwerk ist)
+const children = partOfSeries ? [] : seriesParts(all, frontmatter.slug);
+
+const worksUrl = (s: string) => `/${lang}/works/${s}/`;
+const labelOf = (fm: any) =>
+    parent
+        ? partLabel(parent, fm, siblings.findIndex((x: any) => x.slug === fm.slug))
+        : fm.title;
+
 // Determine localized content
-const title = frontmatter.title || ""; // Title is shared
-const materials =
-    frontmatter[`materials_${lang}`] || frontmatter.materials_de || "";
-const dimensions =
-    frontmatter[`dimensions_${lang}`] || frontmatter.dimensions_de || "";
-const description =
-    frontmatter[`description_${lang}`] || frontmatter.description_de || "";
+const title = parent ? labelOf(frontmatter) : frontmatter.title || "";
+const pick = (fm: any, key: string) => fm?.[`${key}_${lang}`] || fm?.[`${key}_de`] || "";
+// Jahr und Material werden vom Hauptwerk uebernommen, wenn beim Teil leer. Maße nicht.
+const materials = pick(frontmatter, "materials") || (parent ? pick(parent, "materials") : "");
+const dimensions = pick(frontmatter, "dimensions");
+const year = frontmatter.year || (parent ? parent.year : undefined);
+const description = pick(frontmatter, "description");
 
 // Pre-process spacing:
 // We interpret 1.5 spacing as line-height 1.5 (global prose style)
@@ -49,8 +79,15 @@ const htmlContent = marked.parse(processedDescription, { breaks: true });
 
 const metaDescription =
     excerpt(description) ||
-    `${title} – ${lang === "en" ? "work by" : "Werk von"} Sven Vollbrecht${frontmatter.year ? ` (${frontmatter.year})` : ""}${materials ? `, ${materials}` : ""}.`;
+    `${title} – ${lang === "en" ? "work by" : "Werk von"} Sven Vollbrecht${year ? ` (${year})` : ""}${materials ? `, ${materials}` : ""}.`;
 const metaImage = pickImage(frontmatter.cover_image, frontmatter.gallery_images);
+
+const L =
+    lang === "en"
+        ? { partOf: "Part of the series", overview: "Overview", prev: "Previous", next: "Next" }
+        : { partOf: "Teil der Serie", overview: "Übersicht", prev: "Zurück", next: "Weiter" };
+const prevPart = myIndex > 0 ? siblings[myIndex - 1] : null;
+const nextPart = myIndex >= 0 && myIndex < siblings.length - 1 ? siblings[myIndex + 1] : null;
 ---
 
 <Layout title={title} description={metaDescription} image={metaImage}>
@@ -66,14 +103,57 @@ const metaImage = pickImage(frontmatter.cover_image, frontmatter.gallery_images)
             "name": "Sven Vollbrecht",
             "url": "https://svenvollbrecht.de"
           },
-          "dateCreated": frontmatter.year,
+          "isPartOf": parent
+            ? { "@type": "CreativeWorkSeries", "name": parent.title, "url": `https://svenvollbrecht.de${worksUrl(parent.slug)}` }
+            : undefined,
+          "dateCreated": year,
           "artMedium": materials,
           "artform": "Installation",
           "width": dimensions
         })} />
     </Fragment>
     <div class="mx-auto max-w-screen-xl">
-        <WorkSlideshow images={frontmatter.gallery_images} title={title} />
+        {/* Galerie: ohne Galerie-Bilder wird ersatzweise das Cover gezeigt */}
+        <ImageGallery
+            images={frontmatter.gallery_images}
+            cover={children.length > 0 ? undefined : frontmatter.cover_image}
+            title={title}
+            lang={lang}
+            hideCover={!partOfSeries}
+        />
+
+        {/* Hauptwerk einer Serie: Uebersicht aller Teile */}
+        {
+            children.length > 0 && (
+                <ul class="mx-auto my-8 grid max-w-screen-xl grid-cols-2 gap-4 px-0 md:grid-cols-3 md:gap-8 xl:grid-cols-4">
+                    {children.map((part: any, i: number) => (
+                        <li>
+                            <a href={worksUrl(part.slug)} class="group block">
+                                <div class="aspect-[4/5] overflow-hidden bg-gray-100">
+                                    {part.cover_image && (
+                                        <ResponsiveImage
+                                            src={part.cover_image}
+                                            alt={partLabel(frontmatter, part, i)}
+                                            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                            sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 50vw"
+                                            loading={i < 4 ? "eager" : "lazy"}
+                                        />
+                                    )}
+                                </div>
+                                <p class="mt-2 text-sm font-medium text-gray-900">
+                                    {partLabel(frontmatter, part, i)}
+                                </p>
+                                {pick(part, "dimensions") && (
+                                    <p class="text-xs font-light text-gray-500">
+                                        {pick(part, "dimensions")}
+                                    </p>
+                                )}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            )
+        }
 
         <!-- Centered Metadata Stack -->
         <div class="mt-12 mb-12 text-center">
@@ -84,19 +164,57 @@ const metaImage = pickImage(frontmatter.cover_image, frontmatter.gallery_images)
                 class="space-y-1 text-gray-500 font-light"
                 style="font-size: var(--metadata-font-size, 0.875rem);"
             >
-                {frontmatter.year && <p>{frontmatter.year}</p>}
+                {year && <p>{year}</p>}
                 {materials && <p>{materials}</p>}
                 {dimensions && <p>{dimensions}</p>}
-                {frontmatter.series && <p>{frontmatter.series}</p>}
+                {
+                    parent && (
+                        <p>
+                            {L.partOf}{" "}
+                            <a href={worksUrl(parent.slug)} class="underline hover:text-gray-900">
+                                {parent.title}
+                            </a>
+                        </p>
+                    )
+                }
             </div>
         </div>
 
         <!-- Left-aligned Description -->
-        <div class="mx-auto max-w-2xl px-4">
-            <div
-                class="prose prose-gray max-w-none text-left"
-                set:html={htmlContent}
-            />
-        </div>
+        {
+            htmlContent && description.trim() && (
+                <div class="mx-auto max-w-2xl px-4">
+                    <div
+                        class="prose prose-gray max-w-none text-left"
+                        set:html={htmlContent}
+                    />
+                </div>
+            )
+        }
+
+        {/* Serienteil: Blaettern zwischen den Teilen */}
+        {
+            parent && (
+                <nav class="mx-auto mt-12 mb-8 flex max-w-2xl items-center justify-between gap-4 px-4 text-sm text-gray-600">
+                    <span class="w-1/3 text-left">
+                        {prevPart && (
+                            <a href={worksUrl(prevPart.slug)} class="hover:text-gray-900">
+                                ← {labelOf(prevPart)}
+                            </a>
+                        )}
+                    </span>
+                    <a href={worksUrl(parent.slug)} class="w-1/3 text-center underline hover:text-gray-900">
+                        {L.overview} {parent.title}
+                    </a>
+                    <span class="w-1/3 text-right">
+                        {nextPart && (
+                            <a href={worksUrl(nextPart.slug)} class="hover:text-gray-900">
+                                {labelOf(nextPart)} →
+                            </a>
+                        )}
+                    </span>
+                </nav>
+            )
+        }
     </div>
 </Layout>
