@@ -2,7 +2,7 @@
 import Layout from "../../../layouts/Layout.astro";
 import { t } from "../../../utils/i18n";
 import { marked } from "marked";
-import ImageGallery from "../../../components/ImageGallery.astro";
+import WorkSlideshow from "../../../components/WorkSlideshow.astro";
 import { excerpt, pickImage } from "../../../utils/seo";
 
 export async function getStaticPaths() {
@@ -43,10 +43,25 @@ const metaDescription =
     excerpt(description) ||
     `${title} – ${lang === "en" ? "exhibition with Sven Vollbrecht" : "Ausstellung mit Sven Vollbrecht"}${facts ? `: ${facts}` : ""}${frontmatter.year ? ` (${frontmatter.year})` : ""}.`;
 const metaImage = pickImage(frontmatter.cover_image, frontmatter.gallery_images);
+
+// Bilder zum Durchklicken (wie bei den Werken): Galerie, sonst nur das Titelbild
+const slideshowMedia = (
+    Array.isArray(frontmatter.gallery_images) && frontmatter.gallery_images.length
+        ? frontmatter.gallery_images
+        : [frontmatter.cover_image]
+).filter(Boolean);
 ---
 
 <Layout title={title} description={metaDescription} image={metaImage}>
     <div class="mx-auto max-w-screen-xl">
+        {
+            slideshowMedia.length > 0 && (
+                <div class="mb-12">
+                    <WorkSlideshow images={slideshowMedia} title={title} />
+                </div>
+            )
+        }
+
         <h1 class="mb-4 text-3xl font-light tracking-wide text-gray-900">
             {title}
         </h1>
@@ -62,10 +77,5 @@ const metaImage = pickImage(frontmatter.cover_image, frontmatter.gallery_images)
 
         <div class="prose prose-gray max-w-3xl mb-16" set:html={htmlContent} />
 
-        {
-            frontmatter.gallery_images && (
-                <ImageGallery images={frontmatter.gallery_images} title={title} />
-            )
-        }
     </div>
 </Layout>

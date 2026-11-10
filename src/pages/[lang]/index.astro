@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { t } from "../../utils/i18n";
 import { marked } from "marked";
 import ResponsiveImage from "../../components/ResponsiveImage.astro";
+import { isVideo as isUploadVideo, videoUrl, posterUrl } from "../../utils/image-variants.mjs";
 import { homeTitle, pickImage } from "../../utils/seo";
 
 export function getStaticPaths() {
@@ -33,6 +34,12 @@ const htmlContent = body ? marked.parse(body) : "";
 const isVideo = frontmatter.image
     ? frontmatter.image.match(/\.(mp4|webm|ogv)$|youtube\.com|vimeo\.com/i)
     : false;
+
+// Hochgeladene Videos gibt es beim Build als kleines MP4 mit Vorschaubild
+const useVariant =
+    !!frontmatter.image && !import.meta.env.DEV && isUploadVideo(frontmatter.image);
+const heroVideoSrc = useVariant ? videoUrl(frontmatter.image) : frontmatter.image;
+const heroPoster = useVariant ? posterUrl(frontmatter.image) : undefined;
 ---
 
 <Layout title={title} image={pickImage(frontmatter.image)}>
@@ -60,7 +67,8 @@ const isVideo = frontmatter.image
                 (isVideo ? (
                     <div class="mx-auto mb-8 max-h-[70vh] w-full max-w-4xl">
                         <video
-                            src={frontmatter.image}
+                            src={heroVideoSrc}
+                            poster={heroPoster}
                             autoplay
                             loop
                             muted

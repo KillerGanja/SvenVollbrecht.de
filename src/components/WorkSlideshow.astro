@@ -1,12 +1,28 @@
 ---
 import ResponsiveImage from "./ResponsiveImage.astro";
+import {
+    isVideo as isUploadVideo,
+    videoUrl,
+    posterUrl,
+    onlyExistingUploads,
+} from "../utils/image-variants.mjs";
 
 interface Props {
     images: string[]; // Keep prop name 'images' for compatibility, but it contains paths to media
     title: string;
 }
 
-const { images, title } = Astro.props;
+const { images: rawImages, title } = Astro.props;
+
+// Verweise auf nicht (mehr) vorhandene Uploads weglassen, damit kein leerer Rahmen erscheint
+const images = onlyExistingUploads(rawImages);
+
+// Hochgeladene Videos werden beim Build in ein kleines MP4 mit Vorschaubild umgewandelt
+// (im Dev-Server gibt es diese Varianten nicht, dort wird das Original verwendet).
+const videoSrc = (src: string) =>
+    !import.meta.env.DEV && isUploadVideo(src) ? videoUrl(src) : src;
+const posterSrc = (src: string) =>
+    !import.meta.env.DEV && isUploadVideo(src) ? posterUrl(src) : undefined;
 
 function isVideo(path: string) {
     const videoExtensions = [".mp4", ".webm", ".ogg", ".mov"];
@@ -50,7 +66,8 @@ function isVideo(path: string) {
                         isVideo(src) ? (
                             <video
                                 id={index === 0 ? "current-media" : undefined}
-                                src={src}
+                                src={videoSrc(src)}
+                                poster={posterSrc(src)}
                                 class={`max-h-[80vh] max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
                                 data-index={index}
                                 loop

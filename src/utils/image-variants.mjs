@@ -117,3 +117,55 @@ export function ogImageFor(src) {
   }
   return fallbackUrl(src);
 }
+
+// ---------------------------------------------------------------------------
+// Videos: beim Build wird jedes in den Inhalten verwendete Video (.mov/.mp4/.m4v/.webm)
+// in ein web-taugliches MP4 (H.264/AAC, max. 1920 px, "faststart") umgewandelt,
+// dazu ein Vorschaubild (Poster). Die Originale bleiben unveraendert.
+// ---------------------------------------------------------------------------
+export const VIDEO = /\.(mov|mp4|m4v|webm)$/i;
+
+export function isVideo(src) {
+  return (
+    typeof src === "string" &&
+    src.split("?")[0].startsWith(UPLOAD_PREFIX) &&
+    VIDEO.test(src.split("?")[0])
+  );
+}
+
+export function videoFileName(file) {
+  return `${flatName(file)}-video.mp4`;
+}
+
+export function posterFileName(file) {
+  return `${flatName(file)}-poster.jpg`;
+}
+
+export function videoUrl(src) {
+  return toUrl(videoFileName(relativeFile(src)));
+}
+
+export function posterUrl(src) {
+  return toUrl(posterFileName(relativeFile(src)));
+}
+
+/** Gibt es die hochgeladene Datei wirklich? */
+export function uploadExists(src) {
+  try {
+    return fs.existsSync(path.join(uploadsDir(), relativeFile(src)));
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Entfernt Verweise auf Uploads, die es nicht (mehr) gibt (z. B. ein geloeschtes Bild),
+ * damit in der Slideshow kein leerer Rahmen erscheint. Externe URLs bleiben unberuehrt.
+ */
+export function onlyExistingUploads(list) {
+  return (Array.isArray(list) ? list : []).filter((src) => {
+    if (typeof src !== "string" || !src) return false;
+    if (!src.startsWith(UPLOAD_PREFIX)) return true;
+    return uploadExists(src);
+  });
+}
