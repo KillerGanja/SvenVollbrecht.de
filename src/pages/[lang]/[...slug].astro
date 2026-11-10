@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { t } from "../../utils/i18n";
 import { marked } from "marked";
+import { excerpt, pageDescription } from "../../utils/seo";
 
 export async function getStaticPaths() {
     const pages = ["about", "contact", "impressum", "privacy"];
@@ -45,9 +46,16 @@ const processedBody = body
     .replace(/([a-zA-ZäöüÄÖÜß])\*([a-zA-ZäöüÄÖÜß])/g, "$1\\*$2");
 
 const htmlContent = marked.parse(processedBody, { breaks: true });
+
+// Über mich: Anfang des Textes; Kontakt/Impressum/Datenschutz: feste Beschreibung
+const metaDescription =
+    slug === "about"
+        ? excerpt(body) || undefined
+        : pageDescription[slug as string]?.[lang as string] ||
+          pageDescription[slug as string]?.de;
 ---
 
-<Layout title={title}>
+<Layout title={title} description={metaDescription}>
     <div class="max-w-none w-full md:w-1/2 lg:w-1/2">
         <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">
             {title}

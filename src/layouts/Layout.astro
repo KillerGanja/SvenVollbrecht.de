@@ -5,6 +5,12 @@ import ScreenSizeIndicator from "../components/ScreenSizeIndicator.astro";
 import SEO from "../components/SEO.astro";
 import { t, getRelativeLocaleUrl } from "../utils/i18n";
 import settings from "../content/ui/settings.json";
+import {
+  SITE_NAME,
+  DEFAULT_OG_IMAGE,
+  defaultDescription,
+  absoluteUrl,
+} from "../utils/seo";
 
 interface Props {
   title?: string;
@@ -14,14 +20,20 @@ interface Props {
   lang?: string;
 }
 
-const {
-  title = "Sven Vollbrecht",
-  description = "Sven Vollbrecht (geboren in West-Berlin) ist ein deutscher Konzeptkünstler. Er arbeitet mit Installationen, Videoarbeiten und partizipativen Formaten.",
-  image = "/favicon.svg",
-  type = "website",
-} = Astro.props;
 const { lang } = Astro.params as { lang: string };
 const locale = lang || "de";
+
+const {
+  title = SITE_NAME,
+  description = defaultDescription[locale] || defaultDescription.de,
+  image = DEFAULT_OG_IMAGE,
+  type = "website",
+} = Astro.props;
+
+// Seitentitel: "Seite | Sven Vollbrecht" (der Name wird nicht doppelt angehängt)
+const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+// Vorschaubild immer als absolute URL (Social-Media-Dienste lösen relative Pfade nicht auf)
+const ogImage = absoluteUrl(image);
 
 // Generate absolute URL for canonical link
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://svenvollbrecht.de');
@@ -42,14 +54,20 @@ const hreflang = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <SEO
-      title={title}
+      title={fullTitle}
       description={description}
-      image={image}
+      image={ogImage}
       canonicalUrl={canonicalURL.toString()}
       type={type}
+      locale={locale}
       hreflang={hreflang}
     />
     <slot name="head" />

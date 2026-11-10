@@ -3,6 +3,7 @@ import Layout from "../../../layouts/Layout.astro";
 import { t } from "../../../utils/i18n";
 import { marked } from "marked";
 import WorkSlideshow from "../../../components/WorkSlideshow.astro";
+import { excerpt, pickImage } from "../../../utils/seo";
 
 export async function getStaticPaths() {
     const entries = Object.values(
@@ -45,9 +46,14 @@ const processedDescription = description
     .replace(/([a-zA-ZäöüÄÖÜß])\*([a-zA-ZäöüÄÖÜß])/g, "$1\\*$2"); // Escape Gender-Sternchen
 
 const htmlContent = marked.parse(processedDescription, { breaks: true });
+
+const metaDescription =
+    excerpt(description) ||
+    `${title} – ${lang === "en" ? "work by" : "Werk von"} Sven Vollbrecht${frontmatter.year ? ` (${frontmatter.year})` : ""}${materials ? `, ${materials}` : ""}.`;
+const metaImage = pickImage(frontmatter.cover_image, frontmatter.gallery_images);
 ---
 
-<Layout title={title}>
+<Layout title={title} description={metaDescription} image={metaImage}>
     <Fragment slot="head">
         <script type="application/ld+json" set:html={JSON.stringify({
           "@context": "https://schema.org",

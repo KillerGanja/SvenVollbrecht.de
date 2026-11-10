@@ -1,5 +1,6 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
+import { pageDescription } from "../../../utils/seo";
 import { t } from "../../../utils/i18n";
 import orderData from "../../../content/ui/works-order.json";
 
@@ -62,7 +63,7 @@ const works = worksEntries
 const title = t("nav_works", lang);
 ---
 
-<Layout title={title}>
+<Layout title={title} description={pageDescription.works[lang as string] || pageDescription.works.de}>
     <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">
         {title}
     </h1>

@@ -3,6 +3,7 @@ import Layout from "../../../layouts/Layout.astro";
 import { t } from "../../../utils/i18n";
 import { marked } from "marked";
 import ImageGallery from "../../../components/ImageGallery.astro";
+import { excerpt, pickImage } from "../../../utils/seo";
 
 export async function getStaticPaths() {
     const entries = Object.values(
@@ -36,9 +37,15 @@ const description =
     frontmatter[`description_${lang}`] || frontmatter.description_de || "";
 
 const htmlContent = marked.parse(description);
+
+const facts = [venue, city, period].filter(Boolean).join(", ");
+const metaDescription =
+    excerpt(description) ||
+    `${title} – ${lang === "en" ? "exhibition with Sven Vollbrecht" : "Ausstellung mit Sven Vollbrecht"}${facts ? `: ${facts}` : ""}${frontmatter.year ? ` (${frontmatter.year})` : ""}.`;
+const metaImage = pickImage(frontmatter.cover_image, frontmatter.gallery_images);
 ---
 
-<Layout title={title}>
+<Layout title={title} description={metaDescription} image={metaImage}>
     <div class="mx-auto max-w-screen-xl">
         <h1 class="mb-4 text-3xl font-light tracking-wide text-gray-900">
             {title}

@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { pageDescription } from "../../utils/seo";
 import { t } from "../../utils/i18n";
 import { marked } from "marked";
 
@@ -60,7 +61,7 @@ const sortedYears = Object.keys(groupedPress)
 const title = t("nav_press", lang);
 ---
 
-<Layout title={title}>
+<Layout title={title} description={pageDescription.press[lang as string] || pageDescription.press.de}>
     <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">
         {title}
     </h1>

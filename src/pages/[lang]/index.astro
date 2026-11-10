@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { t } from "../../utils/i18n";
 import { marked } from "marked";
+import { homeTitle, pickImage } from "../../utils/seo";
 
 export function getStaticPaths() {
     return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
@@ -22,7 +23,7 @@ if (!homeEntry) {
 }
 
 const { frontmatter } = homeEntry;
-const title = `Sven Vollbrecht – ${t("nav_home", lang) || "Startseite"}`;
+const title = homeTitle[lang as string] || homeTitle.de;
 const body = frontmatter[`body_${lang}`] || frontmatter.body_de || "";
 // Only parse if body is not empty to avoid errors
 const htmlContent = body ? marked.parse(body) : "";
@@ -33,7 +34,7 @@ const isVideo = frontmatter.image
     : false;
 ---
 
-<Layout title={title}>
+<Layout title={title} image={pickImage(frontmatter.image)}>
     <Fragment slot="head">
         <script type="application/ld+json" set:html={JSON.stringify({
           "@context": "https://schema.org",
