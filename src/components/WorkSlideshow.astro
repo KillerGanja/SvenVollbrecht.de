@@ -1,182 +1,380 @@
 ---
+// Slideshow fuer Werke: ein Bild (oder Video) gross, Wechsel mit Klick links/rechts, sichtbaren Pfeilen,
+// Pfeiltasten und Wischen. Die Pfeile stehen NEBEN dem Medium und ueberlagern es nie.
+// Videos: erst Standbild mit grossem Play-Knopf, kein Autostart, Wiedergabe im Loop, kein Vollbild.
+// Erst nach dem Start erscheint die Bedienleiste des Players. Beim Wechsel stoppt das Video.
+// Ohne Galerie-Bilder wird ersatzweise das Cover gezeigt.
 import ResponsiveImage from "./ResponsiveImage.astro";
 import {
     isVideo as isUploadVideo,
     videoUrl,
     posterUrl,
-    onlyExistingUploads,
 } from "../utils/image-variants.mjs";
 
 interface Props {
-    images: string[]; // Keep prop name 'images' for compatibility, but it contains paths to media
-    title: string;
+    images?: string[];
+    cover?: string;
+    title?: string;
+    lang?: string;
 }
 
-const { images: rawImages, title } = Astro.props;
+const { images: rawImages, cover, title = "", lang = "de" } = Astro.props;
 
-// Verweise auf nicht (mehr) vorhandene Uploads weglassen, damit kein leerer Rahmen erscheint
-const images = onlyExistingUploads(rawImages);
+let images: string[] = (Array.isArray(rawImages) ? rawImages : []).filter(
+    (s) => typeof s === "string" && s.trim() !== "",
+);
+if (images.length === 0 && cover) images = [cover];
+
+const L =
+    lang === "en"
+        ? { prev: "Previous", next: "Next", play: "Play video" }
+        : { prev: "Zurück", next: "Weiter", play: "Video abspielen" };
 
 // Hochgeladene Videos werden beim Build in ein kleines MP4 mit Vorschaubild umgewandelt
 // (im Dev-Server gibt es diese Varianten nicht, dort wird das Original verwendet).
+const DEV = import.meta.env.DEV;
 const videoSrc = (src: string) =>
-    !import.meta.env.DEV && isUploadVideo(src) ? videoUrl(src) : src;
+    !DEV && isUploadVideo(src) ? videoUrl(src) : src;
 const posterSrc = (src: string) =>
-    !import.meta.env.DEV && isUploadVideo(src) ? posterUrl(src) : undefined;
+    !DEV && isUploadVideo(src) ? posterUrl(src) : undefined;
 
-function isVideo(path: string) {
-    const videoExtensions = [".mp4", ".webm", ".ogg", ".mov"];
-    return videoExtensions.some((ext) => path.toLowerCase().endsWith(ext));
-}
+const isVideo = (path: string) =>
+    /\.(mp4|webm|ogg|mov|m4v)$/i.test(path.split("?")[0]);
 ---
 
-<style>
-    .custom-cursor-left {
-        cursor: url("/assets/cursors/arrow-left.png"), w-resize;
-    }
-    .custom-cursor-right {
-        cursor: url("/assets/cursors/arrow-right.png"), e-resize;
-    }
+{
+    images.length > 0 && (
+        <div class="svs" data-svs data-count={images.length}>
+            <div class="svs-stage">
+                {images.length > 1 ? (
+                    <button
+                        type="button"
+                        class="svs-nav svs-prev"
+                        aria-label={L.prev}
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="34"
+                            height="34"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M15 4l-8 8 8 8" />
+                        </svg>
+                    </button>
+                ) : (
+                    <span />
+                )}
 
-    /* Force video controls to stay visible */
-    video::-webkit-media-controls,
-    video::-webkit-media-controls-enclosure {
-        display: flex !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
+                <div class="svs-media">
+                    {images.map((src, index) =>
+                        isVideo(src) ? (
+                            <div
+                                class={`svs-item svs-video${index === 0 ? "" : " svs-hidden"}`}
+                                data-index={index}
+                            >
+                                <video
+                                    src={videoSrc(src)}
+                                    poster={posterSrc(src)}
+                                    class="svs-el"
+                                    loop
+                                    playsinline
+                                    preload={
+                                        posterSrc(src) ? "none" : "metadata"
+                                    }
+                                    controlslist="nofullscreen nodownload noremoteplayback"
+                                    disablepictureinpicture
+                                />
+                                <button
+                                    type="button"
+                                    class="svs-play"
+                                    aria-label={L.play}
+                                >
+                                    <svg viewBox="0 0 24 24" width="40" height="40">
+                                        <path d="M8 5v14l11-7z" fill="currentColor" />
+                                    </svg>
+                                </button>
+                            </div>
+                        ) : (
+                            <div
+                                class={`svs-item svs-image${index === 0 ? "" : " svs-hidden"}`}
+                                data-index={index}
+                            >
+                                <ResponsiveImage
+                                    src={src}
+                                    alt={title}
+                                    class="svs-el"
+                                    maxVh={80}
+                                    maxPx={1280}
+                                    loading={index === 0 ? "eager" : "lazy"}
+                                    fetchpriority={index === 0 ? "high" : undefined}
+                                />
+                            </div>
+                        ),
+                    )}
+                </div>
 
-    video::-webkit-media-controls-panel {
-        display: flex !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        transition: none !important; /* Prevent fade-out */
+                {images.length > 1 ? (
+                    <button
+                        type="button"
+                        class="svs-nav svs-next"
+                        aria-label={L.next}
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="34"
+                            height="34"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M9 4l8 8-8 8" />
+                        </svg>
+                    </button>
+                ) : (
+                    <span />
+                )}
+            </div>
+            {images.length > 1 && (
+                <p class="svs-count" aria-live="polite">
+                    1 / {images.length}
+                </p>
+            )}
+        </div>
+    )
+}
+
+<style is:global>
+    .svs {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    /* Pfeile in eigenen Spalten links und rechts: sie liegen nie ueber dem Medium */
+    .svs-stage {
+        display: grid;
+        grid-template-columns: 2.5rem minmax(0, 1fr) 2.5rem;
+        align-items: center;
+        column-gap: 0.25rem;
+    }
+    @media (min-width: 768px) {
+        .svs-stage {
+            grid-template-columns: 3.5rem minmax(0, 1fr) 3.5rem;
+            column-gap: 0.5rem;
+        }
+    }
+    .svs-media {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 0;
+    }
+    .svs-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+    }
+    .svs-hidden {
+        display: none;
+    }
+    .svs-el {
+        display: block;
+        max-width: 100%;
+        max-height: 80vh;
+        max-height: 80dvh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+    }
+    .svs-image .svs-el {
+        cursor: pointer;
+    }
+    .svs-video {
+        position: relative;
+    }
+    .svs-play {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 5rem;
+        height: 5rem;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid rgb(255 255 255 / 0.9);
+        border-radius: 9999px;
+        background: rgb(0 0 0 / 0.55);
+        color: #fff;
+        cursor: pointer;
+    }
+    .svs-play:hover,
+    .svs-play:focus-visible {
+        background: rgb(0 0 0 / 0.8);
+    }
+    .svs-play[hidden] {
+        display: none;
+    }
+    .svs button.svs-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 5rem;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: #374151;
+        cursor: pointer;
+        opacity: 0.8;
+    }
+    .svs button.svs-nav:hover,
+    .svs button.svs-nav:focus-visible {
+        opacity: 1;
+        background: rgb(0 0 0 / 0.06);
+    }
+    .svs-count {
+        margin: 0.75rem 0 0;
+        text-align: center;
+        font-size: 0.875rem;
+        letter-spacing: 0.05em;
+        color: #6b7280;
     }
 </style>
 
-<div class="slideshow relative mx-auto max-w-full">
-    <!-- Media Container -->
-    <div
-        class="relative w-full overflow-hidden bg-white flex items-center justify-center"
-    >
-        <div id="media-container" class="contents">
-            {
-                Array.isArray(images) &&
-                    images.map((src, index) =>
-                        isVideo(src) ? (
-                            <video
-                                id={index === 0 ? "current-media" : undefined}
-                                src={videoSrc(src)}
-                                poster={posterSrc(src)}
-                                class={`max-h-[80vh] max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
-                                data-index={index}
-                                loop
-                                muted={false}
-                                playsinline
-                                controls
-                                preload={index === 0 ? "metadata" : "none"}
-                            />
-                        ) : (
-                            <ResponsiveImage
-                                id={index === 0 ? "current-media" : undefined}
-                                src={src}
-                                alt={title}
-                                class={`max-h-[80vh] max-w-full object-contain ${index === 0 ? "block" : "hidden"}`}
-                                data-index={index}
-                                maxVh={80}
-                                maxPx={1280}
-                                loading={index === 0 ? "eager" : "lazy"}
-                                fetchpriority={index === 0 ? "high" : undefined}
-                            />
-                        ),
-                    )
+<script>
+    const root = document.querySelector("[data-svs]");
+    if (root) {
+        const items = Array.from(root.querySelectorAll(".svs-item"));
+        const count = items.length;
+        const counter = root.querySelector(".svs-count");
+        const media = root.querySelector(".svs-media");
+        let index = 0;
+
+        // Bedienleiste erst nach dem Start des Videos; Lautstaerke moderat
+        items.forEach((item) => {
+            const v = item.querySelector("video");
+            const btn = item.querySelector(".svs-play");
+            if (!v || !btn) return;
+            v.controls = false;
+            v.volume = 0.3;
+            v.addEventListener("dblclick", (e) => e.preventDefault());
+            btn.addEventListener("click", () => {
+                btn.hidden = true;
+                v.controls = true;
+                v.play().catch(() => {
+                    /* blockiert: die Bedienleiste ist sichtbar, dort kann man starten */
+                });
+            });
+        });
+
+        function resetVideo(item) {
+            const v = item.querySelector("video");
+            const btn = item.querySelector(".svs-play");
+            if (!v) return;
+            v.pause();
+            try {
+                v.currentTime = 0;
+            } catch (e) {
+                /* noch nicht geladen */
             }
-        </div>
+            v.controls = false;
+            if (btn) btn.hidden = false;
+        }
 
-        <!-- Navigation Overlays -->
-        <div
-            id="prev-area"
-            class="custom-cursor-left absolute left-0 top-0 z-10 h-[calc(100%-60px)] w-1/2"
-            title="Previous"
-        >
-        </div>
-        <div
-            id="next-area"
-            class="custom-cursor-right absolute right-0 top-0 z-10 h-[calc(100%-60px)] w-1/2"
-            title="Next"
-        >
-        </div>
-    </div>
-</div>
+        // Naechstes/vorheriges Bild schon laden, damit das Blaettern ohne Wartezeit klappt
+        function preloadNeighbours() {
+            if (count < 2) return;
+            [1, -1].forEach((d) => {
+                const item = items[(index + d + count) % count];
+                const img = item && item.querySelector("img");
+                if (img) img.loading = "eager";
+            });
+        }
 
-<script define:vars={{ images }}>
-    let currentIndex = 0;
-    const mediaContainer = document.getElementById("media-container");
-    const prevArea = document.getElementById("prev-area");
-    const nextArea = document.getElementById("next-area");
+        function show(i) {
+            if (count < 2) return;
+            const next = (i + count) % count;
+            if (next === index) return;
+            resetVideo(items[index]);
+            items[index].classList.add("svs-hidden");
+            index = next;
+            items[index].classList.remove("svs-hidden");
+            if (counter) counter.textContent = index + 1 + " / " + count;
+            preloadNeighbours();
+        }
 
-    // Set default volume for all videos
-    if (mediaContainer) {
-        const videos = mediaContainer.querySelectorAll("video");
-        videos.forEach((video) => {
-            video.volume = 0.3;
-        });
-    }
+        const prev = root.querySelector(".svs-prev");
+        const next = root.querySelector(".svs-next");
+        if (prev) prev.addEventListener("click", () => show(index - 1));
+        if (next) next.addEventListener("click", () => show(index + 1));
 
-    // Naechstes/vorheriges Bild schon laden, damit das Blaettern ohne Wartezeit klappt.
-    // (Nicht sichtbare Bilder sind "lazy" und werden sonst erst beim Anzeigen geladen.)
-    function preloadNeighbours() {
-        if (!mediaContainer || !Array.isArray(images) || images.length < 2) return;
-        [1, -1].forEach((d) => {
-            const i = (currentIndex + d + images.length) % images.length;
-            const el = mediaContainer.querySelector('[data-index="' + i + '"]');
-            if (el && el.tagName === "IMG") el.loading = "eager";
-        });
-    }
-
-    function updateMedia() {
-        if (!mediaContainer) return;
-
-        const mediaElements = mediaContainer.querySelectorAll("[data-index]");
-
-        mediaElements.forEach((el) => {
-            if (parseInt(el.dataset.index) === currentIndex) {
-                el.classList.remove("hidden");
-                el.classList.add("block");
-                el.id = "current-media";
-
-                if (el.tagName === "VIDEO") {
-                    // Ensure video plays when it becomes visible
-                    el.play().catch((e) =>
-                        console.log("Autoplay prevented:", e),
-                    );
+        // Klick links/rechts auf ein Bild (wie bisher). Auf Videos gibt es bewusst keine Klickflaechen.
+        if (media && count > 1) {
+            const half = (e) => {
+                const r = e.target.getBoundingClientRect();
+                return e.clientX - r.left < r.width / 2 ? "left" : "right";
+            };
+            media.addEventListener("mousemove", (e) => {
+                const t = e.target;
+                if (t && t.tagName === "IMG") {
+                    t.style.cursor =
+                        half(e) === "left"
+                            ? 'url("/assets/cursors/arrow-left.png"), w-resize'
+                            : 'url("/assets/cursors/arrow-right.png"), e-resize';
                 }
-            } else {
-                el.classList.add("hidden");
-                el.classList.remove("block");
-                el.removeAttribute("id");
-
-                if (el.tagName === "VIDEO") {
-                    // Pause hidden videos and reset time
-                    el.pause();
-                    el.currentTime = 0;
+            });
+            media.addEventListener("click", (e) => {
+                const t = e.target;
+                if (t && t.tagName === "IMG") {
+                    show(half(e) === "left" ? index - 1 : index + 1);
                 }
-            }
+            });
+        }
+
+        // Pfeiltasten (nicht, solange der Fokus im Video-Player liegt: dort steuern sie die Zeitleiste)
+        document.addEventListener("keydown", (e) => {
+            const t = e.target;
+            if (t && (t.tagName === "VIDEO" || t.tagName === "INPUT" || t.tagName === "TEXTAREA")) return;
+            if (e.key === "ArrowRight") show(index + 1);
+            else if (e.key === "ArrowLeft") show(index - 1);
         });
+
+        // Wischen (nur ausserhalb von Video und Knoepfen)
+        let sx = 0;
+        let sy = 0;
+        let tracking = false;
+        root.addEventListener(
+            "touchstart",
+            (e) => {
+                const t = e.target;
+                tracking = !(t && t.closest && t.closest("video, button"));
+                if (tracking) {
+                    sx = e.touches[0].clientX;
+                    sy = e.touches[0].clientY;
+                }
+            },
+            { passive: true },
+        );
+        root.addEventListener(
+            "touchend",
+            (e) => {
+                if (!tracking) return;
+                tracking = false;
+                const dx = e.changedTouches[0].clientX - sx;
+                const dy = e.changedTouches[0].clientY - sy;
+                if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+                    show(dx < 0 ? index + 1 : index - 1);
+                }
+            },
+            { passive: true },
+        );
+
         preloadNeighbours();
-    }
-
-    preloadNeighbours();
-
-    if (prevArea && nextArea && Array.isArray(images) && images.length > 0) {
-        prevArea.addEventListener("click", () => {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateMedia();
-        });
-
-        nextArea.addEventListener("click", () => {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateMedia();
-        });
     }
 </script>

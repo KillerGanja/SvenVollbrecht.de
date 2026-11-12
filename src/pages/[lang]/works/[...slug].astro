@@ -3,6 +3,7 @@ import Layout from "../../../layouts/Layout.astro";
 import { t } from "../../../utils/i18n";
 import { marked } from "marked";
 import ImageGallery from "../../../components/ImageGallery.astro";
+import WorkSlideshow from "../../../components/WorkSlideshow.astro";
 import ResponsiveImage from "../../../components/ResponsiveImage.astro";
 import { excerpt, pickImage } from "../../../utils/seo";
 import {
@@ -113,16 +114,29 @@ const nextPart = myIndex >= 0 && myIndex < siblings.length - 1 ? siblings[myInde
         })} />
     </Fragment>
     <div class="mx-auto max-w-screen-xl">
-        {/* Galerie: ohne Galerie-Bilder wird ersatzweise das Cover gezeigt */}
-        <ImageGallery
-            images={frontmatter.gallery_images}
-            cover={children.length > 0 ? undefined : frontmatter.cover_image}
-            title={title}
-            lang={lang}
-            hideCover={!partOfSeries}
-            thumbSm={300}
-            thumbMd={350}
-        />
+        {/* Darstellung je nach Feld "Darstellung" im Admin: Slideshow (Standard) oder Galerie.
+            Ein Hauptwerk mit Serienteilen zeigt stattdessen die Uebersicht seiner Teile (unten). */}
+        {
+            children.length === 0 &&
+                (frontmatter.display === "gallery" ? (
+                    <ImageGallery
+                        images={frontmatter.gallery_images}
+                        cover={frontmatter.cover_image}
+                        title={title}
+                        lang={lang}
+                        hideCover={!partOfSeries}
+                        thumbSm={300}
+                        thumbMd={350}
+                    />
+                ) : (
+                    <WorkSlideshow
+                        images={frontmatter.gallery_images}
+                        cover={frontmatter.cover_image}
+                        title={title}
+                        lang={lang}
+                    />
+                ))
+        }
 
         {/* Hauptwerk einer Serie: Uebersicht aller Teile */}
         {

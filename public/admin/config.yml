@@ -39,6 +39,15 @@ collections:
       - { label: "Beschreibung (DE)", name: "description_de", widget: "markdown", required: false }
       - { label: "Beschreibung (EN)", name: "description_en", widget: "markdown", required: false }
       - { label: "Cover Bild", name: "cover_image", widget: "image", required: true, hint: "Erscheint in der Übersicht. Auf der Werkseite wird das Cover nur gezeigt, wenn keine Galerie-Bilder vorhanden sind." }
+      - label: "Darstellung auf der Werkseite"
+        name: "display"
+        widget: "select"
+        required: false
+        default: "slideshow"
+        options:
+          - { label: "Slideshow (ein Bild groß, links/rechts blättern)", value: "slideshow" }
+          - { label: "Galerie (Vorschaubilder, Klick vergrößert)", value: "gallery" }
+        hint: "Standard ist die Slideshow. Hat ein Werk Serienteile, zeigt die Seite automatisch die Übersicht der Teile." 
       - label: "Galerie Bilder"
         name: "gallery_images"
         widget: "list"

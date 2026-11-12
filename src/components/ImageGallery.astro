@@ -26,9 +26,11 @@ interface Props {
   /** Hoehe der Vorschaubilder in px: Handy (thumbSm) und PC (thumbMd). */
   thumbSm?: number;
   thumbMd?: number;
+  /** Handy: Vorschaubilder umbrechen statt seitlich zu wischen (Ausstellungen, wie im Original). */
+  wrapOnPhone?: boolean;
 }
 
-const { images, cover, title = "", lang = "de", hideCover = true, thumbSm = 150, thumbMd = 200 } = Astro.props;
+const { images, cover, title = "", lang = "de", hideCover = true, thumbSm = 150, thumbMd = 200, wrapOnPhone = false } = Astro.props;
 
 const norm = (s: string) => {
   try {
@@ -119,7 +121,7 @@ const sizesFor = (ratio: number) =>
 {
   items.length > 0 && (
     <div
-      class="svg-gallery"
+      class={wrapOnPhone ? "svg-gallery svg-wrap" : "svg-gallery"}
       data-svg-gallery
       style={`--svg-sm:${thumbSm}px;--svg-md:${thumbMd}px`}
       data-l-prev={labels.prev}
@@ -209,6 +211,12 @@ const sizesFor = (ratio: number) =>
     }
   }
 
+  .svg-gallery.svg-wrap .svg-strip {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: visible;
+    padding-bottom: 0;
+  }
   .svg-strip > li {
     flex: none;
     height: var(--svg-h);
