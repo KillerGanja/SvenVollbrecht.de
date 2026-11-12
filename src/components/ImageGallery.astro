@@ -513,9 +513,8 @@ const sizesFor = (ratio: number) =>
         v.playsInline = true;
         v.controls = false;
         v.volume = 0.3;
-        v.setAttribute("controlsList", "nofullscreen nodownload noremoteplayback");
+        v.setAttribute("controlsList", "nodownload noremoteplayback");
         v.setAttribute("disablePictureInPicture", "");
-        v.addEventListener("dblclick", (e) => e.preventDefault());
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "svg-vplay";

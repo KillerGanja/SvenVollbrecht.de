@@ -1,7 +1,8 @@
 ---
 // Slideshow fuer Werke: ein Bild (oder Video) gross, Wechsel mit Klick links/rechts, sichtbaren Pfeilen,
 // Pfeiltasten und Wischen. Die Pfeile stehen NEBEN dem Medium und ueberlagern es nie.
-// Videos: erst Standbild mit grossem Play-Knopf, kein Autostart, Wiedergabe im Loop, kein Vollbild.
+// Videos: erst Standbild mit grossem Play-Knopf, kein Autostart, Wiedergabe im Loop, Vollbild ueber den Player moeglich.
+// Videos werden wie Bilder auf die verfuegbare Flaeche skaliert (auch kleine Originale).
 // Erst nach dem Start erscheint die Bedienleiste des Players. Beim Wechsel stoppt das Video.
 // Ohne Galerie-Bilder wird ersatzweise das Cover gezeigt.
 import ResponsiveImage from "./ResponsiveImage.astro";
@@ -85,7 +86,7 @@ const isVideo = (path: string) =>
                                     preload={
                                         posterSrc(src) ? "none" : "metadata"
                                     }
-                                    controlslist="nofullscreen nodownload noremoteplayback"
+                                    controlslist="nodownload noremoteplayback"
                                     disablepictureinpicture
                                 />
                                 <button
@@ -194,6 +195,15 @@ const isVideo = (path: string) =>
     .svs-image .svs-el {
         cursor: pointer;
     }
+    /* Videos fuellen die Flaeche wie Bilder: Breite = min(Platz, 80% Fensterhoehe x Seitenverhaeltnis).
+       --r (Breite/Hoehe) wird per Skript aus dem Standbild bzw. den Video-Metadaten gesetzt. */
+    .svs-video .svs-el {
+        width: min(100%, calc(80dvh * var(--r, 0.5625)));
+        height: auto;
+        max-height: none;
+        aspect-ratio: var(--r, 0.5625);
+        background: #000;
+    }
     .svs-video {
         position: relative;
     }
@@ -263,7 +273,18 @@ const isVideo = (path: string) =>
             if (!v || !btn) return;
             v.controls = false;
             v.volume = 0.3;
-            v.addEventListener("dblclick", (e) => e.preventDefault());
+            // Seitenverhaeltnis bestimmen, damit auch kleine Videos die Flaeche fuellen
+            const setRatio = (w, h) => {
+                if (w && h) item.style.setProperty("--r", String(w / h));
+            };
+            if (v.poster) {
+                const im = new Image();
+                im.onload = () => setRatio(im.naturalWidth, im.naturalHeight);
+                im.src = v.poster;
+            }
+            v.addEventListener("loadedmetadata", () =>
+                setRatio(v.videoWidth, v.videoHeight),
+            );
             btn.addEventListener("click", () => {
                 btn.hidden = true;
                 v.controls = true;
