@@ -157,15 +157,3 @@ export function uploadExists(src) {
     return false;
   }
 }
-
-/**
- * Entfernt Verweise auf Uploads, die es nicht (mehr) gibt (z. B. ein geloeschtes Bild),
- * damit in der Slideshow kein leerer Rahmen erscheint. Externe URLs bleiben unberuehrt.
- */
-export function onlyExistingUploads(list) {
-  return (Array.isArray(list) ? list : []).filter((src) => {
-    if (typeof src !== "string" || !src) return false;
-    if (!src.startsWith(UPLOAD_PREFIX)) return true;
-    return uploadExists(src);
-  });
-}
