@@ -4,6 +4,10 @@ on:
   push:
     branches: [ main, optimierung ]
 
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build-and-deploy:
     if: github.ref == 'refs/heads/main'
