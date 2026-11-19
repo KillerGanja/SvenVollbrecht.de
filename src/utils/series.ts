@@ -3,7 +3,7 @@
 //
 // Regeln:
 //  - Ein Teil erscheint NICHT in der Werke-Uebersicht, nur auf der Seite des Hauptwerks.
-//  - Titel eines Teils: "Hauptwerk – Name des Teils", ohne Namen: "Hauptwerk 1", "Hauptwerk 2" ...
+//  - Titel eines Teils: immer "Werk 1", "Werk 2" ... (Position nach Datum/Uhrzeit), egal wie der Teil im Admin heisst.
 //  - Reihenfolge der Teile: nach Datum/Uhrzeit (Feld "date"), danach nach Slug.
 //  - Jahr und Material werden vom Hauptwerk uebernommen, wenn beim Teil leer. Maße nie.
 
@@ -44,9 +44,7 @@ export function seriesParts(all: Fm[], parentSlug: string): Fm[] {
     });
 }
 
-/** Anzeigename eines Teils; index = Position in seriesParts() (0-basiert). */
-export function partLabel(parent: Fm, part: Fm, index: number): string {
-  const name = clean(part?.part_title);
-  const base = clean(parent?.title);
-  return name ? `${base} – ${name}` : `${base} ${index + 1}`;
+/** Anzeigename eines Teils: "Werk 1", "Werk 2" ... (en: "Work 1"); index = Position in seriesParts() (0-basiert). */
+export function partLabel(_parent: Fm, _part: Fm, index: number, lang = "de"): string {
+  return `${lang === "en" ? "Work" : "Werk"} ${index + 1}`;
 }

@@ -57,11 +57,13 @@ const children = partOfSeries ? [] : seriesParts(all, frontmatter.slug);
 const worksUrl = (s: string) => `/${lang}/works/${s}/`;
 const labelOf = (fm: any) =>
     parent
-        ? partLabel(parent, fm, siblings.findIndex((x: any) => x.slug === fm.slug))
+        ? partLabel(parent, fm, siblings.findIndex((x: any) => x.slug === fm.slug), lang)
         : fm.title;
 
 // Determine localized content
 const title = parent ? labelOf(frontmatter) : frontmatter.title || "";
+// Fuer Browser-Titel und Suchmaschinen mit Hauptwerk davor ("Albtraum – Werk 2"); auf der Seite steht nur "Werk 2"
+const seoTitle = parent ? `${parent.title} – ${title}` : title;
 const pick = (fm: any, key: string) => fm?.[`${key}_${lang}`] || fm?.[`${key}_de`] || "";
 // Jahr und Material werden vom Hauptwerk uebernommen, wenn beim Teil leer. Maße nicht.
 const materials = pick(frontmatter, "materials") || (parent ? pick(parent, "materials") : "");
@@ -80,7 +82,7 @@ const htmlContent = marked.parse(processedDescription, { breaks: true });
 
 const metaDescription =
     excerpt(description) ||
-    `${title} – ${lang === "en" ? "work by" : "Werk von"} Sven Vollbrecht${year ? ` (${year})` : ""}${materials ? `, ${materials}` : ""}.`;
+    `${seoTitle} – ${lang === "en" ? "work by" : "Werk von"} Sven Vollbrecht${year ? ` (${year})` : ""}${materials ? `, ${materials}` : ""}.`;
 const metaImage = pickImage(frontmatter.cover_image, frontmatter.gallery_images);
 
 const L =
@@ -93,12 +95,12 @@ const prevPart = myIndex >= 0 && n > 1 ? siblings[(myIndex - 1 + n) % n] : null;
 const nextPart = myIndex >= 0 && n > 1 ? siblings[(myIndex + 1) % n] : null;
 ---
 
-<Layout title={title} description={metaDescription} image={metaImage}>
+<Layout title={seoTitle} description={metaDescription} image={metaImage}>
     <Fragment slot="head">
         <script type="application/ld+json" set:html={JSON.stringify({
           "@context": "https://schema.org",
           "@type": "VisualArtwork",
-          "name": title,
+          "name": seoTitle,
           "image": frontmatter.cover_image ? `https://svenvollbrecht.de${frontmatter.cover_image}` : undefined,
           "description": description,
           "artist": {
@@ -153,7 +155,7 @@ const nextPart = myIndex >= 0 && n > 1 ? siblings[(myIndex + 1) % n] : null;
                                     {part.cover_image && (
                                         <ResponsiveImage
                                             src={part.cover_image}
-                                            alt={partLabel(frontmatter, part, i)}
+                                            alt={`${frontmatter.title} – ${partLabel(frontmatter, part, i, lang)}`}
                                             class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                                             sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 50vw"
                                             loading={i < 4 ? "eager" : "lazy"}
@@ -179,13 +181,6 @@ const nextPart = myIndex >= 0 && n > 1 ? siblings[(myIndex + 1) % n] : null;
                 {year && <p>{year}</p>}
                 {materials && <p>{materials}</p>}
                 {dimensions && <p>{dimensions}</p>}
-                {
-                    parent && (
-                        <p>
-                            {L.partOf} {parent.title}
-                        </p>
-                    )
-                }
             </div>
         </div>
 
@@ -198,28 +193,6 @@ const nextPart = myIndex >= 0 && n > 1 ? siblings[(myIndex + 1) % n] : null;
                         set:html={htmlContent}
                     />
                 </div>
-            )
-        }
-
-        {/* Serienteil: Blaettern zwischen den Teilen */}
-        {
-            parent && (
-                <nav class="mx-auto mt-12 mb-8 flex max-w-2xl items-center justify-between gap-4 px-4 text-sm text-gray-600">
-                    <span class="text-left">
-                        {prevPart && (
-                            <a href={worksUrl(prevPart.slug)} class="hover:text-gray-900">
-                                ← {labelOf(prevPart)}
-                            </a>
-                        )}
-                    </span>
-                    <span class="text-right">
-                        {nextPart && (
-                            <a href={worksUrl(nextPart.slug)} class="hover:text-gray-900">
-                                {labelOf(nextPart)} →
-                            </a>
-                        )}
-                    </span>
-                </nav>
             )
         }
     </div>
