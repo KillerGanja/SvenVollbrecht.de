@@ -136,6 +136,8 @@ const nextPart = myIndex >= 0 && n > 1 ? siblings[(myIndex + 1) % n] : null;
                         cover={frontmatter.cover_image}
                         title={title}
                         lang={lang}
+                        prevHref={prevPart ? worksUrl(prevPart.slug) : ""}
+                        nextHref={nextPart ? worksUrl(nextPart.slug) : ""}
                     />
                 ))
         }

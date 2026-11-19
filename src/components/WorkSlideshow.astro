@@ -5,6 +5,8 @@
 // Videos werden wie Bilder auf die verfuegbare Flaeche skaliert (auch kleine Originale).
 // Erst nach dem Start erscheint die Bedienleiste des Players. Beim Wechsel stoppt das Video.
 // Ohne Galerie-Bilder wird ersatzweise das Cover gezeigt.
+// Serienteile: prevHref/nextHref. Am Ende (rechts) geht es zum ersten Bild des naechsten Teils,
+// am Anfang (links) zum letzten Bild des vorherigen Teils. Ohne diese Links bleibt es beim Rundlauf im Werk.
 import ResponsiveImage from "./ResponsiveImage.astro";
 import {
     isVideo as isUploadVideo,
@@ -17,14 +19,25 @@ interface Props {
     cover?: string;
     title?: string;
     lang?: string;
+    prevHref?: string;
+    nextHref?: string;
 }
 
-const { images: rawImages, cover, title = "", lang = "de" } = Astro.props;
+const {
+    images: rawImages,
+    cover,
+    title = "",
+    lang = "de",
+    prevHref = "",
+    nextHref = "",
+} = Astro.props;
 
 let images: string[] = (Array.isArray(rawImages) ? rawImages : []).filter(
     (s) => typeof s === "string" && s.trim() !== "",
 );
 if (images.length === 0 && cover) images = [cover];
+// Pfeile zeigen, wenn es etwas zum Blaettern gibt: mehrere Bilder oder ein Nachbar in der Serie
+const multi = images.length > 1 || !!(prevHref || nextHref);
 
 const L =
     lang === "en"
@@ -45,9 +58,15 @@ const isVideo = (path: string) =>
 
 {
     images.length > 0 && (
-        <div class="svs" data-svs data-count={images.length}>
+        <div
+            class="svs"
+            data-svs
+            data-count={images.length}
+            data-prev-href={prevHref || undefined}
+            data-next-href={nextHref || undefined}
+        >
             <div class="svs-stage">
-                {images.length > 1 ? (
+                {multi ? (
                     <button
                         type="button"
                         class="svs-nav svs-prev"
@@ -118,7 +137,7 @@ const isVideo = (path: string) =>
                     )}
                 </div>
 
-                {images.length > 1 ? (
+                {multi ? (
                     <button
                         type="button"
                         class="svs-nav svs-next"
@@ -263,6 +282,8 @@ const isVideo = (path: string) =>
     if (root) {
         const items = Array.from(root.querySelectorAll(".svs-item"));
         const count = items.length;
+        const prevHref = root.getAttribute("data-prev-href") || "";
+        const nextHref = root.getAttribute("data-next-href") || "";
         const counter = root.querySelector(".svs-count");
         const media = root.querySelector(".svs-media");
         let index = 0;
@@ -320,6 +341,15 @@ const isVideo = (path: string) =>
         }
 
         function show(i) {
+            // Serienteil: ueber das Ende hinaus zum Nachbarn wechseln
+            if (i >= count && nextHref) {
+                window.location.href = nextHref;
+                return;
+            }
+            if (i < 0 && prevHref) {
+                window.location.href = prevHref + "#last";
+                return;
+            }
             if (count < 2) return;
             const next = (i + count) % count;
             if (next === index) return;
@@ -337,7 +367,7 @@ const isVideo = (path: string) =>
         if (next) next.addEventListener("click", () => show(index + 1));
 
         // Klick links/rechts auf ein Bild (wie bisher). Auf Videos gibt es bewusst keine Klickflaechen.
-        if (media && count > 1) {
+        if (media && (count > 1 || prevHref || nextHref)) {
             const half = (e) => {
                 const r = e.target.getBoundingClientRect();
                 return e.clientX - r.left < r.width / 2 ? "left" : "right";
@@ -396,6 +426,16 @@ const isVideo = (path: string) =>
             },
             { passive: true },
         );
+
+        // Kommt man rueckwaerts vom naechsten Serienteil, beginnt man beim letzten Bild
+        if (location.hash === "#last" && count > 1) {
+            show(count - 1);
+            try {
+                history.replaceState(null, "", location.pathname + location.search);
+            } catch (e) {
+                /* egal */
+            }
+        }
 
         preloadNeighbours();
     }
