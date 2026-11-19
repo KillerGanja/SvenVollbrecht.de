@@ -87,8 +87,10 @@ const L =
     lang === "en"
         ? { partOf: "Part of the series", overview: "Overview", prev: "Previous", next: "Next" }
         : { partOf: "Teil der Serie", overview: "Übersicht", prev: "Zurück", next: "Weiter" };
-const prevPart = myIndex > 0 ? siblings[myIndex - 1] : null;
-const nextPart = myIndex >= 0 && myIndex < siblings.length - 1 ? siblings[myIndex + 1] : null;
+// Rundlauf: nach dem letzten Teil kommt wieder der erste, vor dem ersten der letzte
+const n = siblings.length;
+const prevPart = myIndex >= 0 && n > 1 ? siblings[(myIndex - 1 + n) % n] : null;
+const nextPart = myIndex >= 0 && n > 1 ? siblings[(myIndex + 1) % n] : null;
 ---
 
 <Layout title={title} description={metaDescription} image={metaImage}>
@@ -156,14 +158,6 @@ const nextPart = myIndex >= 0 && myIndex < siblings.length - 1 ? siblings[myInde
                                         />
                                     )}
                                 </div>
-                                <p class="mt-2 text-sm font-medium text-gray-900">
-                                    {partLabel(frontmatter, part, i)}
-                                </p>
-                                {pick(part, "dimensions") && (
-                                    <p class="text-xs font-light text-gray-500">
-                                        {pick(part, "dimensions")}
-                                    </p>
-                                )}
                             </a>
                         </li>
                     ))}
@@ -186,10 +180,7 @@ const nextPart = myIndex >= 0 && myIndex < siblings.length - 1 ? siblings[myInde
                 {
                     parent && (
                         <p>
-                            {L.partOf}{" "}
-                            <a href={worksUrl(parent.slug)} class="underline hover:text-gray-900">
-                                {parent.title}
-                            </a>
+                            {L.partOf} {parent.title}
                         </p>
                     )
                 }
@@ -212,17 +203,14 @@ const nextPart = myIndex >= 0 && myIndex < siblings.length - 1 ? siblings[myInde
         {
             parent && (
                 <nav class="mx-auto mt-12 mb-8 flex max-w-2xl items-center justify-between gap-4 px-4 text-sm text-gray-600">
-                    <span class="w-1/3 text-left">
+                    <span class="text-left">
                         {prevPart && (
                             <a href={worksUrl(prevPart.slug)} class="hover:text-gray-900">
                                 ← {labelOf(prevPart)}
                             </a>
                         )}
                     </span>
-                    <a href={worksUrl(parent.slug)} class="w-1/3 text-center underline hover:text-gray-900">
-                        {L.overview} {parent.title}
-                    </a>
-                    <span class="w-1/3 text-right">
+                    <span class="text-right">
                         {nextPart && (
                             <a href={worksUrl(nextPart.slug)} class="hover:text-gray-900">
                                 {labelOf(nextPart)} →
