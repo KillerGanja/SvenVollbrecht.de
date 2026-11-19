@@ -2,7 +2,7 @@
 title: Albtraum 3
 slug: albtraum-3
 series: albtraum
-materials_de: Gebisse
+materials_de: ""
 dimensions_de: 45 x 28 cm
 dimensions_en: 45 x 28 cm
 cover_image: /uploads/albtraum03.jpg
