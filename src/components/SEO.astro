@@ -6,16 +6,20 @@ interface Props {
   canonicalUrl: string;
   type?: "website" | "article" | "profile";
   hreflang?: Array<{ lang: string; href: string }>;
+  locale?: string;
 }
 
 const {
   title,
   description,
-  image = "https://svenvollbrecht.de/favicon.svg",
+  image = "https://svenvollbrecht.de/uploads/02a.jpg",
   canonicalUrl,
   type = "website",
   hreflang = [],
+  locale = "de",
 } = Astro.props;
+const ogLocale = locale === "en" ? "en_US" : "de_DE";
+const ogLocaleAlt = locale === "en" ? "de_DE" : "en_US";
 ---
 
 <title>{title}</title>
@@ -30,6 +34,8 @@ const {
 <meta property="og:description" content={description} />
 <meta property="og:image" content={image} />
 <meta property="og:site_name" content="Sven Vollbrecht" />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:locale:alternate" content={ogLocaleAlt} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />

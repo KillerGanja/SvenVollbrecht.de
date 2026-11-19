@@ -2,6 +2,9 @@
 import Layout from "../../layouts/Layout.astro";
 import { t } from "../../utils/i18n";
 import { marked } from "marked";
+import ResponsiveImage from "../../components/ResponsiveImage.astro";
+import { isVideo as isUploadVideo, videoUrl, posterUrl } from "../../utils/image-variants.mjs";
+import { homeTitle, pickImage } from "../../utils/seo";
 
 export function getStaticPaths() {
     return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
@@ -22,7 +25,7 @@ if (!homeEntry) {
 }
 
 const { frontmatter } = homeEntry;
-const title = `Sven Vollbrecht – ${t("nav_home", lang) || "Startseite"}`;
+const title = homeTitle[lang as string] || homeTitle.de;
 const body = frontmatter[`body_${lang}`] || frontmatter.body_de || "";
 // Only parse if body is not empty to avoid errors
 const htmlContent = body ? marked.parse(body) : "";
@@ -31,9 +34,15 @@ const htmlContent = body ? marked.parse(body) : "";
 const isVideo = frontmatter.image
     ? frontmatter.image.match(/\.(mp4|webm|ogv)$|youtube\.com|vimeo\.com/i)
     : false;
+
+// Hochgeladene Videos gibt es beim Build als kleines MP4 mit Vorschaubild
+const useVariant =
+    !!frontmatter.image && !import.meta.env.DEV && isUploadVideo(frontmatter.image);
+const heroVideoSrc = useVariant ? videoUrl(frontmatter.image) : frontmatter.image;
+const heroPoster = useVariant ? posterUrl(frontmatter.image) : undefined;
 ---
 
-<Layout title={title}>
+<Layout title={title} image={pickImage(frontmatter.image)}>
     <Fragment slot="head">
         <script type="application/ld+json" set:html={JSON.stringify({
           "@context": "https://schema.org",
@@ -58,7 +67,8 @@ const isVideo = frontmatter.image
                 (isVideo ? (
                     <div class="mx-auto mb-8 max-h-[70vh] w-full max-w-4xl">
                         <video
-                            src={frontmatter.image}
+                            src={heroVideoSrc}
+                            poster={heroPoster}
                             autoplay
                             loop
                             muted
@@ -67,10 +77,13 @@ const isVideo = frontmatter.image
                         />
                     </div>
                 ) : (
-                    <img
+                    <ResponsiveImage
                         src={frontmatter.image}
                         alt="Sven Vollbrecht"
                         class="mx-auto mb-8 max-h-[70vh] w-auto max-w-full object-contain"
+                        maxVh={70}
+                        loading="eager"
+                        fetchpriority="high"
                     />
                 ))
         }

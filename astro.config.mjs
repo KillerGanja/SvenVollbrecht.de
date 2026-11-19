@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import optimizeImages from './integrations/optimize-images.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,8 +16,8 @@ export default defineConfig({
       redirectToDefaultLocale: false
     }
   },
-  integrations: [sitemap()],
+  integrations: [sitemap(), optimizeImages()],
   vite: {
     plugins: [tailwindcss()]
   }
-});
+});

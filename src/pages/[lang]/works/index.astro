@@ -1,7 +1,10 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
+import { pageDescription } from "../../../utils/seo";
 import { t } from "../../../utils/i18n";
+import ResponsiveImage from "../../../components/ResponsiveImage.astro";
 import orderData from "../../../content/ui/works-order.json";
+import { isPart, slugSet } from "../../../utils/series";
 
 export function getStaticPaths() {
     return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
@@ -26,7 +29,12 @@ orderedKeys.forEach((key, i) => {
     if (!position.has(key)) position.set(key, i);
 });
 
+// Serienteile (z. B. die 8 Arbeiten von "Albtraum") erscheinen nicht einzeln in der Uebersicht,
+// sondern nur auf der Seite ihres Hauptwerks.
+const allSlugs = slugSet(worksEntries.map(([, entry]) => entry.frontmatter));
+
 const works = worksEntries
+    .filter(([, entry]) => !isPart(entry.frontmatter, allSlugs))
     .map(([path, entry]) => {
         const fileId = path.split("/").pop()?.replace(/\.md$/, "");
         const candidates = [
@@ -62,7 +70,7 @@ const works = worksEntries
 const title = t("nav_works", lang);
 ---
 
-<Layout title={title}>
+<Layout title={title} description={pageDescription.works[lang as string] || pageDescription.works.de}>
     <h1 class="mb-12 text-3xl font-light tracking-wide text-gray-900">
         {title}
     </h1>
@@ -72,14 +80,17 @@ const title = t("nav_works", lang);
             <p class="text-gray-500">Noch keine Werke angelegt.</p>
         ) : (
             <div class="grid grid-cols-2 gap-4 md:gap-8 md:grid-cols-3 xl:grid-cols-4">
-                {works.map((work) => (
+                {works.map((work, i) => (
                     <a href={work.url} class="group block">
                         <div class="aspect-[4/5] overflow-hidden bg-gray-100">
                             {work.cover_image ? (
-                                <img
+                                <ResponsiveImage
                                     src={work.cover_image}
                                     alt={work.title}
                                     class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 50vw"
+                                    loading={i < 4 ? "eager" : "lazy"}
+                                    fetchpriority={i < 2 ? "high" : undefined}
                                 />
                             ) : (
                                 <div class="flex h-full w-full items-center justify-center text-gray-400">
