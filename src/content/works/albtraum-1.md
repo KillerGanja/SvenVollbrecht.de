@@ -7,7 +7,8 @@ part_title: "Werk #1"
 date: 2025-01-01T10:01:00.000Z
 materials_de: Wandobjekt, Kellerlampe, Spieluhr, diverse Spielzeuge
 materials_en: Basement lamp, music box, various toys.
-dimensions_de: 29 x 23 cm
+dimensions_de: 85 x 25 cm
+dimensions_en: 85 x 25 cm
 description_de: ""
 cover_image: /uploads/albtraum01.jpg
 gallery_images:
