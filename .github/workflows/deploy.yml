@@ -64,16 +64,24 @@ jobs:
         EOF
       shell: bash
 
-    - name: Deploy to SFTP
-      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-      with:
-        username: ${{ secrets.SFTP_USERNAME_STRATO }}
-        server: ${{ secrets.SFTP_SERVER_STRATO }}
-        port: ${{ secrets.SFTP_SERVER_PORT_STRATO }}
-        password: ${{ secrets.SFTP_PASSWORD_STRATO }}
-        local_path: './dist/*'
-        remote_path: '/'
-        sftp_only: true
+    - name: Deploy per SFTP (Seiten komplett, Medien nur Neues)
+      env:
+        SFTP_USER: ${{ secrets.SFTP_USERNAME_STRATO }}
+        SFTP_HOST: ${{ secrets.SFTP_SERVER_STRATO }}
+        SFTP_PORT: ${{ secrets.SFTP_SERVER_PORT_STRATO }}
+        SFTP_PASS: ${{ secrets.SFTP_PASSWORD_STRATO }}
+      run: |
+        sudo apt-get install -y -qq lftp
+        cd dist
+        lftp -u "$SFTP_USER,$SFTP_PASS" -p "$SFTP_PORT" "sftp://$SFTP_HOST" <<'LFTP'
+        set sftp:auto-confirm yes
+        set net:max-retries 3
+        set net:timeout 30
+        mirror -R --parallel=4 --exclude-glob uploads/ . /
+        mirror -R --parallel=4 --ignore-time ./uploads /uploads
+        bye
+        LFTP
+      shell: bash
 
     - name: Deploy .htaccess (Weiterleitungen)
       uses: wlixcc/SFTP-Deploy-Action@v1.2.4
