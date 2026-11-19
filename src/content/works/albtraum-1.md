@@ -9,7 +9,7 @@ gallery_images:
   - /uploads/albtraum01.jpg
 lang: de
 date: 2025-01-01T10:01:00.000Z
-materials_de: t
+materials_de: ""
 dimensions_de: ""
 cover_image: /uploads/albtraum01.jpg
 ---
