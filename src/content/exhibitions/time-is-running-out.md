@@ -8,7 +8,9 @@ city_de: Berlin
 city_en: ""
 period_de: Gruppenausstellung
 period_en: Group Show
-description_de: ""
+description_de: 2023 – TIME IS RUNNING OUT, Gruppenausstellung, NOTAGALLERY,
+  Berlin. Kuratiert von Ivan Gette. Mit Benyamin Reich, Thomas Kierok und Luca
+  Giuseppe Gennaro.
 description_en: ""
 cover_image: /uploads/43314ce1-b155-4b72-95f1-d60ad7d3307b_1_105_c.jpeg
 gallery_images:
