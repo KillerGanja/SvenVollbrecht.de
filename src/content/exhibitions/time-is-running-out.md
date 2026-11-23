@@ -10,7 +10,7 @@ period_de: Gruppenausstellung
 period_en: Group Show
 description_de: ""
 description_en: ""
-cover_image: /uploads/timeisrunningout.jpg
+cover_image: /uploads/43314ce1-b155-4b72-95f1-d60ad7d3307b_1_105_c.jpeg
 gallery_images:
   - /uploads/6509ec73cded54efd44d61f2_timeisrunningout_nag_72dpi_0-p-800.jpg
   - /uploads/2fe71477-eab4-44d9-a06a-3f1b53f0e930_1_105_c.jpeg
