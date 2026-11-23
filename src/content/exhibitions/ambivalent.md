@@ -13,7 +13,7 @@ description_de: |-
 
   ![]()
 description_en: ""
-cover_image: /uploads/ambivalnet.jpg
+cover_image: /uploads/circle012.jpg
 gallery_images:
   - /uploads/ambivalent_flyer01.jpg
   - /uploads/002.jpg
