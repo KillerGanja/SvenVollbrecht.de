@@ -10,7 +10,7 @@ period_de: Gruppenausstellung
 period_en: Group Show
 description_de: ""
 description_en: ""
-cover_image: /uploads/img_3131-scaled.jpg
+cover_image: /uploads/signs-011.jpg
 gallery_images:
   - /uploads/480489009_616927257636275_230870682236985558_n.jpg
   - /uploads/signs012.jpg
