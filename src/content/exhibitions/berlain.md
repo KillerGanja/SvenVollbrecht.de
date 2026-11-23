@@ -8,7 +8,9 @@ city_de: Berlin
 city_en: ""
 period_de: Gruppenausstellung
 period_en: Group Show
-description_de: ""
+description_de: 2023 – BERLAINSHOW, Gruppenausstellung, raeume.art, Berlin. Mit
+  Künstlerinnen und Künstlern wie Margret Eicher, Rozbeh Asmani und Dagmar
+  Varady.
 description_en: ""
 cover_image: /uploads/signs-011.jpg
 gallery_images:
