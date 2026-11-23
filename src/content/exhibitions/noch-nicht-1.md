@@ -8,7 +8,9 @@ city_de: Berlin
 city_en: ""
 period_de: Gruppenausstellung
 period_en: Group Show
-description_de: ""
+description_de: 2025 – NOCH NICHT, künstlerische Abschlusspräsentation und
+  Finissage der NOTAGALLERY, Marlene-Dietrich-Platz 5, Berlin. Mit Ivan Gette,
+  Anna Borowy und Luca Giuseppe Gennaro.
 description_en: ""
 cover_image: /uploads/dsc06259.jpg
 gallery_images:
