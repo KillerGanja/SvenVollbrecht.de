@@ -10,7 +10,7 @@ period_de: Gruppenausstellung
 period_en: Group Show
 description_de: ""
 description_en: ""
-cover_image: /uploads/schoenbergerart.jpg
+cover_image: /uploads/011.jpg
 gallery_images:
   - /uploads/bildschirmfoto-2026-11-05-um-01.49.08.png
   - /uploads/011.jpg
