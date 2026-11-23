@@ -10,7 +10,7 @@ period_de: Gruppenausstellung
 period_en: Group Show
 description_de: ""
 description_en: ""
-cover_image: /uploads/nochnicht.jpg
+cover_image: /uploads/dsc06259.jpg
 gallery_images:
   - /uploads/1.jpeg
   - /uploads/02.jpg
