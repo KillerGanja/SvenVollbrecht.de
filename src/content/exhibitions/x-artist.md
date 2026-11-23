@@ -10,7 +10,7 @@ period_de: Gruppenausstellung
 period_en: Group Show
 description_de: ""
 description_en: ""
-cover_image: /uploads/xartist.jpg
+cover_image: /uploads/trust10.jpg
 gallery_images:
   - /uploads/img_8636.jpg
   - /uploads/trust12.jpg
