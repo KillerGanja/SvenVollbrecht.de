@@ -8,7 +8,10 @@ city_de: Berlin
 city_en: ""
 period_de: Gruppenausstellung
 period_en: Group Show
-description_de: ""
+description_de: "2022 – DEPARTURE – RÄUME III, Gruppenausstellung im Rahmen der
+  BERLIN ART WEEK, ehemalige Luftfrachthalle Flughafen Tegel, Berlin.
+  Künstlerische Leitung und Initiatorin: Alina Mann. Mit Jonathan Meese, Olaf
+  Nicolai und Florentina Holzinger."
 description_en: ""
 cover_image: /uploads/digitaslvoid.jpg
 gallery_images:
