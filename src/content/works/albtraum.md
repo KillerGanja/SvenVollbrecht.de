@@ -1,5 +1,5 @@
 ---
-title: ALBTRAUM
+title: ALBTRAUM - Werkserie
 slug: albtraum
 order: 3
 year: 2025
