@@ -11,7 +11,9 @@ period_en: Group Show
 description_de: 2024 – schöneberger art, kuratierte Gruppenausstellung, Haus am
   Kleistpark, Kommunale Galerie Tempelhof-Schöneberg, Berlin. Mit Sophia
   Tabatadze, Angela Zumpe und Eva Marie Kreutzberger.
-description_en: ""
+description_en: 2024 – schöneberger art, curated group exhibition, Haus am
+  Kleistpark, Municipal Gallery Tempelhof-Schöneberg, Berlin. Featuring Sophia
+  Tabatadze, Angela Zumpe, and Eva Marie Kreutzberger.
 cover_image: /uploads/011.jpg
 gallery_images:
   - /uploads/bildschirmfoto-2026-11-05-um-01.49.08.png
