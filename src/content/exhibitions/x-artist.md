@@ -9,7 +9,8 @@ city_en: ""
 period_de: Gruppenausstellung
 period_en: Group Show
 description_de: ""
-description_en: ""
+description_en: 2023 – 51 Artists Exhibiting Together, Gruppenausstellung,
+  Artists Stop Being Poor, Prachtsaal Studio, Berlin.
 cover_image: /uploads/trust10.jpg
 gallery_images:
   - /uploads/img_8636.jpg
