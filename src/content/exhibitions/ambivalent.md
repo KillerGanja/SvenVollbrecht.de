@@ -12,7 +12,9 @@ description_de: |-
   
 
   ![]()
-description_en: ""
+description_en: 2023 – AMBIVALENT, internationale Gruppenausstellung,
+  NOTAGALLERY, Potsdamer Straße 124, Berlin. Mit Marcel Schwittlick, Johanna
+  Keimeyer und Jae-Hong Ahn.
 cover_image: /uploads/circle012.jpg
 gallery_images:
   - /uploads/ambivalent_flyer01.jpg
