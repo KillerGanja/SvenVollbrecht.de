@@ -13,7 +13,6 @@ cover_image: /uploads/760872e6-6dfc-4fbd-bb06-5073cdb4a13e.jpg
 gallery_images:
   - /uploads/bildschirmfoto-2026-11-05-um-01.10.20.png
   - /uploads/760872e6-6dfc-4fbd-bb06-5073cdb4a13e.jpg
-  - /uploads/7e592fc6-dd08-40df-ba60-813ee3d0be55.jpg
   - /uploads/albtraum13.jpg
   - /uploads/albtraum11.jpg
 ---
