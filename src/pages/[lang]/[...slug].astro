@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { t } from "../../utils/i18n";
 import { marked } from "marked";
+import { externalLinks } from "../../utils/links";
 import { excerpt, pageDescription } from "../../utils/seo";
 
 export async function getStaticPaths() {
@@ -45,7 +46,7 @@ const processedBody = body
     .replace(/\r\n/g, "\n\n")
     .replace(/([a-zA-ZäöüÄÖÜß])\*([a-zA-ZäöüÄÖÜß])/g, "$1\\*$2");
 
-const htmlContent = marked.parse(processedBody, { breaks: true });
+const htmlContent = externalLinks(marked.parse(processedBody, { breaks: true }) as string);
 
 // Über mich: Anfang des Textes; Kontakt/Impressum/Datenschutz: feste Beschreibung
 const metaDescription =

@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { pageDescription } from "../../utils/seo";
 import { t } from "../../utils/i18n";
 import { marked } from "marked";
+import { externalLinks } from "../../utils/links";
 
 export function getStaticPaths() {
     return [{ params: { lang: "de" } }, { params: { lang: "en" } }];
@@ -23,7 +24,7 @@ const processedItems = await Promise.all(
         // Localized resolution: Use the primary title and localized text
         const displayTitle = fm.title || "";
         const bodyContent = fm[`text_${lang}`] || fm.text_de || "";
-        const htmlContent = bodyContent ? await marked.parse(bodyContent) : "";
+        const htmlContent = bodyContent ? externalLinks(await marked.parse(bodyContent)) : "";
 
         return {
             ...fm,

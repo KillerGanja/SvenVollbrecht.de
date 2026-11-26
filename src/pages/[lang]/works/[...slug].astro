@@ -2,6 +2,7 @@
 import Layout from "../../../layouts/Layout.astro";
 import { t } from "../../../utils/i18n";
 import { marked } from "marked";
+import { externalLinks } from "../../../utils/links";
 import ImageGallery from "../../../components/ImageGallery.astro";
 import WorkSlideshow from "../../../components/WorkSlideshow.astro";
 import ResponsiveImage from "../../../components/ResponsiveImage.astro";
@@ -78,7 +79,7 @@ const processedDescription = description
     .replace(/\r\n/g, "\n\n") // Ensure CRLF creates paragraph breaks
     .replace(/([a-zA-ZäöüÄÖÜß])\*([a-zA-ZäöüÄÖÜß])/g, "$1\\*$2"); // Escape Gender-Sternchen
 
-const htmlContent = marked.parse(processedDescription, { breaks: true });
+const htmlContent = externalLinks(marked.parse(processedDescription, { breaks: true }) as string);
 
 const metaDescription =
     excerpt(description) ||

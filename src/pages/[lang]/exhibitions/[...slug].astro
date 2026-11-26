@@ -2,6 +2,7 @@
 import Layout from "../../../layouts/Layout.astro";
 import { t } from "../../../utils/i18n";
 import { marked } from "marked";
+import { externalLinks } from "../../../utils/links";
 import ImageGallery from "../../../components/ImageGallery.astro";
 import { excerpt, pickImage } from "../../../utils/seo";
 
@@ -36,7 +37,7 @@ const period = frontmatter[`period_${lang}`] || frontmatter.period_de || "";
 const description =
     frontmatter[`description_${lang}`] || frontmatter.description_de || "";
 
-const htmlContent = marked.parse(description);
+const htmlContent = externalLinks(marked.parse(description) as string);
 
 const facts = [venue, city, period].filter(Boolean).join(", ");
 const metaDescription =
