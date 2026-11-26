@@ -26,7 +26,7 @@ body_de: >-
   Sven Vollbrecht (geboren in West-Berlin) lebt und arbeitet in Berlin.
 
 
-  [Mitglied im Berufsverband bildender Künstler*innen Berlin e.V. (BBK Berlin).](https://www.bbk-berlin.de/mitglieder?name=Sven%20Vollbrecht#listitem-id-55001)
+  Mitglied im Berufsverband bildender Künstler*innen Berlin e.V. ([bbk berlin](https://www.bbk-berlin.de/mitglieder?name=Sven%20Vollbrecht#listitem-id-55001))
 
 
   Er arbeitet mit Skulptur, Rauminstallation, Video und partizipativen Formaten. Dabei wendet er Alltagsobjekte gegen ihre gewohnte Funktion und macht so die Mechanismen von Konsum, Kontrolle und Kommunikation sichtbar. Zunächst war er als Fotograf und Regisseur tätig, seit 2022 widmet er sich ausschließlich der bildenden Kunst. Seine Praxis hat er autodidaktisch entwickelt.
@@ -38,7 +38,7 @@ body_de: >-
   Die Werke „Trust" und „#1" aus der Serie *Albtraum* befinden sich in der Privatsammlung von Wilhelm Siebert, Berlin.
 
 
-  Weitere Informationen: ***[Wikipedia](https://de.wikipedia.org/wiki/Sven_Vollbrecht), [Artfacts](https://artfacts.net/artist/sven-vollbrecht-de)***
+  Weitere Informationen: ***[Wikipedia](https://de.wikipedia.org/wiki/Sven_Vollbrecht), [Artfacts](https://artfacts.net/artist/sven-vollbrecht-de), [bbk berlin](https://www.bbk-berlin.de/mitglieder?name=Sven%20Vollbrecht#listitem-id-55001)***
 body_en: >-
   I make art because I spent twenty years speaking for others and now it is my
   turn to speak for myself.
@@ -62,10 +62,10 @@ body_en: >-
   **CV**
 
 
-  [Sven Vollbrecht (born in West Berlin) lives and works in Berlin.](https://www.bbk-berlin.de/mitglieder?name=Sven%20Vollbrecht#listitem-id-55001)
+  Sven Vollbrecht (born in West Berlin) lives and works in Berlin.
 
 
-  Member of the Berufsverband bildender Künstler*innen Berlin e.V. (BBK Berlin), the Professional Association of Visual Artists Berlin.
+  Member of the Berufsverband bildender Künstler*innen Berlin e.V. [(*bbk berlin*)](https://www.bbk-berlin.de/mitglieder?name=Sven%20Vollbrecht#listitem-id-55001) the Professional Association of Visual Artists Berlin.
 
 
   He works with sculpture, spatial installation, video and participatory formats. He turns everyday objects against their usual function and so makes the mechanisms of consumption, control and communication visible. He first worked as a photographer and director, and since 2022 he has devoted himself exclusively to fine art. He developed his practice as an autodidact.
@@ -80,7 +80,7 @@ body_en: >-
   Two notes: Haus am Kleistpark now appears twice in the CV, in the venue list and again with *Echo*. I would drop it from the list. I also left *Albtraum* in German. For an English audience, "Nightmare" is an option, or you keep the German title and add the translation once in brackets.
 
 
-  Further information: **[Wikipedia](https://de.wikipedia.org/wiki/Sven_Vollbrecht), [Artfacts](https://artfacts.net/artist/sven-vollbrecht-de)**
+  Further information: ***[Wikipedia](https://de.wikipedia.org/wiki/Sven_Vollbrecht), [Artfacts](https://artfacts.net/artist/sven-vollbrecht-de), [bbk berlin](https://www.bbk-berlin.de/mitglieder?name=Sven%20Vollbrecht#listitem-id-55001)***
 portfolio_de: /uploads/portfolio_sven_vollbrecht.pdf
 portfolio_en: /uploads/portfolio_sven_vollbrecht.pdf
 slug: about
